@@ -11,6 +11,8 @@ class CategoryController extends Controller
     
     function store(CategoryStoreRequest $request){
 
+        return response()->json($request->all());
+
         try{
 
             $category = new Category;
