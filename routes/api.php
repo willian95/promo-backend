@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/fetch', 'HomeController@fetch');
+Route::get('categories/fetch', 'HomeController@fetchCategories');
 
 Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');

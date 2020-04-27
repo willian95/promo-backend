@@ -4,15 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostStoreRequest;
+use Intervention\Image\Facades\Image;
 use App\Post;
 use Carbon\Carbon;
 use App\DiscountDay;
+use App\SecondaryImage;
 use JWTAuth;
 
 class PostController extends Controller
 {
     
     function store(PostStoreRequest $request){
+
+        try{
+            
+            $imageData = $request->get('main_image');
+            $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($imageData, 0, strpos($imageData, ';')))[1])[1];
+            Image::make($request->get('main_image'))->save(public_path('images/posts/').$fileName, 50);
+
+        }catch(\Exception $e){
+
+            return response()->json(["success" => false, "msg" => "Hubo un error al cargar la imagen", "err" => $e->getMessage(), "ln" => $e->getLine()]);
+
+        }
+
 
         try{
 
@@ -29,7 +44,7 @@ class PostController extends Controller
                 $post->user_id = $user->id;
                 $post->title = $request->title;
                 $post->description = $request->description;
-                $post->image = "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+                $post->image = $fileName;
                 $post->amount = $request->amount;
                 $post->price = $request->price;
                 $post->category_id = $request->categoryId;
@@ -38,6 +53,22 @@ class PostController extends Controller
                 $post->start_date = $startDate->format('y-m-d');
                 $post->due_date = $dueDate->format('y-m-d');
                 $post->save();
+
+                if($request->get('image2')){
+                    $this->processImage('image2', $request, $post->id);
+                }
+        
+                if($request->get('image3')){
+                    $this->processImage('image3', $request, $post->id);
+                }
+        
+                if($request->get('image4')){
+                    $this->processImage('image4', $request, $post->id);
+                }
+        
+                if($request->get('image5')){
+                    $this->processImage('image5', $request, $post->id);
+                }
 
                 $discount = new DiscountDay;
                 $discount->post_id = $post->id;
@@ -95,6 +126,27 @@ class PostController extends Controller
 
         }
 
+    }
+
+    function processImage($imageField, $request, $postId){
+        try{
+            
+            $imageData = $request->get($imageField);
+            $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($imageData, 0, strpos($imageData, ';')))[1])[1];
+            Image::make($request->get('image'))->save(public_path('images/posts/').$fileName, 50);
+
+            $secondaryImage = new SecondaryImage;
+            $secondaryImage->image = $fileName;
+            $secondaryImage->post_id = $postId;
+            $secondaryImage->save();
+
+            //return $fileName;
+
+        }catch(\Exception $e){
+
+            return response()->json(["success" => false, "msg" => "Hubo un error al cargar la imagen", "err" => $e->getMessage(), "ln" => $e->getLine()]);
+
+        }
     }
 
 }

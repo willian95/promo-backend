@@ -37,12 +37,14 @@ class PostStoreRequest extends FormRequest
             "discount5" => "required|numeric",
             "discount6" => "required|numeric",
             "discount7" => "required|numeric",
+            "main_image" => "required"
         ];
     }
 
     public function messages(){
 
         return [
+            "main_image.required" => "Imagen principal es requerida",
             "title.required" => "Titulo es requerido",
             "description.required" => "Descripción es requerida",
             "amount.required" => "Cantidad es requerida",

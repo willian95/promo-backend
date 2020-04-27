@@ -14,10 +14,10 @@ class CategoryController extends Controller
     function store(CategoryStoreRequest $request){
         
         try{
-
+            
             $imageData = $request->get('image');
             $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($imageData, 0, strpos($imageData, ';')))[1])[1];
-            Image::make($request->get('image'))->save(public_path('images/categories/').$fileName);
+            Image::make($request->get('image'))->save(public_path('images/categories/').$fileName, 50);
 
         }catch(\Exception $e){
 
@@ -31,6 +31,7 @@ class CategoryController extends Controller
             $category->name = $request->name;
             $category->description = $request->description;
             $category->image = $fileName;
+            $category->color = $request->color;
             $category->save();
             
             return response()->json(["success" => true, "msg" => "Categoría creada"]);

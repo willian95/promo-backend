@@ -25,7 +25,9 @@ class CategoryStoreRequest extends FormRequest
     {
         return [
             "name" => "required",
-            "description" => "required"
+            "description" => "required",
+            "image" => "required",
+            "color" => "required"
         ];
     }
 
@@ -33,7 +35,9 @@ class CategoryStoreRequest extends FormRequest
 
         return [
             "name.required" => "Nombre es requerido",
-            "description.required" => "Descripción es requerida"
+            "description.required" => "Descripción es requerida",
+            "image.required" => "Imagen requerida",
+            "color.required" => "Color requerido"
         ];
 
     }
