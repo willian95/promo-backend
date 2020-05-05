@@ -46,7 +46,7 @@ class CategoryController extends Controller
 
     function fetch(){
         try{
-
+            
             $categories = Category::all();
             return response()->json(["success" => true, "categories" => $categories]);
 

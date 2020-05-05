@@ -26,6 +26,11 @@ Route::post('/login', 'AuthController@login');
 
 Route::post('/post/store', 'PostController@store');
 
+Route::post('/purchase/reserve', "PurchaseController@reserve");
+Route::get('/purchase/userFetch/{page}', "PurchaseController@userFetch");
+
+Route::get('/bank/fetch', "BankController@fetch");
+
 Route::get('/checkUser', 'AuthController@getAuthenticatedUser');
 
 Route::prefix('admin')->group(function (){
@@ -35,5 +40,10 @@ Route::prefix('admin')->group(function (){
 
     Route::post("/location/store", "LocationController@store")->name('admin.location.store');
     Route::get("/location/fetch", "LocationController@fetch")->name('admin.location.fetch');
+
+    Route::post('/bank/store', "BankController@store");
+
+    Route::get('/payments/fetch', "PaymentController@fetch");
+    Route::post('/payments/update', "PaymentController@update");
 
 });
