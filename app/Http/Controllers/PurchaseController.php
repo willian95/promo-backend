@@ -18,20 +18,36 @@ class PurchaseController extends Controller
 
             $user = JWTAuth::parseToken()->toUser();
 
-            $purchase = new Purchase;
-            $purchase->user_id = $user->id;
-            $purchase->post_id = $request->postId;
-            $purchase->price = $request->price;
-            $purchase->amount = $request->amount;
-            $purchase->save();
+            if($request->action == "make-purchase"){
+                $purchase = new Purchase;
+                $purchase->user_id = $user->id;
+                $purchase->post_id = $request->postId;
+                $purchase->price = $request->price;
+                $purchase->payment_type = $request->type;
+                $purchase->amount = $request->amount;
+                $purchase->save();
 
-            $payment = new Payment;
-            $payment->purchase_id = $purchase->id;
-            $payment->user_id = $user->id;
-            $payment->transfer = $request->transfer;
-            $payment->bank_id = $request->bank;
-            $payment->amount_to_pay = $request->amountToPay;
-            $payment->save();
+                $payment = new Payment;
+                $payment->purchase_id = $purchase->id;
+                $payment->user_id = $user->id;
+                $payment->transfer = $request->transfer;
+                $payment->bank_id = $request->bank;
+                $payment->amount_to_pay = $request->amountToPay;
+                $payment->save();
+
+            }else{
+
+                $payment = new Payment;
+                $payment->purchase_id = $request->purchaseId;
+                $payment->user_id = $user->id;
+                $payment->transfer = $request->transfer;
+                $payment->bank_id = $request->bank;
+                $payment->amount_to_pay = $request->amountToPay;
+                $payment->save();
+
+            }
+
+            
 
             return response()->json(["success" => true, "msg" => "Ha realizado una reservación, le notificaremos cuando el pago haya sido aprobado"]);
 

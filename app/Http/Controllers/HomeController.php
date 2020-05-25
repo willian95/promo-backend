@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,8 @@ class HomeController extends Controller
         try{
 
             $posts = Post::with('user', 'discountDays', 'category', 'location')->get();
-            return response()->json(["success" => true, "posts" => $posts]);
+            $todaysDate = Carbon::now();
+            return response()->json(["success" => true, "posts" => $posts, "todaysDate" => $todaysDate]);
 
         }catch(\Exception $e){
 

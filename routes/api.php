@@ -25,9 +25,14 @@ Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
 
 Route::post('/post/store', 'PostController@store');
+Route::post('/post/check/active/reservations', "PostController@checkActiveReservations");
 
 Route::post('/purchase/reserve', "PurchaseController@reserve");
 Route::get('/purchase/userFetch/{page}', "PurchaseController@userFetch");
+
+Route::get('/reservations/uncomplete', "PurchaseController@fetchUncompleteReservations");
+
+Route::get('/orders/fetch', "OrderController@fetchReservations");
 
 Route::get('/bank/fetch', "BankController@fetch");
 
@@ -36,6 +41,8 @@ Route::get('/checkUser', 'AuthController@getAuthenticatedUser');
 Route::prefix('admin')->group(function (){
 
     Route::post("/category/store", "CategoryController@store")->name('admin.category.store');
+    Route::post("/category/update", "CategoryController@update")->name('admin.category.update');
+    Route::post("/category/delete", "CategoryController@delete")->name('admin.category.delete');
     Route::get("/category/fetch", "CategoryController@fetch")->name('admin.category.fetch');
 
     Route::post("/location/store", "LocationController@store")->name('admin.location.store');

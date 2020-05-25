@@ -9,6 +9,7 @@ use App\Post;
 use Carbon\Carbon;
 use App\DiscountDay;
 use App\SecondaryImage;
+use App\Purchase;
 use JWTAuth;
 
 class PostController extends Controller
@@ -147,6 +148,37 @@ class PostController extends Controller
             return response()->json(["success" => false, "msg" => "Hubo un error al cargar la imagen", "err" => $e->getMessage(), "ln" => $e->getLine()]);
 
         }
+    }
+
+    function checkActiveReservations(Request $request){
+
+        try{
+
+            $user = JWTAuth::parseToken()->toUser();
+            $purchases = Purchase::with('payments')->where('user_id', $user->id)->where('is_payment_complete', 0)->where('post_id', $request->id)->get();
+            $activeReservations = false;
+
+            foreach($purchases as $purchase){
+
+                foreach($purchase->payments as $payment){
+
+                    if($payment->payment_type == "reservation"){
+                        $activeReservations = true;
+                    }
+
+                }
+
+            }
+
+            return response()->json(["success" => true, "activeReservations" => $activeReservations]);
+
+
+        }catch(\Exception $e){
+
+            return response()->json(["success" => false, "Error en el servidor"]);
+
+        }
+
     }
 
 }

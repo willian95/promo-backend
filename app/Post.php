@@ -22,7 +22,7 @@ class Post extends Model
         return $this->hasMany('App\DiscountDay');
     }
 
-    public function post(){
+    public function purchase(){
         return $this->hasMany('App\Purchase');
     }
 
