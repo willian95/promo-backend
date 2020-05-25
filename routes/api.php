@@ -24,6 +24,7 @@ Route::get('categories/fetch', 'HomeController@fetchCategories');
 Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
 
+Route::post('/post/checkSaleDate', 'PostController@checkSaleDate');
 Route::post('/post/store', 'PostController@store');
 Route::post('/post/check/active/reservations', "PostController@checkActiveReservations");
 

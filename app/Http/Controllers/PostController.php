@@ -181,4 +181,29 @@ class PostController extends Controller
 
     }
 
+    function checkSaleDate(Request $request){
+        try{
+
+            $now = Carbon::now();
+            $saleDate = Carbon::parse($request->saleDate);
+            $startDate = Carbon::parse($request->saleDate)->subDays(6);
+            $dueDate = Carbon::parse($request->saleDate)->addDays(6);
+
+            if($startDate->greaterThanOrEqualTo($now)){
+
+                return response()->json(["success" => true]);
+
+            }else{
+
+                return response()->json(["success" => false]);
+
+            }
+
+        }catch(\Exception $e){
+
+            return response()->json(["success" => false, "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
+
+        }
+    }
+
 }
