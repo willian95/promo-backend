@@ -15,7 +15,7 @@ class HomeController extends Controller
         try{
 
             $user = JWTAuth::parseToken()->toUser();
-            $todaysDate = Carbon::now()->addDays(5);
+            $todaysDate = Carbon::now();
 
             $posts = Post::with('user', 'discountDays', 'category', 'commune')->where("commune_id", $user->location_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->orderBy("id", "desc")->get();
 
