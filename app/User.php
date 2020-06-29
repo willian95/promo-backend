@@ -47,8 +47,8 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function location(){
-        return $this->belongsTo('App\Location');
+    public function commune(){
+        return $this->belongsTo('App\Commune', "location_id");
     }
 
     public function role(){

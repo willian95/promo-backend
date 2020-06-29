@@ -9,6 +9,10 @@ use App\Bank;
 
 class BankController extends Controller
 {
+
+    function bankView(){
+        return view("admin.banks.index");
+    }
     
     function store(BankStoreRequest $request){
 

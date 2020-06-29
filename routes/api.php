@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/fetch', 'HomeController@fetch');
+Route::get('/guest/fetch', 'HomeController@guestFetch');
 Route::get('categories/fetch', 'HomeController@fetchCategories');
 
 Route::post('/register', 'AuthController@register');
@@ -28,8 +29,19 @@ Route::post('/post/checkSaleDate', 'PostController@checkSaleDate');
 Route::post('/post/store', 'PostController@store');
 Route::post('/post/check/active/reservations', "PostController@checkActiveReservations");
 
+Route::get("/my-purchases/fetch/{page}", "PurchaseController@userFetch");
 Route::post('/purchase/reserve', "PurchaseController@reserve");
-Route::get('/purchase/userFetch/{page}', "PurchaseController@userFetch");
+Route::post('/purchase/confirmDelivery', "PurchaseController@confirmDelivery");
+
+Route::get("/my-sales/fetch/{page}", "SaleController@userFetch");
+Route::post("/my-sales/deliver", "SaleController@deliver");
+
+Route::post("rate/store", "RateController@store");
+
+Route::get("my-profile/data", "ProfileController@myData");
+Route::post("my-profile/update", "ProfileController@update");
+/*Route::get('/purchase/userFetch/{page}', "PurchaseController@userFetch");
+Route::get("/my-transfers", "PaymentController@fetchMyPayments");*/
 
 Route::get('/reservations/uncomplete', "PurchaseController@fetchUncompleteReservations");
 
@@ -38,6 +50,9 @@ Route::get('/orders/fetch', "OrderController@fetchReservations");
 Route::get('/bank/fetch', "BankController@fetch");
 
 Route::get('/checkUser', 'AuthController@getAuthenticatedUser');
+
+Route::get("/regions", "LocationController@regionFetch");
+Route::get("/commune/{region_id}", "LocationController@communeFetch");
 
 Route::prefix('admin')->group(function (){
 
@@ -50,8 +65,12 @@ Route::prefix('admin')->group(function (){
     Route::get("/location/fetch", "LocationController@fetch")->name('admin.location.fetch');
 
     Route::post('/bank/store', "BankController@store");
+    Route::post('/bank/update', "BankController@update");
 
-    Route::get('/payments/fetch', "PaymentController@fetch");
+    Route::get('/payments/fetch/{page}', "PaymentController@fetch");
     Route::post('/payments/update', "PaymentController@update");
+
+    Route::get("/posts/fetch/{page}", "PostController@adminFetch");
+    Route::post("/posts/delete", "PostController@adminDelete");
 
 });

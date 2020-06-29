@@ -35,7 +35,6 @@ class CategoryUpdateRequest extends FormRequest
         return [
             "name.required" => "Nombre es requerido",
             "description.required" => "Descripción es requerida",
-            "image.required" => "Imagen requerida",
             "color.required" => "Color requerido"
         ];
 

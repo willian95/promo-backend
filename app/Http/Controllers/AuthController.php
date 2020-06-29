@@ -13,6 +13,14 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 class AuthController extends Controller
 {
 
+    function loginView(){
+        return view("user.login");
+    }
+
+    function registerView(){
+        return view("user.register");
+    }
+
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
@@ -42,6 +50,7 @@ class AuthController extends Controller
             $user = new User;
             $user->name = $request->name;
             $user->email = $request->email;
+            $user->address = $request->address;
             $user->password = bcrypt($request->password);
             $user->location_id = $request->locationId;
             $user->save();

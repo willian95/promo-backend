@@ -27,7 +27,7 @@ class BankUpdateRequest extends FormRequest
             "holderName" => "required",
             "holderRut" => "required",
             "bankName" => "required",
-            "accountNumber" => "required|unique:banks,account_number",
+            "accountNumber" => "required",
             "accountType" => "required"
         ];
     }

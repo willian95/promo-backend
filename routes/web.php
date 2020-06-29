@@ -14,9 +14,37 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('register');
+    //return view('register');
+    return view('user.landing');
 });
 
-Route::post("/register", "ContactUserController@store");
+Route::get("login", "AuthController@loginView");
+Route::get("register", "AuthController@registerView");
+
+Route::get("/my-transfers", "PaymentController@myTransferViews");
+
+Route::get("/post", "PostController@index");
+Route::get("/post/show/{id}", "PostController@show");
+
+Route::get("/my-purchases", "PurchaseController@index");
+Route::get("/my-purchases/purchase/{id}", "PurchaseController@showMyPurchaseInfo");
+
+Route::get("/my-sales", "SaleController@index");
+
+Route::get("/my-profile", "ProfileController@index");
+Route::get("/profile/{id}", "ProfileController@show");
+
+Route::get("/admin/dashboard", function(){
+
+    return view("admin.index");
+
+});
+
+Route::get("/admin/category/index", "CategoryController@categoryView");
+Route::get("/admin/bank/index", "BankController@bankView");
+Route::get("/admin/transfers/index", "PaymentController@transferViews");
+Route::get("/admin/posts/index", "PostController@adminIndex");
+
+//Route::post("/register", "ContactUserController@store");
 
 

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\LocationStoreRequest;
-use App\Location;
+use App\Region;
+use App\Commune;
 
 class LocationController extends Controller
 {
@@ -27,11 +28,25 @@ class LocationController extends Controller
 
     }
 
-    function fetch(){
+    function regionFetch(){
         try{
 
-            $locations = Location::all();
-            return response()->json(["success" => true, "locations" => $locations]);
+            $regions = Region::all();
+            return response()->json(["success" => true, "regions" => $regions]);
+
+        }catch(\Exception $e){
+
+            return response()->json(["success" => false, "msg" => "Error en el servidor"]);
+
+        }
+        
+    }
+
+    function CommuneFetch($region_id){
+        try{
+
+            $communes = Commune::where("region_id", $region_id)->get();
+            return response()->json(["success" => true, "communes" => $communes]);
 
         }catch(\Exception $e){
 

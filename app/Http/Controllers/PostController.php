@@ -14,6 +14,11 @@ use JWTAuth;
 
 class PostController extends Controller
 {
+    function index(){
+
+        return view("user.posts.index");
+
+    }
     
     function store(PostStoreRequest $request){
 
@@ -36,12 +41,28 @@ class PostController extends Controller
             $saleDate = Carbon::parse($request->saleDate);
             $startDate = Carbon::parse($request->saleDate)->subDays(6);
             $dueDate = Carbon::parse($request->saleDate)->addDays(6);
+            $user = JWTAuth::parseToken()->toUser();
+
+            if($startDate->greaterThanOrEqualTo($now)){
+ 
+                if(Post::where("start_date",$startDate)->where("commune_id", $user->location_id)->count() >= 40){
+                    return response()->json(["success" => false, "msg" => "Se ha superado la cantidad de publicaciones para este día, por favor seleccione otra fecha de venta"]);
+                }
+
+            }else{
+
+                return response()->json(["success" => false, "msg" => "Debe existir un mínimo de 7 días entre la fecha de venta y la fecha actual"]);
+
+            }
+
+
 
             if($startDate->greaterThanOrEqualTo($now)){
 
-                $user = JWTAuth::parseToken()->toUser();
+                
 
                 $post = new Post;
+                $post->type = $request->type;
                 $post->user_id = $user->id;
                 $post->title = $request->title;
                 $post->description = $request->description;
@@ -49,7 +70,7 @@ class PostController extends Controller
                 $post->amount = $request->amount;
                 $post->price = $request->price;
                 $post->category_id = $request->categoryId;
-                $post->location_id = $user->location_id;
+                $post->commune_id = $user->location_id;
                 $post->sale_date = $saleDate->format('y-m-d');
                 $post->start_date = $startDate->format('y-m-d');
                 $post->due_date = $dueDate->format('y-m-d');
@@ -150,6 +171,46 @@ class PostController extends Controller
         }
     }
 
+    function adminIndex(){
+        return view("admin.posts.index");
+    }
+
+    function adminFetch($page = 1){
+
+        try{
+
+            $skip = ($page-1) * 20;
+
+            $posts = Post::with("user")->skip($skip)->take(20)->orderBy('id', 'desc')->get();
+            $postsCount = Post::with("user")->count();
+
+            return response()->json(["success" => true, "posts" => $posts, "postsCount" => $postsCount]);
+
+        }catch(\Exception $e){
+
+            return response()->json(["success" => false, "msg" => "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
+
+        }
+
+    }
+
+    function adminDelete(Request $request){
+        
+        try{
+
+            $post = Post::where("id", $request->id)->first();
+            $post->delete();
+
+            return response()->json(["success" => true, "msg" => "Publicación eliminada"]);
+
+        }catch(\Exception $e){
+
+            return response()->json(["success" => false, "msg" => "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
+
+        }
+
+    }
+
     function checkActiveReservations(Request $request){
 
         try{
@@ -204,6 +265,29 @@ class PostController extends Controller
             return response()->json(["success" => false, "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
 
         }
+    }
+
+    function show($id){
+
+        $post = Post::with('user', 'discountDays', 'category', 'commune')->where("id", $id)->first();
+        $now = Carbon::now()->addDays(5);
+        $saleDate = Carbon::parse($post->saleDate);
+        $startDate = Carbon::parse($post->saleDate)->subDays(6);
+        $dueDate = Carbon::parse($post->saleDate)->addDays(6);
+        $showBuyButton = false;
+
+        if($startDate->greaterThanOrEqualTo($now) && $dueDate->lessThanOrEqualTo($now) ){
+
+            $showBuyButton = true;
+
+        }else{
+
+            $showBuyButton = false;
+
+        }
+
+        return view("user.posts.show", ["post" => $post, "showBuyButton" => $showBuyButton, "todaysDate" => $now]);
+
     }
 
 }

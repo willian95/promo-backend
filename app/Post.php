@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
-    public function location(){
-        return $this->belongsTo('App\Location');
+    use SoftDeletes;
+    public function commune(){
+        return $this->belongsTo('App\Commune');
     }
 
     public function category(){

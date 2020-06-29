@@ -11,10 +11,13 @@ use App\Category;
 
 class CategoryController extends Controller
 {
+    function categoryView(){
+        return view("admin.categories.index");
+    }
     
     function store(CategoryStoreRequest $request){
         
-        try{
+        /*try{
             
             $imageData = $request->get('image');
             $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($imageData, 0, strpos($imageData, ';')))[1])[1];
@@ -24,14 +27,14 @@ class CategoryController extends Controller
 
             return response()->json(["success" => false, "msg" => "Hubo un error al cargar la imagen", "err" => $e->getMessage(), "ln" => $e->getLine()]);
 
-        }
+        }*/
 
         try{
 
             $category = new Category;
             $category->name = $request->name;
             $category->description = $request->description;
-            $category->image = $fileName;
+            //$category->image = $fileName;
             $category->color = $request->color;
             $category->save();
             
@@ -76,7 +79,7 @@ class CategoryController extends Controller
 
     function update(CategoryUpdateRequest $request){
         
-        if(isset($request->image)){
+        /*if(isset($request->image)){
             try{
             
                 $imageData = $request->get('image');
@@ -89,15 +92,15 @@ class CategoryController extends Controller
     
             }
     
-        }
+        }*/
         try{
 
             $category = Category::find($request->id);
             $category->name = $request->name;
             $category->description = $request->description;
-            if(isset($request->image)){
+            /*if(isset($request->image)){
                 $category->image = $fileName;
-            }
+            }*/
             $category->color = $request->color;
             $category->update();
 
