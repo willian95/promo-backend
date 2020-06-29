@@ -1,0 +1,154 @@
+@media (min-width: 0px) and (max-width: 767px) {
+a.navbar-brand {
+    width: 60%;
+}
+
+.res{    margin-top: 10%;}
+
+
+.navbar-expand-lg .navbar-collapse {
+
+    text-align: center;
+}
+
+.mask{
+      border-bottom-left-radius:inherit!important;
+    border-bottom-right-radius: inherit!important;
+}
+
+
+.ftco-cover img{
+        border-bottom-left-radius:inherit!important;
+    border-bottom-right-radius: inherit!important;
+      height: 91vh;
+}
+
+.icons{
+  display: block;
+      padding-bottom: 50px;
+}
+
+.icons-info{
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.card-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.icon-img img {
+     width: 100%;
+
+}
+
+.menu h2 {
+
+    font-size: 25px;
+}
+
+.cards-carrusel{
+  display: block;
+}
+
+.menu h2::after {
+    position: absolute;
+    content: '';
+    height: 7px;
+    width: 45px;
+    background-color: #e2ce82;
+    top: 42%;
+    bottom: 0;
+    right: 0;
+    left: 10%;
+}
+
+.menu h2::before {
+    position: absolute;
+    content: '';
+    height: 7px;
+    width: 45px;
+    background-color: #e2ce82;
+    top: 42%;
+    bottom: 0;
+
+    right: 10%;
+}
+.card-item{
+  width: auto;
+}
+
+.menu-fav{
+  display: block;
+}
+.fav-1{
+  width: auto;
+}
+
+.footer{
+  display: block;
+}
+
+.about-footer{
+  width: auto;
+      text-align: center;
+}
+.hours{
+  width: auto;
+      text-align: center;
+}
+
+.hours h6{
+  margin-left: 0!important;
+}
+
+.info-detail{
+  display: block;
+}
+
+.info-img img{
+      width: 100%;
+}
+.view-detail{
+  width: auto;
+  margin-left: 0;
+      margin-top: 5%;
+}
+}
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+
+.ftco-cover img {
+
+    height: 40vh;
+  }
+  div#contact-section {
+    padding-top: 0px;
+}
+a.navbar-brand {
+    width: 40%;
+}
+.icon-img {
+
+    width: 60%;
+  }
+
+  .menu h2::after {
+ 
+    left: 25%;
+}
+.menu h2::before {
+
+    right: 25%;
+}
+.card-item {
+    width: 32%;
+    }
+    .logo-footer {
+
+    width: 50%;
+}
+}
