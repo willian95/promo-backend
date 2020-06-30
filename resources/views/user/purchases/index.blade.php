@@ -19,7 +19,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="purchase in purchases">
+                        <tr v-for="purchase in purchases" v-if="purchase.post">
                             <td>@{{ purchase.post.title }}</td>
                             <td>@{{ purchase.amount }}</td>
                             <td>@{{ purchase.price * purchase.amount }}</td>

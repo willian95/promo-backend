@@ -154,7 +154,7 @@
 
 @push("scripts")
 
-<script>
+    <script>
         const app = new Vue({
             el: '#dev-area',
             data(){

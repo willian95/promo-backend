@@ -17,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="sale in sales">
+                        <tr v-for="sale in sales" v-if="sale.post">
                             <td>@{{ sale.post.title }}</td>
                             <td>@{{ sale.post.user.name }}</td>
                             <td>@{{ sale.amount }}</td>
@@ -61,6 +61,7 @@
                         <p>Cantidad: @{{ sale.amount }}</p>
                         <p>Usuario: @{{ sale.post.user.name }}</p>
                         <p>Dirección: @{{ sale.post.user.address }}, @{{ sale.post.user.commune.name }}</p>
+                        <a :href="'https://www.google.com/maps/place/'+sale.post.user.address+','+sale.post.user.commune.name+', Chile'" target="_blank">Ver mapa</a>
                         <button class="btn btn-success" @click="deliver()">Entregar</button>
 
                     </div>

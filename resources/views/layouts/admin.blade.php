@@ -33,6 +33,9 @@
                         <a class="nav-link" href="{{ url('/admin/posts/index') }}">Publicaciones</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/admin/users/index') }}">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#" @click="logout()">Cerrar sesión</a>
                     </li>
                 </ul>

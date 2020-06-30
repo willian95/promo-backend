@@ -22,7 +22,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(transfer, index) in transfers">
+                            <tr v-for="(transfer, index) in transfers" v-if="transfer.user">
                                 <th>@{{ transfer.transfer }}</th>
                                 <td>@{{ transfer.created_at.toString().substring(0, 10) }}</td>
                                 <td>@{{ transfer.user.name }}</td>

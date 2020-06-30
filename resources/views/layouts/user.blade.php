@@ -49,6 +49,9 @@
                         <a class="nav-link" href="{{ url('/post') }}">Publicar</a>
                     </li>
                     <li class="nav-item" v-if="authCheck == true">
+                        <a class="nav-link" href="{{ url('/explorer') }}">Explorar</a>
+                    </li>
+                    <li class="nav-item" v-if="authCheck == true">
                         <a class="nav-link" href="{{ url('/my-purchases') }}">Mis Compras</a>
                     </li>
                     <li class="nav-item" v-if="authCheck == true">

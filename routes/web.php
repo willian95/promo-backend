@@ -34,6 +34,8 @@ Route::get("/my-sales", "SaleController@index");
 Route::get("/my-profile", "ProfileController@index");
 Route::get("/profile/{id}", "ProfileController@show");
 
+Route::get("/explorer", "ExplorerController@index");
+
 Route::get("/admin/dashboard", function(){
 
     return view("admin.index");
@@ -44,6 +46,7 @@ Route::get("/admin/category/index", "CategoryController@categoryView");
 Route::get("/admin/bank/index", "BankController@bankView");
 Route::get("/admin/transfers/index", "PaymentController@transferViews");
 Route::get("/admin/posts/index", "PostController@adminIndex");
+Route::get("/admin/users/index", "UserController@index");
 
 //Route::post("/register", "ContactUserController@store");
 

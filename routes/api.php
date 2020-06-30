@@ -54,6 +54,8 @@ Route::get('/checkUser', 'AuthController@getAuthenticatedUser');
 Route::get("/regions", "LocationController@regionFetch");
 Route::get("/commune/{region_id}", "LocationController@communeFetch");
 
+Route::post("/explorer/fetch", "ExplorerController@fetch");
+
 Route::prefix('admin')->group(function (){
 
     Route::post("/category/store", "CategoryController@store")->name('admin.category.store');
@@ -72,5 +74,8 @@ Route::prefix('admin')->group(function (){
 
     Route::get("/posts/fetch/{page}", "PostController@adminFetch");
     Route::post("/posts/delete", "PostController@adminDelete");
+
+    Route::get("/users/fetch/{page}", "UserController@fetch");
+    Route::post("/users/delete", "UserController@delete");
 
 });
