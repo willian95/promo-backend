@@ -16,22 +16,22 @@
                     <label for="email">email: @{{ email }}</label>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" v-if="webSite != ''">
                 <div class="form-group">
                     <a :href="webSite" target="_blank">Sitio Web</a>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" v-if="telephone != ''">
                 <div class="form-group">
                     <label for="telephone">Teléfono: @{{ telephone }}</label>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" v-if="facebook != ''">
                 <div class="form-group">
                     <a :href="facebook" target="_blank">Facebook</a>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" v-if="instragram != ''">
                 <div class="form-group">
                     <a :href="instagram" target="_blank">Instagram</a>
                 </div>
