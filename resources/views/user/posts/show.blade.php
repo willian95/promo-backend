@@ -211,7 +211,7 @@
 
                     axios.post("{{ url('/api/purchase/reserve') }}", {
                         postId: this.postId, 
-                        price: price, 
+                        price: parseInt(price), 
                         amount: this.amount, 
                         transfer: this.transactionId, 
                         amountToPay: parseInt(amountToPay), 
