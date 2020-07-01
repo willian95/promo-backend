@@ -31,7 +31,7 @@
                     <a :href="facebook" target="_blank">Facebook</a>
                 </div>
             </div>
-            <div class="col-md-6" v-if="instragram != ''">
+            <div class="col-md-6" v-if="instagram != ''">
                 <div class="form-group">
                     <a :href="instagram" target="_blank">Instagram</a>
                 </div>
