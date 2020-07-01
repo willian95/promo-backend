@@ -217,7 +217,7 @@
                         amountToPay: amountToPay, 
                         bank: this.bankSelected.id, 
                         type: this.purchaseType, 
-                        action: this.action, 
+                        action: "make-purchase", 
                         purchaseId: this.purchaseId},
                         {
                             headers: {
@@ -264,7 +264,6 @@
                 if(todaysDate > lastDiscountDay){
                     this.purchaseType = "purchase"
                     this.purchaseButtonText = "Comprar"
-                    this.action = "make-purchase"
                 }else{
 
                     this.discountDays.forEach((data) => {
