@@ -15,7 +15,7 @@
                 </p>
                 <p>@{{ description }}</p>
                 <ul>
-                    <li><span style="color:#fad201" class="fa fa-check"></span>Total a pagar:  <span style="font-weight: bold;">@{{ parseInt(price / 2) }} </span></li>
+                    <li><span style="color:#fad201" class="fa fa-check"></span>Total a pagar:  <span style="font-weight: bold;">@{{ parseInt(price) }} </span></li>
                 </ul>
 
 
