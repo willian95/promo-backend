@@ -53,7 +53,7 @@ Route::get('/checkUser', 'AuthController@getAuthenticatedUser');
 
 Route::get("/regions", "LocationController@regionFetch");
 Route::get("/commune/{region_id}", "LocationController@communeFetch");
-
+//
 Route::post("/explorer/fetch", "ExplorerController@fetch");
 
 Route::prefix('admin')->group(function (){
