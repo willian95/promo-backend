@@ -138,7 +138,7 @@
                     paymentsAmount: "{{ $paymentsAmount }}",
                     paymentsAproved: "{{ $paymentsAproved }}",
                     paymentsWaiting: "{{ $paymentsWaiting }}",
-                    payments:JSON.parse('{!! json_encode($product->payments) !!}'),
+                    payments:JSON.parse('{!! json_encode($purchase->payments) !!}'),
                     discountPrice:0,
                     purchaseType:"purchase",
                     purchaseButtonText:"Pagar",
