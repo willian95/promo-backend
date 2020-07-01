@@ -57,7 +57,7 @@
 
                     <div v-if="paymentMethod == 'transfer' && amount > 0">
 
-                        <p>Monto a transferir: @{{ price / 2  }}</p>
+                        <p>Monto a transferir: @{{ parseInt(price)  }}</p>
                         <select class="form-control" v-model="bankSelected">
                             <option :value="bank" v-for="bank in banks">@{{ bank.bank_name }}</option>
                         </select>
