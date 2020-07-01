@@ -196,7 +196,7 @@
                     let price = 0
 
                     if(this.discountPrice > 0){
-                        price = this.discountPrice
+                        price = this.discountPrice + 1
                     }else{
                         price = this.price
                     }
