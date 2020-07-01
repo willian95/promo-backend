@@ -40,7 +40,7 @@ class PurchaseController extends Controller
         try{
 
             $purchase = Purchase::where("id", $id)->with("post", "payments", "post.category")->first();
-            dd($purchase);
+            //dd($purchase);
             return view("user.purchases.show", ["purchase" => $purchase, "todaysDate" => Carbon::now()]);
 
         }catch(\Exception $e){
