@@ -38,6 +38,31 @@
             
         </div>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Transacción</th>
+                                <th>Fecha</th>
+                                <th>Monto</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="payment in payments">
+                                <td>@{{ payment.transfer }}</td>
+                                <td>@{{ payment.created_at.toString().substring(0, 10) }}</td>
+                                <td>@{{ parseInt(payment.amount_to_pay) }}</td>
+                                <td>@{{ payment.state }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
 
     <!-- modal -->
 
