@@ -65,7 +65,7 @@
                         <p>N° de cuenta: @{{ transfer.bank.account_number }}</p>
                         <p>Transacción: @{{ transfer.transfer }}</p>
                         <p>Usuario: @{{ transfer.user.name }}</p>
-                        <p>Monto a pagar: $ @{{ parseInt(transfer.amount_to_pay) + 1 }}</p>
+                        <p>Monto a pagar: $ @{{ parseInt(transfer.amount_to_pay) }}</p>
                         
                         <select class="form-control" v-model="state">
                             <option value="aprobado">Aprobar</option>
