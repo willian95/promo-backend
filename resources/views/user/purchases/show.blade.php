@@ -20,10 +20,13 @@
 
 
                 <div v-if="authCheck == true">
-                    <a href="#" v-if="todaysDate >= saleDate && todaysDate <= dueDate && isPaymentComplete == false && paymentsAmount < 2"><button class="res button" style="margin-top: 3%;" data-toggle="modal" data-target="#shop">@{{ purchaseButtonText }}</button></a>
+
+                   
+                    <a href="#" v-if="todaysDate >= saleDate && todaysDate <= dueDate && isPaymentComplete == false"><button class="res button" style="margin-top: 3%;" data-toggle="modal" data-target="#shop">@{{ purchaseButtonText }}</button></a>
+
                     <h5 v-if="todaysDate < saleDate">La publicación aún no ha llegado al periodo de pago</h5>
                     <h5 v-if="todaysDate > dueDate">El periodo de pago de esta publicación ha pasado</h5>
-                    <h5 v-if="paymentsAmount >= 2">Ya ha realizado los pagos respectivos, espere la confirmació de los mismos</h5>
+                    <h5 v-if="paymentsAmount >= 2 && paymentsAproved >= 1 && paymentsWaiting >= 1">Ya ha realizado los pagos respectivos, espere la confirmación de los mismos</h5>
                 </div>
                 <div v-else>
                     <h3 >Para comprar debes iniciar sesión</h3>
@@ -131,6 +134,8 @@
                     dueDate:"{{ $purchase->post->due_date }}",
                     todaysDate:"{{ $todaysDate }}",
                     paymentsAmount: "{{ $paymentsAmount }}",
+                    paymentsAproved: "{{ $paymentsAproved }}",
+                    paymentsWaiting: "{{ $paymentsWaiting }}",
                     discountPrice:0,
                     purchaseType:"purchase",
                     purchaseButtonText:"Pagar",
