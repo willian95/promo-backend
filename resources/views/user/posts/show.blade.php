@@ -16,8 +16,8 @@
                 <p>@{{ description }}</p>
                 <ul>
                     <li><span style="color:#fad201" class="fa fa-check"></span>Descuento:  <span style="font-weight: bold;">@{{ discountPercentage }} %</span></li>
-                    <li><span style="color:#fad201" class="fa fa-check"></span>Precio de venta:  <span style="font-weight: bold;">$ @{{ parseInt(price) + 1 }}</span> </li>
-                    <li><span style="color:#fad201" class="fa fa-check"></span>Precio por hoy: <span style="font-weight: bold;" v-if="discountPrice <= 0">$ @{{ parseInt(price)  }}</span><span style="font-weight: bold;" v-else>$ @{{ parseInt(discountPrice) + 1 }}</span></li>
+                    <li><span style="color:#fad201" class="fa fa-check"></span>Precio de venta:  <span style="font-weight: bold;">$ @{{ parseInt(price) }}</span> </li>
+                    <li><span style="color:#fad201" class="fa fa-check"></span>Precio por hoy: <span style="font-weight: bold;" v-if="discountPrice <= 0">$ @{{ parseInt(price)  }}</span><span style="font-weight: bold;" v-else>$ @{{ parseInt(discountPrice) }}</span></li>
                 </ul>
 
                 <div v-if="todaysDate >= startDate && todaysDate <= dueDate">
@@ -65,10 +65,10 @@
 
                     <div v-if="paymentMethod == 'transfer' && amount > 0">
 
-                        <p v-if="discountPrice > 0 && purchaseType == 'purchase'">Monto a transferir: @{{ parseInt(discountPrice) * amount + 1  }}</p>
-                        <p v-if="discountPrice > 0 && purchaseType == 'reservation'">Monto a transferir: @{{ (parseInt(discountPrice) * amount) / 2 + 1  }}</p>
-                        <p v-if="discountPrice == 0 && purchaseType == 'reservation'">Monto a transferir: @{{ (parseInt(price) * amount) / 2 + 1  }}</p>
-                        <p v-if="discountPrice == 0 && purchaseType == 'purchase'">Monto a transferir: @{{ parseInt(price) * amount + 1  }}</p>
+                        <p v-if="discountPrice > 0 && purchaseType == 'purchase'">Monto a transferir: @{{ parseInt(discountPrice) * amount  }}</p>
+                        <p v-if="discountPrice > 0 && purchaseType == 'reservation'">Monto a transferir: @{{ (parseInt(discountPrice) * amount) / 2 }}</p>
+                        <p v-if="discountPrice == 0 && purchaseType == 'reservation'">Monto a transferir: @{{ (parseInt(price) * amount) / 2 }}</p>
+                        <p v-if="discountPrice == 0 && purchaseType == 'purchase'">Monto a transferir: @{{ parseInt(price) * amount  }}</p>
                         <select class="form-control" v-model="bankSelected">
                             <option :value="bank" v-for="bank in banks">@{{ bank.bank_name }}</option>
                         </select>
@@ -196,7 +196,7 @@
                     let price = 0
 
                     if(this.discountPrice > 0){
-                        price = this.discountPrice + 1
+                        price = this.discountPrice
                     }else{
                         price = this.price
                     }
@@ -214,7 +214,7 @@
                         price: price, 
                         amount: this.amount, 
                         transfer: this.transactionId, 
-                        amountToPay: parseInt(amountToPay) + 1, 
+                        amountToPay: parseInt(amountToPay), 
                         bank: this.bankSelected.id, 
                         type: this.purchaseType, 
                         action: "make-purchase", 
