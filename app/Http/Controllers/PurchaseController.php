@@ -40,8 +40,8 @@ class PurchaseController extends Controller
         try{
 
             $purchase = Purchase::where("id", $id)->with("post", "payments", "post.category")->first();
-            //dd($purchase);
-            return view("user.purchases.show", ["purchase" => $purchase, "todaysDate" => Carbon::now()]);
+            $paymentsAmount = Payment::where("purchase_id", $id)->count();
+            return view("user.purchases.show", ["purchase" => $purchase, "todaysDate" => Carbon::now(), "paymentsAmount" => $paymentsAmount]);
 
         }catch(\Exception $e){
             return response()->json(["success" => false, "msg" => "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
