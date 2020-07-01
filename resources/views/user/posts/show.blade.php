@@ -214,7 +214,7 @@
                         price: price, 
                         amount: this.amount, 
                         transfer: this.transactionId, 
-                        amountToPay: amountToPay, 
+                        amountToPay: parseInt(amountToPay), 
                         bank: this.bankSelected.id, 
                         type: this.purchaseType, 
                         action: "make-purchase", 
