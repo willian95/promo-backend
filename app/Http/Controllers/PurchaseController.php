@@ -41,7 +41,10 @@ class PurchaseController extends Controller
 
             $purchase = Purchase::where("id", $id)->with("post", "payments", "post.category")->first();
             $paymentsAmount = Payment::where("purchase_id", $id)->count();
-            return view("user.purchases.show", ["purchase" => $purchase, "todaysDate" => Carbon::now(), "paymentsAmount" => $paymentsAmount]);
+            $paymentsAproved = Payment::where("purchase_id", $id)->where("state", "aprobado")->count();
+            $paymentsWaiting = Payment::where("purchase_id", $id)->where("state", "en proceso")->count();
+            //$payments = Payment::where("purchase_id", $id)->where("state", "en preceso")->count();
+            return view("user.purchases.show", ["purchase" => $purchase, "todaysDate" => Carbon::now(), "paymentsAmount" => $paymentsAmount, "paymentsAproved" => $paymentsAproved, "paymentsWaiting" => $paymentsWaiting]);
 
         }catch(\Exception $e){
             return response()->json(["success" => false, "msg" => "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
