@@ -165,7 +165,7 @@
                 },
                 fetchBanks(){
 
-                    axios.get("/api/bank/fetch").then(res => {
+                    axios.get("{{ url('/api/bank/fetch') }}").then(res => {
 
                         if(res.data.success == true){
                             this.banks = res.data.banks
