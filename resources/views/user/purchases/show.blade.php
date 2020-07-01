@@ -124,7 +124,7 @@
                     description:"{{ $purchase->post->description }}",
                     category:"{{ $purchase->post->category->name }}",
                     image:"{{ $purchase->post->image }}",
-                    price:"{{ $purchase->total }}",
+                    price:"{{ $purchase->price }}",
                     isPaymentComplete:"{{ $purchase->is_payment_complete }}",
                     saleDate:"{{ $purchase->post->sale_date }}",
                     dueDate:"{{ $purchase->post->due_date }}",
@@ -177,15 +177,8 @@
                 },
                 transfer(){
 
-                    let price = 0
 
-                    if(this.discountPrice > 0){
-                        price = this.discountPrice
-                    }else{
-                        price = this.price
-                    }
-
-                    let amountToPay = price * this.amount
+                    let amountToPay = this.price
 
                     axios.post("{{ url('/api/purchase/reserve') }}", {
                         postId: this.postId, 
