@@ -28,4 +28,8 @@ class Post extends Model
         return $this->hasMany('App\Purchase');
     }
 
+    public function products(){
+        return $this->hasMany("App\PostProduct");
+    }
+
 }

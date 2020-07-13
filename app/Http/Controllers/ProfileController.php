@@ -8,6 +8,9 @@ use App\User;
 use JWTAuth;
 use App\Commune;
 use App\Region;
+use App\Rating;
+use Carbon\Carbon;
+use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -30,6 +33,20 @@ class ProfileController extends Controller
     }
 
     function update(ProfileUpdateRequest $request){
+        //dd($request->all());
+        if($request->get('image') != null){
+            try{
+                
+                $imageData = $request->get('image');
+                $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($imageData, 0, strpos($imageData, ';')))[1])[1];
+                Image::make($request->get('image'))->save(public_path('images/users/').$fileName, 50);
+
+            }catch(\Exception $e){
+
+                return response()->json(["success" => false, "msg" => "Hubo un error al cargar la imagen", "err" => $e->getMessage(), "ln" => $e->getLine()]);
+
+            }
+        }
 
         try{
 
@@ -42,6 +59,10 @@ class ProfileController extends Controller
             $user->web_site = $request->webSite;
             $user->facebook = $request->facebook;
             $user->instagram = $request->instagram;
+            if($request->get('image') != null){
+                
+                $user->image = $fileName;
+            }
             $user->update();
 
             return response()->json(["success" => true, "msg" => "Datos actualizados satisfactoriamente"]);

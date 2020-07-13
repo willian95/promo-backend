@@ -11,7 +11,7 @@
                         <tr>
                             <td>Publicación</td>
                             <td>Usuario</td>
-                            <td>Cantidad</td>
+
                             <td>Status</td>
                             <td>Acciones</td>
                         </tr>
@@ -20,7 +20,6 @@
                         <tr v-for="sale in sales" v-if="sale.post">
                             <td>@{{ sale.post.title }}</td>
                             <td>@{{ sale.post.user.name }}</td>
-                            <td>@{{ sale.amount }}</td>
                             <td v-if="sale.is_payment_complete == 0">En espera de finalización del pago</td>
                             <td v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'en proceso'">Pago realizado, puede proceder a la entrega</td>
                             <td v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'entregado'">Articulo entregado</td>
@@ -58,10 +57,27 @@
                         
                         <img :src="'{{ url('/') }}'+'/images/posts/'+sale.post.image" alt="" style="width: 100%">
                         <h3>@{{ sale.post.title }}</h3>
-                        <p>Cantidad: @{{ sale.amount }}</p>
                         <p>Usuario: @{{ sale.post.user.name }}</p>
                         <p>Dirección: @{{ sale.post.user.address }}, @{{ sale.post.user.commune.name }}</p>
-                        <a :href="'https://www.google.com/maps/place/'+sale.post.user.address+','+sale.post.user.commune.name+', Chile'" target="_blank">Ver mapa</a>
+                        <P>
+                            <a :href="'https://www.google.com/maps/place/'+sale.post.user.address+','+sale.post.user.commune.name+', Chile'" target="_blank">Ver mapa</a>
+                        </P>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="productPurchase in sale.products_purchase">
+                                    <td>@{{ productPurchase.post_product.title }}</td>
+                                    <td>@{{ productPurchase.amount }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                         <button class="btn btn-success" @click="deliver()">Entregar</button>
 
                     </div>

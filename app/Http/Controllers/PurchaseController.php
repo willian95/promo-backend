@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Purchase;
 use App\Payment;
 use Carbon\Carbon;
+use App\ProductPurchase;
 use JWTAuth;
 use App\Http\Requests\PurchaseStoreRequest;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -39,7 +40,7 @@ class PurchaseController extends Controller
 
         try{
 
-            $purchase = Purchase::where("id", $id)->with("post", "payments", "post.category")->first();
+            $purchase = Purchase::where("id", $id)->with("post", "payments", "post.category", "user", "productsPurchase", "productsPurchase.postProduct")->first();
             $paymentsAmount = Payment::where("purchase_id", $id)->count();
             $paymentsAproved = Payment::where("purchase_id", $id)->where("state", "aprobado")->count();
             $paymentsWaiting = Payment::where("purchase_id", $id)->where("state", "en proceso")->count();
@@ -75,11 +76,10 @@ class PurchaseController extends Controller
                 
                 $purchase = new Purchase;
                 $purchase->user_id = $user->id;
-                $purchase->post_id = $request->postId;
-                $purchase->price = $request->price;
+                $purchase->price = $request->amountToPay;
+                $purchase->total = $request->total;
                 $purchase->payment_type = $request->type;
-                $purchase->amount = $request->amount;
-                $purchase->total = ($request->price * 2) * $request->amount;
+                $purchase->post_id = $request->postId;
                 $purchase->save();
 
                 $payment = new Payment;
@@ -89,6 +89,19 @@ class PurchaseController extends Controller
                 $payment->bank_id = $request->bank;
                 $payment->amount_to_pay = $request->amountToPay;
                 $payment->save();
+
+                foreach($request->productsPurchase as $product){
+
+                    $productPurchase = new ProductPurchase;
+                    $productPurchase->purchase_id = $purchase->id;
+                    $productPurchase->post_product_id = $product["product"]["id"];
+                    $productPurchase->amount = $product["amount"]; 
+                    $productPurchase->price = $product["price"];
+                    $productPurchase->save();
+
+                }
+
+
 
             }else{
 

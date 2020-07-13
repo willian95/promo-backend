@@ -14,8 +14,8 @@
                         </div>
                         <div style="display: flex; justify-content: center;"class="form-group row no-gutters">
                             <div style="text-align: center;" class="col-md-6">
-                                <a href="#menu">
-                                    <button class="res button">Ver menú</button>
+                                <a href="{{ url('/explorer') }}">
+                                    <button class="res button">Explorar</button>
                                 </a>
                             </div>
                         </div>
@@ -25,7 +25,7 @@
         </div>
     </section>
 
-    <section class="icons container" id="icons">
+    <!--<section class="icons container" id="icons">
         <div class="icons-info">
             <div class="card-icons">
                 <div div class="icon-img">
@@ -71,23 +71,24 @@
                 </div> 
             </div>
         </div>      
-    </section>
+    </section>-->
 
-    <section class="menu" id="menu">
-        <h2> Promociones</h2>
+    <section class="menu" id="menu" style="margin-top: 80px;">
+        <h2>Promociones</h2>
         <div class="container cards-carrusel" id="dev-area">
 
             <div class="card-item" v-for="post in posts">
                 <div class="img-product">
-                    <img :src="'{{ url('/images/posts/') }}'+'/'+post.image" alt="">
+                    <img :src="'{{ url('/images/posts/') }}'+'/'+post.post[0].image" alt="">
                 </div>
                 <div class="card-body">
-                    <h5>@{{ post.title }}</h5>
-                    <p>@{{ post.commune.name }}</p>
-                    <p>@{{ post.description }}</p>
-                    <a :href="'{{ url('/') }}'+'/profile'+'/'+post.user_id">@{{ post.user.name }}</a>
-                    <div class="price">$@{{ post.price }}</div>
-                    <a :href="'{{ url('/post/show') }}'+'/'+post.id">
+                    <h5>@{{ post.post[0].title }}</h5>
+                    <p>@{{ post.post[0].commune.name }}</p>
+                    <p class="description-post">@{{ post.post[0].description }}</p>
+                    <img :src="'{{ url('/') }}'+'/images/users/'+post.post[0].user.image" alt="" style="width: 50px;"><a :href="'{{ url('/') }}'+'/profile'+'/'+post.post[0].user_id">@{{ post.post[0].user.name }}</a>
+                    <p>promedio: @{{ post.overall }} / 5</p>
+                    <div class="price">$@{{ post.post[0].products[0].price }}</div>
+                    <a :href="'{{ url('/post/show') }}'+'/'+post.post[0].id">
                     <button class="button">Ver más</button></a>
                 </div>
             </div>
@@ -141,9 +142,9 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
             <div class="hours">
-                <h6 style="font-weight: bold;     margin-left: -25px;">Nuestro Horario</h6>
+                <!--<h6 style="font-weight: bold;     margin-left: -25px;">Nuestro Horario</h6>
                 <p> Lunes a Viernes <br>
-                10.00 hrs a 20:00hrs</p>
+                10.00 hrs a 20:00hrs</p>-->
             </div>
         </div>
     </footer>
@@ -172,7 +173,7 @@
                         }
                     })
                     .then(res => {
-                        console.log(res)
+                        
                         if(res.data.success == true){
                             this.posts = res.data.posts
                         }

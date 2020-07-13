@@ -27,15 +27,16 @@
 
                 <div class="card-item" v-for="post in posts">
                     <div class="img-product">
-                        <img :src="'{{ url('/images/posts/') }}'+'/'+post.image" alt="">
+                        <img :src="'{{ url('/images/posts/') }}'+'/'+post.post[0].image" alt="">
                     </div>
                     <div class="card-body">
-                        <h5>@{{ post.title }}</h5>
-                        <p>@{{ post.commune.name }}</p>
-                        <p>@{{ post.description }}</p>
-                        <a :href="'{{ url('/') }}'+'/profile'+'/'+post.user_id">@{{ post.user.name }}</a>
-                        <div class="price">$@{{ post.price }}</div>
-                        <a :href="'{{ url('/post/show') }}'+'/'+post.id">
+                        <h5>@{{ post.post[0].title }}</h5>
+                        <p>@{{ post.post[0].commune.name }}</p>
+                        <p class="description-post">@{{ post.post[0].description }}</p>
+                        <img :src="'{{ url('/') }}'+'/images/users/'+post.post[0].user.image" alt="" style="width: 50px;"><a :href="'{{ url('/') }}'+'/profile'+'/'+post.post[0].user_id">@{{ post.post[0].user.name }}</a>
+                        <p>promedio: @{{ post.overall }} / 5</p>
+                        <div class="price">$@{{ post.post[0].products[0].price }}</div>
+                        <a :href="'{{ url('/post/show') }}'+'/'+post.post[0].id">
                         <button class="button">Ver más</button></a>
                     </div>
                 </div>

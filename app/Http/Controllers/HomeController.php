@@ -17,9 +17,34 @@ class HomeController extends Controller
             $user = JWTAuth::parseToken()->toUser();
             $todaysDate = Carbon::now();
 
-            $posts = Post::with('user', 'discountDays', 'category', 'commune')->where("commune_id", $user->location_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->orderBy("id", "desc")->get();
+            $posts = Post::with('user', 'discountDays', 'category', 'commune', "products", "user.ratings")->where("commune_id", $user->location_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->orderBy("id", "desc")->get();
+            $postArray = [];
 
-            return response()->json(["success" => true, "posts" => $posts, "todaysDate" => $todaysDate]);
+            foreach($posts as $post){
+
+                $rate = 0;
+
+                foreach($post->user->ratings as $rating){
+
+                    $rate = $rate + $rating->rate;
+
+                }
+
+                if($rate > 0){
+                    $overall = number_format($rate / count($post->user->ratings), 1, ",", ".");
+                }else{
+                    $overall= 0;
+                }
+                
+
+                $postArray[] = [
+                    "post" => $pots = $posts,
+                    "overall" => $overall
+                ];
+
+            }
+
+            return response()->json(["success" => true, "posts" => $postArray, "todaysDate" => $todaysDate]);
 
         }catch(\Exception $e){
 
@@ -33,8 +58,34 @@ class HomeController extends Controller
 
             $todaysDate = Carbon::now();
 
-            $posts = Post::with('user', 'discountDays', 'category', 'commune')->where("start_date", "<=", $todaysDate->format('Y-m-d'))->where("due_date", ">=", $todaysDate->format('Y-m-d'))->inRandomOrder()->take(12)->orderBy("id", "desc")->get();
-            return response()->json(["success" => true, "posts" => $posts, "todaysDate" => $todaysDate]);
+            $posts = Post::with('user', 'discountDays', 'category', 'commune', "user.ratingsUserAttribute")->where("start_date", "<=", $todaysDate->format('Y-m-d'))->where("due_date", ">=", $todaysDate->format('Y-m-d'))->inRandomOrder()->take(12)->orderBy("id", "desc")->get();
+
+            $postArray = [];
+
+            foreach($posts as $post){
+
+                $rate = 0;
+
+                foreach($post->user->ratings as $rating){
+
+                    $rate = $rate + $rating->rate;
+
+                }
+
+                if($rate > 0){
+                    $overall = number_format($rate / count($post->user->ratings), 1, ",", ".");
+                }else{
+                    $overall= 0;
+                }
+
+                $postArray[] = [
+                    "post" => $pots = $posts,
+                    "overall" => $overall
+                ];
+
+            }
+
+            return response()->json(["success" => true, "posts" => $postArray, "todaysDate" => $todaysDate]);
 
         }catch(\Exception $e){
 

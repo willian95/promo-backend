@@ -26,33 +26,29 @@
 
     <section class="ftco-cover" id="section-home">
         <img src="{{ asset('user/images/6.png') }}">
-        <div class="container">
-            <div class="mask">
-                <div class="row align-items-center justify-content-center text-center ftco-vh-100">
-                    <div class="col-md-12">
+        <div class="mask">
+            <div class="container">
+                <div class="row align-items-center text-center">
+                    <div class="col-lg-6 offset-lg-3">
                         <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3>
-                        <div  class="site-section hola" >
-                            <div class="container">
-                                <div class="mask-six">
+                        
                                     
-                                        <div class="form-group row">
-                                            <div class="col-md-12 mb-4">
-                                                <input type="email" class="form-control" placeholder="Email" v-model="email" style="color: #fff !important">
-                                            </div>
+                        <div class="form-group row">
+                            <div class="col-md-12 mb-4">
+                                <input type="email" class="form-control" placeholder="Email" v-model="email" style="color: #fff !important">
+                            </div>
 
-                                            <div class="col-md-12 ">
-                                                <input type="password" class="form-control" placeholder="Contraseña" v-model="password" style="color: #fff !important">
-                                            </div>
-                                        </div>
-                                        <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
-                                            <div style="text-align: center;" class="col-md-6">
-                                                <button class="res button" @click="login()">Entrar</button>
-                                            </div>
-                                        </div>
-                                    
-                                </div>
+                            <div class="col-md-12 ">
+                                <input type="password" class="form-control" placeholder="Contraseña" v-model="password" style="color: #fff !important">
                             </div>
                         </div>
+                        <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
+                            <div style="text-align: center;" class="col-md-6">
+                                <button class="res button" @click="login()">Entrar</button>
+                            </div>
+                        </div>
+                                    
+             
                     </div>
                 </div>
             </div>

@@ -42,6 +42,10 @@ Route::get("/admin/dashboard", function(){
 
 });
 
+Route::get('/checkout', 'CheckoutController@initTransaction')->name('checkout'); 
+Route::post('/checkout/webpay/response', 'CheckoutController@response')->name('checkout.webpay.response');  
+Route::post('/checkout/webpay/finish', 'CheckoutController@finish')->name('checkout.webpay.finish');
+
 Route::get("/admin/category/index", "CategoryController@categoryView");
 Route::get("/admin/bank/index", "BankController@bankView");
 Route::get("/admin/transfers/index", "PaymentController@transferViews");

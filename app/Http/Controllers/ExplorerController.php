@@ -22,7 +22,32 @@ class ExplorerController extends Controller
             $posts = Post::with('user', 'discountDays', 'category', 'commune')->where("commune_id", $request->location_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->orderBy("id", "desc")->get();
             $postsCount = Post::with('user', 'discountDays', 'category', 'commune')->where("commune_id", $request->location_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->count();
 
-            return response()->json(["success" => true, "posts" => $posts, "postsCount" => $postsCount]);
+            $postArray = [];
+
+            foreach($posts as $post){
+
+                $rate = 0;
+
+                foreach($post->user->ratings as $rating){
+
+                    $rate = $rate + $rating->rate;
+
+                }
+
+                if($rate > 0){
+                    $overall = number_format($rate / count($post->user->ratings), 1, ",", ".");
+                }else{
+                    $overall= 0;
+                }
+
+                $postArray[] = [
+                    "post" => $pots = $posts,
+                    "overall" => $overall
+                ];
+
+            }
+
+            return response()->json(["success" => true, "posts" => $postArray, "postsCount" => $postsCount]);
 
 
         }catch(\Exception $e){

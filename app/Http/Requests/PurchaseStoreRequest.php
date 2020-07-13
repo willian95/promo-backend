@@ -24,7 +24,6 @@ class PurchaseStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "amount" => "required|integer",
             "transfer" => "required",
             "bank" => "required|integer"
         ];
@@ -33,8 +32,6 @@ class PurchaseStoreRequest extends FormRequest
     public function messages(){
 
         return [
-            "amount.required" => "Cantidad es requerida",
-            "amount.integer" => "Cantidad es requerida",
             "transfer.required" => "Id de transferencia es requerido",
             "bank.required" => "Banco es requerido",
             "bank.integer" => "Debe seleccionar un banco válido"

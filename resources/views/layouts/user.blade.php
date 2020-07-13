@@ -38,7 +38,7 @@
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="#" class="nav-link">Inicio</a></li>
+                    <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>
                     <li class="nav-item" v-if="authCheck == false">
                         <a class="nav-link" href="{{ url('login') }}">Login</a>
                     </li>

@@ -37,6 +37,8 @@ Route::get("/my-sales/fetch/{page}", "SaleController@userFetch");
 Route::post("/my-sales/deliver", "SaleController@deliver");
 
 Route::post("rate/store", "RateController@store");
+Route::get("rate/myFetch", "RateController@myFetch");
+Route::get("rate/fetch/{user_id}", "RateController@fetch");
 
 Route::get("my-profile/data", "ProfileController@myData");
 Route::post("my-profile/update", "ProfileController@update");
@@ -55,6 +57,8 @@ Route::get("/regions", "LocationController@regionFetch");
 Route::get("/commune/{region_id}", "LocationController@communeFetch");
 //
 Route::post("/explorer/fetch", "ExplorerController@fetch");
+
+Route::post("/checkout/store/cart", "CheckoutController@storeCart");
 
 Route::prefix('admin')->group(function (){
 

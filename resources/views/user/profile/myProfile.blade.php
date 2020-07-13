@@ -25,6 +25,13 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
+                    <label for="profile-image">Imagen Perfil</label>
+                    <input type="file" class="form-control" id="profile-image" accept="image/*" @change="onImageChange">
+                    <img id="blah" :src="imagePreview" class="full-image" style="margin-top: 10px; width: 40%">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
                     <label for="telephone">Telephone</label>
                     <input type="text" class="form-control" v-model="telephone" id="telephone" placeholder="+5612345678">
                 </div>
@@ -67,6 +74,15 @@
             </div>
 
         </div>
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-center">Comentarios</h3>
+            </div>
+            <div class="col-12" v-for="rating in ratings">
+                <h5>@{{ rating.qualifier.name }}</h5>
+                <p>@{{ rating.rating.comment }}</p>
+            </div>
+        </div>
 
     </div>
 
@@ -89,7 +105,10 @@
                     webSite:"",
                     telephone:"",
                     instagram:"",
-                    facebook:""
+                    facebook:"",
+                    image:"",
+                    imagePreview:"",
+                    ratings:""
                 }
             },
             methods:{
@@ -124,6 +143,39 @@
                     })
 
                 },
+                myFetch(){
+
+                    axios.get("{{ url('api/rate/myFetch') }}", {
+                        headers: {
+                            Authorization: "Bearer "+window.localStorage.getItem('token')
+                        }
+                    })
+                    .then(res => {
+
+                        this.ratings = res.data.ratings
+                        
+
+                    })
+
+                },
+                onImageChange(e){
+                    this.image = e.target.files[0];
+
+                    this.imagePreview = URL.createObjectURL(this.image);
+                    let files = e.target.files || e.dataTransfer.files;
+                    if (!files.length)
+                        return;
+                    this.view_image = false
+                    this.createImage(files[0]);
+                },
+                createImage(file) {
+                    let reader = new FileReader();
+                    let vm = this;
+                    reader.onload = (e) => {
+                        vm.image = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                },
                 myData(){
 
                     axios.get("{{ url('api/my-profile/data') }}", {
@@ -141,6 +193,7 @@
                         this.telephone = res.data.user.telephone
                         this.facebook = res.data.user.facebook
                         this.instagram = res.data.user.instagram
+                        this.imagePreview = "{{ url('/') }}"+"/images/users/"+res.data.user.image
                         this.communesFetch()
 
                     })
@@ -148,7 +201,7 @@
                 },
                 update(){
 
-                    axios.post("{{ url('api/my-profile/update') }}", {name: this.name, address: this.address, commune: this.commune, webSite: this.webSite, telephone: this.telephone, facebook: this.facebook, instagram: this.instagram},{
+                    axios.post("{{ url('api/my-profile/update') }}", {name: this.name, address: this.address, commune: this.commune, webSite: this.webSite, telephone: this.telephone, facebook: this.facebook, instagram: this.instagram, image: this.image},{
                         headers: {
                             Authorization: "Bearer "+window.localStorage.getItem('token')
                         }
@@ -168,6 +221,7 @@
             created(){
 
                 this.myData()
+                this.myFetch()
 
             }
 
