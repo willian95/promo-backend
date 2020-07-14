@@ -74,8 +74,7 @@ class CheckoutController extends Controller
 		$_SESSION["user_id"]=$user->id;
 		$_SESSION["order"]=$order;
 
-		dd(route('checkout.webpay.response'));
-
+	
 		$webpayNormal->addTransactionDetail(intval($cart->price), $order);  
 		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish')); 
 		// Probablemente también quieras crear una orden o transacción en tu base de datos y guardar el token ahí.
