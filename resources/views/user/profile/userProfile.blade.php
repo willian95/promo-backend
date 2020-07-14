@@ -58,7 +58,7 @@
                 <h3 class="text-center">Comentarios</h3>
             </div>
             <div class="col-12" v-for="rating in ratings">
-                <h5>@{{ rating.qualifier.name }} @{{ rating.rating.rate }}</h5>
+                <h5>@{{ rating.qualifier.name }} @{{ rating.rating.rate }}/5</h5>
                 <p>@{{ rating.rating.comment }}</p>
             </div>
         </div>
