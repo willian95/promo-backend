@@ -44,7 +44,7 @@ class ExplorerController extends Controller
                 $postArray[] = [
                     "post" => $pots = $posts,
                     "overall" => $overall,
-                    "discountPercentage" => DiscountDay::where("date", $todaysDate->format('Y-m-d'))->first()->discount
+                    "discountPercentage" => DiscountDay::where("date", $todaysDate->format('Y-m-d'))->where("post_id", $post->id)->first()->discount
                 ];
 
             }
