@@ -37,11 +37,18 @@ class HomeController extends Controller
                     $overall= 0;
                 }
                 
+                $discount = DiscountDay::where("date", $todaysDate->format('Y-m-d'))->where("post_id", $post->id)->first();
+
+                if($discount){
+                    $discount = $discount->discount;
+                }else{
+                    $discount = 0;
+                }
 
                 $postArray[] = [
                     "post" => $pots = $posts,
                     "overall" => $overall,
-                    "discountPercentage" => DiscountDay::where("date", $todaysDate->format('Y-m-d'))->where("post_id", $post->id)->first()->discount
+                    "discountPercentage" => $discount
                 ]; 
 
             }
@@ -80,10 +87,18 @@ class HomeController extends Controller
                     $overall= 0;
                 }
 
+                $discount = DiscountDay::where("date", $todaysDate->format('Y-m-d'))->where("post_id", $post->id)->first();
+
+                if($discount){
+                    $discount = $discount->discount;
+                }else{
+                    $discount = 0;
+                }
+
                 $postArray[] = [
                     "post" => $pots = $posts,
                     "overall" => $overall,
-                    "discountPercentage" => DiscountDay::where("date", $todaysDate->format('Y-m-d'))->where("post_id", $post->id)->first()->discount
+                    "discountPercentage" => $discount
                 ];
 
             }
