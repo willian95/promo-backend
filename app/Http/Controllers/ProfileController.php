@@ -33,7 +33,7 @@ class ProfileController extends Controller
     }
 
     function update(ProfileUpdateRequest $request){
-        //dd($request->all());
+        
         if($request->get('image') != null){
             try{
                 
@@ -50,6 +50,34 @@ class ProfileController extends Controller
 
         try{
 
+            $deliveryDaysString="";
+            $i = 0;
+            foreach($request->checkedDeliveryDays as $deliveryDays){
+                
+                if($i == 0){
+                    $deliveryDaysString = $deliveryDays;
+                }else{
+                    $deliveryDaysString = $deliveryDaysString.",".$deliveryDays;
+                }
+                
+                $i++;
+            }
+
+            $openDaysString="";
+            $i = 0;
+            foreach($request->checkedOpenDays as $openDays){
+                
+                if($i == 0){
+                    $openDaysString = $openDays;
+                }else{
+                    $openDaysString = $openDaysString.",".$openDays;
+                }
+                
+                $i++;
+            }
+
+            
+
             $authUser = JWTAuth::parseToken()->toUser();
             $user = User::where("id", $authUser->id)->first();
             $user->name = $request->name;
@@ -59,6 +87,11 @@ class ProfileController extends Controller
             $user->web_site = $request->webSite;
             $user->facebook = $request->facebook;
             $user->instagram = $request->instagram;
+            $user->has_delivery = $request->hasDelivery;
+            $user->has_delivery = $request->hasDelivery;
+            $user->delivery_tax = $request->deliveryPrice;
+            $user->deliver_days = $deliveryDaysString;
+            $user->open_days = $openDaysString; 
             if($request->get('image') != null){
                 
                 $user->image = $fileName;

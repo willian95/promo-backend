@@ -17,6 +17,7 @@
                     <input type="text" class="form-control" v-model="email" id="email" readonly>
                 </div>
             </div>
+            
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="website">Web site</label>
@@ -67,6 +68,126 @@
                 </select>
             </div>
 
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>¿Ofrece delivery?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" v-model="hasDelivery" id="exampleRadios1" value="true" checked>
+                        <label class="form-check-label" for="exampleRadios1" style="color: #000">
+                            Sí
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" v-model="hasDelivery" id="exampleRadios2" value="false">
+                        <label class="form-check-label" for="exampleRadios2">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="delivery_price">Precio delivery</label>
+                    <input type="text" class="form-control" id="delivery_price" v-model="deliveryPrice">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Días abiertos</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="lunes" id="defaultCheck1" v-model="checkedOpenDays">
+                        <label class="form-check-label" for="defaultCheck1" style="color:#000">
+                            Lunes
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="martes" id="defaultCheck2" v-model="checkedOpenDays">
+                        <label class="form-check-label" for="defaultCheck2" style="color:#000">
+                            Martes
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="miércoles" id="defaultCheck3" v-model="checkedOpenDays">
+                        <label class="form-check-label" for="defaultCheck3" style="color:#000">
+                            Miércoles
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="jueves" id="defaultCheck4" v-model="checkedOpenDays">
+                        <label class="form-check-label" for="defaultCheck4" style="color:#000">
+                            Jueves
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="viernes" id="defaultCheck5" v-model="checkedOpenDays">
+                        <label class="form-check-label" for="defaultCheck5" style="color:#000">
+                            Viernes
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="sábado" id="defaultCheck6" v-model="checkedOpenDays">
+                        <label class="form-check-label" for="defaultCheck6" style="color:#000">
+                            Sábado
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="domingo" id="defaultCheck7" v-model="checkedOpenDays">
+                        <label class="form-check-label" for="defaultCheck7" style="color:#000">
+                            Domingo
+                        </label>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Días de Delivery</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="lunes" id="defaultDelivery1" v-model="checkedDeliveryDays">
+                        <label class="form-check-label" for="defaultCheck1" style="color:#000">
+                            Lunes
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="martes" id="defaultDelivery2" v-model="checkedDeliveryDays">
+                        <label class="form-check-label" for="defaultDelivery2" style="color:#000">
+                            Martes
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="miercoles" id="defaultDelivery3" v-model="checkedDeliveryDays">
+                        <label class="form-check-label" for="defaultDelivery3" style="color:#000">
+                            Miércoles
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="jueves" id="defaultDelivery4" v-model="checkedDeliveryDays">
+                        <label class="form-check-label" for="defaultDelivery4" style="color:#000">
+                            Jueves
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="viernes" id="defaultDelivery5" v-model="checkedDeliveryDays">
+                        <label class="form-check-label" for="defaultDelivery5" style="color:#000">
+                            Viernes
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="sábado" id="defaultDelivery6" v-model="checkedDeliveryDays">
+                        <label class="form-check-label" for="defaultDelivery6" style="color:#000">
+                            Sábado
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="domingo" id="defaultDelivery7" v-model="checkedDeliveryDays">
+                        <label class="form-check-label" for="defaultDelivery7" style="color:#000">
+                            Domingo
+                        </label>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-12">
                 <p class="text-center">
                     <button class="btn btn-success" @click="update()">Actualizar</button>
@@ -97,6 +218,10 @@
                 return{
                     name:"",
                     email:"",
+                    checkedOpenDays:[],
+                    deliveryPrice:0,
+                    hasDelivery:true,
+                    checkedDeliveryDays:[],
                     address:"",
                     regions:[],
                     communes:[],
@@ -183,6 +308,12 @@
                             Authorization: "Bearer "+window.localStorage.getItem('token')
                         }
                     }).then(res =>{
+                        
+                        this.checkedOpenDays = res.data.user.open_days.split(",")
+                        this.checkedDeliveryDays = res.data.user.deliver_days.split(",")
+                        this.hasDelivery = res.data.user.has_delivery
+                        this.deliveryPrice = res.data.user.delivery_tax
+
                         this.regionsFetch()
                         this.name = res.data.user.name
                         this.email = res.data.user.email
@@ -201,7 +332,7 @@
                 },
                 update(){
 
-                    axios.post("{{ url('api/my-profile/update') }}", {name: this.name, address: this.address, commune: this.commune, webSite: this.webSite, telephone: this.telephone, facebook: this.facebook, instagram: this.instagram, image: this.image},{
+                    axios.post("{{ url('api/my-profile/update') }}", {name: this.name, address: this.address, commune: this.commune, webSite: this.webSite, telephone: this.telephone, facebook: this.facebook, instagram: this.instagram, image: this.image, hasDelivery: this.hasDelivery, deliveryPrice: this.deliveryPrice, checkedDeliveryDays: this.checkedDeliveryDays, checkedOpenDays: this.checkedOpenDays},{
                         headers: {
                             Authorization: "Bearer "+window.localStorage.getItem('token')
                         }
@@ -222,6 +353,7 @@
 
                 this.myData()
                 this.myFetch()
+                
 
             }
 

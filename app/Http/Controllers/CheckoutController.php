@@ -12,8 +12,10 @@ use App\ProductPurchase;
 use App\CartPurchase;
 use App\CartProductPurchase;
 use App\Payment;
+use App\Post;
 use App\PostProduct;
 use App\WebpayResponse;
+use App\User;
 use Auth;
 use JWTAuth;
 
@@ -34,6 +36,7 @@ class CheckoutController extends Controller
 			$cartPurchase->total = $request->total;
 			$cartPurchase->payment_type = $request->paymentType;
 			$cartPurchase->post_id = $request->post_id;
+			$cartPurchase->has_delivery = $request->delivery;
 			$cartPurchase->save();
 
 			foreach($request->productPurchases as $productPurchase){
@@ -170,6 +173,7 @@ class CheckoutController extends Controller
 				}else{
 					$purchase->is_payment_complete = 1;
 				}
+				$purchase->has_delivery = $cartPurchase->has_delivery;
 				$purchase->payment_type = $cartPurchase->payment_type;
 				$purchase->total = $cartPurchase->total;
 				$purchase->post_id = $cartPurchase->post_id;
@@ -185,8 +189,6 @@ class CheckoutController extends Controller
 					$purchaseProduct->price = $productPurchase->price;
 					$purchaseProduct->purchase_id = $purchase->id;
 					$purchaseProduct->save();
-					
-
 
 				}
 				
@@ -198,6 +200,53 @@ class CheckoutController extends Controller
 				$payment->amount_to_pay = $cartPurchase->price;
 				$payment->state = "aprobado";
 				$payment->save();
+
+				$mailPurchaseType = "";
+				if($cartPurchase->payment_type == "reservation"){
+					$mailPurchaseType = "reservación";
+				}else{
+					$mailPurchaseType = "compra";
+				}
+
+				$buyer = User::where("id", $payment->user_id)->first();
+				$messageBuyer = "Hola ".$buyer->name."! Has realizado una ".$mailPurchaseType." de los siguientes platos: ";
+				$purchaseProduct = ProductPurchase::with("postProduct")->where("purchase_id", $purchase->id)->get();
+				$to_email = $buyer->email;
+				$to_name = $buyer->name;
+				$data = ["message" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "buyer"];
+
+				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
+
+					$message->to($to_email, $to_name)->subject("¡Tu ".$mailPurchaseType." se ha realizado con éxito!");
+					$message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+	
+				});
+
+				$post = Post::where("id", $cartPurchase->post_id)->first();
+				$seller = User::where("id", $post->user_id)->first();
+				$messageSeller = "Hola ".$sellet->name."! Has concretado una ".$mailPurchaseType." de los siguientes platos: ";
+				$to_email = $seller->email;
+				$to_name = $seller->name;
+				$data = ["message" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "seller"];
+
+				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
+
+					$message->to($to_email, $to_name)->subject("¡Has concretado una ".$mailPurchaseType."!");
+					$message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+	
+				});
+
+				$messageAdmin = "Hola Admin! El usuario ".$buyer->name." ha concretado una ".$mailPurchaseType." con el usuario ".$buyer->name." de los siguientes platos: ";
+				$to_email = "williandev95@gmail.com";
+				$to_name = "admin";
+				$data = ["message" => $messageAdmin, "purchaseProducts" => $purchaseProduct, "messageTo" => "admin"];
+
+				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
+
+					$message->to($to_email, $to_name)->subject("¡Un usuario ha realizado una ".$mailPurchaseType."!");
+					$message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+	
+				});
 
 				return view("user.successPayment");
 

@@ -11,8 +11,8 @@
                         <tr>
                             <td>Publicación</td>
                             <td>Usuario</td>
-
                             <td>Status</td>
+                            <td>Delivery</td>
                             <td>Acciones</td>
                         </tr>
                     </thead>
@@ -24,6 +24,8 @@
                             <td v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'en proceso'">Pago realizado, puede proceder a la entrega</td>
                             <td v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'entregado'">Articulo entregado</td>
                             <td v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'recibido'">Articulo recibido</td>
+                            <td v-if="sale.has_delivery == 1">Sí</td>
+                            <td v-else>No</td>
                             <td>
                                 <button class="btn btn-success" v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'en proceso'" data-toggle="modal" data-target="#saleModal" @click="showModal(sale)">Entregar</button>
                             </td>

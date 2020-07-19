@@ -32,10 +32,24 @@
                     
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="description">Breve descripción</label>
                     <textarea rows="2" id="description" v-model="description" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">¿Cuenta con delivery?</label>
+                    <p v-if="hasDelivery == 1">Sí</p>
+                    <p v-else>No</p>
+                </div>
+            </div>
+            <div class="col-md-3" v-if="hasDelivery == 1">
+                <div class="form-group">
+                    <label for="">Precio de delivery</label>
+                    <p>@{{ deliveryPrice }}</p>
+                    
                 </div>
             </div>
             <div class="col-md-4">
@@ -52,13 +66,13 @@
                     <input type="date" id="saleDate" class="form-control" v-model="saleDate">
                 </div>
             </div>
-            <div class="col-md-4">
+            <!--<div class="col-md-4">
                 <div class="form-group">
                     <label for="maxDiscount">Descuento Máximo %</label>
                     <input type="text" id="maxDiscount" class="form-control" v-model="maxDiscount" @keypress="isNumber($event)">
                     <small>Valor mínimo es 20%. Este valor irá disminuyendo a medida que la promoción avance hasta llegar a un mínimo del 5% de descuento el día de la venta</small>
                 </div>
-            </div>
+            </div>-->
             
         </div>
 
@@ -95,11 +109,11 @@
             </div>
         </div>
 
-        <div class="row">
+        <!--<div class="row">
             <div class="col-12">
                 <p class="text-center"><button class="btn btn-success" @click="store()">Publicar</button></p>
             </div>
-        </div>
+        </div>-->
 
         <div class="modal fade" id="promotion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -146,58 +160,58 @@
             </div>
         </div>
 
-        <!--<div class="row">
+        <div class="row">
             <div class="col-12">
                 <h3 class="text-center">Descuentos</h3>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="discount1">Descuento % día 1</label>
-                    <input type="text" id="discount1" class="form-control" v-model="discount1">
+                    <input type="text" id="discount1" class="form-control" v-model="discount1" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="discount2">Descuento % día 2</label>
-                    <input type="text" id="discount2" class="form-control" v-model="discount2">
+                    <input type="text" id="discount2" class="form-control" v-model="discount2" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="discount3">Descuento % día 3</label>
-                    <input type="text" id="discount3" class="form-control" v-model="discount3">
+                    <input type="text" id="discount3" class="form-control" v-model="discount3" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="discount4">Descuento % día 4</label>
-                    <input type="text" id="discount4" class="form-control" v-model="discount4">
+                    <input type="text" id="discount4" class="form-control" v-model="discount4" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="discount5">Descuento % día 5</label>
-                    <input type="text" id="discount5" class="form-control" v-model="discount5">
+                    <input type="text" id="discount5" class="form-control" v-model="discount5" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="discount6">Descuento % día 6</label>
-                    <input type="text" id="discount6" class="form-control" v-model="discount6">
+                    <input type="text" id="discount6" class="form-control" v-model="discount6" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="discount7">Descuento % día 7</label>
-                    <input type="text" id="discount7" class="form-control" v-model="discount7">
+                    <input type="text" id="discount7" class="form-control" v-model="discount7" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-12">
                 <p class="text-center">
-                    <button class="btn btn-success" @click="store()">crear</button>
+                    <button class="btn btn-success" @click="store()">Publicar</button>
                 </p>
             </div>
-        </div>-->
+        </div>
 
     </div>
 
@@ -226,11 +240,66 @@
                     priceProduct:"",
                     amountProduct:"",
                     maxDiscount:"",
-                    amount:0
+                    amount:0,
+                    hasDelivery:"",
+                    deliveryPrice:"",
+                    discount1:5,
+                    discount2:5,
+                    discount3:5,
+                    discount4:5,
+                    discount5:5,
+                    discount6:5,
+                    discount7:5
                 }
             },
             methods:{
                 
+                checkDiscounts(){
+
+                    if(this.discount1 < 5){
+                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        this.discount1 = 5
+                    }
+                    else if(this.discount2 < 5){
+                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        this.discount2 = 5
+                    }
+                    else if(this.discount3 < 5){
+                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        this.discount3 = 5
+                    }
+                    else if(this.discount4 < 5){
+                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        this.discount4 = 5
+                    }
+                    else if(this.discount5 < 5){
+                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        this.discount5 = 5
+                    }
+                    else if(this.discount6 < 5){
+                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        this.discount6 = 5
+                    }
+                    else if(this.discount7 < 5){
+                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        this.discount7 = 5
+                    }
+
+                },
+                myData(){
+
+                    axios.get("{{ url('api/my-profile/data') }}", {
+                        headers: {
+                            Authorization: "Bearer "+window.localStorage.getItem('token')
+                        }
+                    }).then(res =>{
+                        
+                        this.hasDelivery = res.data.user.has_delivery
+                        this.deliveryPrice = res.data.user.delivery_tax
+
+                    })
+
+                },
                 store(){
 
                     axios.post("{{ url('api/post/store') }}", {
@@ -240,7 +309,14 @@
                         saleDate:this.saleDate,
                         description:this.description,
                         main_image: this.picture,
-                        maxDiscount: this.maxDiscount,
+                        discount1: this.discount1,
+                        discount2: this.discount2,
+                        discount3: this.discount3,
+                        discount4: this.discount4,
+                        discount5: this.discount5,
+                        discount6: this.discount6,
+                        discount7: this.discount7,
+                        ///maxDiscount: this.maxDiscount,
                         promos: this.promos
                     },{
                         headers: {
@@ -408,6 +484,7 @@
             created(){
 
                 this.fetchCategories()
+                this.myData()
 
             }
 

@@ -28,6 +28,12 @@
                 <p>
                     <strong>Fecha de finalización: </strong> @{{ dueDate.toString().substring(0, 10) }}
                 </p>
+                <p v-if="openDays.length > 0">
+                    <strong>Establecimiento abierto: </strong> @{{ openDays.replace(/,/g, ", ") }}
+                </p>
+                <p v-if="deliveryDays.length > 0">
+                    <strong>Delivery: </strong> @{{ deliveryDays.replace(/,/g, ", ") }}
+                </p>
             </div>
         </div>
 
@@ -101,7 +107,20 @@
 
 
         <div class="row">
+            <div class="col-md-4">
+                <div v-if="hasDelivery == 1">
+                    <p>Precio del delivery: @{{ deliveryPrice }}</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="lunes" id="defaultCheck1" v-model="delivery" @click="checkDelivery()" :disabled="total <= 1">
+                        <label class="form-check-label" for="defaultCheck1" style="color:#000">
+                            ¿Desea delivery?
+                        </label>
+                    </div>
+                    <small>Si no elige el servicio de delivery deberá buscar su promoción en el establecimiento de la publicación. Dicha dirección aparecerá en el perfil del vendedor.</small>                    
+                </div>
+            </div>
             <div class="col-12">
+                
                 <h3 class="text-center">Total: $ @{{ total }}</h3>
                 <h3 class="text-center" v-if="purchaseType == 'reservation' && total > 0">Total a pagar por reservación: $ @{{ parseInt((total / 2)+1)  }}</h3>
             </div>
@@ -220,6 +239,7 @@
                     <div v-if="paymentMethod == 'webpay'">
 
                         <div class="text-center" v-if="total > 1">
+
                             <button class="btn btn-success" @click="webpay()">
                                 Webpay
                             </button>
@@ -265,6 +285,8 @@
                     discountPrice:0,
                     discountDays:JSON.parse('{!! $post->discountDays !!}'),
                     todaysDate:"{{ $todaysDate }}",
+                    openDays:"{{ $post->user->open_days }}",
+                    deliveryDays:"{{ $post->user->deliver_days }}",
                     purchaseType:"reservation",
                     purchaseButtonText:"Reservar",
                     discountPercentage:0,
@@ -277,11 +299,28 @@
                     transactionId:"",
                     banks:[],
                     authCheck:false,
-                    typePrice:0
+                    typePrice:0,
+                    delivery:false,
+                    originalPrice:"",
+                    hasDelivery:"{{ $post->user->has_delivery }}",
+                    deliveryPrice:"{{ $post->user->delivery_tax }}"
                 }
             },
             methods:{
-                
+
+                checkDelivery(){
+
+                    setTimeout(() => {
+
+                        if(this.delivery == true){
+                            this.total = parseInt(this.originalPrice) + parseInt(this.deliveryPrice)
+                        }else{
+                            this.total = parseInt(this.originalPrice)
+                        }
+
+                    }, 100);
+
+                },
                 transferType(){
 
                     this.paymentMethod = "transfer"
@@ -345,7 +384,7 @@
                         let productPrice = this.products[parseInt(data.id.toString().substring(7, data.id.toString().length))].price
                         
                         this.total = this.total + (parseInt(value) * (parseInt((productPrice) - (productPrice * (this.discountPercentage/100)) + (productPrice * this.typePrice)) + 1))
-                        
+                        this.originalPrice = this.total
                        
                     })
 
@@ -356,12 +395,13 @@
 
                     let amountToPay = 0
                     if(this.purchaseType == "reservation"){
-                        amountToPay = (this.total / 2) +1
+                        if(this.delivery == true){
+                            amountToPay = (this.total / 2) +1 
+                        }
+                        
                     }else{
                         amountToPay = this.total
                     }
-
-                    //this.productPushPurchase()
 
                     axios.post("{{ url('/api/purchase/reserve') }}", {
                         postId: this.postId,  
@@ -428,7 +468,7 @@
                         amountToPay = this.total
                     }
 
-                    axios.post("{{ url('/api/checkout/store/cart') }}", { total: this.total, amountToPay: amountToPay, paymentType: this.purchaseType, post_id: this.postId, productPurchases: this.productsPurchase, action: this.action},{
+                    axios.post("{{ url('/api/checkout/store/cart') }}", { total: this.total, amountToPay: amountToPay, paymentType: this.purchaseType, post_id: this.postId, productPurchases: this.productsPurchase, action: this.action, delivery:this.delivery,},{
                         headers: {
                             Authorization: "Bearer "+window.localStorage.getItem('token')
                         }

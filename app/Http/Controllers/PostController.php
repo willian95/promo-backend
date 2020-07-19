@@ -89,7 +89,50 @@ class PostController extends Controller
 
                 }
 
-                for($i = 7; $i > 0; $i--){
+                $discount = new DiscountDay;
+                $discount->post_id = $post->id;
+                $discount->date = Carbon::parse($request->startDate)->addDay();
+                $discount->discount = $request->discount1;
+                $discount->save();
+
+                $discount = new DiscountDay;
+                $discount->post_id = $post->id;
+                $discount->date = Carbon::parse($request->startDate)->addDays(2);
+                $discount->discount = $request->discount2;
+                $discount->save();
+
+                $discount = new DiscountDay;
+                $discount->post_id = $post->id;
+                $discount->date = Carbon::parse($request->startDate)->addDays(3);
+                $discount->discount = $request->discount3;
+                $discount->save();
+
+                $discount = new DiscountDay;
+                $discount->post_id = $post->id;
+                $discount->date = Carbon::parse($request->startDate)->addDays(4);
+                $discount->discount = $request->discount4;
+                $discount->save();
+
+                $discount = new DiscountDay;
+                $discount->post_id = $post->id;
+                $discount->date = Carbon::parse($request->startDate)->addDays(5);
+                $discount->discount = $request->discount5;
+                $discount->save();
+
+                $discount = new DiscountDay;
+                $discount->post_id = $post->id;
+                $discount->date = Carbon::parse($request->startDate)->addDays(6);
+                $discount->discount = $request->discount6;
+                $discount->save();
+
+                $discount = new DiscountDay;
+                $discount->post_id = $post->id;
+                $discount->date = Carbon::parse($request->startDate)->addDays(7);
+                $discount->discount = $request->discount7;
+                $discount->save();
+
+
+                /*for($i = 7; $i > 0; $i--){
 
                     $discount = new DiscountDay;
                     $discount->post_id = $post->id;
@@ -101,7 +144,7 @@ class PostController extends Controller
                         $discount->discount = $discountPercent;
                     }
                     $discount->save();
-                }
+                }*/
 
                 return response()->json(["success" => true, "msg" => "Publicación realizada"]);
 

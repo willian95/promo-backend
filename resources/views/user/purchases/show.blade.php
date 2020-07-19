@@ -59,6 +59,12 @@
                 <p>
                     <strong>Fecha de finalización: </strong> @{{ dueDate.toString().substring(0, 10) }}
                 </p>
+                <p v-if="seller.open_days.length > 0">
+                    <strong>Establecimiento abierto: </strong> @{{ seller.open_days.replace(/,/g, ", ") }}
+                </p>
+                <p v-if="seller.deliver_days.length > 0">
+                    <strong>Delivery: </strong> @{{ seller.deliver_days.replace(/,/g, ", ") }}
+                </p>
             </div>
         </div>
 
@@ -88,6 +94,7 @@
 
         <div class="row">
             <div class="col-12">
+                <h3 v-if="delivery == true">Delivery Activo</h3>
                 <h3 class="text-center">Total: $ @{{ total }}</h3>
                 <h3 class="text-center" v-if="purchaseType == 'reservation' && total > 0">Total a pagar por reservación: $ @{{ parseInt((total / 2)+1)  }}</h3>
             </div>
@@ -245,6 +252,7 @@
                     amount:"{{ $purchase->amount }}",
                     transactionId:"",
                     banks:[],
+                    delivery:"{{ $purchase->has_delivery }}",
                     authCheck:false
                 }
             },
