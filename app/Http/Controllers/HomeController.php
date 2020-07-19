@@ -50,7 +50,7 @@ class HomeController extends Controller
                     "overall" => $overall,
                     "discountPercentage" => $discount
                 ]; 
-
+//
             }
 
             return response()->json(["success" => true, "posts" => $postArray, "todaysDate" => $todaysDate]);
