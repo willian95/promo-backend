@@ -29,7 +29,12 @@
                     <div class="img-product">
                         <img :src="'{{ url('/images/posts/') }}'+'/'+post.post[0].image" alt="">
                     </div>
-                    
+                    <div class="card-body">
+                        <h5>@{{ post.post[0].title }}</h5>
+                        <p>@{{ post.post[0].commune.name }}</p>
+                        <p class="description-post">@{{ post.post[0].description }}</p>
+                        
+                    </div>
                 </div>
 
           
