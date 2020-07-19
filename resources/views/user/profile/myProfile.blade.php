@@ -308,8 +308,9 @@
                             Authorization: "Bearer "+window.localStorage.getItem('token')
                         }
                     }).then(res =>{
-                        
-                        this.checkedOpenDays = res.data.user.open_days.split(",")
+                        if(res.data.open_days.length > 0)
+                            this.checkedOpenDays = res.data.user.open_days.split(",")
+                        if(res.data.deliver_days.length > 0)
                         this.checkedDeliveryDays = res.data.user.deliver_days.split(",")
                         this.hasDelivery = res.data.user.has_delivery
                         this.deliveryPrice = res.data.user.delivery_tax
