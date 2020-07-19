@@ -60,7 +60,7 @@ class HomeController extends Controller
 
             $todaysDate = Carbon::now();
 
-            $posts = Post::with('user', 'discountDays', 'category', 'commune', "user.ratingsUserAttribute")->where("start_date", "<=", $todaysDate->format('Y-m-d'))->where("due_date", ">=", $todaysDate->format('Y-m-d'))->inRandomOrder()->take(12)->orderBy("id", "desc")->get();
+            $posts = Post::with('user', 'discountDays', 'category', 'commune', "user.ratings")->where("start_date", "<=", $todaysDate->format('Y-m-d'))->where("due_date", ">=", $todaysDate->format('Y-m-d'))->inRandomOrder()->take(12)->orderBy("id", "desc")->get();
 
             $postArray = [];
 
