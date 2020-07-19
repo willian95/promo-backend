@@ -130,7 +130,7 @@
             <div class="col-12">
                 <div v-if="todaysDate >= startDate && todaysDate <= dueDate">
 
-                    <div v-if="authCheck == true">
+                    <div v-if="authCheck == true && authUserId != seller.id">
                         <a href="#"><button class="res button" style="margin-top: 3%;" data-toggle="modal" data-target="#shop" @click="productPushPurchase()">@{{ purchaseButtonText }}</button></a>
                     </div>
                     <div v-else>
@@ -300,6 +300,7 @@
                     banks:[],
                     authCheck:false,
                     typePrice:0,
+                    authUserId:0,
                     delivery:false,
                     originalPrice:"",
                     hasDelivery:"{{ $post->user->has_delivery }}",
@@ -489,7 +490,8 @@
 
                 let user = JSON.parse(localStorage.getItem("user"))
                 if(user != null){
-                    this.authCheck = true   
+                    this.authCheck = true
+                    this.authUserId = user.id 
                 }
 
                 let lastDiscountDay = new Date(this.discountDays[6].date)
