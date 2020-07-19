@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\DiscountDay;
 use Carbon\Carbon;
 use JWTAuth;
 
@@ -39,8 +40,9 @@ class HomeController extends Controller
 
                 $postArray[] = [
                     "post" => $pots = $posts,
-                    "overall" => $overall
-                ];
+                    "overall" => $overall,
+                    "discountPercentage" => DiscountDay::where("date", $todaysDate->format('Y-m-d'))->first()->discount
+                ]; 
 
             }
 
@@ -80,7 +82,8 @@ class HomeController extends Controller
 
                 $postArray[] = [
                     "post" => $pots = $posts,
-                    "overall" => $overall
+                    "overall" => $overall,
+                    "discountPercentage" => DiscountDay::where("date", $todaysDate->format('Y-m-d'))->first()->discount
                 ];
 
             }

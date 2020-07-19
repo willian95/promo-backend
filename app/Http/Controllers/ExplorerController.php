@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\DiscountDay;
 use Carbon\Carbon;
 
 class ExplorerController extends Controller
@@ -42,7 +43,8 @@ class ExplorerController extends Controller
 
                 $postArray[] = [
                     "post" => $pots = $posts,
-                    "overall" => $overall
+                    "overall" => $overall,
+                    "discountPercentage" => DiscountDay::where("date", $todaysDate->format('Y-m-d'))->first()->discount
                 ];
 
             }
