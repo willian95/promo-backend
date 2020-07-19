@@ -79,7 +79,8 @@
                     .then(res => {
 
                         if (res.data.success == false) {
-                            alertify.error(res.data.msg)
+                            //alertify.error(res.data.msg)
+                            alert(res.data.msg)
                         } else {
 
                             localStorage.setItem("token", res.data.token)
