@@ -237,7 +237,7 @@ class CheckoutController extends Controller
 	
 				});
 
-				$messageAdmin = "Hola Admin! El usuario ".$buyer->name." ha concretado una ".$mailPurchaseType." con el usuario ".$buyer->name." de los siguientes platos: ";
+				$messageAdmin = "Hola Admin! El usuario ".$buyer->name." ha concretado una ".$mailPurchaseType." con el usuario ".$seller->name." de los siguientes platos: ";
 				$to_email = "williandev95@gmail.com";
 				$to_name = "admin";
 				$data = ["messageMail" => $messageAdmin, "purchaseProducts" => $purchaseProduct, "messageTo" => "admin", "purchaseId" => $purchase->id];
