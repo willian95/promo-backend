@@ -182,12 +182,12 @@ class CheckoutController extends Controller
 
 				});
 
-				$post = Post::where("id", $cartPurchase->post_id)->first();
+				$post = Post::where("id", $purchase->post_id)->first();
 				$seller = User::where("id", $post->user_id)->first();
 				$messageSeller = "Hola ".$seller->name."! El cliente ".$buyer->name." ha completado la compra de los siguientes platos: ";
 				$to_email = $seller->email;
 				$to_name = $seller->name;
-				$data = ["messageMail" => $messageSeller, "purchaseProducts" => $purchaseProduct, "messageTo" => "seller", "purchaseId" => $purchase->id];
+				$data = ["messageMail" => $messageSeller, "purchaseProducts" => $productPurchases, "messageTo" => "seller", "purchaseId" => $purchase->id];
 
 				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email) {
 
@@ -199,7 +199,7 @@ class CheckoutController extends Controller
 				$messageAdmin = "Hola Admin! El usuario ".$buyer->name." ha completado una compra con el usuario ".$seller->name." de los siguientes platos: ";
 				$to_email = env("ADMIN_MAIL");
 				$to_name = "admin";
-				$data = ["messageMail" => $messageAdmin, "purchaseProducts" => $purchaseProduct, "messageTo" => "admin", "purchaseId" => $purchase->id];
+				$data = ["messageMail" => $messageAdmin, "purchaseProducts" => $productPurchases, "messageTo" => "admin", "purchaseId" => $purchase->id];
 
 				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email) {
 
