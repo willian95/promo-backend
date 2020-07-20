@@ -77,8 +77,16 @@ class CheckoutController extends Controller
 		$_SESSION["user_id"]=$user->id;
 		$_SESSION["order"]=$order;
 
+		$price = 0;
+		if(isset($_SESSION["purchase_price"])){
+			$price = $_SESSION["purchase_price"];
+			
+		}else{
+			$price = $cart->price;
+		}
+
 	
-		$webpayNormal->addTransactionDetail(intval($cart->price), $order);  
+		$webpayNormal->addTransactionDetail(intval($price), $order);  
 		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish')); 
 		// Probablemente también quieras crear una orden o transacción en tu base de datos y guardar el token ahí.
 
@@ -238,7 +246,7 @@ class CheckoutController extends Controller
 				});
 
 				$messageAdmin = "Hola Admin! El usuario ".$buyer->name." ha concretado una ".$mailPurchaseType." con el usuario ".$seller->name." de los siguientes platos: ";
-				$to_email = "williandev95@gmail.com";
+				$to_email = env("ADMIN_MAIL");
 				$to_name = "admin";
 				$data = ["messageMail" => $messageAdmin, "purchaseProducts" => $purchaseProduct, "messageTo" => "admin", "purchaseId" => $purchase->id];
 
@@ -265,6 +273,47 @@ class CheckoutController extends Controller
 			$payment->amount_to_pay = $cartPurchase->price;
 			$payment->state = "rechazado";
 			$payment->save();
+
+			$buyer = User::where("id", $payment->user_id)->first();
+			$messageBuyer = "Hola ".$buyer->name."! Has completado la compra de los los siguientes platos: ";
+			$purchaseProduct = ProductPurchase::with("postProduct")->where("purchase_id", $purchase->id)->get();
+			$to_email = $buyer->email;
+			$to_name = $buyer->name;
+			
+			$data = ["messageMail" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "buyer", "purchaseId" => $purchase->id];
+			//dd(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+			\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
+
+				$message->to($to_email, $to_name)->subject("¡Tu compra ha sido completada!");
+				$message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+
+			});
+
+			$post = Post::where("id", $cartPurchase->post_id)->first();
+			$seller = User::where("id", $post->user_id)->first();
+			$messageSeller = "Hola ".$seller->name."! El cliente ".$buyer->name." ha completado la compra de los siguientes platos: ";
+			$to_email = $seller->email;
+			$to_name = $seller->name;
+			$data = ["messageMail" => $messageSeller, "purchaseProducts" => $purchaseProduct, "messageTo" => "seller", "purchaseId" => $purchase->id];
+
+			\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
+
+				$message->to($to_email, $to_name)->subject("¡Tu venta ha sido completada!");
+				$message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+
+			});
+
+			$messageAdmin = "Hola Admin! El usuario ".$buyer->name." ha completado una compra con el usuario ".$seller->name." de los siguientes platos: ";
+			$to_email = env("ADMIN_MAIL");
+			$to_name = "admin";
+			$data = ["messageMail" => $messageAdmin, "purchaseProducts" => $purchaseProduct, "messageTo" => "admin", "purchaseId" => $purchase->id];
+
+			\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
+
+				$message->to($to_email, $to_name)->subject("¡Un usuario ha completado una compra!");
+				$message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+
+			});
 
 			return view("user.failedPayment");
 
