@@ -12,15 +12,7 @@
     </thead>
     <tbody>
 
-    @foreach($purchaseProducts as $purchase)
-            <tr>
-                <td>{{ $loop->index + 1 }}</td>
-                <td>{{ $purchase->postProduct->title }}</td>
-                <td>{{ $purchase->amount }}</td>
-                <td>$ {{ $purchase->price }}</td>
-                <td>$ {{ $purchase->price * $purchase->amount }}</td>
-            </tr>
-        @endforeach
+    
         
     </tbody>
 </table>
