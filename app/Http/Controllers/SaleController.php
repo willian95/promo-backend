@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Purchase;
 use App\User;
 use App\Post;
+use App\ProductPurchase;
 use JWTAuth;
 
 class SaleController extends Controller
