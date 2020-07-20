@@ -133,8 +133,11 @@
                     <div v-if="authCheck == true && authUserId != seller.id">
                         <a href="#"><button class="res button" style="margin-top: 3%;" data-toggle="modal" data-target="#shop" @click="productPushPurchase()">@{{ purchaseButtonText }}</button></a>
                     </div>
-                    <div v-else>
+                    <div v-if="authCheck == false">
                         <h3 >Para comprar debes iniciar sesión</h3>
+                    </div>
+                    <div v-if="authUserId == seller.id">
+                        <h3 >No puedes comprar o reservar una publicación que hayas hecho</h3>
                     </div>
 
                 </div>
