@@ -59,7 +59,7 @@
                         
                         <img :src="'{{ url('/') }}'+'/images/posts/'+sale.post.image" alt="" style="width: 100%">
                         <h3>@{{ sale.post.title }}</h3>
-                        <p>Usuario: @{{ sale.post.user.name }}</p>
+                        <p>Usuario: @{{ sale.user.name }}</p>
                         <p>Dirección: @{{ sale.user.address }}, @{{ sale.user.commune.name }}</p>
                         <P>
                             <a :href="'https://www.google.com/maps/place/'+sale.user.address+','+sale.user.commune.name+', Chile'" target="_blank">Ver mapa</a>
