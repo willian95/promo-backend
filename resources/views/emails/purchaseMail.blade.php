@@ -26,5 +26,5 @@
 @if($messageTo == 'buyer')
     <a href="{{ url('/my-purchases/purchase/'.$purchase['id']) }}">Ver compra</a>
 @elseif($messageTo == 'seller')
-    <a href="{{ url('/my-sales/) }}">Ver venta</a>
+    <a href="{{ url('/my-sales') }}">Ver venta</a>
 @endif
