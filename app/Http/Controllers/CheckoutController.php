@@ -214,7 +214,7 @@ class CheckoutController extends Controller
 				$to_email = $buyer->email;
 				$to_name = $buyer->name;
 				
-				$data = ["messageMail" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "buyer"];
+				$data = ["messageMail" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "buyer", "purchaseId" => $purchase->id];
 
 				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
 
@@ -228,7 +228,7 @@ class CheckoutController extends Controller
 				$messageSeller = "Hola ".$sellet->name."! Has concretado una ".$mailPurchaseType." de los siguientes platos: ";
 				$to_email = $seller->email;
 				$to_name = $seller->name;
-				$data = ["messageMail" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "seller"];
+				$data = ["messageMail" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "seller", "purchaseId" => $purchase->id];
 
 				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
 
@@ -240,7 +240,7 @@ class CheckoutController extends Controller
 				$messageAdmin = "Hola Admin! El usuario ".$buyer->name." ha concretado una ".$mailPurchaseType." con el usuario ".$buyer->name." de los siguientes platos: ";
 				$to_email = "williandev95@gmail.com";
 				$to_name = "admin";
-				$data = ["messageMail" => $messageAdmin, "purchaseProducts" => $purchaseProduct, "messageTo" => "admin"];
+				$data = ["messageMail" => $messageAdmin, "purchaseProducts" => $purchaseProduct, "messageTo" => "admin", "purchaseId" => $purchase->id];
 
 				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
 
