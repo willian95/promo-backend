@@ -1,4 +1,4 @@
-{{ $message }}
+<p>{{ $message }}</p>
 
 <table>
     <thead>
@@ -11,6 +11,7 @@
         </tr>
     </thead>
     <tbody>
+
         
     </tbody>
 </table>
