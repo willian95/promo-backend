@@ -19,7 +19,7 @@
                     <tbody>
                         <tr v-for="sale in sales" v-if="sale.post">
                             <td>@{{ sale.post.title }}</td>
-                            <td>@{{ sale.post.user.name }}</td>
+                            <td>@{{ sale.user.name }}</td>
                             <td v-if="sale.is_payment_complete == 0">En espera de finalización del pago</td>
                             <td v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'en proceso'">Pago realizado, puede proceder a la entrega</td>
                             <td v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'entregado'">Articulo entregado</td>
