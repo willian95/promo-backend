@@ -175,7 +175,7 @@ class CheckoutController extends Controller
 				
 				$data = ["messageMail" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "buyer", "purchaseId" => $purchase->id];
 				//dd(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
+				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email) {
 
 					$message->to($to_email, $to_name)->subject("¡Tu compra ha sido completada!");
 					$message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
@@ -189,7 +189,7 @@ class CheckoutController extends Controller
 				$to_name = $seller->name;
 				$data = ["messageMail" => $messageSeller, "purchaseProducts" => $purchaseProduct, "messageTo" => "seller", "purchaseId" => $purchase->id];
 
-				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
+				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email) {
 
 					$message->to($to_email, $to_name)->subject("¡Tu venta ha sido completada!");
 					$message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
@@ -201,7 +201,7 @@ class CheckoutController extends Controller
 				$to_name = "admin";
 				$data = ["messageMail" => $messageAdmin, "purchaseProducts" => $purchaseProduct, "messageTo" => "admin", "purchaseId" => $purchase->id];
 
-				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
+				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email) {
 
 					$message->to($to_email, $to_name)->subject("¡Un usuario ha completado una compra!");
 					$message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
