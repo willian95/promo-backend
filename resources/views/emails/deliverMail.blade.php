@@ -27,5 +27,5 @@
 
 @if($messageTo == 'buyer')
     <p>Confirma tu entrega en el siguiente enlace</p>
-    <a href="{{ url('/my-purchases) }}">Ver compra</a>
+    <a href="{{ url('/my-purchases') }}">Ver compra</a>
 @endif
