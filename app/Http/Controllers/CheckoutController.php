@@ -213,6 +213,7 @@ class CheckoutController extends Controller
 				$purchaseProduct = ProductPurchase::with("postProduct")->where("purchase_id", $purchase->id)->get();
 				$to_email = $buyer->email;
 				$to_name = $buyer->name;
+				dd($messageBuyer);
 				$data = ["message" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "buyer"];
 
 				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
