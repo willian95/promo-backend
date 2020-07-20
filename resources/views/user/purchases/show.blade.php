@@ -59,10 +59,10 @@
                 <p>
                     <strong>Fecha de finalización: </strong> @{{ dueDate.toString().substring(0, 10) }}
                 </p>
-                <p v-if="seller.open_days.length > 0">
+                <p v-if="seller.open_days != null">
                     <strong>Establecimiento abierto: </strong> @{{ seller.open_days.replace(/,/g, ", ") }}
                 </p>
-                <p v-if="seller.deliver_days.length > 0">
+                <p v-if="seller.deliver_days != null">
                     <strong>Delivery: </strong> @{{ seller.deliver_days.replace(/,/g, ", ") }}
                 </p>
             </div>
