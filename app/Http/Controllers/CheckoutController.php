@@ -228,7 +228,7 @@ class CheckoutController extends Controller
 				$messageSeller = "Hola ".$seller->name."! Has concretado una ".$mailPurchaseType." de los siguientes platos: ";
 				$to_email = $seller->email;
 				$to_name = $seller->name;
-				$data = ["messageMail" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "seller", "purchaseId" => $purchase->id];
+				$data = ["messageMail" => $messageSeller, "purchaseProducts" => $purchaseProduct, "messageTo" => "seller", "purchaseId" => $purchase->id];
 
 				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
 
