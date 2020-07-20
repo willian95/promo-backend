@@ -1,4 +1,4 @@
-<p>{{ $message }}</p>
+<p>{{ $messageMail }}</p>
 
 <table>
     <thead>
