@@ -225,7 +225,7 @@ class CheckoutController extends Controller
 
 				$post = Post::where("id", $cartPurchase->post_id)->first();
 				$seller = User::where("id", $post->user_id)->first();
-				$messageSeller = "Hola ".$sellet->name."! Has concretado una ".$mailPurchaseType." de los siguientes platos: ";
+				$messageSeller = "Hola ".$seller->name."! Has concretado una ".$mailPurchaseType." de los siguientes platos: ";
 				$to_email = $seller->email;
 				$to_name = $seller->name;
 				$data = ["messageMail" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "seller", "purchaseId" => $purchase->id];
