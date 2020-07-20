@@ -22,10 +22,10 @@ class SaleController extends Controller
             $user = JWTAuth::parseToken()->toUser();
             $sales = Purchase::whereHas("post", function($q) use($user){
                 $q->where('user_id', $user->id);
-            })->with("post", "post.user", "post.user.commune", "productsPurchase", "productsPurchase.postProduct")->skip($skip)->take(20)->get();
+            })->with("post", "user", "productsPurchase", "productsPurchase.postProduct")->skip($skip)->take(20)->get();
             $salesCount = Purchase::whereHas("post.user", function($q) use($user){
                 $q->where('user_id', $user->id);
-            })->with("post", "post.user", "post.user.commune")->count();
+            })->with("post", "user")->count();
             
             return response()->json(["success" => true, "sales" => $sales, "salesCount" => $salesCount]);
 
