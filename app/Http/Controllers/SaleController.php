@@ -76,8 +76,8 @@ class SaleController extends Controller
 
             $messageAdmin = "Hola Admin! El vendedor ".$seller->name." ha entregado a ".$buyer->name." los siguientes platos: ";
             $purchaseProduct = ProductPurchase::with("postProduct")->where("purchase_id", $purchase->id)->get();
-            $to_email = $seller->email;
-            $to_name = $seller->name;
+            $to_email = env("ADMIN_MAIL");
+			$to_name = "admin";
             
             $data = ["messageMail" => $messageAdmin, "purchaseProducts" => $purchaseProduct, "messageTo" => "admin"];
             \Mail::send("emails.deliverMail", $data, function($message) use ($to_name, $to_email) {

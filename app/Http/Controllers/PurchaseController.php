@@ -58,6 +58,34 @@ class PurchaseController extends Controller
         try{
 
             Purchase::where("id", $request->id)->update(["shipping_state" => "recibido"]);
+
+            $post = Post::where("id", $purchase->post_id)->first();
+            $seller = User::where("id", $post->user_id)->first();
+            $buyer = User::where("id", $purchase->user_id)->first();
+            $messageBuyer = "Hola ".$seller->name."! El cliente ".$buyer->name." indica sus platos fueron entregados";
+            $to_email = $buyer->email;
+            $to_name = $buyer->name;
+            
+            $data = ["messageMail" => $messageBuyer];
+            \Mail::send("emails.confirmMail", $data, function($message) use ($to_name, $to_email) {
+
+                $message->to($to_email, $to_name)->subject("¡Tus platos fueron recibidos!");
+                $message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+
+            });
+
+            $messageBuyer = "Hola admin! El cliente ".$buyer->name." indica que el vendedor ".$buyer->name." ha entregado sus platos";
+            $to_email = env("ADMIN_MAIL");
+			$to_name = "admin";
+            
+            $data = ["messageMail" => $messageBuyer];
+            \Mail::send("emails.confirmMail", $data, function($message) use ($to_name, $to_email) {
+
+                $message->to($to_email, $to_name)->subject("¡Platos entregados!");
+                $message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+
+            });
+
             return response()->json(["success" => true, "msg" => "Ha confirmado la entrega del articulo, recuerde dejar su calificación al vendedor"]);
 
         }catch(\Exception $e){
