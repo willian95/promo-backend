@@ -62,7 +62,7 @@
                         <p>Usuario: @{{ sale.post.user.name }}</p>
                         <p>Dirección: @{{ sale.user.address }}, @{{ sale.user.commune.name }}</p>
                         <P>
-                            <a :href="'https://www.google.com/maps/place/'+sale.post.user.address+','+sale.post.user.commune.name+', Chile'" target="_blank">Ver mapa</a>
+                            <a :href="'https://www.google.com/maps/place/'+sale.user.address+','+sale.user.commune.name+', Chile'" target="_blank">Ver mapa</a>
                         </P>
 
                         <table class="table">
