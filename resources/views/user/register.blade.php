@@ -69,8 +69,11 @@
                                     <div class="col-md-6 mb-4">
                                         <input type="password" class="form-control" placeholder="Confirmar Clave" v-model="password_confirmation" style="color: #fff !important;">
                                     </div>
-                                    <div class="col-md-12 mb-4">
+                                    <div class="col-md-6 mb-4">
                                         <input type="text" class="form-control" placeholder="Dirección de entrega" v-model="address" style="color: #fff !important;">
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <input type="text" class="form-control" placeholder="Teléfono" v-model="phone" style="color: #fff !important;">
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <p> Seleccione una región </p>
@@ -114,6 +117,7 @@
                     password_confirmation:"",
                     commune:"",
                     address:"",
+                    phone:"",
                     region:"",
                     name:"",
                     regions:[],
@@ -130,7 +134,8 @@
                         email: this.email,
                         password: this.password,
                         locationId: this.commune,
-                        address:this.address
+                        address:this.address,
+                        telephone: this.phone
                     })
                     .then(res => {
 

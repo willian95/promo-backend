@@ -62,6 +62,7 @@ class AuthController extends Controller
             $user->address = $request->address;
             $user->password = bcrypt($request->password);
             $user->location_id = $request->locationId;
+            $user->telephone = $request->telephone;
             $user->register_hash = $registerHash;
             $user->save();
 
