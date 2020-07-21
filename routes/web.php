@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::get("login", "AuthController@loginView");
 Route::get("register", "AuthController@registerView");
+Route::get('/register/validate/{registerHash}', "AuthController@validateMail");
 
 Route::get("/my-transfers", "PaymentController@myTransferViews");
 

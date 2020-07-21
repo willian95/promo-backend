@@ -25,6 +25,34 @@ class RateController extends Controller
             $rating->comment = $request->comment;
             $rating->save();
 
+            $seller = User::where("id", $request->sellerId)->first();
+
+            $messageBuyer = "Hola ".$user->name."! Has calificado a ".$seller->name;
+            $to_email = $user->email;
+            $to_name = $user->name;
+            
+            $data = ["messageMail" => $messageBuyer];
+            \Mail::send("emails.rateMail", $data, function($message) use ($to_name, $to_email) {
+
+                $message->to($to_email, $to_name)->subject("¡Has calificado al vendedor!");
+                $message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+
+            });
+
+            $seller = User::where("id", $request->sellerId)->first();
+
+            $messageSeller = "Hola ".$seller->name."! Has calificado por ".$user->name;
+            $to_email = $seller->email;
+            $to_name = $seller->name;
+            
+            $data = ["messageMail" => $messageSeller];
+            \Mail::send("emails.confirmMail", $data, function($message) use ($to_name, $to_email) {
+
+                $message->to($to_email, $to_name)->subject("¡Has calificado al vendedor!");
+                $message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+
+            });
+
             return response()->json(["success" => true, "msg" => "Calificación realizada"]);
 
         }catch(\Exception $e){
