@@ -1,3 +1,4 @@
+
 @extends("layouts.user")
 
 @section("content")
@@ -12,26 +13,26 @@
                 <img :src="'{{ url('/images/posts') }}'+'/'+image" style="width: 100%">
             </div>
             <div class="col-md-7 col-lg-7">
-                <p>
+                <p class="text-dark">
                     <strong>Vendedor: </strong><a :href="'{{ url('/') }}'+'/profile'+'/'+seller.id">@{{ seller.name }}</a>
                 </p>
-                <p>
+                <p class="text-dark">
                     <span style="font-weight: bold;">Categoria</span>: @{{ category }}
                 </p>
                 <p>@{{ description }}</p>
-                <p>
+                <p class="text-dark">
                     <strong>Descuento por hoy: </strong> @{{ discountPercentage }} %
                 </p>
-                <p>
+                <p class="text-dark">
                     <strong>Fecha de venta: </strong> @{{ saleDate.toString().substring(0, 10) }}
                 </p>
-                <p>
+                <p class="text-dark">
                     <strong>Fecha de finalización: </strong> @{{ dueDate.toString().substring(0, 10) }}
                 </p>
-                <p v-if="openDays.length > 0">
+                <p v-if="openDays.length > 0" class="text-dark">
                     <strong>Establecimiento abierto: </strong> @{{ openDays.replace(/,/g, ", ") }}
                 </p>
-                <p v-if="deliveryDays.length > 0">
+                <p v-if="deliveryDays.length > 0" class="text-dark">
                     <strong>Delivery: </strong> @{{ deliveryDays.replace(/,/g, ", ") }}
                 </p>
             </div>
@@ -44,10 +45,10 @@
             @foreach($promoPeriod as $promo)
 
                 <div class="col-2">
-                    <div class="card" style="height: 120px;">
-                        <div class="card-body">
+                    <div class="card promo-date" style="height: 120px;">
+                        <div class="card-body text-center">
                             
-                            <p class="text-center">{{ $promo->locale('es')->dayName }}</p>
+                            <p class="text-center"><strong>{{ $promo->locale('es')->dayName }}</strong></p>
 
                             <small>
                                 {{ $promo->format('d-m-Y') }}
@@ -66,10 +67,10 @@
             @foreach($salePeriod as $sale)
 
                 <div class="col-2">
-                    <div class="card" style="height: 120px;">
+                    <div class="card promo-date" style="height: 120px;">
                         <div class="card-body">
                             
-                            <p class="text-center">{{ $sale->locale('es')->dayName }}</p>
+                            <p class="text-center"><strong>{{ $sale->locale('es')->dayName }}</strong></p>
 
                             <small>
                                 {{ $sale->format('d-m-Y') }}
@@ -83,7 +84,7 @@
 
         <div class="row">
 
-            <div class="col-lg-10 offset-lg-2 col-md-8 offset-md-2" v-for="(product, index) in products">
+            <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2" v-for="(product, index) in products">
                 <div class="card">
                     <div class="row">
                         <div class="col-md-4">
@@ -96,8 +97,13 @@
                         </div>
                         <div class="col-md-4">
                             <p><strong>Precio: </strong>$ @{{ parseInt(product.price + (product.price * typePrice)) + 1 }}</p>
-                            <p v-if="discountPercentage > 0"><strong>Precio por hoy: </strong>$ @{{ parseInt((product.price) - (product.price * (discountPercentage/100)) + (product.price * typePrice)) + 1 }}</p>
-                            <button class="btn btn-success" @click="substractUnit(index)">-</button> <input :id="'amount-'+index" type="text" class="form-control amount-input" style="width: 60px" value="0"> <button class="btn btn-success" @click="addUnit(index, product.amount)">+</button>
+                            <p class="text-dark" v-if="discountPercentage > 0"><strong>Precio por hoy: </strong>$ @{{ parseInt((product.price) - (product.price * (discountPercentage/100)) + (product.price * typePrice)) + 1 }}</p>
+                           <!--<button class="btn btn-success" @click="substractUnit(index)">-</button> <input :id="'amount-'+index" type="text" class="form-control amount-input" style="width: 60px" value="0"> <button class="btn btn-success" @click="addUnit(index, product.amount)">+</button>-->
+                           <div class="cantidad_btn">
+                                <button class="btn" @click="substractUnit(index)">-</button>
+                                <input :id="'amount-'+index" type="text" style="border:none; width: 12px;" class="amount-input" style="width: 60px" value="0">
+                                <button class="btn" @click="addUnit(index, product.amount)">+</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -107,9 +113,9 @@
 
 
         <div class="row">
-            <div class="col-md-4">
-                <div v-if="hasDelivery == 1">
-                    <p>Precio del delivery: @{{ deliveryPrice }}</p>
+            <div class="col-md-4 offset-md-4">
+                <div class="text-center" v-if="hasDelivery == 1">
+                    <p class="text-dark"><strong>Precio del delivery:</strong> @{{ deliveryPrice }}</p>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="lunes" id="defaultCheck1" v-model="delivery" @click="checkDelivery()" :disabled="total <= 1">
                         <label class="form-check-label" for="defaultCheck1" style="color:#000">
@@ -131,13 +137,15 @@
                 <div v-if="todaysDate >= startDate && todaysDate <= dueDate">
 
                     <div v-if="authCheck == true && authUserId != seller.id">
-                        <a href="#"><button class="res button" style="margin-top: 3%;" data-toggle="modal" data-target="#shop" @click="productPushPurchase()">@{{ purchaseButtonText }}</button></a>
+                        <p class="text-center">
+                            <a href="#"><button class="res button" style="margin-top: 3%;" data-toggle="modal" data-target="#shop" @click="productPushPurchase()">@{{ purchaseButtonText }}</button></a>
+                        </p>
                     </div>
                     <div v-if="authCheck == false">
-                        <h3 >Para comprar debes iniciar sesión</h3>
+                        <h3 class="text-center">Para comprar debes iniciar sesión</h3>
                     </div>
                     <div v-if="authUserId == seller.id">
-                        <h3 >No puedes comprar o reservar una publicación que hayas hecho</h3>
+                        <h3 class="text-center">No puedes comprar o reservar una publicación que hayas hecho</h3>
                     </div>
 
                 </div>
@@ -145,45 +153,6 @@
                 <h3 v-if="todaysDate > dueDate">Esta promoción ya terminó</h3>
             </div>
         </div>
-
-        <!--<div class="info-detail" style="margin-top: 50px;">
-            <div class="info-img" style="width: 100%">
-                <img :src="'{{ url('/images/posts') }}'+'/'+image">
-            </div>
-            <div class="view-detail">
-                <h3>@{{ title }}</h3>
-                <p>
-                    <span style="font-weight: bold;">Categoria</span>: @{{ category }}
-                </p>
-                <p>@{{ description }}</p>
-                <ul>
-                    <li><span style="color:#fad201" class="fa fa-check"></span>Descuento:  <span style="font-weight: bold;">@{{ discountPercentage }} %</span></li>
-                    <li><span style="color:#fad201" class="fa fa-check"></span>Precio de venta:  <span style="font-weight: bold;">$ @{{ parseInt(price) }}</span> </li>
-                    <li><span style="color:#fad201" class="fa fa-check"></span>Precio por hoy: <span style="font-weight: bold;" v-if="discountPrice <= 0">$ @{{ parseInt(price)  }}</span><span style="font-weight: bold;" v-else>$ @{{ parseInt(discountPrice) }}</span></li>
-                </ul>
-
-                <div v-if="todaysDate >= startDate && todaysDate <= dueDate">
-
-                    <div v-if="authCheck == true">
-                        <p>
-                            Cantidad: <input type="text" class="form-control" v-model="amount">
-                        </p>
-
-                        <a href="#"><button class="res button" style="margin-top: 3%;" data-toggle="modal" data-target="#shop">@{{ purchaseButtonText }}</button></a>
-                    </div>
-                    <div v-else>
-                        <h3 >Para comprar debes iniciar sesión</h3>
-                    </div>
-
-                </div>
-                <h3 v-if="todaysDate < startDate">Aún no ha comenzado la venta de esta promoción</h3>
-                <h3 v-if="todaysDate > dueDate">Esta promoción ya terminó</h3>
-            </div>
-            
-        </div>-->
-
-
-    <!-- modal -->
 
     <div class="modal fade" id="shop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -205,47 +174,12 @@
                         <h3 class="text-center">Cantidad debe ser mayor a 0</h3>
                     </div>  
 
-                    <!--<div v-if="paymentMethod == 'transfer' && total > 1">
-
-                        <p v-if="purchaseType == 'reservation'">Monto a transferir: @{{ parseInt(total / 2) + 1  }}</p>
-                        <p v-else>Monto a transferir: @{{ total  }}</p>
-                        <select class="form-control" v-model="bankSelected">
-                            <option :value="bank" v-for="bank in banks">@{{ bank.bank_name }}</option>
-                        </select>
-
-                        <div v-if="bankSelected != '' && total > 1" >
-                            
-                            <h5>Información para la transferencia</h5>
-                            
-                            <p>
-                            Nombre: @{{ bankSelected.holder_name }}
-                            </p>
-                            <p>
-                            N° Cuenta: @{{ bankSelected.account_number }}
-                            </p>
-                            <p>
-                            RUT: @{{ bankSelected.holder_rut }}
-                            </p>
-                            <p>
-                            Tipo de cuenta: @{{ bankSelected.account_type }}
-                            </p>
-                        </div>
-
-                        <label for="transaction" v-if="total > 1">Transacción</label>
-                        <input type="text" class="form-control" v-model="transactionId" v-if="total > 1">
-
-                        <p class="text-center" v-if="total > 1">
-                            <button class="btn btn-success" @click="transfer()">transferir</button>
-                        </p>
-
-                    </div>-->
+                
                     <div v-if="paymentMethod == 'webpay'">
 
                         <div class="text-center" v-if="total > 1">
 
-                            <button class="btn btn-success" @click="webpay()">
-                                Webpay
-                            </button>
+                            <img @click="webpay()" src="{{ asset('/user/images/article.jpg') }}" alt="" style="width: 200px; cursor: pointer;">
                         </div>
 
                     </div>
@@ -370,6 +304,7 @@
                     
                 },
                 substractUnit(index){
+                    //alert(index)
                     let amount = $("#amount-"+index).val()
                     if(parseInt(amount) - 1 >= 0){
                         amount--
@@ -429,12 +364,20 @@
                        
                         if(res.data.success == true){
 
-                            alert(res.data.msg)
-                        
-                            window.location.href="{{ url('/') }}"
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            }).then(() => {
+                                window.location.href="{{ url('/') }}"
+                            })
 
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
+
                         }
 
                     })

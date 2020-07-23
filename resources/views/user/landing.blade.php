@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <section class="ftco-cover" id="section-home">
+    <section class="ftco-cover" id="section-landing-hero">
         <img src="{{ asset('user/images/6.png') }}">
         <div class="container">
             <div class="mask">
@@ -75,22 +75,40 @@
 
     <section class="menu" id="menu" style="margin-top: 80px;">
         <h2>Promociones</h2>
-        <div class="container cards-carrusel" id="dev-area">
+        <div class="container" id="dev-area">
 
-            <div class="card-item" v-for="post in posts">
-                <div class="img-product">
-                    <img :src="'{{ url('/images/posts/') }}'+'/'+post.post[0].image" alt="">
+            <div class="row">
+
+                <div class="col-md-4" v-for="post in posts">
+
+                    <div class="card" style="padding-bottom: 20px;">
+                        <div class="img-product">
+                            <img :src="'{{ url('/images/posts/') }}'+'/'+post.post[0].image" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-image-section">
+                                <p class="text-center">
+                                    <img :src="'{{ url('/') }}'+'/images/users/'+post.post[0].user.image" alt="">
+                                </p>
+                                <p class="text-center">
+                                    <a class="text-center" :href="'{{ url('/') }}'+'/profile'+'/'+post.post[0].user_id">@{{ post.post[0].user.name }}</a>
+                                </p>
+                            </div>
+
+                            <h5 class="text-center">@{{ post.post[0].title }}</h5>
+                            <p>@{{ post.post[0].commune.name }}</p>
+                            <p class="description-post">@{{ post.post[0].description }}</p>
+                            <p>promedio: @{{ post.overall }} / 5</p>
+                            <p>Descuento: <span class="price">- @{{ post.discountPercentage }}%</span></p>
+                            <p class="text-center button-show-more">
+                                <a :href="'{{ url('/post/show') }}'+'/'+post.post[0].id">
+                                <button class="button">Ver más</button></a>
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="card-body">
-                    <h5>@{{ post.post[0].title }}</h5>
-                    <p>@{{ post.post[0].commune.name }}</p>
-                    <p class="description-post">@{{ post.post[0].description }}</p>
-                    <img :src="'{{ url('/') }}'+'/images/users/'+post.post[0].user.image" alt="" style="width: 50px;"><a :href="'{{ url('/') }}'+'/profile'+'/'+post.post[0].user_id">@{{ post.post[0].user.name }}</a>
-                    <p>promedio: @{{ post.overall }} / 5</p>
-                    <div class="price">- @{{ post.discountPercentage }}%</div>
-                    <a :href="'{{ url('/post/show') }}'+'/'+post.post[0].id">
-                    <button class="button">Ver más</button></a>
-                </div>
+
             </div>
                
         </div>             

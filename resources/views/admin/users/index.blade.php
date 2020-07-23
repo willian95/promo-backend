@@ -86,10 +86,17 @@
                     .then(res => {
 
                         if(res.data.success == true){
-                            alert(res.data.msg)
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            })
                             this.fetch(this.page)
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
 
                     })

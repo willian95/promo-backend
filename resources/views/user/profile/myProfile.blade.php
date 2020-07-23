@@ -1,68 +1,86 @@
 @extends("layouts.user")
 
+@push("css")
+
+    <style>
+        input, select, textarea{
+            margin-bottom:15px;
+        }
+    </style>
+
+@endpush
+
 @section("content")
 
     <div class="container" id="dev-area" style="padding-top: 150px;">
 
         <div class="row">
+
+            <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3">
+          
+                <div class="form-group">
+                    <p class="text-center">
+                        <img id="blah" :src="imagePreview" class="full-image" style="margin-top: 10px; width: 140px; height: 140px; object-fit:cover; border-radius: 50%; ">
+                    </p>
+
+                    <label class="text-dark" for="profile-image">Imagen Perfil</label>
+                    <input type="file" class="form-control" id="profile-image" accept="image/*" @change="onImageChange">
+                    
+                </div>
+            
+            </div>
+
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="name">Nombre</label>
+                    <label for="name" class="text-dark">Nombre</label>
                     <input type="text" class="form-control" v-model="name" id="name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" class="text-dark">Email</label>
                     <input type="text" class="form-control" v-model="email" id="email" readonly>
                 </div>
             </div>
             
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="website">Web site</label>
+                    <label for="website" class="text-dark">Web site</label>
                     <input type="text" class="form-control" v-model="webSite" id="website" placeholder="https://www.mysite.com">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="profile-image">Imagen Perfil</label>
-                    <input type="file" class="form-control" id="profile-image" accept="image/*" @change="onImageChange">
-                    <img id="blah" :src="imagePreview" class="full-image" style="margin-top: 10px; width: 40%">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="telephone">Telephone</label>
+                    <label for="telephone" class="text-dark">Telephone</label>
                     <input type="text" class="form-control" v-model="telephone" id="telephone" placeholder="+5612345678">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="facebook">Facebook</label>
+                    <label for="facebook" class="text-dark">Facebook</label>
                     <input type="text" class="form-control" v-model="facebook" id="facebook" placeholder="https://www.facebook.com/myprofile">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="instagram">Instagram</label>
+                    <label for="instagram" class="text-dark">Instagram</label>
                     <input type="text" class="form-control" v-model="instagram" id="instagram" placeholder="https://www.instagram.com/myprofile">
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="address">Dirección</label>
+                    <label for="address" class="text-dark">Dirección</label>
                     <input type="text" class="form-control" v-model="address" id="address">
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="region"> Seleccione una región </label>
+                <label for="region" class="text-dark"> Seleccione una región </label>
                 <select class="form-control" v-model="region" @change="onRegionChange()" id="region">
                     <option :value="region.id" v-for="region in regions">@{{ region.name }}</option>
                 </select>
             </div>
             <div class="col-md-6">
-                <label for="commune"> Seleccione una comuna </label>
+                <label for="commune" class="text-dark"> Seleccione una comuna </label>
                 <select class="form-control" v-model="commune" id="commune">
                     <option :value="commune.id" v-for="commune in communes">@{{ commune.name }}</option>
                 </select>
@@ -70,16 +88,16 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>¿Ofrece delivery?</label>
+                    <label class="text-dark">¿Ofrece delivery?</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" v-model="hasDelivery" id="exampleRadios1" value="true" checked>
-                        <label class="form-check-label" for="exampleRadios1" style="color: #000">
+                        <label class="form-check-label text-dark" for="exampleRadios1">
                             Sí
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" v-model="hasDelivery" id="exampleRadios2" value="false">
-                        <label class="form-check-label" for="exampleRadios2">
+                        <label class="form-check-label text-dark" for="exampleRadios2">
                             No
                         </label>
                     </div>
@@ -87,14 +105,14 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="delivery_price">Precio delivery</label>
+                    <label for="delivery_price" class="text-dark">Precio delivery</label>
                     <input type="text" class="form-control" id="delivery_price" v-model="deliveryPrice">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="email">Días abiertos</label>
+                    <label class="text-dark">Días abiertos</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="lunes" id="defaultCheck1" v-model="checkedOpenDays">
                         <label class="form-check-label" for="defaultCheck1" style="color:#000">
@@ -142,7 +160,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="email">Días de Delivery</label>
+                    <label class="text-dark">Días de Delivery</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="lunes" id="defaultDelivery1" v-model="checkedDeliveryDays">
                         <label class="form-check-label" for="defaultCheck1" style="color:#000">
@@ -188,9 +206,9 @@
                 </div>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-12" style="margin-top: 15px;">
                 <p class="text-center">
-                    <button class="btn btn-success" @click="update()">Actualizar</button>
+                    <button class="button" @click="update()">Actualizar</button>
                 </p>
             </div>
 
@@ -199,9 +217,13 @@
             <div class="col-12">
                 <h3 class="text-center">Comentarios</h3>
             </div>
-            <div class="col-12" v-for="rating in ratings">
-                <h5>@{{ rating.qualifier.name }} @{{ rating.rating.rate }}/5</h5>
-                <p>@{{ rating.rating.comment }}</p>
+            <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3" v-for="rating in ratings">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="text-center">@{{ rating.qualifier.name }} @{{ rating.rating.rate }}/5</h5>
+                    <p>@{{ rating.rating.comment }}</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -246,7 +268,10 @@
                         if(res.data.success == true){
                             this.regions = res.data.regions
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
                         
 
@@ -261,7 +286,10 @@
                         if(res.data.success == true){
                             this.communes = res.data.communes
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
                         
 
@@ -340,9 +368,16 @@
                     }).then(res => {
 
                         if(res.data.success == true){
-                            alert(res.data.msg)
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            })
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
 
                     })

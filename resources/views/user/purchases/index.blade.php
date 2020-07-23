@@ -20,7 +20,7 @@
                     <tbody>
                         <tr v-for="purchase in purchases" v-if="purchase.post">
                             <td>@{{ purchase.post.title }}</td>
-                            <td>@{{ parseInt(purchase.total) }}</td>
+                            <td>$ @{{ parseInt(purchase.total) }}</td>
                             <td>
                                 <span v-if="purchase.payment_type == 'reservation'">Reservación</span>
                                 <span v-else>Compra</span>
@@ -33,10 +33,10 @@
                                 <span v-if="purchase.is_payment_complete == 1 && purchase.shipping_state == 'recibido'">Articulo recibido</span>
                             </td>
                             <td>
-                                <a class="btn btn-success" :href="'{{ url('/') }}'+'/my-purchases/purchase/'+purchase.id" v-if="purchase.is_payment_complete == 0">Pagar</a>
-                                <a class="btn btn-info" :href="'{{ url('/') }}'+'/my-purchases/purchase/'+purchase.id" v-else>Ver</a>
-                                <button class="btn btn-success" @click="confirmDelivery(purchase)" v-if="purchase.is_payment_complete == 1 && purchase.shipping_state == 'entregado'">Confirmar entrega</button>
-                                <button class="btn btn-success" data-toggle="modal" data-target="#rateModal"  v-if="purchase.is_seller_rated == false && purchase.shipping_state == 'recibido'" @click="qualify(purchase)">Calificar comprador</button>
+                                <a class="button" :href="'{{ url('/') }}'+'/my-purchases/purchase/'+purchase.id" v-if="purchase.is_payment_complete == 0">Pagar</a>
+                                <a class="button" :href="'{{ url('/') }}'+'/my-purchases/purchase/'+purchase.id" v-else>Ver</a>
+                                <button class="button" @click="confirmDelivery(purchase)" v-if="purchase.is_payment_complete == 1 && purchase.shipping_state == 'entregado'">Confirmar entrega</button>
+                                <button class="button" data-toggle="modal" data-target="#rateModal"  v-if="purchase.is_seller_rated == false && purchase.shipping_state == 'recibido'" @click="qualify(purchase)">Calificar comprador</button>
                             </td>
                         </tr>
                     </tbody>
@@ -139,11 +139,18 @@
 
                         if(res.data.success == true){
 
-                            alert(res.data.msg)
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            })
                             this.fetch(this.page)
 
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
 
                     })
@@ -159,14 +166,21 @@
                     .then(res => {
 
                         if(res.data.success == true){
-                            alert(res.data.msg)
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            })
                             this.purchase = ""
                             this.seller = ""
                             this.rate = ""
                             this.comment = ""
                             this.fetch(this.page)
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
 
                     })

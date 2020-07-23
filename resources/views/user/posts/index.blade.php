@@ -327,10 +327,19 @@
                     .then(res => {
                         //console.log("test-res", res)
                         if(res.data.success == true){
-                            alert(res.data.msg)
-                            window.location.href="{{ url('/') }}"
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            }).then(() => {
+                                window.location.href="{{ url('/') }}"
+                            })
+                            
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
 
                     })
@@ -388,7 +397,10 @@
 
                         }else{
 
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
 
                         }
 

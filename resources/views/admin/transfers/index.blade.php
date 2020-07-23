@@ -117,7 +117,11 @@
 
                         if(res.data.success == true){
 
-                            alert(res.data.msg)
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            })
                             this.transfer = ""
                             this.state = ""
                             this.comment = ""
@@ -125,7 +129,10 @@
                             
                         }else{
 
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
 
                         }
 

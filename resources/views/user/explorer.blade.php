@@ -6,44 +6,57 @@
 
         <div class="row">
             <div class="col-md-5 mb-4">
-                <p> Seleccione una región </p>
+                <p> <strong>Seleccione una región</strong> </p>
                 <select class="form-control" v-model="region" @change="onRegionChange()">
                     <option :value="region.id" v-for="region in regions">@{{ region.name }}</option>
                 </select>
             </div>
             <div class="col-md-5 mb-4">
-                <p> Seleccione una comuna </p>
+                <p><strong> Seleccione una comuna</strong> </p>
                 <select class="form-control" v-model="commune">
                     <option :value="commune.id" v-for="commune in communes">@{{ commune.name }}</option>
                 </select>
             </div>
             <div class="col-md-2">
                 
-                <button class="btn btn-success" style="margin-top: 48px;" @click="search()">Buscar</button>
+                <button class="button" style="margin-top: 44px;" @click="search()">Buscar</button>
             </div>
         </div>
 
         <div class="row">
 
-                <div class="card-item" v-for="post in posts">
+            <div class="col-4">
+
+                <div class="card" v-for="post in posts" style="padding-bottom: 20px;">
                     <div class="img-product">
                         <img :src="'{{ url('/images/posts/') }}'+'/'+post.post[0].image" alt="">
                     </div>
                     <div class="card-body">
+
+                        <div class="card-image-section">
+                            <p class="text-center">
+                                <img :src="'{{ url('/') }}'+'/images/users/'+post.post[0].user.image" alt="">
+                            </p>
+                            <p class="text-center">
+                                <a class="text-center" :href="'{{ url('/') }}'+'/profile'+'/'+post.post[0].user_id">@{{ post.post[0].user.name }}</a>
+                            </p>
+                        </div>
+
                         <h5>@{{ post.post[0].title }}</h5>
                         <p>@{{ post.post[0].commune.name }}</p>
                         <p class="description-post">@{{ post.post[0].description }}</p>
-                        <img :src="'{{ url('/') }}'+'/images/users/'+post.post[0].user.image" alt="" style="width: 50px;"><a :href="'{{ url('/') }}'+'/profile'+'/'+post.post[0].user_id">@{{ post.post[0].user.name }}</a>
+                        <!--<img :src="'{{ url('/') }}'+'/images/users/'+post.post[0].user.image" alt="" style="width: 50px;"><a :href="'{{ url('/') }}'+'/profile'+'/'+post.post[0].user_id">@{{ post.post[0].user.name }}</a>-->
                         <p>promedio: @{{ post.overall }} / 5</p>
-                        <div class="price">- @{{ post.discountPercentage }}%</div>
-                        <a :href="'{{ url('/post/show') }}'+'/'+post.post[0].id">
-                            <button class="button">Ver más</button>
-                        </a>
+                        <p>Descuento: <span class="price">- @{{ post.discountPercentage }}%</span></p>
+                        <p class="text-center button-show-more">
+                            <a :href="'{{ url('/post/show') }}'+'/'+post.post[0].id">
+                            <button class="button">Ver más</button></a>
+                        </p>
                     </div>
                 </div>
 
-          
-
+            </div>
+        
         </div>
 
         <div class="row">
@@ -93,7 +106,10 @@
                             this.pages = Math.ceil(res.data.postsCount/20)
 
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
 
                     })
@@ -115,7 +131,10 @@
                         if(res.data.success == true){
                             this.regions = res.data.regions
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
                         
 
@@ -146,7 +165,10 @@
                         if(res.data.success == true){
                             this.communes = res.data.communes
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
                         
 

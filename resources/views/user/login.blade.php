@@ -24,35 +24,41 @@
         </div>
     </div>-->
 
-    <section class="ftco-cover" id="section-home">
-        <img src="{{ asset('user/images/6.png') }}">
-        <div class="mask">
-            <div class="container">
-                <div class="row align-items-center text-center">
-                    <div class="col-lg-6 offset-lg-3">
-                        <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3>
-                        
-                                    
-                        <div class="form-group row">
-                            <div class="col-md-12 mb-4">
-                                <input type="email" class="form-control" placeholder="Email" v-model="email" style="color: #fff !important">
-                            </div>
-
-                            <div class="col-md-12 ">
-                                <input type="password" class="form-control" placeholder="Contraseña" v-model="password" style="color: #fff !important">
-                            </div>
-                        </div>
-                        <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
-                            <div style="text-align: center;" class="col-md-6">
-                                <button class="res button" @click="login()">Entrar</button>
-                            </div>
-                        </div>
-                                    
-             
+    <section class="ftco-cover" id="section-login">
+        {{--<img src="{{ asset('user/images/6.png') }}">--}}
+      
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <div class="mask">
+                        <img src="{{ asset('user/images/6.png') }}">
+                    
                     </div>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3>
+                            
+                    <div class="form-group row">
+                        <div class="col-md-12 mb-4">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" class="form-control" placeholder="Email" v-model="email">
+                        </div>
+
+                        <div class="col-md-12 ">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
+                        <div style="text-align: center;" class="col-md-6">
+                            <button class="res button" @click="login()">Entrar</button>
+                        </div>
+                    </div>
+                                
                 </div>
             </div>
         </div>
+        
     </section>
 
 @endsection
@@ -61,7 +67,7 @@
 
     <script>
         const body = new Vue({
-            el: '#section-home',
+            el: '#section-login',
             data(){
                 return{
                     email:"",
@@ -80,16 +86,38 @@
 
                         if (res.data.success == false) {
                             //alertify.error(res.data.msg)
-                            alert(res.data.msg)
+                          
+                            swal({
+                                title: "Hubo un problema!",
+                                text: res.data.msg,
+                                icon: "error"
+                            });
                         } else {
 
                             localStorage.setItem("token", res.data.token)
                             localStorage.setItem("user", JSON.stringify(res.data.user))
-
+                            
                             if (res.data.user.role_id == 1) {
-                                window.location.replace("{{ url('admin/dashboard') }}")
+
+                                swal({
+                                    title: "Perfecto!",
+                                    text: res.data.msg,
+                                    icon: "success"
+                                }).then(function() {
+                                    window.location.replace("{{ url('admin/dashboard') }}")
+                                });;
+
+                                
                             } else if (res.data.user.role_id == 2) {
-                                window.location.replace("{{ url('/') }}")
+
+                                swal({
+                                    title: "Perfecto!",
+                                    text: res.data.msg,
+                                    icon: "success"
+                                }).then(function() {
+                                    window.location.replace("{{ url('/') }}")
+                                });;
+
                             }
 
                         }

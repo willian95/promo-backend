@@ -27,7 +27,7 @@
                             <td v-if="sale.has_delivery == 1">Sí</td>
                             <td v-else>No</td>
                             <td>
-                                <button class="btn btn-success" v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'en proceso'" data-toggle="modal" data-target="#saleModal" @click="showModal(sale)">Entregar</button>
+                                <button class="button" v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'en proceso'" data-toggle="modal" data-target="#saleModal" @click="showModal(sale)">Entregar</button>
                             </td>
                         </tr>
                     </tbody>
@@ -80,7 +80,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-success" @click="deliver()">Entregar</button>
+                        <button class="button" @click="deliver()" data-dismiss="modal">Entregar</button>
 
                     </div>
                     <div class="modal-footer">
@@ -137,10 +137,17 @@
                     axios.post("{{ url('api/my-sales/deliver') }}",{id: this.sale.id}).then(res => {
 
                         if(res.data.success == true){
-                            alert(res.data.msg)
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            })
                             this.fetch(this.page)
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
 
                     })

@@ -3,10 +3,8 @@
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
-        <link rel="icon" href="assets/images/comida.svg">
-        <meta name="description" content="Free Template by Free-Template.co" />
-        <meta name="keywords" content="free bootstrap 4, free bootstrap 4 template, free website templates, free html5, free template, free website template, html5, css3, mobile first, responsive" />
-        <meta name="author" content="Free-Template.co" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{{ asset('/user/images/logo.png') }}">
         
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}">
@@ -26,6 +24,13 @@
         <link rel="stylesheet" href="{{ asset('user/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/media.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('/alertify/css/alertify.css') }}" >
+        <link rel="stylesheet" href="{{ asset('/alertify/css/themes/bootstrap.css') }}" >
+        
+
+        @stack("css")
+
     </head>
     <body>
 
@@ -51,23 +56,21 @@
                     <li class="nav-item" v-if="authCheck == true">
                         <a class="nav-link" href="{{ url('/explorer') }}">Explorar</a>
                     </li>
-                    <li class="nav-item" v-if="authCheck == true">
-                        <a class="nav-link" href="{{ url('/my-purchases') }}">Mis Compras</a>
-                    </li>
-                    <li class="nav-item" v-if="authCheck == true">
-                        <a class="nav-link" href="{{ url('/my-sales') }}">Mis Ventas</a>
-                    </li>
-                    <li class="nav-item" v-if="authCheck == true">
-                        <a class="nav-link" href="{{ url('/my-profile') }}">Mi Perfil</a>
-                    </li>
-                    <li class="nav-item" v-if="authCheck == true">
-                        <a class="nav-link" href="#" @click="logout()">Cerrar sesión</a>
-                    </li>
                     <!--<li class="nav-item"><a href="#menu" class="nav-link">Menú</a></li>
                     <li class="nav-item"><a href="#footer" class="nav-link">Contacto</a></li>-->
                 </ul>
-                <button class="button" v-if="name">@{{ name }}</button>
+                <div class="dropdown">
+                    <button @click="showListUser()" v-if="name" class="button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @{{ name }}
+                    </button>
+                    <div id="list-user" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ url('/my-profile') }}">Mi Perfil</a>
+                        <a class="dropdown-item" href="{{ url('/my-sales') }}">Mis Ventas</a>
+                        <a class="dropdown-item" href="{{ url('/my-purchases') }}">Mis Compras</a>
+                        <a class="dropdown-item" href="#" @click="logout()">Cerrar sesión</a>
+                    </div>
                 </div>
+             
             </div>
         </nav>
 
@@ -75,6 +78,7 @@
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('user/js/jquery.min.js') }}"></script>
         <script src="{{ asset('user/js/popper.min.js') }}"></script>
         <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
@@ -91,6 +95,7 @@
         <script src="{{ asset('user/js/setting-slick.js') }}"></script>
 
         <script src="{{ asset('user/js/main.js') }}"></script>
+        <script src="{{ asset('/user/alertify/alertify.min.js') }}"></script>
         <!--<script src="{{ asset('/js/jquery.min.js') }}"></script>
         <script src="{{ asset('/js/popper.min.js') }}"></script>
         <script src="{{ asset('/js/bootstrap.min.js') }}"></script>-->
@@ -125,6 +130,19 @@
                         this.name = ""
                         this.roleId = ""
                         window.location.href="{{ url('/') }}"
+                    },
+                    showListUser(){
+
+                        if($("#list-user").hasClass("show")){
+                            
+                            $("#list-user").removeClass("show")
+
+                        }else{
+
+                            $("#list-user").addClass("show")
+
+                        }
+
                     }
 
                 },

@@ -46,31 +46,31 @@
                 <img :src="'{{ url('/images/posts') }}'+'/'+image" style="width: 100%">
             </div>
             <div class="col-md-7 col-lg-7">
-                <p>
+                <p class="text-dark">
                     <strong>Vendedor: </strong><a :href="'{{ url('/') }}'+'/profile'+'/'+seller.id">@{{ seller.name }}</a>
                 </p>
-                <p>
+                <p class="text-dark">
                     <span style="font-weight: bold;">Categoria</span>: @{{ category }}
                 </p>
                 <p>@{{ description }}</p>
-                <p>
+                <p class="text-dark">
                     <strong>Fecha de venta: </strong> @{{ saleDate.toString().substring(0, 10) }}
                 </p>
-                <p>
+                <p class="text-dark">
                     <strong>Fecha de finalización: </strong> @{{ dueDate.toString().substring(0, 10) }}
                 </p>
-                <p v-if="seller.open_days != null">
+                <p v-if="seller.open_days != null" class="text-dark">
                     <strong>Establecimiento abierto: </strong> @{{ seller.open_days.replace(/,/g, ", ") }}
                 </p>
-                <p v-if="seller.deliver_days != null">
+                <p v-if="seller.deliver_days != null" class="text-dark">
                     <strong>Delivery: </strong> @{{ seller.deliver_days.replace(/,/g, ", ") }}
                 </p>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin-top: 20px;">
 
-            <div class="col-lg-10 offset-lg-2 col-md-8 offset-md-2" v-for="(product, index) in products">
+            <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2" v-for="(product, index) in products">
                 <div class="card">
                     <div class="row">
                         <div class="col-md-4">
@@ -82,9 +82,9 @@
                             
                         </div>
                         <div class="col-md-4">
-                            <p><strong>Precio: </strong>$ @{{ parseInt(product.price) }}</p>
-                            
-                            <input readonly :id="'amount-'+index" type="text" class="form-control amount-input" style="width: 60px" :value="product.amount">
+                            <p class="text-dark"><strong>Precio: </strong>$ @{{ parseInt(product.price) }}</p>
+                            <p class="text-dark"><strong>Cantidad:</strong> @{{ product.amount }}</p>
+                            <!--<input readonly :id="'amount-'+index" type="text" class="form-control amount-input" style="width: 60px" :value="product.amount">-->
                         </div>
                     </div>
                 </div>
@@ -92,9 +92,9 @@
 
         </div>
 
-        <div class="row">
+        <div class="row" style="margin-top: 15px;">
             <div class="col-12">
-                <h3 v-if="delivery == true">Delivery Activo</h3>
+                <h3 style="color: #b2bec3" class="text-center" v-if="delivery == true">Delivery Activo</h3>
                 <h3 class="text-center">Total: $ @{{ total }}</h3>
                 <h3 class="text-center" v-if="purchaseType == 'reservation' && total > 0">Total a pagar por reservación: $ @{{ parseInt((total / 2)+1)  }}</h3>
             </div>
@@ -102,10 +102,10 @@
 
         <div v-if="authCheck == true">
 
-            <h5 v-if="todaysDate < saleDate">La publicación aún no ha llegado al periodo de pago</h5>
-            <h5 v-if="todaysDate > dueDate">El periodo de pago de esta publicación ha pasado</h5>
-            <h5 v-if="paymentsAproved >= 1 && paymentsWaiting == 1 || paymentsWaiting > 1">Ya ha realizado los pagos respectivos, espere la confirmación de los mismos</h5>
-            <div v-else>
+            <h5 class="text-center" v-if="todaysDate < saleDate" style="color: #b2bec3">La publicación aún no ha llegado al periodo de pago</h5>
+            <h5 class="text-center" v-if="todaysDate > dueDate" style="color: #b2bec3">El periodo de pago de esta publicación ha pasado</h5>
+            <h5 class="text-center" v-if="paymentsAproved >= 1 && paymentsWaiting == 1 || paymentsWaiting > 1" style="color: #b2bec3">Ya ha realizado los pagos respectivos, espere la confirmación de los mismos</h5>
+            <div v-else class="text-center">
                 <a href="#" v-if="todaysDate >= saleDate && todaysDate <= dueDate && isPaymentComplete == false"><button class="res button" style="margin-top: 3%;" data-toggle="modal" data-target="#shop">@{{ purchaseButtonText }}</button></a>
             </div>
             
@@ -114,7 +114,7 @@
             <h3 >Para comprar debes iniciar sesión</h3>
         </div>
 
-        <div class="container">
+        <div class="container" style="margin-top: 20px;">
             <div class="row">
                 <div class="col-12">
                     <h3 class="text-center">Pagos</h3>
@@ -201,9 +201,10 @@
                     <div v-if="paymentMethod == 'webpay'">
 
                         <div class="text-center">
-                            <button class="btn btn-success" @click="webpay()">
+                            <!--<button class="btn btn-success" @click="webpay()">
                                 Webpay
-                            </button>
+                            </button>-->
+                            <img @click="webpay()" src="{{ asset('/user/images/article.jpg') }}" alt="" style="width: 200px; cursor: pointer;">
                         </div>
 
                     </div>
@@ -318,11 +319,20 @@
 
                         if(res.data.success == true){
 
-                            alert(res.data.msg)
-                            window.location.href="{{ url('/') }}"
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            }).then(() => {
+                                window.location.href="{{ url('/') }}"
+                            })
+                            
 
                         }else{
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
                         }
 
                     })

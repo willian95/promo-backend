@@ -142,7 +142,11 @@
 
                         if(res.data.success == true){
 
-                            alert(res.data.msg)
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            })
                             this.holderName = ""
                             this.holderRut = ""
                             this.bankName = ""
@@ -151,7 +155,10 @@
                             this.fetch()
                         }else{
 
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
 
                         }
 
@@ -170,7 +177,11 @@
 
                         if(res.data.success == true){
 
-                            alert(res.data.msg)
+                            swal({
+                                title: "Perfecto!",
+                                text: res.data.msg,
+                                icon: "success"
+                            })
                             this.holderName = ""
                             this.holderRut = ""
                             this.bankName = ""
@@ -180,7 +191,10 @@
                             
                         }else{
 
-                            alert(res.data.msg)
+                            swal({
+                                text: res.data.msg,
+                                icon: "error"
+                            })
 
                         }
 
@@ -225,11 +239,18 @@
                         axios.post("{{ url('/api/admin/bank/delete/') }}", {id: id}).then(res => {
 
                             if(res.data.success == true){
-                                alert(res.data.msg)
+                                swal({
+                                    title: "Perfecto!",
+                                    text: res.data.msg,
+                                    icon: "success"
+                                })
                                 this.fetch()
                             }else{
 
-                                alert(res.data.msg)
+                                swal({
+                                    text: res.data.msg,
+                                    icon: "error"
+                                })
 
                             }
 

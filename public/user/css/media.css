@@ -1,4 +1,14 @@
 @media (min-width: 0px) and (max-width: 767px) {
+
+  #section-register .mask{
+    display: none;
+  }
+
+  #section-login img{
+    display: none;
+  }
+
+
 a.navbar-brand {
     width: 60%;
 }
@@ -11,17 +21,6 @@ a.navbar-brand {
     text-align: center;
 }
 
-.mask{
-      border-bottom-left-radius:inherit!important;
-    border-bottom-right-radius: inherit!important;
-}
-
-
-.ftco-cover img{
-        border-bottom-left-radius:inherit!important;
-    border-bottom-right-radius: inherit!important;
-      height: 91vh;
-}
 
 .icons{
   display: block;
@@ -121,10 +120,6 @@ a.navbar-brand {
 
   @media (min-width: 768px) and (max-width: 1024px) {
 
-.ftco-cover img {
-
-    height: 40vh;
-  }
   div#contact-section {
     padding-top: 0px;
 }
@@ -151,4 +146,5 @@ a.navbar-brand {
 
     width: 50%;
 }
+
 }
