@@ -82,7 +82,7 @@ class AuthController extends Controller
 
             });
 
-            return response()->json(["success" => true, "msg" => "Usuario registrado", "token" => $token, "user" => $user]);
+            return response()->json(["success" => true, "msg" => "Usuario registrado. Verifica tu bandeja de entrada", "token" => $token, "user" => $user]);
 
         }catch(\Exception $e){
 
