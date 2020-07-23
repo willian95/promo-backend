@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <label for="passwordRepeat">Repetir clave</label>
-                                    <input type="passwordRepeat" class="form-control" placeholder="Confirmar Clave" v-model="password_confirmation" >
+                                    <input type="password" id="passwordRepeat" class="form-control" placeholder="Confirmar Clave" v-model="password_confirmation" >
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <label for="address">Dirección</label>
