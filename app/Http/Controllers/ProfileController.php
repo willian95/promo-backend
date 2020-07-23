@@ -81,7 +81,7 @@ class ProfileController extends Controller
             $authUser = JWTAuth::parseToken()->toUser();
             $user = User::where("id", $authUser->id)->first();
             $user->name = $request->name;
-            $user->address = $request->address;
+            $user->address = str_replace("'", " ",$request->address);
             $user->location_id = $request->commune;
             $user->telephone = $request->telephone;
             $user->web_site = $request->webSite;
