@@ -169,7 +169,7 @@
     <footer>
         <div class="footer container" id="footer">
             <div class="logo-footer">
-                <img src="{{ asset('user/images/logo.jpg') }}">
+                <img src="{{ asset('user/images/logo.png') }}">
             </div>
             <div class="about-footer">
                 <h6 style="font-weight: bold">Sobre Nosotros</h6>
