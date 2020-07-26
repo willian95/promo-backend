@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <div class="container" style="padding-top: 150px;" id="dev-area">
+    <div class="container pt-150"  id="dev-area">
 
         <div class="row">
             <div class="col-md-5 mb-4">

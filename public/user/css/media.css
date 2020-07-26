@@ -8,6 +8,10 @@
     display: none;
   }
 
+  .pt-150{
+    padding-top: unset;
+  }
+
 
 a.navbar-brand {
     width: 60%;
