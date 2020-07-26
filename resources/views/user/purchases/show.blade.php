@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <div class="container detail" id="dev-area">
+    <div class="container detail pt-150" id="dev-area">
 
         <!--<div class="info-detail" style="margin-top: 50px;">
             <div class="info-img" style="width: 100%">
