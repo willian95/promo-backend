@@ -52,8 +52,8 @@
                             
                         </div>
                         <div class="col-md-4">
-                            <p><strong>Precio: </strong>$ @{{ parseInt(product.price + (product.price * typePrice)) + 1 }}</p>
-                            <p class="text-dark" v-if="discountPercentage > 0"><strong>Precio por hoy: </strong>$ @{{ parseInt((product.price) - (product.price * (discountPercentage/100)) + (product.price * typePrice)) + 1 }}</p>
+                            <p><strong>Precio: </strong>$ @{{ parseInt(parseInt(product.price + (product.price * typePrice)) + 1).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
+                            <p class="text-dark" v-if="discountPercentage > 0"><strong>Precio por hoy: </strong>$ @{{ parseInt(parseInt((product.price) - (product.price * (discountPercentage/100)) + (product.price * typePrice)) + 1).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
                            <!--<button class="btn btn-success" @click="substractUnit(index)">-</button> <input :id="'amount-'+index" type="text" class="form-control amount-input" style="width: 60px" value="0"> <button class="btn btn-success" @click="addUnit(index, product.amount)">+</button>-->
                            <div class="cantidad_btn">
                                 <button class="btn" @click="substractUnit(index)">-</button>
@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-md-4 offset-md-4">
                 <div class="text-center" v-if="hasDelivery == 1">
-                    <p class="text-dark"><strong>Precio del delivery:</strong> @{{ deliveryPrice }}</p>
+                    <p class="text-dark"><strong>Precio del delivery:</strong> @{{ parseInt(deliveryPrice).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="lunes" id="defaultCheck1" v-model="delivery" @click="checkDelivery()" :disabled="total <= 1">
                         <label class="form-check-label" for="defaultCheck1" style="color:#000">
@@ -83,8 +83,8 @@
             </div>
             <div class="col-12">
                 
-                <h3 class="text-center">Total: $ @{{ total }}</h3>
-                <h3 class="text-center" v-if="purchaseType == 'reservation' && total > 0">Total a pagar por reservación: $ @{{ parseInt((total / 2)+1)  }}</h3>
+                <h3 class="text-center">Total: $ @{{ parseInt(total).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</h3>
+                <h3 class="text-center" v-if="purchaseType == 'reservation' && total > 0">Total a pagar por reservación: $ @{{ parseInt((total / 2)+1).toString().replace(/\B(?=(\d{3})+\b)/g, ".")  }}</h3>
             </div>
         </div>
 
