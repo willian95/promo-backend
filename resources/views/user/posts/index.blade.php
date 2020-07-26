@@ -107,10 +107,12 @@
                         <tr v-for="(promo, index) in promos">
                             <td>@{{ index + 1 }}</td>
                             <td>@{{ promo.title }}</td>
-                            <td>@{{ promo.price }}</td>
+                            <td>@{{ parseInt(promo.price).toString().replace(.replace(/\B(?=(\d{3})+\b)/g, ".")) }}</td>
                             <td>@{{ promo.amount }}</td>
                             <td>
-                                <button class="btn btn-danger" @click="deletePromo(index)">eliminar</button>
+                                <button class="btn btn-danger" @click="deletePromo(index)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     </tbody>

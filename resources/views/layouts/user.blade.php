@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="{{ asset('user/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/media.css') }}">
+        <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
 
         <link rel="stylesheet" href="{{ asset('owlCarousel/assets/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('owlCarousel/assets/owl.theme.default.min.css') }}">
