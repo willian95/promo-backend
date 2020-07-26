@@ -63,14 +63,14 @@
                         if(res.data.success == true){
                             this.latestPosts = res.data.posts
                         }else{
-                            alert(res.data.msg)
+                            alertify.error(res.data.msg)
                         }
                         //this.pages = Math.ceil(res.data.categoriesCount / 20)
 
                     })
                     .catch(err => {
                         $.each(err.response.data.errors, function(key, value){
-                            alert(value)
+                            alertify.error(value[0])
                         });
                     })
 
@@ -100,7 +100,7 @@
                         })
                         .catch(err => {
                             $.each(err.response.data.errors, function(key, value){
-                                alert(value)
+                                alertify.error(value[0])
                             });
                         })
 

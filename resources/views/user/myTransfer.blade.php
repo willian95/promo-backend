@@ -107,7 +107,7 @@
 
                 qualify(){
 
-                    alert("Usuario calificado")
+                    alertify.success("Usuario calificado")
 
                 },
 

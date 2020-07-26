@@ -145,7 +145,7 @@
 
                     if(this.commune == ""){
 
-                        alert("Debe seleccionar una comuna")
+                        alertify.error("Debe seleccionar una comuna")
 
                     }else{
 

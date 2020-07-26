@@ -125,7 +125,7 @@
                     })
                     .catch(err => {
                         $.each(err.response.data.errors, function(key, value) {
-                            alert(value)
+                            alertify.error(value[0])
                             //alertify.error(value);
                             //alertify.alert('Basic: true').set('basic', true); 
                         });

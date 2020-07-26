@@ -383,8 +383,8 @@
                     })
                     .catch(err => {
                         $.each(err.response.data.errors, function(key, value) {
-                            alert(value)
-                            //alertify.error(value);
+                            //alert(value)
+                            alertify.error(value[0]);
                             //alertify.alert('Basic: true').set('basic', true); 
                         });
                     })

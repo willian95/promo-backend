@@ -25,6 +25,9 @@
 
         <link rel="stylesheet" href="{{ url('admin/assets/libs/perfect-scrollbar/perfect-scrollbar.css') }}">
 
+        <link rel="stylesheet" href="{{ asset('/alertify/css/alertify.css') }}" >
+        <link rel="stylesheet" href="{{ asset('/alertify/css/themes/bootstrap.css') }}" >
+
         <title>Comilandia</title>
     </head>
     <body>
@@ -78,6 +81,7 @@
         <script src="{{ url('admin/assets/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
         <!--<script src="{{ url('admin/assets/js/demo.js') }}"></script>-->
+        <script src="{{ asset('/user/alertify/alertify.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script src="{{ url('admin/assets/js/analytics.js') }}"></script>
         <script src="{{ asset('/js/app.js') }}"></script>
