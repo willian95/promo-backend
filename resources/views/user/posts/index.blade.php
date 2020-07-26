@@ -26,7 +26,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="image">Imagen</label>
-                    <input type="file" class="form-control" id="image" ref="file" @change="onImageChange" accept="image/*">
+                    <input type="file" class="form-control" id="image" ref="file" @change="onImageChange" accept="image/*" style="font-size: 14px;">
 
                     <img id="blah" :src="imagePreview" class="full-image" style="margin-top: 10px; width: 40%">
                     
