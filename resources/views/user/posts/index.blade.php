@@ -52,6 +52,7 @@
                     <p v-if="hasDelivery == 1">Sí</p>
                     <p v-else>No</p>
                 </div>
+                <small>Para cambiar ésta opción debes hacerlo desde el perfil</small>
             </div>
             <div class="col-md-3" v-if="hasDelivery == 1">
                 <div class="form-group">
