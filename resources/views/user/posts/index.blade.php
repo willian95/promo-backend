@@ -23,8 +23,13 @@
                     </select>
                 </div>
                 <small v-if="type == 1">Puedes publicar 3 promociones</small>
+                <p><small v-if="type == 1">Se añadirá un 0,05% de comisión</small></p>
+
                 <small v-if="type == 2">Puedes publicar 5 promociones</small>
+                <p><small v-if="type == 2">Se añadirá un 0,06% de comisión</small></p>
+
                 <small v-if="type == 3">Puedes publicar 8 promociones</small>
+                <p><small v-if="type == 3">Se añadirá un 0,08% de comisión</small></p>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
