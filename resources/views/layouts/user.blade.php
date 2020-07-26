@@ -32,6 +32,7 @@
         <link rel="stylesheet" href="{{ asset('/alertify/css/alertify.css') }}" >
         <link rel="stylesheet" href="{{ asset('/alertify/css/themes/bootstrap.css') }}" >
         
+        
 
         @stack("css")
 

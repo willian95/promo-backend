@@ -25,7 +25,7 @@
 
         <div class="row">
 
-            <div class="col-4">
+            <div class="col-md-4 col-lg-3">
 
                 <div class="card" v-for="post in posts" style="padding-bottom: 20px;">
                     <div class="img-product">
