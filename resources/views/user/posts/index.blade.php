@@ -49,8 +49,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="">¿Cuenta con delivery?</label>
-                    <p v-if="hasDelivery == 1"><strong>Sí</strong></p>
-                    <p v-else><strong>No</strong></p>
+                    <p class="text-dark" v-if="hasDelivery == 1"><strong>Sí</strong></p>
+                    <p class="text-dark" v-else><strong>No</strong></p>
                 </div><!---->
                 <small>Para cambiar ésta opción debes hacerlo desde el perfil</small>
             </div>
