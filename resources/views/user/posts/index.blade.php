@@ -107,7 +107,7 @@
                         <tr v-for="(promo, index) in promos">
                             <td>@{{ index + 1 }}</td>
                             <td>@{{ promo.title }}</td>
-                            <td>@{{ parseInt(promo.price).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
+                            <td>$ @{{ parseInt(promo.price).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
                             <td>@{{ promo.amount }}</td>
                             <td>
                                 <button class="btn btn-danger" @click="deletePromo(index)">
@@ -268,31 +268,31 @@
                 checkDiscounts(){
 
                     if(this.discount1 < 5){
-                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
                         this.discount1 = 5
                     }
                     else if(this.discount2 < 5){
-                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
                         this.discount2 = 5
                     }
                     else if(this.discount3 < 5){
-                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
                         this.discount3 = 5
                     }
                     else if(this.discount4 < 5){
-                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
                         this.discount4 = 5
                     }
                     else if(this.discount5 < 5){
-                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
                         this.discount5 = 5
                     }
                     else if(this.discount6 < 5){
-                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
                         this.discount6 = 5
                     }
                     else if(this.discount7 < 5){
-                        alert("porcentaje de descuento no puede ser menor a 5%")
+                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
                         this.discount7 = 5
                     }
 
@@ -356,7 +356,7 @@
                     })
                     .catch(err => {
                         $.each(err.response.data.errors, function(key, value) {
-                            alert(value)
+                            alertify.error(value[0])
                         });
                     })
 
@@ -423,32 +423,32 @@
                     let error = false
 
                     if(this.titleProduct == ""){
-                        alert("Debes agregar un titulo a tu promoción")
+                        alertify.error("Debes agregar un titulo a tu promoción")
                         error = true
                     }
 
                     if(this.descriptionProduct == ""){
-                        alert("Debes agregar una descripción a tu promoción")
+                        alertify.error("Debes agregar una descripción a tu promoción")
                         error = true
                     }
 
                     if(this.priceProduct == ""){
-                        alert("Debes agregar un precio a tu promoción")
+                        alertify.error("Debes agregar un precio a tu promoción")
                         error = true
                     }
 
                     if(this.amountProduct == ""){
-                        alert("Debes agregar una cantidad a tu promoción")
+                        alertify.error("Debes agregar una cantidad a tu promoción")
                         error = true
                     }
 
                     if(this.amountProduct < 5){
-                        alert("La cantidad mínima para publicar es de 5 unidades")
+                        alertify.error("La cantidad mínima para publicar es de 5 unidades")
                         error = true
                     }
 
                     if(this.picture2 ==" "){
-                        alert("Promoción debe tener una imagen")
+                        alertify.error("Promoción debe tener una imagen")
                         error = true
                     }
 
@@ -463,7 +463,7 @@
                         this.imagePreview2=""
                         $("#image2").val(null)
 
-                        alert("Promoción agregada")
+                        alertify.success("Promoción agregada")
 
 
                     }

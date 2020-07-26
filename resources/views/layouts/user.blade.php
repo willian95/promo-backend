@@ -83,6 +83,7 @@
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('user/js/jquery.min.js') }}"></script>
         <script src="{{ asset('user/js/popper.min.js') }}"></script>
@@ -159,6 +160,10 @@
                 }
 
             })
+        </script>
+
+        <script>
+            alertify.set('notifier','position', 'top-right');
         </script>
 
     </body>
