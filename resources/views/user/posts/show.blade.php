@@ -39,50 +39,6 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
-                <h3 class="text-center">Fechas de Promoción</h3>
-            </div>
-            @foreach($promoPeriod as $promo)
-
-                <div class="col-2">
-                    <div class="card promo-date" style="height: 120px;">
-                        <div class="card-body text-center">
-                            
-                            <p class="text-center"><strong>{{ $promo->locale('es')->dayName }}</strong></p>
-
-                            <small>
-                                {{ $promo->format('d-m-Y') }}
-                            </small>
-                        </div>
-                    </div>
-                </div>
-
-            @endforeach
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <h3 class="text-center">Fechas de Venta</h3>
-            </div>
-            @foreach($salePeriod as $sale)
-
-                <div class="col-2">
-                    <div class="card promo-date" style="height: 120px;">
-                        <div class="card-body">
-                            
-                            <p class="text-center"><strong>{{ $sale->locale('es')->dayName }}</strong></p>
-
-                            <small>
-                                {{ $sale->format('d-m-Y') }}
-                            </small>
-                        </div>
-                    </div>
-                </div>
-
-            @endforeach
-        </div>
-
-        <div class="row">
 
             <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2" v-for="(product, index) in products">
                 <div class="card">
@@ -152,6 +108,50 @@
                 <h3 v-if="todaysDate < startDate">Aún no ha comenzado la venta de esta promoción</h3>
                 <h3 v-if="todaysDate > dueDate">Esta promoción ya terminó</h3>
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-center">Fechas de Promoción</h3>
+            </div>
+            @foreach($promoPeriod as $promo)
+
+                <div class="col-md-2">
+                    <div class="card promo-date" style="height: 120px;">
+                        <div class="card-body text-center">
+                            
+                            <p class="text-center"><strong>{{ $promo->locale('es')->dayName }}</strong></p>
+
+                            <small>
+                                {{ $promo->format('d-m-Y') }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+            @endforeach
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-center">Fechas de Venta</h3>
+            </div>
+            @foreach($salePeriod as $sale)
+
+                <div class="col-md-2">
+                    <div class="card promo-date" style="height: 120px;">
+                        <div class="card-body">
+                            
+                            <p class="text-center"><strong>{{ $sale->locale('es')->dayName }}</strong></p>
+
+                            <small>
+                                {{ $sale->format('d-m-Y') }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+            @endforeach
         </div>
 
     <div class="modal fade" id="shop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

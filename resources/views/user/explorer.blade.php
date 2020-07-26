@@ -59,12 +59,12 @@
         
         </div>
 
-        <div class="row">
+        <div class="row" style="margin-top: 40px;">
             <div class="col-12">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item">
-                            <a class="page-link" href="#" v-for="index in pages" :key="index" @click="fetch(index)" >@{{ index }}</a>
+                            <a class="page-link text-dark" href="#" v-for="index in pages" :key="index" @click="fetch(index)" >@{{ index }}</a>
                         </li>
                     </ul>
                 </nav>
