@@ -22,6 +22,9 @@
                         <option :value="3">Premium</option>
                     </select>
                 </div>
+                <small v-if="type == 1">Puedes publicar 3 promociones</small>
+                <small v-if="type == 2">Puedes publicar 5 promociones</small>
+                <small v-if="type == 3">Puedes publicar 8 promociones</small>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
