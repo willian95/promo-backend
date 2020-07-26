@@ -11,8 +11,8 @@
         <link rel="stylesheet" href="{{ asset('user/css/open-iconic-bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/animate.css') }}">
         
-        <link rel="stylesheet" href="{{ asset('user/css/owl.carousel.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('user/css/owl.theme.default.min.css') }}">
+        <!--<link rel="stylesheet" href="{{ asset('user/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('user/css/owl.theme.default.min.css') }}">-->
         <link rel="stylesheet" href="{{ asset('user/css/magnific-popup.css') }}">
 
         <link rel="stylesheet" href="{{ asset('user/css/bootstrap-datepicker.css') }}">
@@ -24,6 +24,9 @@
         <link rel="stylesheet" href="{{ asset('user/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/media.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('owlCarousel/assets/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('owlCarousel/assets/owl.theme.default.min.css') }}">
 
         <link rel="stylesheet" href="{{ asset('/alertify/css/alertify.css') }}" >
         <link rel="stylesheet" href="{{ asset('/alertify/css/themes/bootstrap.css') }}" >
@@ -64,9 +67,10 @@
                         @{{ name }}
                     </button>
                     <div id="list-user" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ url('/my-profile') }}">Mi Perfil</a>
-                        <a class="dropdown-item" href="{{ url('/my-sales') }}">Mis Ventas</a>
-                        <a class="dropdown-item" href="{{ url('/my-purchases') }}">Mis Compras</a>
+                        <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-profile') }}">Mi Perfil</a>
+                        <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-sales') }}">Mis Ventas</a>
+                        <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-purchases') }}">Mis Compras</a>
+                        <a v-if="roleId == 1" class="dropdown-item" href="{{ url('/admin/dashboard') }}">Dashboard</a>
                         <a class="dropdown-item" href="#" @click="logout()">Cerrar sesión</a>
                     </div>
                 </div>
@@ -86,7 +90,7 @@
         <script src="{{ asset('user/js/jquery.waypoints.min.js') }}"></script>
         <script src="{{ asset('user/js/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('user/js/jquery.magnific-popup.min.js') }}"></script>
-
+    
         <script src="{{ asset('user/js/bootstrap-datepicker.js') }}"></script>
         <script src="{{ asset('user/js/jquery.timepicker.min.js') }}"></script>
         
@@ -96,6 +100,7 @@
 
         <script src="{{ asset('user/js/main.js') }}"></script>
         <script src="{{ asset('/user/alertify/alertify.min.js') }}"></script>
+        <script src="{{ asset('owlCarousel/owl.carousel.min.js') }}"></script>
         <!--<script src="{{ asset('/js/jquery.min.js') }}"></script>
         <script src="{{ asset('/js/popper.min.js') }}"></script>
         <script src="{{ asset('/js/bootstrap.min.js') }}"></script>-->

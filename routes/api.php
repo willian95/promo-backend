@@ -82,4 +82,11 @@ Route::prefix('admin')->group(function (){
     Route::get("/users/fetch/{page}", "UserController@fetch");
     Route::post("/users/delete", "UserController@delete");
 
+    Route::get("/latest/posts/fetch", "AdminController@latestPosts");
+    
+    Route::post("/ads/store", "AdsController@store");
+    Route::post("/ads/update", "AdsController@update");
+    Route::post("/ads/delete", "AdsController@delete");
+    Route::get("/ads/fetch/{page}", "AdsController@fetch");
+
 });

@@ -115,7 +115,7 @@
     </section>
 
     <!-- MENU DESTACADO -->
-    <section class="menu-destacado">
+    <!--<section class="menu-destacado">
         <div class="menu-fav">
             <div class="fav-1">
                 <div class="img-fav">
@@ -146,8 +146,24 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!-- FIN MENU DESTACADO -->
+
+    @foreach(App\Ad::inRandomOrder()->take(10)->get() as $ad)
+
+        <div class="owl-carousel owl-theme">
+            <div class="item">
+                <a href="{{ $ad->link }}" target="_blank">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="{{ url('/images/ads/'.$ad->image) }}" alt="" style="width: 100%;">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    @endforeach
 
     <!-- FOOTER -->
     <footer>
@@ -227,5 +243,26 @@
 
         })
     </script>
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            loop:false,
+            dotsEach:false,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+        })
+    </script>
+    
 
 @endpush

@@ -53,6 +53,8 @@ Route::get("/admin/transfers/index", "PaymentController@transferViews");
 Route::get("/admin/posts/index", "PostController@adminIndex");
 Route::get("/admin/users/index", "UserController@index");
 
+Route::get("/admin/ads/index", "AdsController@index");
+
 //Route::post("/register", "ContactUserController@store");
 
 

@@ -145,6 +145,7 @@ class CheckoutController extends Controller
 
 				$purchase = Purchase::where("id", $_SESSION["purchase_id"])->first();
 				$purchase->is_payment_complete = 1;
+				$purchase->payment_completed_at = Carbon::now();
 				$purchase->shipping_state = "en proceso";
 				$purchase->update();
 
@@ -219,8 +220,11 @@ class CheckoutController extends Controller
 				$purchase->user_id = $_SESSION["user_id"];
 				$purchase->price = $cartPurchase->price;
 				if($cartPurchase->payment_type == "reservation"){
+					$purchase->reservated_at = Carbon::now();
 					$purchase->is_payment_complete = 0;
 				}else{
+					$purchase->reservated_at = Carbon::now();
+					$purchase->payment_completed_at = Carbon::now();
 					$purchase->is_payment_complete = 1;
 				}
 				$purchase->has_delivery = $cartPurchase->has_delivery;

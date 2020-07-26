@@ -3,10 +3,27 @@
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta name="description" content="Empire is one of the unique admin template built on top of Bootstrap 4 framework. It is easy to customize, flexible code styles, well tested, modern & responsive are the topmost key factors of Empire Dashboard Template" />
+        <meta name="keywords" content="bootstrap admin template, dashboard template, backend panel, bootstrap 4, backend template, dashboard template, saas admin, CRM dashboard, eCommerce dashboard">
+        <meta name="author" content="" />
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ url('admin/assets/fonts/fontawesome.css') }}">
+        <link rel="stylesheet" href="{{ url('admin/assets/fonts/ionicons.css') }}">
+        <link rel="stylesheet" href="{{ url('admin/assets/fonts/linearicons.css') }}">
+        <link rel="stylesheet" href="{{ url('admin/assets/fonts/open-iconic.css') }}">
+        <link rel="stylesheet" href="{{ url('admin/assets/fonts/pe-icon-7-stroke.css') }}">
+        <link rel="stylesheet" href="{{ url('admin/assets/fonts/feather.css') }}">
+
+        <link rel="stylesheet" href="{{ url('admin/assets/css/bootstrap-material.css') }}">
+        <link rel="stylesheet" href="{{ url('admin/assets/css/shreerang-material.css') }}">
+        <link rel="stylesheet" href="{{ url('admin/assets/css/uikit.css') }}">
+
+        <link rel="stylesheet" href="{{ url('admin/assets/libs/perfect-scrollbar/perfect-scrollbar.css') }}">
 
         <title>Comilandia</title>
     </head>
@@ -33,6 +50,9 @@
                         <a class="nav-link" href="{{ url('/admin/posts/index') }}">Publicaciones</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/admin/ads/index') }}">Publicidades</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url('/admin/users/index') }}">Usuarios</a>
                     </li>
                     <li class="nav-item">
@@ -46,10 +66,21 @@
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('admin/js/popper.min.js') }}"></script>
-        <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('admin/js/app.js') }}"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="{{ url('admin/assets/js/pace.js') }}"></script>
+        <script src="{{ url('admin/assets/js/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ url('admin/assets/libs/popper/popper.js') }}"></script>
+        <script src="{{ url('admin/assets/js/bootstrap.js') }}"></script>
+        <script src="{{ url('admin/assets/js/sidenav.js') }}"></script>
+        <script src="{{ url('admin/assets/js/layout-helpers.js') }}"></script>
+        <script src="{{ url('admin/assets/js/material-ripple.js') }}"></script>
+
+        <script src="{{ url('admin/assets/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+
+        <!--<script src="{{ url('admin/assets/js/demo.js') }}"></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="{{ url('admin/assets/js/analytics.js') }}"></script>
+        <script src="{{ asset('/js/app.js') }}"></script>
 
         @stack("scripts")
 
