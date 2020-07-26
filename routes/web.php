@@ -37,6 +37,23 @@ Route::get("/profile/{id}", "ProfileController@show");
 
 Route::get("/explorer", "ExplorerController@index");
 
+Route::get("/mail-test", function(){
+
+    $messageUser = "Hola prueba! Haz click en el siguiente enlace para validar tu correo";
+    $to_email = "rodriguezwillian95@gmail.com";
+    $to_name = "willian";
+    $registerHash = "sdkjfdklfsdlf";
+    
+    $data = ["messageMail" => $messageUser, "registerHash" => $registerHash];
+    \Mail::send("emails.confirmRegisterMail", $data, function($message) use ($to_name, $to_email) {
+
+        $message->to($to_email, $to_name)->subject("¡Valida tu correo!");
+        $message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+
+    });
+
+});
+
 Route::get("/admin/dashboard", function(){
 
     return view("admin.index");

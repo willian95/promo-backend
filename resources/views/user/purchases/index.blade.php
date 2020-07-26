@@ -20,7 +20,7 @@
                     <tbody>
                         <tr v-for="purchase in purchases" v-if="purchase.post">
                             <td>@{{ purchase.post.title }}</td>
-                            <td>$ @{{ parseInt(purchase.total) }}</td>
+                            <td>$ @{{ parseInt(purchase.total).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
                             <td>
                                 <span v-if="purchase.payment_type == 'reservation'">Reservación</span>
                                 <span v-else>Compra</span>

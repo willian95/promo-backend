@@ -82,7 +82,7 @@
                             
                         </div>
                         <div class="col-md-4">
-                            <p class="text-dark"><strong>Precio: </strong>$ @{{ parseInt(product.price) }}</p>
+                            <p class="text-dark"><strong>Precio: </strong>$ @{{ parseInt(product.price).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
                             <p class="text-dark"><strong>Cantidad:</strong> @{{ product.amount }}</p>
                             <!--<input readonly :id="'amount-'+index" type="text" class="form-control amount-input" style="width: 60px" :value="product.amount">-->
                         </div>
@@ -96,7 +96,7 @@
             <div class="col-12">
                 <h3 style="color: #b2bec3" class="text-center" v-if="delivery == true">Delivery Activo</h3>
                 <h3 class="text-center">Total: $ @{{ total }}</h3>
-                <h3 class="text-center" v-if="purchaseType == 'reservation' && total > 0">Total a pagar por reservación: $ @{{ parseInt((total / 2)+1)  }}</h3>
+                <h3 class="text-center" v-if="purchaseType == 'reservation' && total > 0">Total a pagar por reservación: $ @{{ parseInt((total / 2)+1).toString().replace(/\B(?=(\d{3})+\b)/g, ".")  }}</h3>
             </div>
         </div>
 
@@ -133,7 +133,7 @@
                             <tr v-for="payment in payments">
                                 <td>@{{ payment.transfer }}</td>
                                 <td>@{{ payment.created_at.toString().substring(0, 10) }}</td>
-                                <td>@{{ parseInt(payment.amount_to_pay) }}</td>
+                                <td>@{{ parseInt(payment.amount_to_pay).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
                                 <td>@{{ payment.state }}</td>
                             </tr>
                         </tbody>
