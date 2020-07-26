@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin-top: 30px;">
 
             <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2" v-for="(product, index) in products">
                 <div class="card">
