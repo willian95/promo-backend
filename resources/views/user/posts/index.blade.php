@@ -3,6 +3,11 @@
 @section("content")
 
     <div class="container" id="dev-area" style="padding-top: 150px;">
+
+        <div class="cover" v-if="loading == true">
+            <div class="loader"></div>
+        </div>
+
         <div class="row">
             <div class="col-12">
                 <h3 class="text-center">Publicación</h3>
@@ -236,6 +241,7 @@
             data(){
                 return{
                     title:"",
+                    loading:false,
                     categories:[],
                     promos:[],
                     category:"",
@@ -312,7 +318,7 @@
 
                 },
                 store(){
-
+                    this.loading = true
                     axios.post("{{ url('api/post/store') }}", {
                         title:this.title,
                         type: this.type,
@@ -336,6 +342,7 @@
 
                     })
                     .then(res => {
+                        this.loading = false
                         //console.log("test-res", res)
                         if(res.data.success == true){
                             swal({
@@ -355,6 +362,7 @@
 
                     })
                     .catch(err => {
+                        this.loading = false
                         $.each(err.response.data.errors, function(key, value) {
                             alertify.error(value[0])
                         });

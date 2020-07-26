@@ -132,20 +132,6 @@ td .es-button-border-2:hover {
               </td>
              </tr> 
 
-             <tr style="border-collapse:collapse;"> 
-                      <td align="center" style="padding:0;Margin:0;"><h1 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:20px;font-style:normal;font-weight:bold;color:rgb(226, 206, 130);">Confirma tu entrega en el siguiente enlace</h1></td> 
-                     </tr> 
-
-
-             @if($messageTo == 'buyer')
-                     <tr style="border-collapse:collapse;"> 
-                      <td align="center" style="padding:10px;Margin:0;"><span class="es-button-border es-button-border-2" style="border-style:solid;border-color:rgb(226, 206, 130);background:rgb(226, 206, 130);border-width:0px;display:inline-block;border-radius:0px;width:auto;"><a href="{{ url('/my-purchases/purchase/'.$purchaseId) }}" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;font-size:16px;color:#FFFFFF;border-style:solid;border-color:#0c4572;border-width:10px 20px 10px 20px;display:inline-block;background:#0c4572;border-radius:0px;font-weight:normal;font-style:normal;line-height:19px;width:auto;text-align:center;">Ver compra</a></span></td> 
-                     </tr> 
-            @elseif($messageTo == 'seller')
-                <tr style="border-collapse:collapse;"> 
-                    <td align="center" style="padding:10px;Margin:0;"><span class="es-button-border es-button-border-2" style="border-style:solid;border-color:rgb(226, 206, 130);background:rgb(226, 206, 130);border-width:0px;display:inline-block;border-radius:0px;width:auto;"><a href="{{ url('/my-sales') }}" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;font-size:16px;color:#FFFFFF;border-style:solid;border-color:#0c4572;border-width:10px 20px 10px 20px;display:inline-block;background:#0c4572;border-radius:0px;font-weight:normal;font-style:normal;line-height:19px;width:auto;text-align:center;">Ver venta</a></span></td> 
-                </tr> 
-            @endif
                    </table></td> 
                  </tr> 
                </table></td> 
@@ -160,28 +146,3 @@ td .es-button-border-2:hover {
   </div>  
  </body>
 </html>
-
-<table>
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Articulo</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-            <th>Precio Total</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @foreach($purchaseProducts as $purchase)
-            <tr>
-                <td>{{ $loop->index + 1 }}</td>
-                <td>{{ $purchase->postProduct->title }}</td>
-                <td>{{ $purchase->amount }}</td>
-                <td>$ {{ $purchase->price }}</td>
-                <td>$ {{ $purchase->price * $purchase->amount }}</td>
-            </tr>
-        @endforeach
-        
-    </tbody>
-</table>
