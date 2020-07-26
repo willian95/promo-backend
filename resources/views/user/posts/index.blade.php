@@ -107,7 +107,7 @@
                         <tr v-for="(promo, index) in promos">
                             <td>@{{ index + 1 }}</td>
                             <td>@{{ promo.title }}</td>
-                            <td>@{{ parseInt(promo.price).toString().replace(.replace(/\B(?=(\d{3})+\b)/g, ".")) }}</td>
+                            <td>@{{ parseInt(promo.price).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
                             <td>@{{ promo.amount }}</td>
                             <td>
                                 <button class="btn btn-danger" @click="deletePromo(index)">
