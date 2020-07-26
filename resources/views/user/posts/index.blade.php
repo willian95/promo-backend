@@ -51,7 +51,7 @@
                     <label for="">¿Cuenta con delivery?</label>
                     <p v-if="hasDelivery == 1"><strong>Sí</strong></p>
                     <p v-else><strong>No</strong></p>
-                </div>
+                </div><!---->
                 <small>Para cambiar ésta opción debes hacerlo desde el perfil</small>
             </div>
             <div class="col-md-3" v-if="hasDelivery == 1">
