@@ -81,7 +81,7 @@ class PurchaseController extends Controller
 			$to_name = "admin";
             
             $data = ["messageMail" => $messageBuyer];
-            \Mail::send("emails.confirmMail", $data, function($message) use ($to_name, $to_email) {
+            \Mail::send("emails.confirmDeliverMail", $data, function($message) use ($to_name, $to_email) {
 
                 $message->to($to_email, $to_name)->subject("¡Platos entregados!");
                 $message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
