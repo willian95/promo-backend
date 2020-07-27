@@ -91,7 +91,7 @@
                                     <img :src="'{{ url('/') }}'+'/images/users/'+post.post.user.image" alt="">
                                 </p>
                                 <p class="text-center">
-                                    <a class="text-center" :href="'{{ url('/') }}'+'/profile'+'/'+post.post[0].user_id">@{{ post.post.user.name }}</a>
+                                    <a class="text-center" :href="'{{ url('/') }}'+'/profile'+'/'+post.post.user_id">@{{ post.post.user.name }}</a>
                                 </p>
                             </div>
 
@@ -101,7 +101,7 @@
                             <p>promedio: @{{ post.overall }} / 5</p>
                             <p>Descuento: <span class="price">- @{{ post.discountPercentage }}%</span></p>
                             <p class="text-center button-show-more">
-                                <a :href="'{{ url('/post/show') }}'+'/'+post.post[0].id">
+                                <a :href="'{{ url('/post/show') }}'+'/'+post.post.id">
                                 <button class="button">Ver más</button></a>
                             </p>
                         </div>
