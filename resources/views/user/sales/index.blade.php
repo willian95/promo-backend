@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <div class="container" id="dev-area" style="padding-top: 135px;">
+    <div class="container pt-150" id="dev-area">
         <div class="row"> 
             <div class="col-12">
                 <h3 class="text-center">Mis ventas</h3>

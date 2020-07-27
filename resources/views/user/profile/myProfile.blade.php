@@ -12,7 +12,7 @@
 
 @section("content")
 
-    <div class="container" id="dev-area" style="padding-top: 150px;">
+    <div class="container pt-150" id="dev-area">
 
         <div class="row">
 

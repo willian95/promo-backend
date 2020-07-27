@@ -2,12 +2,21 @@
 
 @section("content")
 
-    <div class="container" id="dev-area" style="padding-top: 150px;">
+    <div class="container pt-150" id="dev-area">
 
         <div class="row">
-            <div class="col-md-12">
-                <img :src="'{{ url('/') }}'+'/images/users/'+image" alt="" style="width: 20%;">
+
+            <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3">
+            
+                <div class="form-group">
+                    <p class="text-center">
+                        <img id="blah" :src="'{{ url('/') }}'+'/images/users/'+image" class="full-image" style="margin-top: 10px; width: 140px; height: 140px; object-fit:cover; border-radius: 50%; ">
+                    </p>
+                    
+                </div>
+            
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <h5 for="name"><strong>nombre:</strong> @{{ name }}</h5>
@@ -39,7 +48,7 @@
                     <a :href="instagram" target="_blank">Instagram</a>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group">
                     <h5 for="address"><strong>Dirección:</strong> @{{ address }}</h5>
                 </div>
