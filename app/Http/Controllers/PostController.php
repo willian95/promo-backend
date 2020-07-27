@@ -146,7 +146,7 @@ class PostController extends Controller
                     $discount->save();
                 }*/
 
-                return response()->json(["success" => true, "msg" => "Publicación realizada"]);
+                return response()->json(["success" => true, "msg" => "Publicación realizada. Su publicación será visible a partir de mañana"]);
 
             }else{
 

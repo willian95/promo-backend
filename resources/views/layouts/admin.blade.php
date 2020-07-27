@@ -43,12 +43,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/admin/category/index') }}">Categorías</a>
                     </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link" href="{{ url('/admin/bank/index') }}">Bancos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/admin/transfers/index') }}">Transferencias</a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/admin/posts/index') }}">Publicaciones</a>
                     </li>
