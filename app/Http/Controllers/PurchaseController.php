@@ -59,7 +59,7 @@ class PurchaseController extends Controller
         try{
 
             Purchase::where("id", $request->id)->update(["shipping_state" => "recibido"]);
-
+            $purchase = Purchase::where("id", $request->id)->first();
             $post = Post::where("id", $purchase->post_id)->first();
             $seller = User::where("id", $post->user_id)->first();
             $buyer = User::where("id", $purchase->user_id)->first();
