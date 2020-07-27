@@ -46,7 +46,7 @@ class RateController extends Controller
             $to_name = $seller->name;
             
             $data = ["messageMail" => $messageSeller];
-            \Mail::send("emails.confirmMail", $data, function($message) use ($to_name, $to_email) {
+            \Mail::send("emails.rateMail", $data, function($message) use ($to_name, $to_email) {
 
                 $message->to($to_email, $to_name)->subject("¡Has calificado al vendedor!");
                 $message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
