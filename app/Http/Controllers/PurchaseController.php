@@ -76,7 +76,7 @@ class PurchaseController extends Controller
 
             });
 
-            $messageBuyer = "Hola admin! El cliente ".$buyer->name." indica que el vendedor ".$buyer->name." ha entregado sus platos";
+            $messageBuyer = "Hola admin! El cliente ".$buyer->name." indica que el vendedor ".$seller->name." ha entregado sus platos";
             $to_email = env("ADMIN_MAIL");
 			$to_name = "admin";
             
