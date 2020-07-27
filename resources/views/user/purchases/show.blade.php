@@ -95,7 +95,7 @@
         <div class="row" style="margin-top: 15px;">
             <div class="col-12">
                 <h3 style="color: #b2bec3" class="text-center" v-if="delivery == true">Delivery Activo</h3>
-                <h3 class="text-center">Total: $ @{{ total }}</h3>
+                <h3 class="text-center">Total: $ @{{ parseInt(total).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</h3>
                 <h3 class="text-center" v-if="purchaseType == 'reservation' && total > 0">Total a pagar por reservación: $ @{{ parseInt((total / 2)+1).toString().replace(/\B(?=(\d{3})+\b)/g, ".")  }}</h3>
             </div>
         </div>
@@ -133,7 +133,7 @@
                             <tr v-for="payment in payments">
                                 <td>@{{ payment.transfer }}</td>
                                 <td>@{{ payment.created_at.toString().substring(0, 10) }}</td>
-                                <td>@{{ parseInt(payment.amount_to_pay).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
+                                <td> $ @{{ parseInt(payment.amount_to_pay).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
                                 <td>@{{ payment.state }}</td>
                             </tr>
                         </tbody>
