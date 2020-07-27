@@ -19,13 +19,13 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <h5 for="name"><strong>nombre:</strong> @{{ name }}</h5>
+                    <p for="name"><strong>nombre:</strong> @{{ name }}</p>
                     
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <h5 for="email"><strong>email:</strong> @{{ email }}</h5>
+                    <p for="email"><strong>email:</strong> @{{ email }}</p>
                 </div>
             </div>
             <div class="col-md-6" v-if="webSite != ''">
@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-6" v-if="telephone != ''">
                 <div class="form-group">
-                    <h5 for="telephone"><strong>Teléfono:</strong> @{{ telephone }}</h5>
+                    <p for="telephone"><strong>Teléfono:</strong> @{{ telephone }}</p>
                 </div>
             </div>
             <div class="col-md-6" v-if="facebook != ''">
@@ -50,14 +50,14 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <h5 for="address"><strong>Dirección:</strong> @{{ address }}</h5>
+                    <p for="address"><strong>Dirección:</strong> @{{ address }}</p>
                 </div>
             </div>
             <div class="col-md-6">
-                <h5 for="region"><strong>Region:</strong> @{{ region }}</h5>
+                <p for="region"><strong>Region:</strong> @{{ region }}</p>
             </div>
             <div class="col-md-6">
-                <h5 for="commune"><strong>Comuna:</strong> @{{ commune }} </h5>
+                <p for="commune"><strong>Comuna:</strong> @{{ commune }} </p>
             </div>
 
         </div>
