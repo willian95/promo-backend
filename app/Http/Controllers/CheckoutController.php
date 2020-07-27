@@ -209,8 +209,9 @@ class CheckoutController extends Controller
 
 				});
 
+				$purchasedProducts = ProductPurchase::with("postProduct")->where("purchase_id",$purchase->id)->get();
 
-				return view("user.successPayment", ["purchaseId" => $purchase->id]);
+				return view("user.successPayment", ["purchasedProducts" => $purchasedProducts]);
 
 			}else{
 
@@ -303,7 +304,9 @@ class CheckoutController extends Controller
 	
 				});
 
-				return view("user.successPayment", ["purchaseId" => $purchase->id]);
+				$purchasedProducts = ProductPurchase::with("postProduct")->where("purchase_id",$purchase->id)->get();
+
+				return view("user.successPayment", ["purchasedProducts" => $purchasedProducts]);
 
 			}
 

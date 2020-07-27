@@ -161,19 +161,6 @@ class PurchaseController extends Controller
 
     }
 
-    function getPurchasedProducts(){
-
-        try{
-
-            $user = JWTAuth::parseToken()->toUser();
-            
-
-        }catch(\Exception $e){
-            return response()->json(["success" => false, "msg" => "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
-        }
-
-    }
-
     /*function userFetch($page = 1){
 
         try{
