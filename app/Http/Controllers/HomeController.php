@@ -46,7 +46,7 @@ class HomeController extends Controller
                 }
 
                 $postArray[] = [
-                    "post" => $pots = $posts,
+                    "post" => $post,
                     "overall" => $overall,
                     "discountPercentage" => $discount
                 ]; 
@@ -96,7 +96,7 @@ class HomeController extends Controller
                 }
 
                 $postArray[] = [
-                    "post" => $pots = $posts,
+                    "post" => $post,
                     "overall" => $overall,
                     "discountPercentage" => $discount
                 ];
