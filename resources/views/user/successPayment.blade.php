@@ -20,7 +20,7 @@
                             <th>Articulo</th>
                             <th>Cantidad</th>
                             <th>Precio</th>
-                            <th>Precio tota</th>
+                            <th>Precio total</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,8 +30,8 @@
                                 <td class="text-center">{{ $loop->index + 1 }}</td>
                                 <td class="text-center">{{ $purchase->postProduct->title }}</td>
                                 <td class="text-center">{{ $purchase->amount }}</td>
-                                <td class="text-center">$ {{ $purchase->price }}</td>
-                                <td class="text-center">$ {{ $purchase->price * $purchase->amount }}</td>
+                                <td class="text-center">$ {{ number_format($purchase->price, 0, ",", ".") }}</td>
+                                <td class="text-center">$ {{ number_format($purchase->price * $purchase->amount, 0, ",", ".") }}</td>
                                 
                             </tr>
                         @endforeach
