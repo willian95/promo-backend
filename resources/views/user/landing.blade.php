@@ -96,7 +96,7 @@
                             </div>
 
                             <h5 class="text-center">@{{ post.post.title }}</h5>
-                            <p>@{{ post.post[0].commune.name }}</p>
+                            <p>@{{ post.post.commune.name }}</p>
                             <p class="description-post">@{{ post.post.description }}</p>
                             <p>promedio: @{{ post.overall }} / 5</p>
                             <p>Descuento: <span class="price">- @{{ post.discountPercentage }}%</span></p>
