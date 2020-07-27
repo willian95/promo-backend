@@ -210,7 +210,7 @@ class CheckoutController extends Controller
 				});
 
 
-				return view("user.successPayment");
+				return view("user.successPayment", ["purchaseId" => $purchase->id]);
 
 			}else{
 
@@ -303,7 +303,7 @@ class CheckoutController extends Controller
 	
 				});
 
-				return view("user.successPayment");
+				return view("user.successPayment", ["purchaseId" => $purchase->id]);
 
 			}
 
