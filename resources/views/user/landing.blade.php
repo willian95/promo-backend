@@ -155,9 +155,9 @@
             <div class="item">
                 <a href="{{ $ad->link }}" target="_blank">
                     <div class="card">
-                        <div class="card-body">
+                        <!--<div class="card-body">-->
                             <img src="{{ url('/images/ads/'.$ad->image) }}" alt="" style="width: 100%;">
-                        </div>
+                        <!--</div>-->
                     </div>
                 </a>
             </div>
