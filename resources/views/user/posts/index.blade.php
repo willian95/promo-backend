@@ -78,6 +78,7 @@
                 <div class="form-group">
                     <label for="saleDate">Fecha de venta</label>
                     <input type="date" id="saleDate" class="form-control" v-model="saleDate">
+                    <small>Debe existir un mínimo de 7 días para la fecha de venta</small>
                 </div>
             </div>
             <!--<div class="col-md-4">
