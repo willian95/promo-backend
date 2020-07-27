@@ -8,6 +8,7 @@ use App\Payment;
 use Carbon\Carbon;
 use App\ProductPurchase;
 use App\Post;
+use App\User;
 use JWTAuth;
 use App\Http\Requests\PurchaseStoreRequest;
 use Tymon\JWTAuth\Exceptions\JWTException;
