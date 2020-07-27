@@ -320,7 +320,7 @@
                 },
                 store(){
                     this.loading = true
-                    /*axios.post("{{ url('api/post/store') }}", {
+                    axios.post("{{ url('api/post/store') }}", {
                         title:this.title,
                         type: this.type,
                         categoryId:this.category,
@@ -367,7 +367,7 @@
                         $.each(err.response.data.errors, function(key, value) {
                             alertify.error(value[0])
                         });
-                    })*/
+                    })
 
                 },
                 onImageChange(e){
