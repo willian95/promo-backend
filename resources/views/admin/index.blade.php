@@ -13,7 +13,7 @@
                         <tr>
                             <th scope="col">Vendedor</th>
                             <th scope="col">Comprador</th>
-                            <th scope="col">Total</th>
+                            <th scope="col">Total</th><!---->
                             <th scope="col">Fecha de compra</th>
                         </tr>
                     </thead>
