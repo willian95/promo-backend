@@ -60,6 +60,8 @@ Route::post("/explorer/fetch", "ExplorerController@fetch");
 
 Route::post("/checkout/store/cart", "CheckoutController@storeCart");
 
+Route::post("/purchase/products", "PurchaseController@getPurchasedProducts");
+
 Route::prefix('admin')->group(function (){
 
     Route::post("/category/store", "CategoryController@store")->name('admin.category.store');

@@ -7,8 +7,31 @@
     <div class="container-fluid" id="admin-area">
         <div class="row">
             <div class="col-lg-6 col-md-6">
-                <h5 class="text-center">Ventas en los últimos 30 días</h5>
-                <canvas id="myChart"></canvas>
+                <h5 class="text-center">últimas compras</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Vendedor</th>
+                            <th scope="col">Comprador</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Fecha de compra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        @foreach(App\Purchase::with("user", "post", "post.user")->take(5)->get() as $purchase)
+                            <tr>
+                                <td>{{ $purchase->post->user->name }}</td>
+                                <td>{{ $purchase->user->name }}</td>
+                                <td>{{ number_format($purchase->total, 0, ",", ".") }}</td>
+                                <td>{{ substr($purchase->payment_completed_at, 0, 10) }}</td>
+                            </tr>
+                        @endforeach
+
+
+                    </tbody>
+                </table>
+                
             </div>
             <div class="col-lg-6 col-md-6">
                 <h5 class="text-center">Ultimas publicaciones</h5>
