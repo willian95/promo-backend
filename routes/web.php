@@ -25,6 +25,7 @@ Route::get('/register/validate/{registerHash}', "AuthController@validateMail");
 Route::get("/forgot-password", "ForgotPasswordController@index");
 Route::post("/forgot-password", "ForgotPasswordController@verifyEmail");
 Route::get("/forgot-password/validate/{forgotHash}", "ForgotPasswordController@changePasswordView");
+Route::post("/forgot-password/change", "ForgotPasswordController@changePassword");
 
 Route::get("/my-transfers", "PaymentController@myTransferViews");
 
