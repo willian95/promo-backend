@@ -35,6 +35,8 @@ class ForgotPasswordController extends Controller
 
             });
 
+            return response()->json(["success" => true, "msg" => "Verifique su bandeja de entrada"]);
+
         }catch(\Exception $e){
             return response()->json(["success" => false, "msg" => "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
         }
@@ -60,20 +62,12 @@ class ForgotPasswordController extends Controller
 
         try{
 
-            $user = User::where("email", $request->email)->first();
-            $user->forgot_password_hash = $forgotHash;
+            $user = User::where("forgot_password_hash", $request->hash)->firstOrFail();
+            $user->forgot_password_hash = null;
+            $user->password = bcrypt($request->password);
             $user->update();    
 
-            $to_name = $user->name;
-            $to_email = $user->email;
-
-            $data = ["forgotHash" => $forgotHash];
-            \Mail::send("emails.forgotPassword", $data, function($message) use ($to_name, $to_email) {
-
-                $message->to($to_email, $to_name)->subject("¡Cambio de clave!");
-                $message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-
-            });
+            return response()->json(["success" => true, "msg" => "Contraseña actualizada"]);
 
         }catch(\Exception $e){
             return response()->json(["success" => false, "msg" => "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
