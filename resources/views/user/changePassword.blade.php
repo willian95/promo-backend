@@ -9,8 +9,8 @@
             <div class="row text-center ftco-heading ftco-animate">
                 <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
                     
-                    <div class="card" style="height: unset;">
-                        <div class="card-body">
+                    <div class="card">
+                        <div class="card-body" style="height: unset;">
 
                             <h3 class="mb-3">Nueva contraseña</h3>
                             
