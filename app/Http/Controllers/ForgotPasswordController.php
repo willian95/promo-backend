@@ -48,7 +48,7 @@ class ForgotPasswordController extends Controller
         try{
 
             $user = User::where('forgot_password_hash', $forgotHash)->firstOrFail();
-            return view("changePassword", ["hash" => $forgotHash]);
+            return view("user.changePassword", ["hash" => $forgotHash]);
 
         }catch(\Exception $e){
 
