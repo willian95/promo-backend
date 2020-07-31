@@ -22,6 +22,10 @@ Route::get("login", "AuthController@loginView");
 Route::get("register", "AuthController@registerView");
 Route::get('/register/validate/{registerHash}', "AuthController@validateMail");
 
+Route::get("/forgot-password", "ForgotPasswordController@index");
+Route::post("/forgot-password", "ForgotPasswordController@verifyEmail");
+Route::get("/forgot-password/validate/{forgotHash}", "ForgotPasswordController@changePasswordView");
+
 Route::get("/my-transfers", "PaymentController@myTransferViews");
 
 Route::get("/post", "PostController@index");
@@ -37,7 +41,7 @@ Route::get("/profile/{id}", "ProfileController@show");
 
 Route::get("/explorer", "ExplorerController@index");
 
-Route::get("/mail-test", function(){
+/*Route::get("/mail-test", function(){
 
     $messageUser = "Hola prueba! Haz click en el siguiente enlace para validar tu correo";
     $to_email = "rodriguezwillian95@gmail.com";
@@ -52,7 +56,7 @@ Route::get("/mail-test", function(){
 
     });
 
-});
+});*/
 
 Route::get("/admin/dashboard", function(){
 

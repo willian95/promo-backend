@@ -54,6 +54,8 @@
                             <button class="res button" @click="login()">Entrar</button>
                         </div>
                     </div>
+
+                    <a class="text-center text-secondary" href="{{ url('/forgot-password') }}">Olvidé mi contraseña</a>
                                 
                 </div>
             </div>
