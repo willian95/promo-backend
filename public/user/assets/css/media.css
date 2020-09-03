@@ -1,0 +1,34 @@
+@media screen and (min-width: 0px) and (max-width: 767px) {
+
+
+.res{    margin-top: 10%;}
+}
+
+.navbar-expand-lg .navbar-collapse {
+
+    text-align: center;
+}
+
+.ftco-cover img {
+
+    border-bottom-left-radius: inherit!important;
+    border-bottom-right-radius: inherit;
+}
+
+.mask{
+	 border-bottom-left-radius: inherit!important;
+    border-bottom-right-radius: inherit!important;
+}
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+}
+
+
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+
+
+}

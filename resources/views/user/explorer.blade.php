@@ -1,27 +1,58 @@
 @extends("layouts.user")
 
 @section("content")
-
+<div class="cont-explorer-comilandia">
     <div class="container pt-150"  id="dev-area">
 
         <div class="row">
-            <div class="col-md-5 mb-4">
-                <p> <strong>Seleccione una región</strong> </p>
-                <select class="form-control" v-model="region" @change="onRegionChange()">
-                    <option :value="region.id" v-for="region in regions">@{{ region.name }}</option>
-                </select>
+            <div class="col-md-6">
+                <h3 class="pide-ahora-explorer">
+                    <span style="font-size: 50px;color: #e3001b; font-weight: bold;">¡PIDE</span><br>
+                    AHORA!
+                </h3>
+                <p class="pide-ahora-explorer_p">¡Vamos a todas partes¡</p>
+                <p class="pide-ahora-explorer_p">Dínos a dónde quieres que lleguemos</p>
             </div>
-            <div class="col-md-5 mb-4">
-                <p><strong> Seleccione una comuna</strong> </p>
-                <select class="form-control" v-model="commune">
-                    <option :value="commune.id" v-for="commune in communes">@{{ commune.name }}</option>
-                </select>
+            <div class="col-md-6 cont-op-explorer">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <!-- <p> <strong>Seleccione una región</strong> </p> -->
+                        <select aria-placeholder="vbn" class="form-control form-explorer-comilandia" v-model="region" @change="onRegionChange()">
+                            <option  value="">Seleccione una región</option>
+                            <option :value="region.id" v-for="region in regions">@{{ region.name }}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <!-- <p><strong> Seleccione una comuna</strong> </p> -->
+                        <select class="form-control form-explorer-comilandia" v-model="commune">
+                            <option value="">Seleccione una comuna</option>
+                            <option :value="commune.id" v-for="commune in communes">@{{ commune.name }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-md-12 " style="display: flex; justify-content: center;">
+                    <button class="button" style="margin-top: 44px; background: #e3001b;" @click="search()">Buscar</button>
+                </div>
+                </div>
             </div>
-            <div class="col-md-2">
-                
-                <button class="button" style="margin-top: 44px;" @click="search()">Buscar</button>
-            </div>
+            
+            
         </div>
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
 
         <div class="row">
 
@@ -72,6 +103,8 @@
         </div>
 
     </div>
+
+</div>
 
 @endsection
 

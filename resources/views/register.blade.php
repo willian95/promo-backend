@@ -58,7 +58,7 @@
         <div class="mask">
         <div class="row information">
           <div class="col-md-12">
-            <h3 class="ftco-heading ftco-animate mb-3">Registro</h3>
+            <h3 class="ftco-heading ftco-animate mb-3">¡Regístrate ahora!</h3>
                <div  class="form-register"  >
       <div class="container">
     

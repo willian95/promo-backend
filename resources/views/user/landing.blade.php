@@ -7,20 +7,47 @@
         <div class="container">
             <div class="mask">
                 <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
-                    <div class="col-md-12">
+                    <div class="col-md-12 content-b-comilandia">
                         <div  class="site-section hola" id="contact-section" >
-                            <h1 >Bienvenidos a <span style="color:rgb(226, 206, 130);">Comilandia</span></h1>
-                            <p  >Lorem ipsum dolor sit amet.</p>
+                            <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
+                            <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
                         </div>
-                        <div style="display: flex; justify-content: center;"class="form-group row no-gutters">
-                            <div style="text-align: center;" class="col-md-6">
+                        <div class="form-group row no-gutters btn-mira-menu">
+                            <div  class="col-md-5">
                                 <a href="{{ url('/explorer') }}">
-                                    <button class="res button">Explorar</button>
+                                    <button class="res button">¡Mira el Menú!</button>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section class="desc-not">
+        <h3><strong>¡SOLO PARA TI! </strong>  Descuento de 30% en todas las compras mayores de 15.000 CLP</h3>
+    </section>
+    <section class="prom-comilandia">
+        <div class="container container-prom-comilandia">
+            <div class="row ">
+            <div class="col-md-6 prom-prin">
+
+            </div>
+            <div class="col-md-6">
+                <div class="row cont-prom-img-dest">
+                    <div class="col-md-6 prom-sec">
+
+                    </div>
+                    <div class="col-md-6 prom-sec">
+                        
+                    </div>
+                </div>
+                <div class="row cont-prom-img-dest">
+                    <div class="col-md-12 prom-terc">
+
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </section>
@@ -74,8 +101,8 @@
     </section>-->
 
     <section class="menu" id="menu" style="margin-top: 80px;">
-        <h2>Promociones</h2>
-        <div class="container" id="dev-area">
+        <h2>Productos</h2>
+        <!-- <div class="container" id="dev-area">
 
             <div class="row">
 
@@ -111,7 +138,7 @@
 
             </div>
                
-        </div>             
+        </div>              -->
     </section>
 
     <!-- MENU DESTACADO -->
@@ -152,12 +179,53 @@
     @foreach(App\Ad::inRandomOrder()->take(10)->get() as $ad)
 
         <div class="owl-carousel owl-theme">
-            <div class="item">
+            <!-- <div class="item">
                 <a href="{{ $ad->link }}" target="_blank">
                     <div class="card">
-                        <!--<div class="card-body">-->
-                            <img src="{{ url('/images/ads/'.$ad->image) }}" alt="" style="width: 100%;">
-                        <!--</div>-->
+                        
+                    <img src="{{ asset('user/images/logo.png') }}">
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </a>
+            </div> -->
+            <div class="item">
+                <a href="#" target="_blank">
+                    <div class="card card-comilandia">
+                      <img class="img-prod-comilandia" src="{{ asset('user/images/offer_2.jpg') }}">
+                      <h5 class="nombre-producto">Hamburguesa</h5>
+                      <h6 class="desc-producto">50% OFF</h6>
+
+                    </div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#" target="_blank">
+                    <div class="card card-comilandia">
+                      <img class="img-prod-comilandia" src="{{ asset('user/images/offer_2.jpg') }}">
+                      <h5 class="nombre-producto">Hamburguesa</h5>
+                      <h6 class="desc-producto">50% OFF</h6>
+
+                    </div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#" target="_blank">
+                    <div class="card card-comilandia">
+                      <img class="img-prod-comilandia" src="{{ asset('user/images/offer_2.jpg') }}">
+                      <h5 class="nombre-producto">Hamburguesa</h5>
+                      <h6 class="desc-producto">50% OFF</h6>
+
+                    </div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#" target="_blank">
+                    <div class="card card-comilandia">
+                      <img class="img-prod-comilandia" src="{{ asset('user/images/offer_2.jpg') }}">
+                      <h5 class="nombre-producto">Hamburguesa</h5>
+                      <h6 class="desc-producto">50% OFF</h6>
+
                     </div>
                 </a>
             </div>
@@ -167,8 +235,41 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer container" id="footer">
-            <div class="logo-footer">
+        <div class="footer " id="footer">
+            <div class="container row footer-cont">
+                <div class="col-md-5 footer-cont-c5">
+                    <h5 class="comilandia-titulo-footer">COMILANDIA</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa deleniti illum a nobis odio vel dolores quaerat odit, repellendus fuga cum nemo eveniet, vero accusantium debitis voluptatum, facere itaque laboriosam!</p>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-red">Menú del día</h6>
+                    <ul>
+                        <li>Pedido online</li>
+                        <li>Delivery</li>
+                        <li>Contáctanos</li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6>Menú del día</h6>
+                    <ul>
+                        <li>Pedido online</li>
+                        <li>Delivery</li>
+                        <li>Contáctanos</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6>Síguenos</h6>
+                    <div class="rs-comilandia">
+                        <ul>
+                            <li><img src="" alt="">Comilandiafood</li>
+                            <li><img src="" alt="">Comilandiafood</li>
+                            <li><img src="" alt="">Comilandiafood</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="logo-footer">
                 <img src="{{ asset('user/images/logo.png') }}">
             </div>
             <div class="about-footer">
@@ -176,10 +277,10 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
             <div class="hours">
-                <!--<h6 style="font-weight: bold;     margin-left: -25px;">Nuestro Horario</h6>
+                <h6 style="font-weight: bold;     margin-left: -25px;">Nuestro Horario</h6>
                 <p> Lunes a Viernes <br>
-                10.00 hrs a 20:00hrs</p>-->
-            </div>
+                10.00 hrs a 20:00hrs</p>
+            </div> -->
         </div>
     </footer>
 

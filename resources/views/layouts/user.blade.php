@@ -41,7 +41,12 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('user/images/logo.png') }}"></a>
+                <a class=" menu-logo" href="{{ url('/') }}"><img src="{{ asset('user/images/logo.png') }}"></a>
+                <p class="pide-ahora">¡PIDE AHORA!</p>
+                <div class="search-comilandia">
+                    <input class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?">
+                    <a class="search-comilandia-a" href="#">Buscar</a>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
                 </button>
@@ -50,10 +55,10 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>
                     <li class="nav-item" v-if="authCheck == false">
-                        <a class="nav-link" href="{{ url('login') }}">Login</a>
+                        <a class="nav-link" href="{{ url('login') }}" >Inicia Sesión</a>
                     </li>
                     <li class="nav-item" v-if="authCheck == false">
-                        <a class="nav-link" href="{{ url('/register') }}">Register</a>
+                        <a class="nav-link btn-comilandia" href="{{ url('/register') }}">Crear una cuenta</a>
                     </li>
                     <li class="nav-item" v-if="authCheck == true">
                         <a class="nav-link" href="{{ url('/post') }}">Publicar</a>
