@@ -17,8 +17,35 @@ button.res.button {
   font-size: 14px;
 }
 }
+@media (min-width: 0px) and (max-width: 425px) {
+  .container.container-prom-comilandia {
+    margin-top: 0px;
+  }
+  .desc-not h3 {
+    margin-bottom: 0!important;
+  }
+  .col-md-6.tu-pedido-en-minutos_col p {
+    font-size: 12px;
+  }
+button.res.button {
+    margin-top: 0px;
+    font-size: 10px;
+}
 
+div#contact-section h1 {
+  color: #fff;
+  text-align: start;
+  margin-left: 10%;
+  font-size: 15px;
+}
+}
 @media (min-width: 0px) and (max-width: 767px) {
+  .desc-not h3 {
+    font-size: 18px;
+  }
+  .row.cont-prom-img-dest {
+    display: none;
+}
   .form-control.input-registro {
     font-size: 12px;
 }

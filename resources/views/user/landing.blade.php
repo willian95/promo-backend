@@ -364,11 +364,11 @@
         <div class="footer " id="footer">
             <div class="container">
                 <div class=" row footer-cont">
-                    <div class="col-md-5 footer-cont-c5">
+                    <div class="col-md-5 col-sm-12footer-cont-c5">
                         <h5 class="comilandia-titulo-footer">COMILANDIA</h5>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa deleniti illum a nobis odio vel dolores quaerat odit, repellendus fuga cum nemo eveniet, vero accusantium debitis voluptatum, facere itaque laboriosam!</p>
                     </div>
-                    <div class="col-md-2 list-menu-footer">
+                    <div class="col-md-2 col-sm-4 list-menu-footer">
                         <h6 class="text-red">Menú del día</h6>
                         <ul>
                             <li>Pedido online</li>
@@ -376,7 +376,7 @@
                             <li>Contáctanos</li>
                         </ul>
                     </div> 
-                    <div class="col-md-2 list-menu-footer f-b">
+                    <div class="col-md-2 col-sm-4 list-menu-footer f-b">
                         <h6>Menú del día</h6>
                         <ul>
                             <li>Pedido online</li>
@@ -384,7 +384,7 @@
                             <li>Contáctanos</li>
                         </ul>
                     </div>
-                    <div class="col-md-3 list-menu-footer siguenos">
+                    <div class="col-md-3  col-sm-4 list-menu-footer siguenos">
                         <h6>Síguenos</h6>
                         <div class="rs-comilandia-cont">
                             <ul>
