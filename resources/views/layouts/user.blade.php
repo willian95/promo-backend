@@ -7,6 +7,8 @@
         <link rel="icon" href="{{ asset('/user/images/logo.png') }}">
         
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
         <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/open-iconic-bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/animate.css') }}">
@@ -44,7 +46,7 @@
                 <a class=" menu-logo" href="{{ url('/') }}"><img src="{{ asset('user/images/logo.png') }}"></a>
                 <p class="pide-ahora">¡PIDE AHORA!</p>
                 <div class="search-comilandia">
-                    <input class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?">
+                    <input  class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?">
                     <a class="search-comilandia-a" href="#">Buscar</a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,6 +55,11 @@
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
+                <div class="search-comilandia d-n-c">
+                    <input  class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?" >
+                    <a class="search-comilandia-a" href="#">Buscar</a>
+                </div>
+
                     <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>
                     <li class="nav-item" v-if="authCheck == false">
                         <a class="nav-link" href="{{ url('login') }}" >Inicia Sesión</a>
@@ -91,6 +98,7 @@
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="{{ asset('user/js/jquery.min.js') }}"></script>
         <script src="{{ asset('user/js/popper.min.js') }}"></script>
         <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>

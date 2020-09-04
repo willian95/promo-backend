@@ -51,7 +51,7 @@
                                 </div>
 
 
-                                <div style="display: flex; justify-content: center; width: 100%;"  class="form-group row">
+                                <div style=" display:flex; justify-content: center; width: 100%;"  class="form-group row">
                                     <div style="text-align: center;" class="col-md-6">       
                                         <button style=" background: #ee2e3d;" class="res button" @click="register()">Registrarse</button>
                                     </div>

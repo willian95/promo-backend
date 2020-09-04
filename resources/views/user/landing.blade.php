@@ -3,26 +3,86 @@
 @section("content")
 
     <section class="ftco-cover" id="section-landing-hero">
-        <img src="{{ asset('user/images/6.png') }}">
-        <div class="container">
-            <div class="mask">
-                <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
-                    <div class="col-md-12 content-b-comilandia">
-                        <div  class="site-section hola" id="contact-section" >
-                            <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
-                            <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
-                        </div>
-                        <div class="form-group row no-gutters btn-mira-menu">
-                            <div  class="col-md-5">
-                                <a href="{{ url('/explorer') }}">
-                                    <button class="res button">¡Mira el Menú!</button>
-                                </a>
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators indicadores-banner">
+                <li class="redondo" data-target="#demo" data-slide-to="0" class="active"></li>
+                <li class="redondo" data-target="#demo" data-slide-to="1"></li>
+                <li class="redondo" data-target="#demo" data-slide-to="2"></li>
+            </ul>
+
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('user/images/6.png') }}">
+                    <div class="container">
+                        <div class="mask">
+                            <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
+                                <div class="col-md-12 content-b-comilandia">
+                                    <div  class="site-section hola" id="contact-section" >
+                                        <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
+                                        <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
+                                    </div>
+                                    <div class="form-group row no-gutters btn-mira-menu">
+                                        <div  class="col-md-5">
+                                            <a href="{{ url('/explorer') }}">
+                                                <button class="res button">¡Mira el Menú!</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('user/images/6.png') }}">
+                    <div class="container">
+                        <div class="mask">
+                            <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
+                                <div class="col-md-12 content-b-comilandia">
+                                    <div  class="site-section hola" id="contact-section" >
+                                        <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
+                                        <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
+                                    </div>
+                                    <div class="form-group row no-gutters btn-mira-menu">
+                                        <div  class="col-md-5">
+                                            <a href="{{ url('/explorer') }}">
+                                                <button class="res button">¡Mira el Menú!</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('user/images/6.png') }}">
+                    <div class="container">
+                        <div class="mask">
+                            <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
+                                <div class="col-md-12 content-b-comilandia">
+                                    <div  class="site-section hola" id="contact-section" >
+                                        <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
+                                        <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
+                                    </div>
+                                    <div class="form-group row no-gutters btn-mira-menu">
+                                        <div  class="col-md-5">
+                                            <a href="{{ url('/explorer') }}">
+                                                <button class="res button">¡Mira el Menú!</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                  
+
             </div>
         </div>
+
     </section>
     <section class="desc-not">
         <h3><strong>¡SOLO PARA TI! </strong>  Descuento de 30% en todas las compras mayores de 15.000 CLP</h3>
@@ -31,19 +91,30 @@
         <div class="container container-prom-comilandia">
             <div class="row ">
             <div class="col-md-6 prom-prin">
-
+                <div class="cont-cuadro-desc"><div class="cuadro-desc">-50%</div></div>
+               <div class="cont-prom-comilandia-info">
+                    <h3 class="container-prom-comilandia_h3">Promo agosto</h3>
+                    <p class="container-prom-comilandia_p">Disfruta de <span>1</span> increíble</p>
+                    <p class="container-prom-comilandia_p"> Cheese Burger + Soda + Cheese Fries</p>
+                    <div class="cont-btn-prom-comilandia-pedir-ahora"><a class="btn-prom-comilandia-pedir-ahora" href="#">Pedir ahora</a></div>
+                    
+               </div>
+               <div  class="cont-prom-prom"><div class="img-prom-promo"></div></div>
+               <div class="mask-img-prom"></div>
+                <img class="img-carrusel-login" src="{{ asset('user/images/menu_3.jpg') }}" alt="promocion" >
             </div>
             <div class="col-md-6">
                 <div class="row cont-prom-img-dest">
                     <div class="col-md-6 prom-sec">
-
+                    <img class="img-carrusel-login" src="{{ asset('user/images/menu_3.jpg') }}" alt="promocion" >
                     </div>
                     <div class="col-md-6 prom-sec">
-                        
+                    <img class="img-carrusel-login" src="{{ asset('user/images/menu_3.jpg') }}" alt="promocion" >
                     </div>
                 </div>
                 <div class="row cont-prom-img-dest">
                     <div class="col-md-12 prom-terc">
+                    <img class="img-carrusel-login" src="{{ asset('user/images/menu_3.jpg') }}" alt="promocion" >
 
                     </div>
                 </div>
@@ -52,6 +123,7 @@
         </div>
     </section>
 
+    
     <!--<section class="icons container" id="icons">
         <div class="icons-info">
             <div class="card-icons">
@@ -102,6 +174,44 @@
 
     <section class="menu" id="menu" style="margin-top: 80px;">
         <h2>Productos</h2>
+        <div class="cont-productos">
+            <div class="container cont-productos-flechas">
+                <div class="cont-productos-flechas_div">
+                    <div class="derecha"></div>
+                    <div class="izquierda"></div>
+                </div>
+            </div>
+            <div class="container productos-comilandia">
+                <div class="productos-comilandia_item">
+                    <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom"></div></div>
+                    <div class="img-producto-comilandia"></div>
+                    <h4>Hamburguesa de carne</h4>
+                    <h5>50% OFF</h5>
+                </div>
+                <div class="productos-comilandia_item">
+                    <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom"></div></div>
+                    <div class="img-producto-comilandia"></div>
+                    <h4>Hamburguesa de carne</h4>
+                    <h5>50% OFF</h5>
+                </div>
+                <div class="productos-comilandia_item">
+                    <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom"></div></div>
+                    <div class="img-producto-comilandia"></div>
+                    <h4>Hamburguesa de carne</h4>
+                    <h5>50% OFF</h5>
+                </div>
+                <div class="productos-comilandia_item">
+                    <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom"></div></div>
+                    <div class="img-producto-comilandia"></div>
+                    <h4>Hamburguesa de carne</h4>
+                    <h5>50% OFF</h5>
+                </div>
+            </div>
+        </div>
+        <div class="btn-ver-mas-comilandia">
+            <a class="btn-ver-mas-comilandia_a" href="#">Ver más</a>
+        </div>
+
         <!-- <div class="container" id="dev-area">
 
             <div class="row">
@@ -176,19 +286,11 @@
     </section>-->
     <!-- FIN MENU DESTACADO -->
 
-    @foreach(App\Ad::inRandomOrder()->take(10)->get() as $ad)
+    <!-- @foreach(App\Ad::inRandomOrder()->take(10)->get() as $ad)
 
+      
         <div class="owl-carousel owl-theme">
-            <!-- <div class="item">
-                <a href="{{ $ad->link }}" target="_blank">
-                    <div class="card">
-                        
-                    <img src="{{ asset('user/images/logo.png') }}">
-                        <div class="card-body">
-                        </div>
-                    </div>
-                </a>
-            </div> -->
+          
             <div class="item">
                 <a href="#" target="_blank">
                     <div class="card card-comilandia">
@@ -231,44 +333,72 @@
             </div>
         </div>
 
-    @endforeach
+    @endforeach -->
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer " id="footer">
-            <div class="container row footer-cont">
-                <div class="col-md-5 footer-cont-c5">
-                    <h5 class="comilandia-titulo-footer">COMILANDIA</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa deleniti illum a nobis odio vel dolores quaerat odit, repellendus fuga cum nemo eveniet, vero accusantium debitis voluptatum, facere itaque laboriosam!</p>
-                </div>
-                <div class="col-md-2">
-                    <h6 class="text-red">Menú del día</h6>
-                    <ul>
-                        <li>Pedido online</li>
-                        <li>Delivery</li>
-                        <li>Contáctanos</li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <h6>Menú del día</h6>
-                    <ul>
-                        <li>Pedido online</li>
-                        <li>Delivery</li>
-                        <li>Contáctanos</li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6>Síguenos</h6>
-                    <div class="rs-comilandia">
-                        <ul>
-                            <li><img src="" alt="">Comilandiafood</li>
-                            <li><img src="" alt="">Comilandiafood</li>
-                            <li><img src="" alt="">Comilandiafood</li>
 
-                        </ul>
+    <section class="tu-pedido-minutos">
+        <div class="tu-pedido-en-minutos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 tu-pedido-en-minutos_col">
+                        <h3 class="tu-pedido-en-minutos_h3">¡Tu pedido en minutos!</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus obcaecati natus repellat! Accusamus voluptatum, provident aspernatur ab cupiditate odit nulla. Excepturi, qui.</p>
+                        <div class="div_btn-ubereats">
+                            <a class="btn-ubereats" href="#">Pedir por UberEats</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 tu-pedido-en-minutos_col">
+                        <div class="tu-pedido-en-minutos_col_img">
+                            <img src="" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="fondo-tu-pedido-minutos">
+
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer " id="footer">
+            <div class="container">
+                <div class=" row footer-cont">
+                    <div class="col-md-5 footer-cont-c5">
+                        <h5 class="comilandia-titulo-footer">COMILANDIA</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa deleniti illum a nobis odio vel dolores quaerat odit, repellendus fuga cum nemo eveniet, vero accusantium debitis voluptatum, facere itaque laboriosam!</p>
+                    </div>
+                    <div class="col-md-2 list-menu-footer">
+                        <h6 class="text-red">Menú del día</h6>
+                        <ul>
+                            <li>Pedido online</li>
+                            <li>Delivery</li>
+                            <li>Contáctanos</li>
+                        </ul>
+                    </div> 
+                    <div class="col-md-2 list-menu-footer f-b">
+                        <h6>Menú del día</h6>
+                        <ul>
+                            <li>Pedido online</li>
+                            <li>Delivery</li>
+                            <li>Contáctanos</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 list-menu-footer siguenos">
+                        <h6>Síguenos</h6>
+                        <div class="rs-comilandia-cont">
+                            <ul>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"></div><p> Comilandiafood</p></div></li>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"></div><p> Comilandiafood</p></div></li>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"></div><p> Comilandiafood</p></div></li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- <div class="logo-footer">
                 <img src="{{ asset('user/images/logo.png') }}">
             </div>
@@ -364,6 +494,43 @@
             }
         })
     </script>
-    
+    <script>
+     $('.responsive').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+		
+    </script>
 
 @endpush

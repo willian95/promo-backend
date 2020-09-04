@@ -1,13 +1,55 @@
 @media (min-width: 768px) and (max-width: 991px){
-
+  .information {
+    margin-top: 0%;
+  }
   .pt-150{
     padding-top: 20px;
   }
-
+  .form-control.input-registro {
+    font-size: 12px;
+}
+select.form-control.form-explorer-comilandia.comilandia-registro {
+  font-size: 12px;
+  height: 40px!important;
+}
+button.res.button {
+  margin-top: 10px;
+  font-size: 14px;
+}
 }
 
 @media (min-width: 0px) and (max-width: 767px) {
-
+  .form-control.input-registro {
+    font-size: 12px;
+}
+select.form-control.form-explorer-comilandia.comilandia-registro {
+  font-size: 12px;
+  height: 40px!important;
+}
+button.res.button {
+  margin-top: 10px;
+  font-size: 14px;
+}
+  .search-comilandia {
+    display: none;
+  }
+  .d-n-c {
+    display: flex;
+    margin-top: 20px;
+  }
+  a.search-comilandia-a {
+    width: 70px;
+  }
+  p.pide-ahora {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  input.search-comilandia-input {
+    width: 200px;
+  }
+  .information {
+    margin-top: 0%;
+  }
   #section-register .mask{
     display: none;
   }
@@ -70,7 +112,7 @@ a.navbar-brand {
     content: '';
     height: 7px;
     width: 45px;
-    background-color: #e2ce82;
+    background-color: #dc001a;
     top: 42%;
     bottom: 0;
     right: 0;
@@ -82,7 +124,7 @@ a.navbar-brand {
     content: '';
     height: 7px;
     width: 45px;
-    background-color: #e2ce82;
+    background-color: #dc001a;
     top: 42%;
     bottom: 0;
 
