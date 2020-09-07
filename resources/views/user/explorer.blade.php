@@ -1,6 +1,7 @@
 @extends("layouts.user")
 
 @section("content")
+<div class="area-explorar-comilandia">
 <div class="cont-explorer-comilandia">
     <div class="container pt-150"  id="dev-area">
 
@@ -106,6 +107,8 @@
 
 </div>
 
+
+</div>
 @endsection
 
 @push("scripts")

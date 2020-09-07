@@ -15,8 +15,37 @@ body {
   background-repeat: no-repeat;
 
 }
+/*nuevo preload*/
 
-.cover{
+  .elipse img {
+    opacity: 0.3;
+    width: 12rem;
+    position: absolute;
+    animation-name: colombia;
+    animation-duration: 2s;
+    /* or: Xms */
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    /* or: normal */
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    /* or: backwards, both, none */
+    animation-delay: 1s;
+  }
+
+
+
+@-webkit-keyframes colombia {
+  0% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 0.8;
+  }
+}
+  /**/
+/* .cover{
   position: fixed;
   top: 0;
   bottom: 0;
@@ -40,7 +69,7 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
+} */
 
 #section-register h3, #section-register p, #section-register label, #section-register input{
   color: #000 ;
@@ -220,13 +249,14 @@ button.res.button {
           display: none; } }
   .ftco-navbar-light .navbar-toggler {
     border: none;
-      color: #ee2e3d!important;
+      color: #fff!important;
     cursor: pointer;
     padding-right: 0;
     text-transform: uppercase;
     font-size: 16px;
     letter-spacing: .1em; }
   .ftco-navbar-light.scrolled {
+    z-index: 999999;
     position: fixed;
     right: 0;
     left: 0;
@@ -247,7 +277,7 @@ button.res.button {
         padding-right: 0 !important; } }
     .ftco-navbar-light.scrolled .navbar-toggler {
       border: none;
-      color: rgba(0, 0, 0, 0.5) !important;
+      color: #fff !important;
       border-color: rgba(0, 0, 0, 0.5) !important;
       cursor: pointer;
       padding-right: 0;
@@ -747,7 +777,7 @@ p.pide-ahora {
   color: #fff;
   font-weight: bold;
   margin-left: 40px;
-  margin-right: 40px;
+  margin-right: 100px;
 }
 a.nav-link.btn-comilandia {
   padding: 5px!important;
@@ -849,9 +879,19 @@ a.btn-prom-comilandia-pedir-ahora {
 }
 .cont-prom-prom {
   height: -webkit-fill-available;
-  width: -webkit-fill-available;
+  /* width: -webkit-fill-available; */
   z-index: 99999;
+  position: relative;
+}
+.container.cont-inf-banner {
   position: absolute;
+  width: 100%;
+  height: 83%;
+  z-index: 99999;
+  top: 25%;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 .cont-btn-prom-comilandia-pedir-ahora {
   display: flex;
@@ -926,7 +966,7 @@ a.btn-prom-comilandia-pedir-ahora {
 .rs-comilandia {
   width: 20px;
   height: 20px;
-  background: #ee2e3d;
+  /* background: #ee2e3d; */
   border-radius: 20px;
   margin-right: 15px;
 }
@@ -966,11 +1006,19 @@ h5.comilandia-titulo-footer {
 }
 .cont-explorer-comilandia {
   display: flex;
-  background: #040404;
+  /* background: #040404; */
   height: 100%;
   align-items: center;
 }
-
+.area-explorar-comilandia {
+  height: 100vh;
+  background-image: url('../../user/images/ej-3.jpg'); 
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  
+}
 h3.pide-ahora-explorer span {
   
 }
@@ -1100,50 +1148,71 @@ a.btn-ubereats {
 }
 .img-producto-comilandia {
   width: 100%;
-  background: red;
-  height: 180px;
+  height: 100%;
 }
 .productos-comilandia_item h4 {
   color: #a31b26;
   font-size: 20px;
-  margin-top: 8px;
-  width: 14%;
+  margin-top: 0;
   margin-bottom: 0;
-
+  padding: 0px 40px 0px 0px;
 }
-.img-producto-comilandia:hover {
+.img-producto-comilandia-prom {
+  width: 100%;
+  height: 10px;
+  padding: 15px;
+  right: -8px;
+  bottom: 60px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+.prom-img-producto-comilandia-prom-desc {
+  background: #f9de86;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  display: flex;
+}
+.box-inf-products-comilandia {
+  /* padding-bottom: 21px; */
+  padding: 0px 0px 0px 20px;
+  position: relative;
+  top: -35px;
+}
+/* .img-producto-comilandia:hover {
   background: #ee2e3d8c;
   transition: 0.5s;
-}
+} */
 
-.prom-img-producto-comilandia-prom {
+/* .prom-img-producto-comilandia-prom {
   height: 60px;
   width: 60px;
   border-radius: 50px;
   background: #f9de87;
-  /* display: flex; */
-}
-.img-producto-comilandia-prom {
+} */
+/* .img-producto-comilandia-prom {
   width: 18%;
   height: 205px;
-  /* background: #1a1a1a; */
   position: absolute;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-}
+} */
 .container.productos-comilandia {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   justify-content: center;
 }
+
 .productos-comilandia_item {
-  width: 25%;
+  width: 100%;
+  /* margin: 2%; */
 }
-.productos-comilandia_item {
-  width: 20%;
-  margin: 2%;
+img.img-carrusel-productos {
+  width: 100%;
+  padding: 20px;
 }
 .btn-ver-mas-comilandia {
   display: flex;
@@ -1180,7 +1249,7 @@ h3.tu-pedido-en-minutos_h3 {
 .mask-img-prom {
   padding-right: 26px;
   background: #000000bf;
-  width: 97.5%;
+  width: 97.3%;
   height: 100%;
   position: absolute;
   z-index: 9;
@@ -1200,13 +1269,299 @@ ul.carousel-indicators.indicadores-banner {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  justify-content: center;
-  margin-left: 0;
+  justify-content: flex-start;
+  margin-left: 0!important;
+  margin-right: 0!important;
   align-items: flex-end;
   padding-right: 20px;
+  padding-top: 20%;
 }
 ul.carousel-indicators.indicadores-banner li {
   width: 15px;
   height: 15px;
-  border-right: 20px!important;
+  border-radius: 20px!important;
+}
+
+/*carrusel productos*/
+.prueba.slick-initialized.slick-slider.slick-dotted {
+  height: 50vh;
+  padding-top: 15px;
+  
+  }
+  img.img-carrusel-ssp {
+  object-fit: contain;
+  display: flex;
+  max-width: -webkit-fill-available;
+
+}
+.slick-track {
+  display: flex;
+}
+.slick-prev:before {
+  content: ""url("../../user/images/f-prev.png");
+
+}
+.slick-next:before {
+content: ""url("../../user/images/f-next.png");
+z-index: 999;
+
+}
+.slick-prev {
+  left: 88%;
+  top: 0%;
+  z-index: 999;
+  width: 40px!important;
+  background: #eeeeee;
+  height: 40px;
+  border-radius: 5px;
+}
+.slick-next {
+  right: 2%!important;
+  top: 0%;
+  width: 40px!important;
+  background: #eeeeee;
+  height: 40px;
+  border-radius: 5px;
+
+}
+
+/*fin carrusel productos*/
+}
+.carousel-indicators li{
+  width: 10px!important;
+  height: 10px!important;
+  box-sizing: content-box!important;
+  -ms-flex: 0 1 auto!important;
+  flex: 0 1 auto!important;
+ 
+  margin-right: 3px!important;
+  margin-left: 3px!important;
+  text-indent: -999px;
+  cursor: pointer!important;
+  background-color: #fff;
+  background-clip: padding-box!important;
+  border-top: none!important;
+  border-bottom: none!important;
+  opacity: .5!important;
+  transition: opacity .6s ease!important;
+  border-radius: 20px!important;
+  margin: 5px!important;
+}
+
+ul.carousel-indicators.indicadores-banner li {
+  width: 10px!important;
+  height: 10px!important;
+  box-sizing: content-box!important;
+  -ms-flex: 0 1 auto!important;
+  flex: 0 1 auto!important;
+ 
+  margin-right: 3px!important;
+  margin-left: 3px!important;
+  text-indent: -999px;
+  cursor: pointer!important;
+  background-color: #fff;
+  background-clip: padding-box!important;
+  border-top: none!important;
+  border-bottom: none!important;
+  opacity: .5!important;
+  transition: opacity .6s ease!important;
+  border-radius: 20px!important;
+  margin: 5px!important;
+}
+li.redondo.active {
+  background-color:#a31b27!important;
+}
+.carousel-item {
+  height: 100vh;
+}
+.tu-pedido-en-minutos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+}
+img.img-carrusel-productos:hover {
+  opacity: 0.5;
+  filter: drop-shadow(2px 4px 6px black);
+  transition: 0.5s;
+}
+img.ico-menu-comilandia {
+  width: 20px;
+}
+span.ico-menu-comilandia_span {
+  background: #ffff;
+  color: #a31b27;
+  font-size: 9px;
+  /* padding: 3px 5px; */
+  border-radius: 20px;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
+
+}
+img.ico-menu-comilandia.carrito-span {
+  /* position: relative; */
+  margin-right: 5px;
+
+}
+a.nav-link.cont-carrito-span {
+  display: flex;
+  /* max-width: 35px; */
+  justify-content: space-evenly;
+}
+.div-nav-item {
+  display: flex;
+  padding: 10px;
+}
+.cont-inf-descrip-producto-comilandia-fechas img {
+  width: 25px;
+  margin-left: 5px;
+}
+.cont-inf-descrip-producto-comilandia-c-fechas {
+  display: flex;
+}
+.cont-inf-descrip-producto-comilandia-fechas {
+  padding: 0px 5px;}
+  .prod-relacionado {
+    display: flex;
+    flex-wrap: wrap;
+}
+.descrip-producto-comilandia .container {
+  border-bottom: 1px solid #ee2e3d;
+  padding-bottom: 30px;
+}
+.container.cont-productos {
+  margin-top: 35px;
+}
+.single-item-rtl.relacionados {
+  width: 25%;
+}
+.col-md-4.agregar-al-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+.descrip-producto-comilandia-descuento-des {
+  background: #ee2e3d;
+  color: #fff;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+.container-fluid.collapse-login-content_container {
+  width: 300px;
+}
+section#section-login {
+
+}
+div#login-collapse {
+  /* display: flex; */
+  position: absolute;
+  z-index: 99999999999999999999999999999999999;
+  right: 14%;
+  top: 80px;
+  background: #ffffffcf;
+  border-radius: 15px;
+  padding: 10px;
+}
+input.input-login {
+  background: transparent;
+  border-top: transparent;
+  border-right: transparent;
+  border-left: transparent;
+  border-bottom: 1px solid #ee2e3d;
+}
+/* .cont-img-categoria-des-comilandia {
+  position: ;
+  z-index: 99999;
+  width: 20px;
+  position: relative;
+  display: flex;
+  background: red;
+  align-items: flex-end;
+} */
+
+.img-categoria-des-comilandia {
+  background: blue;
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  position: absolute;
+  bottom: 25px;
+  right: 15px;
+  z-index: 99;
+}
+img.img-pedido-minutos-col6 {
+  width: 100%;
+}
+.img-producto-detallado img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.descrip-producto-comilandia-descuento {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: 999;
+  right: 25px;
+  top: 10px;
+}
+.descrip-producto-comilandia {
+  margin-top: 50px;
+}
+a.agregar-al-carrito_a {
+  background: #e3001b;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+.cont-inf-descrip-producto-comilandia h2 {
+  color: #ee2e3d;
+  padding-top: 25px;
+  padding-left: 15px;
+
+}
+.cont-inf-descrip-producto-comilandia p {
+  color: #000;
+  font-size: 18px;
+  text-align: justify;
+}
+.caja-descrip-detallada h3 {
+  background: #eeeeee;
+  padding: 6px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+.descrip-producto-comilandia-cont-categoria {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: 999;
+  right: 2px;
+  bottom: 10px;
+}
+.descrip-producto-comilandia-cont-categoria-div {
+  background: #ee2e3d;
+  color: #fff;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  position: relative;
+  font-weight: bold;
+  border-radius: 65px;
 }

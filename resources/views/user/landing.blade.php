@@ -13,9 +13,9 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('user/images/6.png') }}">
-                    <div class="container">
-                        <div class="mask">
+                    <div class="mask"></div>
+                    <img src="{{ asset('user/images/ej-3.jpg') }}">
+                    <div class="container cont-inf-banner">
                             <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
                                 <div class="col-md-12 content-b-comilandia">
                                     <div  class="site-section hola" id="contact-section" >
@@ -31,13 +31,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('user/images/6.png') }}">
-                    <div class="container">
-                        <div class="mask">
+                    <div class="mask"></div>
+                    <img src="{{ asset('user/images/ej-1.jpg') }}">
+                    <div class="container cont-inf-banner">
                             <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
                                 <div class="col-md-12 content-b-comilandia">
                                     <div  class="site-section hola" id="contact-section" >
@@ -53,13 +52,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>   
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('user/images/6.png') }}">
-                    <div class="container">
-                        <div class="mask">
+                    <div class="mask"></div>
+                    <img src="{{ asset('user/images/ej-2.jpg') }}">
+                    <div class="container cont-inf-banner">
                             <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
                                 <div class="col-md-12 content-b-comilandia">
                                     <div  class="site-section hola" id="contact-section" >
@@ -75,8 +73,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>   
+                    </div>
                 </div>
                   
 
@@ -102,7 +99,9 @@
                <div  class="cont-prom-prom"><div class="img-prom-promo"></div></div>
                <div class="mask-img-prom"></div>
                 <img class="img-carrusel-login" src="{{ asset('user/images/menu_3.jpg') }}" alt="promocion" >
-            </div>
+                <div class="cont-img-categoria-des-comilandia"></div><div class="img-categoria-des-comilandia"></div> 
+
+              </div>
             <div class="col-md-6">
                 <div class="row cont-prom-img-dest">
                     <div class="col-md-6 prom-sec">
@@ -174,45 +173,10 @@
 
     <section class="menu" id="menu" style="margin-top: 80px;">
         <h2>Productos</h2>
-        <div class="cont-productos">
-            <div class="container cont-productos-flechas">
-                <div class="cont-productos-flechas_div">
-                    <div class="derecha"></div>
-                    <div class="izquierda"></div>
-                </div>
-            </div>
-            <div class="container productos-comilandia">
-                <div class="productos-comilandia_item">
-                    <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom"></div></div>
-                    <div class="img-producto-comilandia"></div>
-                    <h4>Hamburguesa de carne</h4>
-                    <h5>50% OFF</h5>
-                </div>
-                <div class="productos-comilandia_item">
-                    <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom"></div></div>
-                    <div class="img-producto-comilandia"></div>
-                    <h4>Hamburguesa de carne</h4>
-                    <h5>50% OFF</h5>
-                </div>
-                <div class="productos-comilandia_item">
-                    <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom"></div></div>
-                    <div class="img-producto-comilandia"></div>
-                    <h4>Hamburguesa de carne</h4>
-                    <h5>50% OFF</h5>
-                </div>
-                <div class="productos-comilandia_item">
-                    <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom"></div></div>
-                    <div class="img-producto-comilandia"></div>
-                    <h4>Hamburguesa de carne</h4>
-                    <h5>50% OFF</h5>
-                </div>
-            </div>
-        </div>
-        <div class="btn-ver-mas-comilandia">
-            <a class="btn-ver-mas-comilandia_a" href="#">Ver más</a>
-        </div>
+        
+    
 
-        <!-- <div class="container" id="dev-area">
+        <!-- --><div class="container" id="dev-area">
 
             <div class="row">
 
@@ -248,7 +212,227 @@
 
             </div>
                
-        </div>              -->
+        </div>         
+           <!--  -->
+
+        <div class="container cont-productos">
+            <div class="prueba">
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                     <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br><br>
+
+        <div class="container cont-productos">
+            <div class="prueba">
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                     <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br><br>
+
+        <div class="container cont-productos">
+            <div class="prueba">
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                     <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl">
+                    <div class="productos-comilandia_item">
+                       <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br><br>
+        <div class="btn-ver-mas-comilandia">
+            <a class="btn-ver-mas-comilandia_a" href="#">Ver más</a>
+        </div>
     </section>
 
     <!-- MENU DESTACADO -->
@@ -338,7 +522,7 @@
 
     <section class="tu-pedido-minutos">
         <div class="tu-pedido-en-minutos">
-            <div class="container">
+            <div class="container tu-pedido-en-min-cont">
                 <div class="row">
                     <div class="col-md-6 tu-pedido-en-minutos_col">
                         <h3 class="tu-pedido-en-minutos_h3">¡Tu pedido en minutos!</h3>
@@ -349,7 +533,7 @@
                     </div>
                     <div class="col-md-6 tu-pedido-en-minutos_col">
                         <div class="tu-pedido-en-minutos_col_img">
-                            <img src="" alt="">
+                        <img class="img-pedido-minutos-col6" src="{{ asset('user/images/ej-4.png') }}"  >
                         </div>
                     </div>
                 </div>
@@ -388,9 +572,9 @@
                         <h6>Síguenos</h6>
                         <div class="rs-comilandia-cont">
                             <ul>
-                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"></div><p> Comilandiafood</p></div></li>
-                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"></div><p> Comilandiafood</p></div></li>
-                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"></div><p> Comilandiafood</p></div></li>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"><img class="ico-menu-comilandia" src="{{ asset('user/images/facebook.png') }}"></div><p> Comilandiafood</p></div></li>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"><img class="ico-menu-comilandia" src="{{ asset('user/images/instagram.png') }}"></div><p> Comilandiafood</p></div></li>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"><img class="ico-menu-comilandia" src="{{ asset('user/images/youtube.png') }}"></div><p> Comilandiafood</p></div></li>
 
 
                             </ul>
@@ -475,7 +659,7 @@
         })
     </script>
 
-    <script>
+    <!-- <script>
         $('.owl-carousel').owlCarousel({
             loop:true,
             margin:10,
@@ -493,44 +677,8 @@
                 }
             }
         })
-    </script>
-    <script>
-     $('.responsive').slick({
-  dots: true,
-  infinite: false,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
-});
-		
-    </script>
+    </script> -->
+
+   
 
 @endpush

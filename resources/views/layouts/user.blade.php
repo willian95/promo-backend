@@ -39,6 +39,26 @@
         @stack("css")
 
     </head>
+        <div class="elipse">
+            <img src="{{ asset('user/images/logo.png') }}">
+        </div>
+
+
+      <style>
+        .elipse{
+        background: #a31b27;
+        position: fixed;
+        z-index: 9999999;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        </style>
+
     <body>
 
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -46,7 +66,7 @@
                 <a class=" menu-logo" href="{{ url('/') }}"><img src="{{ asset('user/images/logo.png') }}"></a>
                 <p class="pide-ahora">¡PIDE AHORA!</p>
                 <div class="search-comilandia">
-                    <input  class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?">
+                    <input  class="search-comilandia-input" id="search" type="text" placeholder="¿Qué quieres comer?">
                     <a class="search-comilandia-a" href="#">Buscar</a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,43 +74,83 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                <div class="search-comilandia d-n-c">
-                    <input  class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?" >
-                    <a class="search-comilandia-a" href="#">Buscar</a>
-                </div>
+                    <ul class="navbar-nav ml-auto">
+                        <div class="search-comilandia d-n-c">
+                        <div class="form">
+                                <input  class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?" >
+                                <a class="search-comilandia-a" href="#">Buscar</a>
+                            </div>
+                        </div>
 
-                    <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>
-                    <li class="nav-item" v-if="authCheck == false">
-                        <a class="nav-link" href="{{ url('login') }}" >Inicia Sesión</a>
-                    </li>
-                    <li class="nav-item" v-if="authCheck == false">
-                        <a class="nav-link btn-comilandia" href="{{ url('/register') }}">Crear una cuenta</a>
-                    </li>
-                    <li class="nav-item" v-if="authCheck == true">
-                        <a class="nav-link" href="{{ url('/post') }}">Publicar</a>
-                    </li>
-                    <li class="nav-item" v-if="authCheck == true">
-                        <a class="nav-link" href="{{ url('/explorer') }}">Explorar</a>
-                    </li>
-                    <!--<li class="nav-item"><a href="#menu" class="nav-link">Menú</a></li>
-                    <li class="nav-item"><a href="#footer" class="nav-link">Contacto</a></li>-->
-                </ul>
-                <div class="dropdown">
-                    <button @click="showListUser()" v-if="name" class="button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @{{ name }}
-                    </button>
-                    <div id="list-user" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-profile') }}">Mi Perfil</a>
-                        <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-sales') }}">Mis Ventas</a>
-                        <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-purchases') }}">Mis Compras</a>
-                        <a v-if="roleId == 1" class="dropdown-item" href="{{ url('/admin/dashboard') }}">Dashboard</a>
-                        <a class="dropdown-item" href="#" @click="logout()">Cerrar sesión</a>
+                        <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>
+                        <li class="nav-item" v-if="authCheck == false" data-toggle="collapse" data-target="#login-collapse">
+                            <a class="nav-link" href="{{ url('login') }}" >Inicia Sesión</a>
+                        </li>
+                        
+                        <li class="nav-item" v-if="authCheck == false">
+                            <a class="nav-link btn-comilandia" href="{{ url('/register') }}">Crear una cuenta</a>
+                        </li>
+                        <li class="nav-item" v-if="authCheck == true">
+                            <a class="nav-link" href="{{ url('/post') }}">Publicar</a>
+                        </li>
+                        <li class="nav-item" v-if="authCheck == true">
+                            <a class="nav-link" href="{{ url('/explorer') }}">Explorar</a>
+                        </li>
+                        <div class="div-nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link cont-carrito-span resp-m" href="#"><img class="ico-menu-comilandia carrito-span" src="{{ asset('user/images/cart.png') }}"><span class="ico-menu-comilandia_span ">1</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link resp-m" href="#"><img class="ico-menu-comilandia" src="{{ asset('user/images/useri.png') }}"></a>
+                            </li>
+                        </div>
+                        
+                        <!--<li class="nav-item"><a href="#menu" class="nav-link">Menú</a></li>
+                        <li class="nav-item"><a href="#footer" class="nav-link">Contacto</a></li>-->
+                    </ul>
+                
+                    <div class="dropdown">
+                        <button @click="showListUser()" v-if="name" class="button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @{{ name }}
+                        </button>
+                        <div id="list-user" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-profile') }}">Mi Perfil</a>
+                            <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-sales') }}">Mis Ventas</a>
+                            <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-purchases') }}">Mis Compras</a>
+                            <a v-if="roleId == 1" class="dropdown-item" href="{{ url('/admin/dashboard') }}">Dashboard</a>
+                            <a class="dropdown-item" href="#" @click="logout()">Cerrar sesión</a>
+                        </div>
                     </div>
-                </div>
              
-            </div>
+                </div>
+          </div>
         </nav>
+
+        <div id="login-collapse" class="collapse">
+            <section class=" collapse-login-content" id="section-login">
+                        {{--<img src="{{ asset('user/images/6.png') }}">--}}
+                    
+                 <div class="container-fluid collapse-login-content_container">
+                     <!-- <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3> -->
+                     <div class="form-group row">
+                         <div class="col-md-12 mb-4">
+                             <!-- <label for="email">Email</label> -->
+                             <input class="input-login" id="email" type="email" class="form-control" placeholder="Email" v-model="email">
+                         </div>
+                         <div class="col-md-12 ">
+                             <!-- <label for="password">Password</label> -->
+                             <input class="input-login" id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
+                         </div>
+                     </div>
+                     <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
+                         <div style="text-align: center;" class="col-md-6">
+                             <a class="res button" @click="login()">Entrar</a>
+                         </div>
+                     </div>
+                     <a class="text-center text-secondary" href="{{ url('/forgot-password') }}">Olvidé mi contraseña</a>                              
+                 </div>
+            </section>
+        </div>
 
         @yield("content")
 
@@ -123,7 +183,14 @@
         <script src="{{ asset('/js/app.js') }}"></script>
 
         @stack("scripts")
+        <script>
+            $(document).ready(function () {
+                setTimeout(function () {
+                $('.elipse').fadeOut(300);
+                }, 3000)
+            });
 
+        </script>
         <script>
             const navbar = new Vue({
                 el: '#ftco-navbar',
