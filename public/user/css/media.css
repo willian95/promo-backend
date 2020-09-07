@@ -126,6 +126,20 @@ button.res.button {
 }
 }
 @media (min-width: 0px) and (max-width: 768px) {
+  .col-md-3.list-menu-footer.siguenos {
+    padding-left: 0px;
+}
+.col-md-3.list-menu-footer.siguenos h6 {
+  text-align: center;
+}
+.list-rs-comilandia-op {
+  justify-content: center;
+}
+  h3.tu-pedido-en-minutos_h3 {
+    font-size: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
   div#login-collapse {
     top: 105px;
     right: 5%;
@@ -146,6 +160,13 @@ a.nav-link.resp-m {
 }
 }
 @media (min-width: 0px) and (max-width: 767px) {
+  img.img-pedido-minutos-col6 {
+    display: none;
+  }
+  .col-md-6.tu-pedido-en-minutos_col {
+    padding-bottom: 50px;
+    font-size: 15px;
+}
   .fondo-tu-pedido-minutos {
     height: 600px;
   }
@@ -246,8 +267,8 @@ a.navbar-brand {
 .menu h2::after {
     position: absolute;
     content: '';
-    height: 7px;
-    width: 45px;
+    height: 1px;
+    width: 30%;
     background-color: #dc001a;
     top: 42%;
     bottom: 0;
@@ -258,8 +279,8 @@ a.navbar-brand {
 .menu h2::before {
     position: absolute;
     content: '';
-    height: 7px;
-    width: 45px;
+    height: 1px;
+    width: 30%;
     background-color: #dc001a;
     top: 42%;
     bottom: 0;

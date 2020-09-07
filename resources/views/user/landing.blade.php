@@ -523,9 +523,10 @@
     <section class="tu-pedido-minutos">
         <div class="tu-pedido-en-minutos">
             <div class="container tu-pedido-en-min-cont">
+            <h3 class="tu-pedido-en-minutos_h3">¡Tu pedido en minutos!</h3>
+
                 <div class="row">
                     <div class="col-md-6 tu-pedido-en-minutos_col">
-                        <h3 class="tu-pedido-en-minutos_h3">¡Tu pedido en minutos!</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus obcaecati natus repellat! Accusamus voluptatum, provident aspernatur ab cupiditate odit nulla. Excepturi, qui.</p>
                         <div class="div_btn-ubereats">
                             <a class="btn-ubereats" href="#">Pedir por UberEats</a>
@@ -540,6 +541,7 @@
             </div>
         </div>
         <div class="fondo-tu-pedido-minutos">
+        <img class="fondo-tu-pedido-minutos_img" src="{{ asset('user/images/fondorojo.png') }}"  >
 
         </div>
     </section>

@@ -1230,6 +1230,8 @@ a.btn-ver-mas-comilandia_a {
 }
 section.tu-pedido-minutos {
   margin-top: 100px;
+  height: 290px;
+
 }
 h3.tu-pedido-en-minutos_h3 {
   font-weight: bold;
@@ -1256,12 +1258,13 @@ h3.tu-pedido-en-minutos_h3 {
 }
 .fondo-tu-pedido-minutos {
   width: 100%;
-  background: #e3001b;
+  /* background: #a79194; */
   height: 360px;
   border-radius: 36% 36% 0% 0%;
 }
 .tu-pedido-en-minutos {
   position: absolute;
+  height: 280px;
   /* padding-bottom: 46px; */
 }
 ul.carousel-indicators.indicadores-banner {
@@ -1564,4 +1567,20 @@ a.agregar-al-carrito_a {
   position: relative;
   font-weight: bold;
   border-radius: 65px;
+}
+img.fondo-tu-pedido-minutos_img {
+  width: 100%;
+  height: max-content;
+}
+img.img-pedido-minutos-col6 {
+  object-fit: contain;
+  width: 100%;
+  height: 310px;
+}
+.tu-pedido-en-minutos_col_img {
+  top: -50px;
+  position: relative;
+}
+.col-md-5.col-sm-12footer-cont-c5 p {
+  text-align: justify;
 }
