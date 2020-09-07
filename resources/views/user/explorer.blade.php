@@ -11,7 +11,7 @@
                     <span style="font-size: 50px;color: #e3001b; font-weight: bold;">¡PIDE</span><br>
                     AHORA!
                 </h3>
-                <p class="pide-ahora-explorer_p">¡Vamos a todas partes¡</p>
+                <p class="pide-ahora-explorer_p">¡Vamos a todas partes!</p>
                 <p class="pide-ahora-explorer_p">Dínos a dónde quieres que lleguemos</p>
             </div>
             <div class="col-md-6 cont-op-explorer">
@@ -37,24 +37,7 @@
                 </div>
                 </div>
             </div>
-            
-            
         </div>
-
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
         <div class="row">
 
             <div class="col-md-4 col-lg-3">
@@ -109,6 +92,64 @@
 
 
 </div>
+
+<section class="resultado-explorer">
+<div class="container cont-productos product-home">
+    <h3 class="resultado-busqueda">Resultados de la busqueda</h3>
+    <p class="resultado-busqueda-pide-ahora">¡PIDE AHORA!</p>
+             <div class="prod-relacionado">
+                 <div class="single-item-rtl relacionados">
+                     <div class="productos-comilandia_item">
+                     <a href="#">
+                             <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                             <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                             <div class="box-inf-products-comilandia">
+                                 <h4>Hamburguesa de carne</h4>
+                                 <h5>50% OFF</h5>
+                             </div>
+                             </a> 
+                     </div>
+                 </div>
+                 <div class="single-item-rtl relacionados">
+                     <div class="productos-comilandia_item">
+                     <a href="#">
+                             <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                             <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                             <div class="box-inf-products-comilandia">
+                                 <h4>Hamburguesa de carne</h4>
+                                 <h5>50% OFF</h5>
+                             </div>
+                             </a>
+                     </div>
+                 </div>
+                 <div class="single-item-rtl relacionados">
+                     <div class="productos-comilandia_item">
+                     <a href="#">
+                             <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                             <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                             <div class="box-inf-products-comilandia">
+                                 <h4>Hamburguesa de carne</h4>
+                                 <h5>50% OFF</h5>
+                             </div>
+                             </a> 
+                     </div>
+                 </div>
+                 <div class="single-item-rtl relacionados">
+                     <div class="productos-comilandia_item">
+                     <a href="#">
+                             <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                             <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                             <div class="box-inf-products-comilandia">
+                                 <h4>Hamburguesa de carne</h4>
+                                 <h5>50% OFF</h5>
+                             </div>
+                             </a> 
+                     </div>
+                 </div>
+                 
+             </div>
+        </div>
+</section>
 @endsection
 
 @push("scripts")

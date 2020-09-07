@@ -65,7 +65,7 @@
                     </a>
                 </div>
             </div> -->
-    <section class="ftco-cover" id="section-login">
+    <!-- <section class="ftco-cover" id="section-login">
     
 
 
@@ -105,13 +105,37 @@
             </div>
         </div>
         
-    </section>
+    </section> -->
 
     <section class="vista-interna">
-        <div class="cat-comilandia">
-            <div class="basico-comilandia"></div>
-            <div class="superior-comilandia"></div>
-            <div class="premium-comilandia"></div>
+         <div class="cat-comilandia">
+            <div class="btn-group">
+                <button type="button" class="btn cat-comilandia-btn">Basico</button>
+                <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                </button>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn cat-comilandia-btn">Superior</button>
+                <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                </button>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn cat-comilandia-btn">Premium</button>
+                <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                </button>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                </div>
+            </div>
         </div>
         <div class="descrip-producto-comilandia">
             <div class="container">
@@ -143,8 +167,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="cont-inf-descrip-producto-comilandia-c-fechas">
-                                            <div class="cont-inf-descrip-producto-comilandia-fechas">01/01/2001<img class="descrip-producto-comilandia_img" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
-                                            <div class="cont-inf-descrip-producto-comilandia-fechas">01/01/2001<img class="descrip-producto-comilandia_img" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                                            <div class="cont-inf-descrip-producto-comilandia-fechas">01/01/2001<img class="descrip-producto-comilandia_img" src="{{ asset('user/images/calendario.png') }}"  ></div>
+                                            <div class="cont-inf-descrip-producto-comilandia-fechas">01/01/2001<img class="descrip-producto-comilandia_img" src="{{ asset('user/images/calendario.png') }}"  ></div>
                                         </div>
                                     </div>
                                 </div>
@@ -211,6 +235,89 @@
                                 </div>
                             </div>
     </section>
+
+
+
+    <section class="tu-pedido-minutos">
+        <div class="tu-pedido-en-minutos">
+            <div class="container tu-pedido-en-min-cont">
+            <h3 class="tu-pedido-en-minutos_h3">¡Tu pedido en minutos!</h3>
+
+                <div class="row">
+                    <div class="col-md-6 tu-pedido-en-minutos_col">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus obcaecati natus repellat! Accusamus voluptatum, provident aspernatur ab cupiditate odit nulla. Excepturi, qui.</p>
+                        <div class="div_btn-ubereats">
+                            <a class="btn-ubereats" href="#">Pedir por UberEats</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 tu-pedido-en-minutos_col">
+                        <div class="tu-pedido-en-minutos_col_img">
+                        <img class="img-pedido-minutos-col6" src="{{ asset('user/images/ej-4.png') }}"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fondo-tu-pedido-minutos">
+        <img class="fondo-tu-pedido-minutos_img" src="{{ asset('user/images/fondorojo.png') }}"  >
+
+        </div>
+    </section>
+
+     <!-- FOOTER -->
+     <footer>
+        <div class="footer " id="footer">
+            <div class="container">
+                <div class=" row footer-cont">
+                    <div class="col-md-5 col-sm-12footer-cont-c5">
+                        <h5 class="comilandia-titulo-footer">COMILANDIA</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa deleniti illum a nobis odio vel dolores quaerat odit, repellendus fuga cum nemo eveniet, vero accusantium debitis voluptatum, facere itaque laboriosam!</p>
+                    </div>
+                    <div class="col-md-2 col-sm-4 list-menu-footer">
+                        <h6 class="text-red">Menú del día</h6>
+                        <ul>
+                            <li>Pedido online</li>
+                            <li>Delivery</li>
+                            <li>Contáctanos</li>
+                        </ul>
+                    </div> 
+                    <div class="col-md-2 col-sm-4 list-menu-footer f-b">
+                        <h6>Menú del día</h6>
+                        <ul>
+                            <li>Pedido online</li>
+                            <li>Delivery</li>
+                            <li>Contáctanos</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3  col-sm-4 list-menu-footer siguenos">
+                        <h6>Síguenos</h6>
+                        <div class="rs-comilandia-cont">
+                            <ul>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"><img class="ico-menu-comilandia" src="{{ asset('user/images/facebook.png') }}"></div><p> Comilandiafood</p></div></li>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"><img class="ico-menu-comilandia" src="{{ asset('user/images/instagram.png') }}"></div><p> Comilandiafood</p></div></li>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"><img class="ico-menu-comilandia" src="{{ asset('user/images/youtube.png') }}"></div><p> Comilandiafood</p></div></li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="logo-footer">
+                <img src="{{ asset('user/images/logo.png') }}">
+            </div>
+            <div class="about-footer">
+                <h6 style="font-weight: bold">Sobre Nosotros</h6>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="hours">
+                <h6 style="font-weight: bold;     margin-left: -25px;">Nuestro Horario</h6>
+                <p> Lunes a Viernes <br>
+                10.00 hrs a 20:00hrs</p>
+            </div> -->
+        </div>
+    </footer>
 
 @endsection
 

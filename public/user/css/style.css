@@ -1434,6 +1434,7 @@ a.nav-link.cont-carrito-span {
   .prod-relacionado {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .descrip-producto-comilandia .container {
   border-bottom: 1px solid #ee2e3d;
@@ -1583,4 +1584,44 @@ img.img-pedido-minutos-col6 {
 }
 .col-md-5.col-sm-12footer-cont-c5 p {
   text-align: justify;
+}
+h3.resultado-busqueda {
+  color: #a31b27;
+  text-align: center;
+  font-weight: bold;
+}
+p.resultado-busqueda-pide-ahora {
+  text-align: center;
+  color: #000;
+  font-weight: bold;
+}
+.cat-comilandia {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+button.btn.dropdown-toggle.dropdown-toggle-split:after {
+ display: none;
+}button.btn.dropdown-toggle.dropdown-toggle-split:before {
+  content: ""url("../../user/images/f-next.png");
+}
+button.btn.dropdown-toggle.dropdown-toggle-split {
+  background: #efefef;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: 10px;
+  padding: 0;
+}
+button.btn.cat-comilandia-btn {
+  background: #e3001b;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 10px;
+  border-radius: 5px 5px !important;
+}
+section.vista-interna {
+  margin-top: 160px;
 }

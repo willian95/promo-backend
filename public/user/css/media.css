@@ -329,6 +329,13 @@ a.navbar-brand {
 }
 }
 @media (min-width: 0px) and (max-width: 425px) {
+  .container.cont-productos.product-home {
+    margin-bottom: 0!important;
+    margin-top: 0;
+}
+  .menu h2::before,.menu h2::after {
+    width: 18%;
+  }
   div#login-collapse {
     top: 310px!important;
     right: 0%!important;
