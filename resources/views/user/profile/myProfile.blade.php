@@ -11,6 +11,7 @@
 @endpush
 
 @section("content")
+<div class="cont-mi-perfil">
 
     <div class="container pt-150" id="dev-area">
 
@@ -23,8 +24,8 @@
                         <img id="blah" :src="imagePreview" class="full-image" style="margin-top: 10px; width: 140px; height: 140px; object-fit:cover; border-radius: 50%; ">
                     </p>
 
-                    <label class="text-dark" for="profile-image">Imagen Perfil</label>
-                    <input type="file" class="form-control" id="profile-image" accept="image/*" @change="onImageChange">
+                    <label class="text-dark text-center" for="profile-image">Imagen Perfil</label>
+                    <input type="file" class="form-control input-img-publicacion " id="profile-image" accept="image/*" @change="onImageChange">
                     
                 </div>
             
@@ -33,44 +34,44 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="name" class="text-dark">Nombre</label>
-                    <input type="text" class="form-control" v-model="name" id="name">
+                    <input type="text" class="form-control input-publicacion" v-model="name" id="name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="email" class="text-dark">Email</label>
-                    <input type="text" class="form-control" v-model="email" id="email" readonly>
+                    <input type="text" class="form-control input-publicacion" v-model="email" id="email" readonly>
                 </div>
             </div>
             
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="website" class="text-dark">Web site</label>
-                    <input type="text" class="form-control" v-model="webSite" id="website" placeholder="https://www.mysite.com">
+                    <input type="text" class="form-control input-publicacion" v-model="webSite" id="website" placeholder="https://www.mysite.com">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="telephone" class="text-dark">Telephone</label>
-                    <input type="text" class="form-control" v-model="telephone" id="telephone" placeholder="+5612345678">
+                    <input type="text" class="form-control input-publicacion" v-model="telephone" id="telephone" placeholder="+5612345678">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="facebook" class="text-dark">Facebook</label>
-                    <input type="text" class="form-control" v-model="facebook" id="facebook" placeholder="https://www.facebook.com/myprofile">
+                    <input type="text" class="form-control input-publicacion" v-model="facebook" id="facebook" placeholder="https://www.facebook.com/myprofile">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="instagram" class="text-dark">Instagram</label>
-                    <input type="text" class="form-control" v-model="instagram" id="instagram" placeholder="https://www.instagram.com/myprofile">
+                    <input type="text" class="form-control input-publicacion" v-model="instagram" id="instagram" placeholder="https://www.instagram.com/myprofile">
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="address" class="text-dark">Dirección</label>
-                    <input type="text" class="form-control" v-model="address" id="address">
+                    <input type="text" class="form-control input-publicacion" v-model="address" id="address">
                 </div>
             </div>
             <div class="col-md-6">
@@ -106,7 +107,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="delivery_price" class="text-dark">Precio delivery</label>
-                    <input type="text" class="form-control" id="delivery_price" v-model="deliveryPrice">
+                    <input type="text" class="form-control input-publicacion" id="delivery_price" v-model="deliveryPrice">
                 </div>
             </div>
 
@@ -206,16 +207,16 @@
                 </div>
             </div>
 
-            <div class="col-md-12" style="margin-top: 15px;">
+            <div class="col-md-12" style="margin-top: 35px;">
                 <p class="text-center">
-                    <button class="button" @click="update()">Actualizar</button>
+                    <button class="btn btn-success" @click="update()">Actualizar</button>
                 </p>
             </div>
 
         </div>
         <div class="row">
             <div class="col-12">
-                <h3 class="text-center">Comentarios</h3>
+                <h3 class="text-center" style="color:#e3001b;">Comentarios</h3>
             </div>
             <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3" v-for="rating in ratings">
                 <div class="card">
@@ -228,7 +229,8 @@
         </div>
 
     </div>
-
+    
+</div>
 @endsection
 
 @push("scripts")

@@ -1,27 +1,29 @@
 @extends("layouts.user")
 
 @section("content")
-
-    <div class="container pt-150" id="dev-area">
+<div class="cont-publicacion">
+    <div class="cont-publicacion-img"></div>
+    <div class="container pt-150 " id="dev-area">
 
         <div class="cover" v-if="loading == true">
             <div class="loader"></div>
         </div>
 
-        <div class="row">
-            <div class="col-12">
-                <h3 class="text-center">Publicación</h3>
+        <div class="row cont-publicacion-form-info">
+            <div class="col-12 content_text_info">
+                <h3 class="text-center cont-publicacion_h3">Publicación</h3>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label for="title">Titulo</label>
-                    <input type="text" class="form-control" v-model="title">
+                    <label class="cont-publicacion_label" for="title">Titulo</label>
+                    <input type="text" class="form-control input-publicacion" v-model="title" >
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label for="title">Tipo</label>
+                    <label class="cont-publicacion_label" for="title">Tipo</label>
                     <select class="form-control" v-model="type" @change="onTypeChange()">
+                        <option value="">Seleccione Tipo</option>
                         <option :value="1">Básica</option>
                         <option :value="2">Super</option>
                         <option :value="3">Premium</option>
@@ -36,24 +38,33 @@
                 <small v-if="type == 3">Puedes publicar 8 promociones</small>
                 <p><small v-if="type == 3">Se añadirá un 0,08% de comisión</small></p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="form-group">
-                    <label for="image">Imagen</label>
-                    <input type="file" class="form-control" id="image" ref="file" @change="onImageChange" accept="image/*" style="font-size: 14px;">
-
-                    <img id="blah" :src="imagePreview" class="full-image" style="margin-top: 10px; width: 40%">
-                    
+                    <label class="cont-publicacion_label" for="description">Breve descripción</label>
+                    <textarea rows="2" id="description" v-model="description" class="form-control input-publicacion" ></textarea>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="description">Breve descripción</label>
-                    <textarea rows="2" id="description" v-model="description" class="form-control"></textarea>
+                    <label class="cont-publicacion_label" for="category">Categoría</label>
+                    <select id="category" class="form-control" v-model="category">
+                        <option :value="categoryRow.id" v-for="categoryRow in categories">@{{ categoryRow.name }}</option>
+                    </select>
                 </div>
             </div>
-            <div class="col-md-3">
+            
+            
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label for="">¿Cuenta con delivery?</label>
+                    <label class="cont-publicacion_label" for="saleDate">Fecha de venta</label>
+                    <input type="date" id="saleDate" class="form-control input-publicacion" v-model="saleDate">
+                    <small>Debe existir un mínimo de 7 días para la fecha de venta</small>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cont-publicacion_label" for="">¿Cuenta con delivery?</label>
                     <p class="text-dark" v-if="hasDelivery == 1"><strong>Sí</strong></p>
                     <p class="text-dark" v-else><strong>No</strong></p>
                 </div><!---->
@@ -66,21 +77,17 @@
                     
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label for="category">Categoría</label>
-                    <select id="category" class="form-control" v-model="category">
-                        <option :value="categoryRow.id" v-for="categoryRow in categories">@{{ categoryRow.name }}</option>
-                    </select>
+                    <label class="cont-publicacion_label" for="image">Imagen</label>
+                    <input type="file" class="form-control input-img-publicacion" id="image" ref="file" @change="onImageChange" accept="image/*" style="font-size: 14px;">
+
+                    <img id="blah" :src="imagePreview" class="full-image" style="margin-top: 10px; width: 40%">
+                    
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="saleDate">Fecha de venta</label>
-                    <input type="date" id="saleDate" class="form-control" v-model="saleDate">
-                    <small>Debe existir un mínimo de 7 días para la fecha de venta</small>
-                </div>
-            </div>
+            
+            
             <!--<div class="col-md-4">
                 <div class="form-group">
                     <label for="maxDiscount">Descuento Máximo %</label>
@@ -92,13 +99,13 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
-                <h3 class="text-center">Promociones</h3>
+            <div class="col-12 content_text_info">
+                <h3 class="text-center cont-publicacion_h3">Promociones</h3>
                 <p class="text-center">
                     <button class="btn btn-success" data-toggle="modal" data-target="#promotion" v-if="promos.length < amount ">+</button>
                 </p>
             </div>
-            <div class="col-12">
+            <div class="col-12 content_text_info_table">
                 <table class="table">
                     <thead>
                         <tr>
@@ -179,48 +186,48 @@
 
         <div class="row">
             <div class="col-12">
-                <h3 class="text-center">Descuentos</h3>
+                <h3 class="text-center text-desc">Descuentos</h3>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="discount1">Descuento % día 1</label>
-                    <input type="text" id="discount1" class="form-control" v-model="discount1" @blur="checkDiscounts()">
+                    <label class="cont-publicacion_label" for="discount1">Descuento % día 1</label>
+                    <input type="text" id="discount1" class="form-control input-publicacion"  v-model="discount1" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="discount2">Descuento % día 2</label>
-                    <input type="text" id="discount2" class="form-control" v-model="discount2" @blur="checkDiscounts()">
+                    <label class="cont-publicacion_label" for="discount2">Descuento % día 2</label>
+                    <input type="text" id="discount2" class="form-control input-publicacion"  v-model="discount2" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="discount3">Descuento % día 3</label>
-                    <input type="text" id="discount3" class="form-control" v-model="discount3" @blur="checkDiscounts()">
+                    <label class="cont-publicacion_label" for="discount3">Descuento % día 3</label>
+                    <input type="text" id="discount3" class="form-control input-publicacion"  v-model="discount3" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="discount4">Descuento % día 4</label>
-                    <input type="text" id="discount4" class="form-control" v-model="discount4" @blur="checkDiscounts()">
+                    <label class="cont-publicacion_label" for="discount4">Descuento % día 4</label>
+                    <input type="text" id="discount4" class="form-control input-publicacion"  v-model="discount4" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="discount5">Descuento % día 5</label>
-                    <input type="text" id="discount5" class="form-control" v-model="discount5" @blur="checkDiscounts()">
+                    <label class="cont-publicacion_label" for="discount5">Descuento % día 5</label>
+                    <input type="text" id="discount5" class="form-control input-publicacion"  v-model="discount5" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="discount6">Descuento % día 6</label>
-                    <input type="text" id="discount6" class="form-control" v-model="discount6" @blur="checkDiscounts()">
+                    <label class="cont-publicacion_label" for="discount6">Descuento % día 6</label>
+                    <input type="text" id="discount6" class="form-control input-publicacion"  v-model="discount6" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="discount7">Descuento % día 7</label>
-                    <input type="text" id="discount7" class="form-control" v-model="discount7" @blur="checkDiscounts()">
+                    <label class="cont-publicacion_label" for="discount7">Descuento % día 7</label>
+                    <input type="text" id="discount7" class="form-control input-publicacion" v-model="discount7" @blur="checkDiscounts()">
                 </div>
             </div>
             <div class="col-md-12">
@@ -231,7 +238,7 @@
         </div>
 
     </div>
-
+</div>
 @endsection
 
 @push("scripts")

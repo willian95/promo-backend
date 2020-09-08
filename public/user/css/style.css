@@ -1011,7 +1011,6 @@ h5.comilandia-titulo-footer {
   align-items: center;
 }
 .area-explorar-comilandia {
-  height: 100vh;
   background-image: url('../../user/images/ej-3.jpg'); 
   background-size: cover;
   height: 100vh;
@@ -1603,7 +1602,7 @@ p.resultado-busqueda-pide-ahora {
 button.btn.dropdown-toggle.dropdown-toggle-split:after {
  display: none;
 }button.btn.dropdown-toggle.dropdown-toggle-split:before {
-  content: ""url("../../user/images/f-next.png");
+  content: ""url("../../user/images/down.png");
 }
 button.btn.dropdown-toggle.dropdown-toggle-split {
   background: #efefef;
@@ -1624,4 +1623,121 @@ button.btn.cat-comilandia-btn {
 }
 section.vista-interna {
   margin-top: 160px;
+}
+/*post*/
+/* .cont-publicacion-img {
+  background-image: url('../../user/images/ej-3.jpg'); 
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+} */
+.cont-publicacion {
+  /* background: #939ca7; */
+  background: #fff;
+}
+h3.text-center.cont-publicacion_h3 {
+  color:#e3001b;
+  font-size: 30px;
+}
+input.form-control.input-publicacion {
+  /* border-top: transparent;
+  border-right: transparent;
+  border-left: transparent;
+  border-bottom: 2px solid #eeeeee;
+  border-radius: 0; */
+  border: 1px solid #eeeeee;
+}
+textarea#description {
+  resize: none;
+  border: 1px solid #eeeeee;
+
+  /* border-top: transparent;
+  border-right: transparent;
+  border-left: transparent;
+  border-bottom: 2px solid #eeeeee;
+  border-radius: 0; */
+}
+.cont-publicacion select.form-control {
+  background: #fff;
+  border: 1px solid #eeeeee;
+
+}
+.cont-mi-perfil select.form-control {
+  background: #fff;
+  border: 1px solid #eeeeee;
+
+}
+textarea:focus {
+  outline: none;
+  border: transparent;
+
+
+}
+.content_text_info h3::after {
+  position: absolute;
+  content: '';
+  height: 1px;
+  width: 34%;
+  background-color: #a31b27;
+  top: 42%;
+  bottom: 0;
+  right: 0;
+  left: 7%;
+}
+
+.content_text_info h3::before{
+position: absolute;
+    content: '';
+    height: 1px;
+    width: 34%;
+    background-color: #a31b27;
+    top: 42%;
+    bottom: 0;
+    right: 0;
+    right: 7%;
+}
+label.cont-publicacion_label {
+  color: #000;
+}
+.input-img-publicacion {
+  border: transparent;
+}
+.input-img-publicacion:active, .input-img-publicacion:focus {
+  border: transparent;
+}
+.row.cont-publicacion-form-info {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+.col-12.content_text_info_table {
+  padding-top: 37px;
+}
+.text-desc {
+  margin-bottom: 25px;
+}
+.input-publicacion {
+  margin-bottom: 20px;
+}
+label.text-dark.text-center {
+  text-align: center;
+  width: 100%;
+}
+button.button.btn-rojo-comilandia {
+  background: #e2ce82;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px 25px;
+  font-size: 15px;
+
+}button.button.btn-rojo-comilandia:hover {
+  background: #000;
+  transition: 0.5s;
+  color: #e2ce82;
+}
+select option:hover{
+  background : #fff !important;
+  }
+  .cont-mi-perfil {
+    margin-bottom: 30px;
 }
