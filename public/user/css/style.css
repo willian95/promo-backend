@@ -1741,3 +1741,8 @@ select option:hover{
   .cont-mi-perfil {
     margin-bottom: 30px;
 }
+button.btn.btn-success.btn-comil {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+}

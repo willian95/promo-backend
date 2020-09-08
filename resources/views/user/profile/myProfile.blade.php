@@ -25,7 +25,9 @@
                     </p>
 
                     <label class="text-dark text-center" for="profile-image">Imagen Perfil</label>
-                    <input type="file" class="form-control input-img-publicacion " id="profile-image" accept="image/*" @change="onImageChange">
+                    <div class="cont-center">
+                        <input type="file" class="form-control input-img-publicacion " id="profile-image" accept="image/*" @change="onImageChange">
+                    </div>
                     
                 </div>
             
@@ -209,7 +211,7 @@
 
             <div class="col-md-12" style="margin-top: 35px;">
                 <p class="text-center">
-                    <button class="btn btn-success" @click="update()">Actualizar</button>
+                    <button class="btn btn-success btn-comil" @click="update()">Actualizar</button>
                 </p>
             </div>
 
