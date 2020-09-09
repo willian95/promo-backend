@@ -5,7 +5,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="{{ asset('/user/images/logo.png') }}">
-        
+        <!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
@@ -84,8 +86,8 @@
                         </div>
 
                         <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>
-                        <li class="nav-item" v-if="authCheck == false" data-toggle="collapse" data-target="#login-collapse">
-                            <a class="nav-link" href="{{ url('login') }}" >Inicia Sesión</a>
+                        <li class="nav-item" v-if="authCheck == false">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModalogin" >Inicia Sesión</a>
                         </li>
                         
                         <li class="nav-item" v-if="authCheck == false">
@@ -126,20 +128,31 @@
                 </div>
           </div>
         </nav>
-
-        <div id="login-collapse" class="collapse">
-            <section class=" collapse-login-content" id="section-login">
+ <!-- The Modal -->
+ <div class="modal" id="myModalogin">
+    <div class="modal-dialog">
+      <div class="modal-content modal-login-cont">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Iniciar Sesión</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        <section class=" collapse-login-content" id="section-login">
                         {{--<img src="{{ asset('user/images/6.png') }}">--}}
                     
                  <div class="container-fluid collapse-login-content_container">
                      <!-- <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3> -->
                      <div class="form-group row">
                          <div class="col-md-12 mb-4">
-                             <!-- <label for="email">Email</label> -->
+                             <label for="email">Email</label>
                              <input class="input-login" id="email" type="email" class="form-control" placeholder="Email" v-model="email">
                          </div>
                          <div class="col-md-12 ">
-                             <!-- <label for="password">Password</label> -->
+                             <label for="password">Password</label>
                              <input class="input-login" id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
                          </div>
                      </div>
@@ -152,6 +165,18 @@
                  </div>
             </section>
         </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+       
 
         @yield("content")
 
@@ -160,6 +185,15 @@
 
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<!-- jQuery library -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+
         <script src="{{ asset('user/js/jquery.min.js') }}"></script>
         <script src="{{ asset('user/js/popper.min.js') }}"></script>
         <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>

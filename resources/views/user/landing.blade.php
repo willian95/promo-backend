@@ -251,10 +251,19 @@
                             <div class="img-producto-comilandia-prom">
                                 <div class="prom-img-producto-comilandia-prom-desc">@{{ post.discountPercentage }}%</div>
                             </div>
+                            <div class="cont-inf-u-comilandia">
+                                <div class="cont-inf-u-comilandia-img">
+                                    <img class="cont-inf-u-comilandia-img_img" src="{{ asset('user/images/menu_3.jpg') }}" alt="">
+                                </div>
+                                <div class="cont-inf-u-comilandia-nombre">
+                                    <p class="cont-inf-u-comilandia-nombre_p">nombre</p>
+                                </div>
+                            </div>
                             <div class="box-inf-products-comilandia">
                                 <h4>@{{ post.post.title }}</h4>
                                 <p>@{{ post.post.commune.name }}</p>    
                             </div>
+                            
                         </a> 
 
                     </div>

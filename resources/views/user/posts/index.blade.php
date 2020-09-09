@@ -151,29 +151,30 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="titleProduct">Titulo</label>
-                            <input type="text" class="form-control" id="titleProduct" v-model="titleProduct">
+                            <input type="text" class="form-control input-promo " id="titleProduct" v-model="titleProduct">
                         </div>
                         <div class="form-group">
                             <label for="descriptionProduct">Descripción</label>
-                            <textarea class="form-control" rows="5" v-model="descriptionProduct" id="descriptionProduct"></textarea>
+                            <textarea class="form-control input-promo-texta " rows="5" v-model="descriptionProduct" id="descriptionProduct"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="priceProduct">Precio</label>
-                            <input type="text" class="form-control" id="priceProduct" v-model="priceProduct" @keypress="isNumber($event)">
+                            <input type="text" class="form-control input-promo " id="priceProduct" v-model="priceProduct" @keypress="isNumber($event)">
                         </div>
-                        <div class="form-group">
-                            <label for="priceProduct">Imagen</label>
-                            <input type="file" class="form-control" id="image2" ref="file" @change="onImageChange2" accept="image/*">
-
-                            <img id="blah2" :src="imagePreview2" class="full-image" style="margin-top: 10px; width: 40%">
-                        </div>
+                        
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="amountProduct">Cantidad</label>
-                                    <input type="text" class="form-control" id="amountProduct" v-model="amountProduct" @keypress="isNumber($event)">
+                                    <input type="text" class="form-control input-promo " id="amountProduct" v-model="amountProduct" @keypress="isNumber($event)">
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="priceProduct">Imagen</label>
+                            <input type="file" class="form-control input-img-publicacion" id="image2" ref="file" @change="onImageChange2" accept="image/*">
+
+                            <img id="blah2" :src="imagePreview2" class="full-image" style="margin-top: 10px; width: 40%">
                         </div>
                     </div>
                     <div class="modal-footer">

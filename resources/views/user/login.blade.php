@@ -65,47 +65,7 @@
                     </a>
                 </div>
             </div> -->
-    <!-- <section class="ftco-cover" id="section-login">
     
-
-
-        {{--<img src="{{ asset('user/images/6.png') }}">--}}
-      
-        <div class="container-fluid">
-            <div class="row text-center">
-                <div class="col-md-6">
-                    <div class="mask">
-                        <img src="{{ asset('user/images/6.png') }}">
-                    
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3>
-                            
-                    <div class="form-group row">
-                        <div class="col-md-12 mb-4">
-                            <label for="email">Email</label>
-                            <input id="email" type="email" class="form-control" placeholder="Email" v-model="email">
-                        </div>
-
-                        <div class="col-md-12 ">
-                            <label for="password">Password</label>
-                            <input id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
-                        </div>
-                    </div>
-                    <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
-                        <div style="text-align: center;" class="col-md-6">
-                            <button class="res button" @click="login()">Entrar</button>
-                        </div>
-                    </div>
-
-                    <a class="text-center text-secondary" href="{{ url('/forgot-password') }}">Olvidé mi contraseña</a>
-                                
-                </div>
-            </div>
-        </div>
-        
-    </section> -->
 
     <section class="vista-interna">
          <div class="cat-comilandia">

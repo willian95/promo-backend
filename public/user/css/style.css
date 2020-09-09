@@ -144,7 +144,7 @@ h1, h2, h3, h4, h5,
   left: 0;
   right: 0;
   top:0;
-  z-index: 9999;
+  z-index: 99;
       box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.08); }
 
   .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
@@ -194,7 +194,9 @@ button.res.button {
   margin-top: 10px;
   font-size: 18px;
 }
-
+a.res.button {
+  color: #fff;
+}
 .selection{
       margin-top: 6%;
     margin-bottom: -7%;
@@ -496,7 +498,7 @@ div#contact-section p{
     border: 1px solid rgb(226, 206, 130);
     height: 55px !important;
     background: transparent;
-    color: #000 !important;
+    color: #fff !important;
     font-size: 18px;
     border-radius: 10px; }
   .form-control:focus, .form-control:active {
@@ -887,7 +889,7 @@ a.btn-prom-comilandia-pedir-ahora {
   position: absolute;
   width: 100%;
   height: 83%;
-  z-index: 99999;
+  z-index: 99;
   top: 25%;
   bottom: 0;
   right: 0;
@@ -1167,7 +1169,9 @@ a.btn-ubereats {
   justify-content: flex-end;
 }
 .prom-img-producto-comilandia-prom-desc {
-  background: #f9de86;
+  text-shadow: 0.1px 0.1px #fdd177;
+  font-weight: bold;
+  /* background: #f9de86; */
   height: 50px;
   width: 50px;
   border-radius: 50px;
@@ -1177,7 +1181,7 @@ a.btn-ubereats {
   /* padding-bottom: 21px; */
   padding: 0px 0px 0px 20px;
   position: relative;
-  top: -35px;
+  top: 35px;
 }
 /* .img-producto-comilandia:hover {
   background: #ee2e3d8c;
@@ -1206,8 +1210,23 @@ a.btn-ubereats {
 }
 
 .productos-comilandia_item {
+  position: relative;
   width: 100%;
   /* margin: 2%; */
+}
+.cont-inf-u-comilandia-img {
+  display: flex;
+  justify-content: center;
+}
+.cont-inf-u-comilandia {
+  position: absolute;
+  bottom: 25px;
+  z-index: 9;
+}
+
+p.cont-inf-u-comilandia-nombre_p {
+    text-align: center;
+    text-transform: capitalize;
 }
 img.img-carrusel-productos {
   width: 100%;
@@ -1465,7 +1484,7 @@ a.nav-link.cont-carrito-span {
 .container-fluid.collapse-login-content_container {
   width: 300px;
 }
-section#section-login {
+/* section#section-login {
 
 }
 div#login-collapse {
@@ -1477,7 +1496,7 @@ div#login-collapse {
   background: #ffffffcf;
   border-radius: 15px;
   padding: 10px;
-}
+} */
 input.input-login {
   background: transparent;
   border-top: transparent;
@@ -1640,12 +1659,20 @@ h3.text-center.cont-publicacion_h3 {
   color:#ffff;
   font-size: 30px;
 }
+
+textarea#descriptionProduct {
+  border: 1px solid #eeeeee!important;
+
+}
 input.form-control.input-publicacion {
   /* border-top: transparent;
   border-right: transparent;
   border-left: transparent;
   border-bottom: 2px solid #eeeeee;
   border-radius: 0; */
+  border: 1px solid #eeeeee;
+}input.form-control.input-promo {
+  color: #000!important;
   border: 1px solid #eeeeee;
 }
 textarea#description {
@@ -1767,4 +1794,16 @@ table.table {
 .form-control:disabled, .form-control[readonly] {
   background-color: #908a8a;
   opacity: 1;
+}
+.input-login {
+  border-radius: 5px;
+  border: 1px solid #eeee;
+}
+.cont-publicacion textarea#descriptionProduct {
+  color: #000!important;
+}
+/*/modificaciones de card/*/
+img.cont-inf-u-comilandia-img_img {
+  width: 30%;
+  border-radius: 50px;
 }
