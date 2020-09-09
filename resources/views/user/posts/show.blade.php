@@ -37,9 +37,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 img-producto-detallado">
-                         <div class="descrip-producto-comilandia-descuento"><div class="descrip-producto-comilandia-descuento-des">@{{ discountPercentage }} %</div></div>
+                         <!-- <div class="descrip-producto-comilandia-descuento"><div class="descrip-producto-comilandia-descuento-des">@{{ discountPercentage }} %</div></div> -->
                          <img class="descrip-producto-comilandia_img" :src="'{{ url('/images/posts') }}'+'/'+image"  >
-                         <div class="descrip-producto-comilandia-cont-categoria"><div class="descrip-producto-comilandia-cont-categoria-div"></div></div>
+                         <div class="descrip-producto-comilandia-cont-categoria"><div class="descrip-producto-comilandia-cont-categoria-div">@{{ discountPercentage }} %</div></div>
                     </div>
                     <div class="col-md-7">
                         <div class="cont-inf-descrip-producto-comilandia">

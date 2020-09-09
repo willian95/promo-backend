@@ -1152,6 +1152,7 @@ a.btn-ubereats {
   height: 100%;
 }
 .productos-comilandia_item h4 {
+  text-transform: uppercase;
   color: #a31b26;
   font-size: 20px;
   margin-top: 0;
@@ -1163,19 +1164,23 @@ a.btn-ubereats {
   height: 10px;
   padding: 15px;
   right: -8px;
-  bottom: 60px;
+  top: 50px;
   position: relative;
   display: flex;
   justify-content: flex-end;
 }
 .prom-img-producto-comilandia-prom-desc {
+  font-size: 22px;
+  align-items: center;
   text-shadow: 0.1px 0.1px #fdd177;
   font-weight: bold;
-  /* background: #f9de86; */
-  height: 50px;
-  width: 50px;
+  /* background: #ee2e3d; */
+  height: 60px;
+  color: #3c3c3c;
+  width: 60px;
   border-radius: 50px;
   display: flex;
+  justify-content: center;
 }
 .box-inf-products-comilandia {
   /* padding-bottom: 21px; */
@@ -1235,7 +1240,7 @@ img.img-carrusel-productos {
 .btn-ver-mas-comilandia {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 a.btn-ver-mas-comilandia_a {
@@ -1481,14 +1486,13 @@ a.nav-link.cont-carrito-span {
   font-size: 30px;
   font-weight: bold;
 }
-.container-fluid.collapse-login-content_container {
+/* .container-fluid.collapse-login-content_container {
   width: 300px;
-}
+} */
 /* section#section-login {
 
 }
 div#login-collapse {
-  /* display: flex; */
   position: absolute;
   z-index: 99999999999999999999999999999999999;
   right: 14%;
@@ -1586,6 +1590,9 @@ a.agregar-al-carrito_a {
   position: relative;
   font-weight: bold;
   border-radius: 65px;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
 }
 img.fondo-tu-pedido-minutos_img {
   width: 100%;
@@ -1806,4 +1813,8 @@ table.table {
 img.cont-inf-u-comilandia-img_img {
   width: 30%;
   border-radius: 50px;
+}
+p.cont-inf-u-comilandia-nombre_p .text-center {
+  color: #a31b26;
+  font-weight: bold;
 }
