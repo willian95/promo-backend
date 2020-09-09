@@ -232,7 +232,7 @@
             </div>
             <div class="col-md-12">
                 <p class="text-center">
-                    <button class="btn btn-success" @click="store()">Publicar</button>
+                    <button class="res button" @click="store()">Publicar</button>
                 </p>
             </div>
         </div>
