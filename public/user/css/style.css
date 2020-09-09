@@ -1637,7 +1637,7 @@ section.vista-interna {
   background: #fff;
 }
 h3.text-center.cont-publicacion_h3 {
-  color:#e3001b;
+  color:#ffff;
   font-size: 30px;
 }
 input.form-control.input-publicacion {
@@ -1659,12 +1659,12 @@ textarea#description {
   border-radius: 0; */
 }
 .cont-publicacion select.form-control {
-  background: #fff;
+  /* background: #fff; */
   border: 1px solid #eeeeee;
 
 }
 .cont-mi-perfil select.form-control {
-  background: #fff;
+  /* background: #fff; */
   border: 1px solid #eeeeee;
 
 }
@@ -1679,7 +1679,7 @@ textarea:focus {
   content: '';
   height: 1px;
   width: 34%;
-  background-color: #a31b27;
+  background-color: #fff;
   top: 42%;
   bottom: 0;
   right: 0;
@@ -1691,14 +1691,14 @@ position: absolute;
     content: '';
     height: 1px;
     width: 34%;
-    background-color: #a31b27;
+    background-color: #fff;
     top: 42%;
     bottom: 0;
     right: 0;
     right: 7%;
 }
 label.cont-publicacion_label {
-  color: #000;
+  color: #fff;
 }
 .input-img-publicacion {
   border: transparent;
@@ -1719,6 +1719,9 @@ label.cont-publicacion_label {
 .input-publicacion {
   margin-bottom: 20px;
 }
+.text-dark {
+  color: #fff!important;
+}
 label.text-dark.text-center {
   text-align: center;
   width: 100%;
@@ -1738,11 +1741,30 @@ button.button.btn-rojo-comilandia {
 select option:hover{
   background : #fff !important;
   }
-  .cont-mi-perfil {
-    margin-bottom: 30px;
-}
+  .cont-mi-perfil, .cont-publicacion {
+    /* margin-bottom: 30px; */
+    background: #686262;
+
+  }
 button.btn.btn-success.btn-comil {
     margin-top: 50px;
     margin-bottom: 30px;
     padding: 10px 20px;
+}
+.input-publicacion {
+  color: #ffff!important;
+}
+label.form-check-label {
+  color: #fff!important;
+}
+h3.text-center.text-desc {
+  color: #e20018;
+  font-size: 35px;
+}
+table.table {
+  color: #ffff;
+}
+.form-control:disabled, .form-control[readonly] {
+  background-color: #908a8a;
+  opacity: 1;
 }

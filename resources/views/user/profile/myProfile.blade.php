@@ -211,14 +211,14 @@
 
             <div class="col-md-12" style="margin-top: 35px;">
                 <p class="text-center">
-                    <button class="btn btn-success btn-comil" @click="update()">Actualizar</button>
+                    <button class="res button btn-comil" @click="update()">Actualizar</button>
                 </p>
             </div>
 
         </div>
         <div class="row">
             <div class="col-12">
-                <h3 class="text-center" style="color:#e3001b;">Comentarios</h3>
+                <h3 class="text-center" style="color:#fff;">Comentarios</h3>
             </div>
             <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3" v-for="rating in ratings">
                 <div class="card">
