@@ -124,47 +124,7 @@
 
 
     <section class="menu" id="menu" style="margin-top: 80px;" >
-        <h2>Productos</h2>
-        
-    
-
-        <!--<div class="container" id="dev-area">
-
-            <div class="row">
-
-                <div class="col-md-4" v-for="post in posts">
-
-                    <div class="card" style="padding-bottom: 20px;">
-                        <div class="img-product">
-                            <img :src="'{{ url('/images/posts/') }}'+'/'+post.post.image" alt="">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-image-section">
-                                <p class="text-center">
-                                    <img :src="'{{ url('/') }}'+'/images/users/'+post.post.user.image" alt="">
-                                </p>
-                                <p class="text-center">
-                                    <a class="text-center" :href="'{{ url('/') }}'+'/profile'+'/'+post.post.user_id">@{{ post.post.user.name }}</a>
-                                </p>
-                            </div>
-
-                            <h5 class="text-center">@{{ post.post.title }}</h5>
-                            <p>@{{ post.post.commune.name }}</p>
-                            <p class="description-post">@{{ post.post.description }}</p>
-                            <p>promedio: @{{ post.overall }} / 5</p>
-                            <p>Descuento: <span class="price">- @{{ post.discountPercentage }}%</span></p>
-                            <p class="text-center button-show-more">
-                                <a :href="'{{ url('/post/show') }}'+'/'+post.post.id">
-                                <button class="button">Ver más</button></a>
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-               
-        </div> -->        
+        <h2>Productos</h2>      
 
 
         <!-- carrusel -->
@@ -253,15 +213,16 @@
                             </div>
                             <div class="cont-inf-u-comilandia">
                                 <div class="cont-inf-u-comilandia-img">
-                                    <img class="cont-inf-u-comilandia-img_img" src="{{ asset('user/images/menu_3.jpg') }}" alt="">
+                                    <img class="cont-inf-u-comilandia-img_img" :src="'{{ url('/') }}'+'/images/users/'+post.post.user.image" alt="" alt="">
                                 </div>
                                 <div class="cont-inf-u-comilandia-nombre">
-                                    <p class="cont-inf-u-comilandia-nombre_p">nombre</p>
+                                    <p class="cont-inf-u-comilandia-nombre_p"><a class="text-center" :href="'{{ url('/') }}'+'/profile'+'/'+post.post.user_id">@{{ post.post.user.name }}</a></p>
                                 </div>
                             </div>
                             <div class="box-inf-products-comilandia">
                                 <h4>@{{ post.post.title }}</h4>
                                 <p>@{{ post.post.commune.name }}</p>    
+                                
                             </div>
                             
                         </a> 

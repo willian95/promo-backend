@@ -85,7 +85,6 @@
                             </div>
                         </div>
 
-                        <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>
                         <li class="nav-item" v-if="authCheck == false">
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#myModalogin" >Inicia Sesión</a>
                         </li>
@@ -99,14 +98,6 @@
                         <li class="nav-item" v-if="authCheck == true">
                             <a class="nav-link" href="{{ url('/explorer') }}">Explorar</a>
                         </li>
-                        <div class="div-nav-item">
-                            <li class="nav-item">
-                                <a class="nav-link cont-carrito-span resp-m" href="#"><img class="ico-menu-comilandia carrito-span" src="{{ asset('user/images/cart.png') }}"><span class="ico-menu-comilandia_span ">1</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link resp-m" href="#"><img class="ico-menu-comilandia" src="{{ asset('user/images/useri.png') }}"></a>
-                            </li>
-                        </div>
                         
                         <!--<li class="nav-item"><a href="#menu" class="nav-link">Menú</a></li>
                         <li class="nav-item"><a href="#footer" class="nav-link">Contacto</a></li>-->
