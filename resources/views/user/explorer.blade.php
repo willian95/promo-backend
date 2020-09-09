@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!--<div class="row">
 
             <div class="col-md-4 col-lg-3">
 
@@ -60,7 +60,6 @@
                         <h5>@{{ post.post[0].title }}</h5>
                         <p>@{{ post.post[0].commune.name }}</p>
                         <p class="description-post">@{{ post.post[0].description }}</p>
-                        <!--<img :src="'{{ url('/') }}'+'/images/users/'+post.post[0].user.image" alt="" style="width: 50px;"><a :href="'{{ url('/') }}'+'/profile'+'/'+post.post[0].user_id">@{{ post.post[0].user.name }}</a>-->
                         <p>promedio: @{{ post.overall }} / 5</p>
                         <p>Descuento: <span class="price">- @{{ post.discountPercentage }}%</span></p>
                         <p class="text-center button-show-more">
@@ -84,7 +83,7 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div>-->
 
     </div>
 
@@ -98,50 +97,15 @@
     <h3 class="resultado-busqueda">Resultados de la busqueda</h3>
     <p class="resultado-busqueda-pide-ahora">¡PIDE AHORA!</p>
              <div class="prod-relacionado">
-                 <div class="single-item-rtl relacionados">
+                 <div class="single-item-rtl relacionados" v-for="post in posts">
                      <div class="productos-comilandia_item">
                      <a href="#">
-                             <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                             <div class="img-producto-comilandia"><img class="img-carrusel-productos" :src="'{{ url('/images/posts/') }}'+'/'+post.post[0].image"  ></div>
                              <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
                              <div class="box-inf-products-comilandia">
-                                 <h4>Hamburguesa de carne</h4>
-                                 <h5>50% OFF</h5>
-                             </div>
-                             </a> 
-                     </div>
-                 </div>
-                 <div class="single-item-rtl relacionados">
-                     <div class="productos-comilandia_item">
-                     <a href="#">
-                             <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
-                             <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
-                             <div class="box-inf-products-comilandia">
-                                 <h4>Hamburguesa de carne</h4>
-                                 <h5>50% OFF</h5>
-                             </div>
-                             </a>
-                     </div>
-                 </div>
-                 <div class="single-item-rtl relacionados">
-                     <div class="productos-comilandia_item">
-                     <a href="#">
-                             <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
-                             <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
-                             <div class="box-inf-products-comilandia">
-                                 <h4>Hamburguesa de carne</h4>
-                                 <h5>50% OFF</h5>
-                             </div>
-                             </a> 
-                     </div>
-                 </div>
-                 <div class="single-item-rtl relacionados">
-                     <div class="productos-comilandia_item">
-                     <a href="#">
-                             <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
-                             <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
-                             <div class="box-inf-products-comilandia">
-                                 <h4>Hamburguesa de carne</h4>
-                                 <h5>50% OFF</h5>
+                                <h5>@{{ post.post[0].title }}</h5>
+                                <p>@{{ post.post[0].commune.name }}</p>
+                                <h5>50% OFF</h5>
                              </div>
                              </a> 
                      </div>

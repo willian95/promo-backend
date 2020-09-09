@@ -4,6 +4,10 @@
 
     <section class="ftco-cover" id="section-register">
         <div class="container-fluid">
+
+            <div class="loader-cover" v-if="loading == true">
+                <div class="loader"></div>
+            </div>
            
             <div class="row information">
                 <div class="col-md-6 pt-40 cont-registrar-comilandia">
@@ -87,6 +91,7 @@
                     phone:"",
                     region:"",
                     name:"",
+                    loading:false,
                     regions:[],
                     communes:[]
                 }
@@ -94,6 +99,8 @@
             methods:{
                 
                 register(){
+
+                    this.loading = true
 
                     axios.post("{{ url('/api/register') }}", {
                         name: this.name,
@@ -105,11 +112,11 @@
                         telephone: this.phone
                     })
                     .then(res => {
-
+                        this.loading = false
                         if (res.data.success == false) {
                             swal({
                                 text: res.data.msg,
-                                icon: "success"
+                                icon: "error"
                             })
                             
                         } else {
@@ -126,6 +133,7 @@
 
                     })
                     .catch(err => {
+                        this.loading = false
                         $.each(err.response.data.errors, function(key, value) {
                             alertify.error(value[0])
                             //alertify.error(value);

@@ -45,14 +45,14 @@ body {
   }
 }
   /**/
-/* .cover{
+.loader-cover{
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 99999;
+  z-index: 9999999999;
 }
 
 .loader {
@@ -69,7 +69,7 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-} */
+} 
 
 #section-register h3, #section-register p, #section-register label, #section-register input{
   color: #000 ;

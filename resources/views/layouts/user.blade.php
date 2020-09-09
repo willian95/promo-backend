@@ -8,8 +8,7 @@
         
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
         <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/open-iconic-bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/animate.css') }}">
@@ -85,33 +84,8 @@
                         </div>
 
                         <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>
-                        <li class="nav-item dropdown" v-if="authCheck == false">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ url('login') }}" >Inicia Sesión</a>
-                        <div class="dropdown-menu">
-                        <section class=" collapse-login-content" id="section-login">
-                        {{--<img src="{{ asset('user/images/6.png') }}">--}}
-                    
-                            <div class="container-fluid collapse-login-content_container">
-                                <!-- <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3> -->
-                                <div class="form-group row">
-                                    <div class="col-md-12 mb-4">
-                                        <!-- <label for="email">Email</label> -->
-                                        <input class="input-login" id="email" type="email" class="form-control" placeholder="Email" v-model="email">
-                                    </div>
-                                    <div class="col-md-12 ">
-                                        <!-- <label for="password">Password</label> -->
-                                        <input class="input-login" id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
-                                    </div>
-                                </div>
-                                <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
-                                    <div style="text-align: center;" class="col-md-6">
-                                        <a class="res button" @click="login()">Entrar</a>
-                                    </div>
-                                </div>
-                                <a class="text-center text-secondary" href="{{ url('/forgot-password') }}">Olvidé mi contraseña</a>                              
-                            </div>
-                        </section>
-                        </div>
+                        <li class="nav-item" v-if="authCheck == false" data-toggle="collapse" data-target="#login-collapse">
+                            <a class="nav-link" href="{{ url('login') }}" >Inicia Sesión</a>
                         </li>
                         
                         <li class="nav-item" v-if="authCheck == false">
@@ -184,14 +158,6 @@
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-        <!-- Popper JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="{{ asset('user/js/jquery.min.js') }}"></script>
