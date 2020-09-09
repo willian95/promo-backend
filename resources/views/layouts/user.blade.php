@@ -62,98 +62,187 @@
 
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-            <div class="container">
-                <a class=" menu-logo" href="{{ url('/') }}"><img src="{{ asset('user/images/logo.png') }}"></a>
-                <p class="pide-ahora">¡PIDE AHORA!</p>
-                <div class="search-comilandia">
-                    <input  class="search-comilandia-input" id="search" type="text" placeholder="¿Qué quieres comer?">
-                    <a class="search-comilandia-a" href="#">Buscar</a>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-                </button>
+        <div id="ftco-navbar">
 
-                <div class="collapse navbar-collapse" id="ftco-nav">
-                    <ul class="navbar-nav ml-auto">
-                        <div class="search-comilandia d-n-c">
-                        <div class="form">
-                                <input  class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?" >
-                                <a class="search-comilandia-a" href="#">Buscar</a>
+            <div class="loader-cover" v-if="loading == true">
+                <div class="loader"></div>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" >
+                <div class="container">
+                    <a class=" menu-logo" href="{{ url('/') }}"><img src="{{ asset('user/images/logo.png') }}"></a>
+                    <p class="pide-ahora">¡PIDE AHORA!</p>
+                    <div class="search-comilandia">
+                        <input  class="search-comilandia-input" id="search" type="text" placeholder="¿Qué quieres comer?">
+                        <a class="search-comilandia-a" href="#">Buscar</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="ftco-nav">
+                        <ul class="navbar-nav ml-auto">
+                            <div class="search-comilandia d-n-c">
+                            <div class="form">
+                                    <input  class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?" >
+                                    <a class="search-comilandia-a" href="#">Buscar</a>
+                                </div>
+                            </div>
+
+                            <!--<li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>-->
+                            <li class="nav-item" v-if="authCheck == false" data-toggle="collapse" data-target="#login-collapse">
+                                <a class="nav-link" href="{{ url('login') }}" >Inicia Sesión</a>
+                            </li>
+                            
+                            <li class="nav-item" v-if="authCheck == false">
+                                <a class="nav-link btn-comilandia" href="{{ url('/register') }}">Crear una cuenta</a>
+                            </li>
+                            <li class="nav-item" v-if="authCheck == true">
+                                <a class="nav-link" href="{{ url('/post') }}">Publicar</a>
+                            </li>
+                            <li class="nav-item" v-if="authCheck == true">
+                                <a class="nav-link" href="{{ url('/explorer') }}">Explorar</a>
+                            </li>
+                            <div class="div-nav-item">
+                                <!--<li class="nav-item">
+                                    <a class="nav-link cont-carrito-span resp-m" href="#"><img class="ico-menu-comilandia carrito-span" src="{{ asset('user/images/cart.png') }}"><span class="ico-menu-comilandia_span ">1</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link resp-m" href="#"><img class="ico-menu-comilandia" src="{{ asset('user/images/useri.png') }}"></a>
+                                </li>-->
+                            </div>
+                            
+                            <!--<li class="nav-item"><a href="#menu" class="nav-link">Menú</a></li>
+                            <li class="nav-item"><a href="#footer" class="nav-link">Contacto</a></li>-->
+                        </ul>
+                    
+                        <div class="dropdown">
+                            <button @click="showListUser()" v-if="name" class="button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @{{ name }}
+                            </button>
+                            <div id="list-user" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-profile') }}">Mi Perfil</a>
+                                <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-sales') }}">Mis Ventas</a>
+                                <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-purchases') }}">Mis Compras</a>
+                                <a v-if="roleId == 1" class="dropdown-item" href="{{ url('/admin/dashboard') }}">Dashboard</a>
+                                <a class="dropdown-item" href="#" @click="logout()">Cerrar sesión</a>
                             </div>
                         </div>
-
-                        <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>
-                        <li class="nav-item" v-if="authCheck == false" data-toggle="collapse" data-target="#login-collapse">
-                            <a class="nav-link" href="{{ url('login') }}" >Inicia Sesión</a>
-                        </li>
-                        
-                        <li class="nav-item" v-if="authCheck == false">
-                            <a class="nav-link btn-comilandia" href="{{ url('/register') }}">Crear una cuenta</a>
-                        </li>
-                        <li class="nav-item" v-if="authCheck == true">
-                            <a class="nav-link" href="{{ url('/post') }}">Publicar</a>
-                        </li>
-                        <li class="nav-item" v-if="authCheck == true">
-                            <a class="nav-link" href="{{ url('/explorer') }}">Explorar</a>
-                        </li>
-                        <div class="div-nav-item">
-                            <li class="nav-item">
-                                <a class="nav-link cont-carrito-span resp-m" href="#"><img class="ico-menu-comilandia carrito-span" src="{{ asset('user/images/cart.png') }}"><span class="ico-menu-comilandia_span ">1</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link resp-m" href="#"><img class="ico-menu-comilandia" src="{{ asset('user/images/useri.png') }}"></a>
-                            </li>
-                        </div>
-                        
-                        <!--<li class="nav-item"><a href="#menu" class="nav-link">Menú</a></li>
-                        <li class="nav-item"><a href="#footer" class="nav-link">Contacto</a></li>-->
-                    </ul>
                 
-                    <div class="dropdown">
-                        <button @click="showListUser()" v-if="name" class="button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @{{ name }}
-                        </button>
-                        <div id="list-user" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-profile') }}">Mi Perfil</a>
-                            <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-sales') }}">Mis Ventas</a>
-                            <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-purchases') }}">Mis Compras</a>
-                            <a v-if="roleId == 1" class="dropdown-item" href="{{ url('/admin/dashboard') }}">Dashboard</a>
-                            <a class="dropdown-item" href="#" @click="logout()">Cerrar sesión</a>
-                        </div>
                     </div>
-             
-                </div>
-          </div>
-        </nav>
+            </div>
+            </nav>
 
-        <div id="login-collapse" class="collapse">
-            <section class=" collapse-login-content" id="section-login">
-                        {{--<img src="{{ asset('user/images/6.png') }}">--}}
-                    
-                 <div class="container-fluid collapse-login-content_container">
-                     <!-- <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3> -->
-                     <div class="form-group row">
-                         <div class="col-md-12 mb-4">
-                             <!-- <label for="email">Email</label> -->
-                             <input class="input-login" id="email" type="email" class="form-control" placeholder="Email" v-model="email">
-                         </div>
-                         <div class="col-md-12 ">
-                             <!-- <label for="password">Password</label> -->
-                             <input class="input-login" id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
-                         </div>
-                     </div>
-                     <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
-                         <div style="text-align: center;" class="col-md-6">
-                             <a class="res button" @click="login()">Entrar</a>
-                         </div>
-                     </div>
-                     <a class="text-center text-secondary" href="{{ url('/forgot-password') }}">Olvidé mi contraseña</a>                              
-                 </div>
-            </section>
+            <div id="login-collapse" class="collapse">
+                <section class=" collapse-login-content" id="section-login">
+                            {{--<img src="{{ asset('user/images/6.png') }}">--}}
+                        
+                    <div class="container-fluid collapse-login-content_container">
+                        <!-- <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3> -->
+                        <div class="form-group row">
+                            <div class="col-md-12 mb-4">
+                                <!-- <label for="email">Email</label> -->
+                                <input class="input-login" id="email" type="email" class="form-control" placeholder="Email" v-model="email">
+                            </div>
+                            <div class="col-md-12 ">
+                                <!-- <label for="password">Password</label> -->
+                                <input class="input-login" id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
+                            <div style="text-align: center;" class="col-md-6">
+                                <a class="res button" @click="login()">Entrar</a>
+                            </div>
+                        </div>
+                        <a class="text-center text-secondary" href="{{ url('/forgot-password') }}">Olvidé mi contraseña</a>                              
+                    </div>
+                </section>
+            </div>
+        
         </div>
 
+        
+
         @yield("content")
+
+        <section class="tu-pedido-minutos">
+        <div class="tu-pedido-en-minutos">
+            <div class="container tu-pedido-en-min-cont">
+            <h3 class="tu-pedido-en-minutos_h3">¡Tu pedido en minutos!</h3>
+
+                <div class="row">
+                    <div class="col-md-6 tu-pedido-en-minutos_col">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus obcaecati natus repellat! Accusamus voluptatum, provident aspernatur ab cupiditate odit nulla. Excepturi, qui.</p>
+                        <div class="div_btn-ubereats">
+                            <a class="btn-ubereats" href="#">Pedir por UberEats</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 tu-pedido-en-minutos_col">
+                        <div class="tu-pedido-en-minutos_col_img">
+                        <img class="img-pedido-minutos-col6" src="{{ asset('user/images/ej-4.png') }}"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fondo-tu-pedido-minutos">
+        <img class="fondo-tu-pedido-minutos_img" src="{{ asset('user/images/fondorojo.png') }}"  >
+
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer " id="footer">
+            <div class="container">
+                <div class=" row footer-cont">
+                    <div class="col-md-5 col-sm-12footer-cont-c5">
+                        <h5 class="comilandia-titulo-footer">COMILANDIA</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa deleniti illum a nobis odio vel dolores quaerat odit, repellendus fuga cum nemo eveniet, vero accusantium debitis voluptatum, facere itaque laboriosam!</p>
+                    </div>
+                    <div class="col-md-2 col-sm-4 list-menu-footer">
+                        <h6 class="text-red">Menú del día</h6>
+                        <ul>
+                            <li>Pedido online</li>
+                            <li>Delivery</li>
+                            <li>Contáctanos</li>
+                        </ul>
+                    </div> 
+                    <div class="col-md-2 col-sm-4 list-menu-footer f-b">
+                        <h6>Menú del día</h6>
+                        <ul>
+                            <li>Pedido online</li>
+                            <li>Delivery</li>
+                            <li>Contáctanos</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3  col-sm-4 list-menu-footer siguenos">
+                        <h6>Síguenos</h6>
+                        <div class="rs-comilandia-cont">
+                            <ul>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"><img class="ico-menu-comilandia" src="{{ asset('user/images/facebook.png') }}"></div><p> Comilandiafood</p></div></li>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"><img class="ico-menu-comilandia" src="{{ asset('user/images/instagram.png') }}"></div><p> Comilandiafood</p></div></li>
+                                <li ><div class="list-rs-comilandia-op"><div class="rs-comilandia"><img class="ico-menu-comilandia" src="{{ asset('user/images/youtube.png') }}"></div><p> Comilandiafood</p></div></li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="logo-footer">
+                <img src="{{ asset('user/images/logo.png') }}">
+            </div>
+            <div class="about-footer">
+                <h6 style="font-weight: bold">Sobre Nosotros</h6>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="hours">
+                <h6 style="font-weight: bold;     margin-left: -25px;">Nuestro Horario</h6>
+                <p> Lunes a Viernes <br>
+                10.00 hrs a 20:00hrs</p>
+            </div> -->
+        </div>
+    </footer>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -199,11 +288,71 @@
                     return{
                         name:"",
                         roleId:"",
-                        authCheck:false
+                        authCheck:false,
+                        email:"",
+                        password:"",
+                        loading:false
                     }
                 },
                 methods:{
-                    
+
+                    login(){
+                        this.loading = true
+                        axios.post("{{ url('/api/login') }}", {
+                            email: this.email,
+                            password: this.password
+                        })
+                        .then(res => {
+                            this.loading = false
+                            if (res.data.success == false) {
+                                //alertify.error(res.data.msg)
+                            
+                                swal({
+                                    title: "Hubo un problema!",
+                                    text: res.data.msg,
+                                    icon: "error"
+                                });
+                            } else {
+
+                                localStorage.setItem("token", res.data.token)
+                                localStorage.setItem("user", JSON.stringify(res.data.user))
+                                
+                                if (res.data.user.role_id == 1) {
+
+                                    swal({
+                                        title: "Perfecto!",
+                                        text: res.data.msg,
+                                        icon: "success"
+                                    }).then(function() {
+                                        window.location.replace("{{ url('admin/dashboard') }}")
+                                    });;
+
+                                    
+                                } else if (res.data.user.role_id == 2) {
+
+                                    swal({
+                                        title: "Perfecto!",
+                                        text: res.data.msg,
+                                        icon: "success"
+                                    }).then(function() {
+                                        window.location.replace("{{ url('/') }}")
+                                    });;
+
+                                }
+
+                            }
+
+                        })
+                        .catch(err => {
+                            this.loading = false
+                            $.each(err.response.data.errors, function(key, value) {
+                                alertify.error(value[0])
+                                //alertify.error(value);
+                                //alertify.alert('Basic: true').set('basic', true); 
+                            });
+                        })
+
+                    },
                     checkAuth(){
 
                         let user = JSON.parse(localStorage.getItem("user"))
@@ -243,6 +392,7 @@
 
             })
         </script>
+
 
         <script>
             alertify.set('notifier','position', 'top-right');
