@@ -1034,7 +1034,7 @@ select.form-control.form-explorer-comilandia {
 }
 select.form-control, option {
   background: #646464;
-  color: #000;
+  color: #fff;
 }
 option:hover {
   background-color: #fc0!important; /* poner el color que gustes */
