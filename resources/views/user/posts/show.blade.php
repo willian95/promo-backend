@@ -3,198 +3,202 @@
 
 @section("content")
 
-    <div class="container pt-150" id="dev-area">
-
-        <div class="row">
-            <div class="col-12">
-                <h3 class="text-center">@{{ title }}</h3>
+    <section class="vista-interna" id="dev-area">
+         <div class="cat-comilandia">
+            <div class="btn-group">
+                <button type="button" class="btn cat-comilandia-btn">Basico</button>
+                <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                </button>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                </div>
             </div>
-            <div class="col-md-5 col-lg-5">
-                <img :src="'{{ url('/images/posts') }}'+'/'+image" style="width: 100%">
+            <div class="btn-group">
+                <button type="button" class="btn cat-comilandia-btn">Superior</button>
+                <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                </button>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                </div>
             </div>
-            <div class="col-md-7 col-lg-7">
-                <p class="text-dark">
-                    <strong>Vendedor: </strong><a :href="'{{ url('/') }}'+'/profile'+'/'+seller.id">@{{ seller.name }}</a>
-                </p>
-                <p class="text-dark">
-                    <span style="font-weight: bold;">Categoria</span>: @{{ category }}
-                </p>
-                <p>@{{ description }}</p>
-                <p class="text-dark">
-                    <strong>Descuento por hoy: </strong> @{{ discountPercentage }} %
-                </p>
-                <p class="text-dark">
-                    <strong>Fecha de venta: </strong> @{{ saleDate.toString().substring(0, 10) }}
-                </p>
-                <p class="text-dark">
-                    <strong>Fecha de finalización: </strong> @{{ dueDate.toString().substring(0, 10) }}
-                </p>
-                <p v-if="openDays.length > 0" class="text-dark">
-                    <strong>Establecimiento abierto: </strong> @{{ openDays.replace(/,/g, ", ") }}
-                </p>
-                <p v-if="deliveryDays.length > 0" class="text-dark">
-                    <strong>Delivery: </strong> @{{ deliveryDays.replace(/,/g, ", ") }}
-                </p>
+            <div class="btn-group">
+                <button type="button" class="btn cat-comilandia-btn">Premium</button>
+                <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                </button>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                </div>
             </div>
         </div>
+        <div class="descrip-producto-comilandia">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 img-producto-detallado">
+                         <div class="descrip-producto-comilandia-descuento"><div class="descrip-producto-comilandia-descuento-des">@{{ discountPercentage }} %</div></div>
+                         <img class="descrip-producto-comilandia_img" :src="'{{ url('/images/posts') }}'+'/'+image"  >
+                         <div class="descrip-producto-comilandia-cont-categoria"><div class="descrip-producto-comilandia-cont-categoria-div"></div></div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="cont-inf-descrip-producto-comilandia">
+                            <h2>@{{ category }}</h2>
+                            <p>@{{ description }}</p>
+                            <div class="cont-inf-descrip-producto-comilandia-desc-det">
+                                <div class="row">
+                                    <div class="col-md-8 cont-inf-descrip-producto-comilandia-desc-det-cajas">
+                                        <div class="caja-descrip-detallada"><h3><strong>Fecha de venta: </strong> @{{ saleDate.toString().substring(0, 10) }}</h3></div>
+                                        <div class="caja-descrip-detallada"><h3><strong>Fecha de finalización: </strong> @{{ dueDate.toString().substring(0, 10) }}</h3></div>
+                                        <div class="caja-descrip-detallada"><h3><strong>Establecimiento abierto: </strong> @{{ openDays.replace(/,/g, ", ") }}</h3></div>
+                                        <div class="caja-descrip-detallada"><h3><strong>Delivery: </strong> @{{ deliveryDays.replace(/,/g, ", ") }}</h3></div>
+                                        <!--<div class="caja-descrip-detallada"><h3>Tocino</h3></div>
+                                        <div class="caja-descrip-detallada"><h3>Champiñones</h3></div>-->
 
-        <div class="row" style="margin-top: 30px;">
-
-            <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2" v-for="(product, index) in products">
-                <div class="card">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img :src="'{{ url('/images/posts/products/') }}'+'/'+product.image" style="width: 100%">
-                        </div>
-                        <div class="col-md-4">
-                            <h4 class="text-center">@{{ product.title }}</h4>
-                            <p class="text-justify">@{{ product.description }}</p>
-                            
-                        </div>
-                        <div class="col-md-4">
-                            <p><strong>Precio: </strong>$ @{{ parseInt(parseInt(product.price + (product.price * typePrice)) + 1).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
-                            <p class="text-dark" v-if="discountPercentage > 0"><strong>Precio por hoy: </strong>$ @{{ parseInt(parseInt((product.price) - (product.price * (discountPercentage/100)) + (product.price * typePrice)) + 1).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
-                           <!--<button class="btn btn-success" @click="substractUnit(index)">-</button> <input :id="'amount-'+index" type="text" class="form-control amount-input" style="width: 60px" value="0"> <button class="btn btn-success" @click="addUnit(index, product.amount)">+</button>-->
-                           <div class="cantidad_btn">
-                                <button class="btn" @click="substractUnit(index)">-</button>
-                                <input :id="'amount-'+index" type="text" style="border:none; width: 12px;" class="amount-input" style="width: 60px" value="0">
-                                <button class="btn" @click="addUnit(index, product.amount)">+</button>
+                                    </div>
+                                    
+                                </div>
+                                <!--<div class="row">
+                                    <div class="col-md-12">
+                                        <div class="cont-inf-descrip-producto-comilandia-c-fechas">
+                                            <div class="cont-inf-descrip-producto-comilandia-fechas">01/01/2001<img class="descrip-producto-comilandia_img" src="{{ asset('user/images/calendario.png') }}"  ></div>
+                                            <div class="cont-inf-descrip-producto-comilandia-fechas">01/01/2001<img class="descrip-producto-comilandia_img" src="{{ asset('user/images/calendario.png') }}"  ></div>
+                                        </div>
+                                    </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <div class="text-center" v-if="hasDelivery == 1">
-                    <p class="text-dark"><strong>Precio del delivery:</strong> @{{ parseInt(deliveryPrice).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="lunes" id="defaultCheck1" v-model="delivery" @click="checkDelivery()" :disabled="total <= 1">
-                        <label class="form-check-label" for="defaultCheck1" style="color:#000">
-                            ¿Desea delivery?
-                        </label>
-                    </div>
-                    <small>Si no elige el servicio de delivery deberá buscar su promoción en el establecimiento de la publicación. Dicha dirección aparecerá en el perfil del vendedor.</small>                    
-                </div>
-            </div>
-            <div class="col-12">
-                
-                <h3 class="text-center">Total: $ @{{ parseInt(total).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</h3>
-                <h3 class="text-center" v-if="purchaseType == 'reservation' && total > 0">Total a pagar por reservación: $ @{{ parseInt((total / 2)+1).toString().replace(/\B(?=(\d{3})+\b)/g, ".")  }}</h3>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <div v-if="todaysDate >= startDate && todaysDate <= dueDate">
-
-                    <div v-if="authCheck == true && authUserId != seller.id">
-                        <p class="text-center">
-                            <a href="#"><button class="res button" style="margin-top: 3%;" data-toggle="modal" data-target="#shop" @click="productPushPurchase()">@{{ purchaseButtonText }}</button></a>
-                        </p>
-                    </div>
-                    <div v-if="authCheck == false">
-                        <h3 class="text-center">Para comprar debes iniciar sesión</h3>
-                    </div>
-                    <div v-if="authUserId == seller.id">
-                        <h3 class="text-center">No puedes comprar o reservar una publicación que hayas hecho</h3>
-                    </div>
-
-                </div>
-                <h3 v-if="todaysDate < startDate">Aún no ha comenzado la venta de esta promoción</h3>
-                <h3 v-if="todaysDate > dueDate">Esta promoción ya terminó</h3>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <h3 class="text-center">Fechas de Promoción</h3>
-            </div>
-            @foreach($promoPeriod as $promo)
-
-                <div class="col-md-2">
-                    <div class="card promo-date" style="height: 120px;">
-                        <div class="card-body text-center">
-                            
-                            <p class="text-center"><strong>{{ $promo->locale('es')->dayName }}</strong></p>
-
-                            <small>
-                                {{ $promo->format('d-m-Y') }}
-                            </small>
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2" v-for="(product, index) in products">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img :src="'{{ url('/images/posts/products/') }}'+'/'+product.image" style="width: 100%">
+                                </div>
+                                <div class="col-md-4">
+                                    <h4 class="text-center">@{{ product.title }}</h4>
+                                    <p class="text-justify">@{{ product.description }}</p>
+                                    
+                                </div>
+                                <div class="col-md-4">
+                                    <p><strong>Precio: </strong>$ @{{ parseInt(parseInt(product.price + (product.price * typePrice)) + 1).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
+                                    <p class="text-dark" v-if="discountPercentage > 0"><strong>Precio por hoy: </strong>$ @{{ parseInt(parseInt((product.price) - (product.price * (discountPercentage/100)) + (product.price * typePrice)) + 1).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
+                                <!--<button class="btn btn-success" @click="substractUnit(index)">-</button> <input :id="'amount-'+index" type="text" class="form-control amount-input" style="width: 60px" value="0"> <button class="btn btn-success" @click="addUnit(index, product.amount)">+</button>-->
+                                <div class="cantidad_btn">
+                                        <button class="btn" @click="substractUnit(index)">-</button>
+                                        <input :id="'amount-'+index" type="text" style="border:none; width: 12px;" class="amount-input" style="width: 60px" value="0">
+                                        <button class="btn" @click="addUnit(index, product.amount)">+</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
-            @endforeach
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <h3 class="text-center">Fechas de Venta</h3>
-            </div>
-            @foreach($salePeriod as $sale)
-
-                <div class="col-md-2">
-                    <div class="card promo-date" style="height: 120px;">
-                        <div class="card-body">
-                            
-                            <p class="text-center"><strong>{{ $sale->locale('es')->dayName }}</strong></p>
-
-                            <small>
-                                {{ $sale->format('d-m-Y') }}
-                            </small>
+                <div class="row">
+                    <div class="col-md-4 offset-md-4">
+                        <div class="text-center" v-if="hasDelivery == 1">
+                            <p class="text-dark"><strong>Precio del delivery:</strong> @{{ parseInt(deliveryPrice).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="lunes" id="defaultCheck1" v-model="delivery" @click="checkDelivery()" :disabled="total <= 1">
+                                <label class="form-check-label" for="defaultCheck1" style="color:#000">
+                                    ¿Desea delivery?
+                                </label>
+                            </div>
+                            <small>Si no elige el servicio de delivery deberá buscar su promoción en el establecimiento de la publicación. Dicha dirección aparecerá en el perfil del vendedor.</small>                    
                         </div>
                     </div>
-                </div>
-
-            @endforeach
-        </div>
-
-    <div class="modal fade" id="shop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tipo de pago</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="text-center" v-if="total > 1">
-                        <!--<button type="button" class="btn btn-primary" @click="transferType()">Transferencia</button>
-                        <button type="button" class="btn btn-primary" @click="webpayType()">Webpay</button>-->
+                    <div class="col-12">
+                        
+                        <h3 class="text-center">Total: $ @{{ parseInt(total).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</h3>
+                        <h3 class="text-center" v-if="purchaseType == 'reservation' && total > 0">Total a pagar por reservación: $ @{{ parseInt((total / 2)+1).toString().replace(/\B(?=(\d{3})+\b)/g, ".")  }}</h3>
                     </div>
+                </div>
 
-                    <div v-else>
-                        <h3 class="text-center">Cantidad debe ser mayor a 0</h3>
-                    </div>  
+                <div class="row">
+                    <div class="col-12">
+                        <div v-if="todaysDate >= startDate && todaysDate <= dueDate">
 
-                
-                    <div v-if="paymentMethod == 'webpay'">
+                            <div v-if="authCheck == true && authUserId != seller.id">
+                                <p class="text-center">
+                                    <a href="#"><button class="agregar-al-carrito_a" style="margin-top: 3%;" data-toggle="modal" data-target="#shop" @click="productPushPurchase()">@{{ purchaseButtonText }}</button></a>
+                                </p>
+                            </div>
+                            <div v-if="authCheck == false">
+                                <h3 class="text-center">Para comprar debes iniciar sesión</h3>
+                            </div>
+                            <div v-if="authUserId == seller.id">
+                                <h3 class="text-center">No puedes comprar o reservar una publicación que hayas hecho</h3>
+                            </div>
 
-                        <div class="text-center" v-if="total > 1">
-
-                            <img @click="webpay()" src="{{ asset('/user/images/article.jpg') }}" alt="" style="width: 200px; cursor: pointer;">
                         </div>
+                        <h3 v-if="todaysDate < startDate">Aún no ha comenzado la venta de esta promoción</h3>
+                        <h3 v-if="todaysDate > dueDate">Esta promoción ya terminó</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="container cont-productos">
+            <div class="prod-relacionado">
+                <div class="single-item-rtl relacionados">
+                    <div class="productos-comilandia_item">
+                    <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
 
                     </div>
-
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <div class="single-item-rtl relacionados">
+                    <div class="productos-comilandia_item">
+                    <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl relacionados">
+                    <div class="productos-comilandia_item">
+                    <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
+                </div>
+                <div class="single-item-rtl relacionados">
+                    <div class="productos-comilandia_item">
+                    <a href="#">
+                            <div class="img-producto-comilandia"><img class="img-carrusel-productos" src="{{ asset('user/images/menu_3.jpg') }}"  ></div>
+                            <div class="img-producto-comilandia-prom"><div class="prom-img-producto-comilandia-prom-desc"></div></div>
+                            <div class="box-inf-products-comilandia">
+                                <h4>Hamburguesa de carne</h4>
+                                <h5>50% OFF</h5>
+                            </div>
+                            </a> 
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- modal -->
-
-    </div>
+    </section>
 
 @endsection
 

@@ -141,37 +141,37 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 img-producto-detallado">
-                         <div class="descrip-producto-comilandia-descuento"><div class="descrip-producto-comilandia-descuento-des">-50%</div></div>
-                         <img class="descrip-producto-comilandia_img" src="{{ asset('user/images/menu_3.jpg') }}"  >
+                         <div class="descrip-producto-comilandia-descuento"><div class="descrip-producto-comilandia-descuento-des">@{{ discountPercentage }} %</div></div>
+                         <img class="descrip-producto-comilandia_img" :src="'{{ url('/images/posts') }}'+'/'+image"  >
                          <div class="descrip-producto-comilandia-cont-categoria"><div class="descrip-producto-comilandia-cont-categoria-div"></div></div>
                     </div>
                     <div class="col-md-7">
                         <div class="cont-inf-descrip-producto-comilandia">
-                            <h2>Hamburguesa de carne</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium accusamus blanditiis quae, recusandae ducimus consequatur quaerat maiores</p>
+                            <h2>@{{ category }}</h2>
+                            <p>@{{ description }}</p>
                             <div class="cont-inf-descrip-producto-comilandia-desc-det">
                                 <div class="row">
                                     <div class="col-md-8 cont-inf-descrip-producto-comilandia-desc-det-cajas">
-                                        <div class="caja-descrip-detallada"><h3>Carne de 200gr de cordero</h3></div>
-                                        <div class="caja-descrip-detallada"><h3>Vegetales</h3></div>
-                                        <div class="caja-descrip-detallada"><h3>Aros de cebolla</h3></div>
-                                        <div class="caja-descrip-detallada"><h3>Salsa especial</h3></div>
-                                        <div class="caja-descrip-detallada"><h3>Tocino</h3></div>
-                                        <div class="caja-descrip-detallada"><h3>Champiñones</h3></div>
+                                        <div class="caja-descrip-detallada"><h3><strong>Fecha de venta: </strong> @{{ saleDate.toString().substring(0, 10) }}</h3></div>
+                                        <div class="caja-descrip-detallada"><h3><strong>Fecha de finalización: </strong> @{{ dueDate.toString().substring(0, 10) }}</h3></div>
+                                        <div class="caja-descrip-detallada"><h3><strong>Establecimiento abierto: </strong> @{{ openDays.replace(/,/g, ", ") }}</h3></div>
+                                        <div class="caja-descrip-detallada"><h3><strong>Delivery: </strong> @{{ deliveryDays.replace(/,/g, ", ") }}</h3></div>
+                                        <!--<div class="caja-descrip-detallada"><h3>Tocino</h3></div>
+                                        <div class="caja-descrip-detallada"><h3>Champiñones</h3></div>-->
 
                                     </div>
-                                    <div class="col-md-4 agregar-al-carrito">
+                                    <!--<div class="col-md-4 agregar-al-carrito">
                                         <a class="agregar-al-carrito_a" href="#">Agregar al carrito</a>
-                                    </div>
+                                    </div>-->
                                 </div>
-                                <div class="row">
+                                <!--<div class="row">
                                     <div class="col-md-12">
                                         <div class="cont-inf-descrip-producto-comilandia-c-fechas">
                                             <div class="cont-inf-descrip-producto-comilandia-fechas">01/01/2001<img class="descrip-producto-comilandia_img" src="{{ asset('user/images/calendario.png') }}"  ></div>
                                             <div class="cont-inf-descrip-producto-comilandia-fechas">01/01/2001<img class="descrip-producto-comilandia_img" src="{{ asset('user/images/calendario.png') }}"  ></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
