@@ -6,12 +6,14 @@
     <div class="loader-cover" v-if="loading == true">
         <div class="loader"></div>
     </div>
-
+    <div class="area-explorar-comilandia-img-banner">
+        <img class="area-explorar-comilandia-img-banner_img" src="{{ asset('user/images/explorer.jpg') }}" alt="">
+    </div>
     <div class="cont-explorer-comilandia">
         <div class="container pt-150">
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 cont-inf-estat-explorer">
                     <h3 class="pide-ahora-explorer">
                         <span style="font-size: 50px;color: #e3001b; font-weight: bold;">¡PIDE</span><br>
                         AHORA!
@@ -97,6 +99,7 @@
     <section class="resultado-explorer">
         <div class="container cont-productos product-home">
             <h3 class="resultado-busqueda">Resultados de la busqueda</h3>
+            <br>
             <p class="resultado-busqueda-pide-ahora">¡PIDE AHORA!</p>
 
             <div class="prod-relacionado" v-for="post in posts">

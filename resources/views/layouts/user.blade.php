@@ -138,17 +138,17 @@
                  <div class="container-fluid collapse-login-content_container">
                      <!-- <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3> -->
                      <div class="form-group row">
-                         <div class="col-md-12 mb-4">
+                         <div class="col-md-12 mb-4 grupo-login">
                              <label for="email">Email</label>
                              <input class="input-login" id="email" type="email" class="form-control" placeholder="Email" v-model="email">
                          </div>
-                         <div class="col-md-12 ">
+                         <div class="col-md-12 grupo-login">
                              <label for="password">Password</label>
                              <input class="input-login" id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
                          </div>
                      </div>
                      <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
-                         <div style="text-align: center;" class="col-md-6">
+                         <div style="text-align: center;" class="col-md-6  m-top-20">
                              <a class="res button" @click="login()">Entrar</a>
                          </div>
                      </div>

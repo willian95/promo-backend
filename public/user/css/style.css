@@ -1008,18 +1008,32 @@ h5.comilandia-titulo-footer {
   color: #e30119;
 }
 .cont-explorer-comilandia {
+  position: absolute;
   display: flex;
   /* background: #040404; */
-  height: 100%;
+  /* height: 100%; */
   align-items: center;
+  top: 20%;
+  justify-content: center;
+  width: 100%;
+}
+.col-md-6.cont-inf-estat-explorer {
+  padding: 0px 90px;
 }
 .area-explorar-comilandia {
-  background-image: url('../../user/images/ej-3.jpg'); 
-  background-size: cover;
+  /* background-image: url('../../user/images/ej-3.jpg'); 
+  background-size: cover; */
   height: 100vh;
   width: 100%;
   background-repeat: no-repeat;
   
+}
+img.area-explorar-comilandia-img-banner_img {
+  height: 100vh;
+  width: 100%;
+}
+.area-explorar-comilandia-img-banner {
+  position: relative;
 }
 h3.pide-ahora-explorer span {
   
@@ -1828,6 +1842,10 @@ table.table {
   border-radius: 5px;
   border: 1px solid #eeee;
 }
+.grupo-login {
+  display: flex;
+  flex-direction: column;
+}
 .cont-publicacion textarea#descriptionProduct {
   color: #000!important;
 }
@@ -1839,4 +1857,7 @@ img.cont-inf-u-comilandia-img_img {
 p.cont-inf-u-comilandia-nombre_p .text-center {
   color: #a31b26;
   font-weight: bold;
+}
+.m-top-20 {
+  margin-top: 20px;
 }
