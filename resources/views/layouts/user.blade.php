@@ -117,54 +117,56 @@
                     </div>
              
                 </div>
-          </div>
-        </nav>
- <!-- The Modal -->
- <div class="modal" id="myModalogin">
-    <div class="modal-dialog">
-      <div class="modal-content modal-login-cont">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Iniciar Sesión</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-        <section class=" collapse-login-content" id="section-login">
-                        {{--<img src="{{ asset('user/images/6.png') }}">--}}
+            </div>
+
+            <!-- The Modal -->
+            <div class="modal" id="myModalogin">
+                <div class="modal-dialog">
+                    <div class="modal-content modal-login-cont">
+                
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Iniciar Sesión</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
                     
-                 <div class="container-fluid collapse-login-content_container">
-                     <!-- <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3> -->
-                     <div class="form-group row">
-                         <div class="col-md-12 mb-4">
-                             <label for="email">Email</label>
-                             <input class="input-login" id="email" type="email" class="form-control" placeholder="Email" v-model="email">
-                         </div>
-                         <div class="col-md-12 ">
-                             <label for="password">Password</label>
-                             <input class="input-login" id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
-                         </div>
-                     </div>
-                     <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
-                         <div style="text-align: center;" class="col-md-6">
-                             <a class="res button" @click="login()">Entrar</a>
-                         </div>
-                     </div>
-                     <a class="text-center text-secondary" href="{{ url('/forgot-password') }}">Olvidé mi contraseña</a>                              
-                 </div>
-            </section>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <section class=" collapse-login-content" id="section-login">
+                                
+                                <div class="container-fluid collapse-login-content_container">
+                                    <!-- <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3> -->
+                                    <div class="form-group row">
+                                        <div class="col-md-12 mb-4">
+                                            <label for="email">Email</label>
+                                            <input class="input-login" id="email" type="email" class="form-control" placeholder="Email" v-model="email">
+                                        </div>
+                                        <div class="col-md-12 ">
+                                            <label for="password">Password</label>
+                                            <input class="input-login" id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
+                                        <div style="text-align: center;" class="col-md-6">
+                                            <a class="res button" @click="login()">Entrar</a>
+                                        </div>
+                                    </div>
+                                    <a class="text-center text-secondary" href="{{ url('/forgot-password') }}">Olvidé mi contraseña</a>                              
+                                </div>
+                            </section>
+                        </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    </div>
+                    
+                </div>
+                </div>
+            </div>
+
+        </nav>
+    
 
 
        
