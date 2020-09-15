@@ -1528,6 +1528,11 @@ a.nav-link.cont-carrito-span {
     width: 25%;
     padding-bottom: 50px;
 }
+.container.cont-productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .descrip-producto-comilandia .container {
   border-bottom: 1px solid #ee2e3d;
   padding-bottom: 30px;
@@ -1904,7 +1909,7 @@ p.cont-inf-u-comilandia-nombre_p .text-center {
 /*section uber*/
 .img-ube {
   position: relative;
-  bottom: 268px;
+  bottom: 229px;
 }
 .uber-cont h3 {
   font-size: 42px;

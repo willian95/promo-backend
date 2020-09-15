@@ -1,3 +1,11 @@
+/* @media (max-width: 1440px) {
+  .img-ube {
+    position: relative;
+    bottom: 268px;
+  }
+} */
+
+
 @media (max-width: 1024px) {
   .uber-cont h3 {
     font-size: 32px;
@@ -87,11 +95,14 @@ section.uber {
 .uber-cont h3 {
     font-size: 25px;
 }
-.cont-prom-comilandia-info {
-  width: 100%;
+h3.container-prom-comilandia_h3 {
+  color: #fff;
+  font-size: 35px;
 }
 .cont-prom-comilandia-info {
-  padding: 50px;
+  padding: 25px;
+  width: -webkit-fill-available;
+
 }
 .col-md-6.prom-prin {
   display: flex;
@@ -103,6 +114,7 @@ section.uber {
   font-weight: bold;
   text-align: justify;
   padding-right: 0;
+  font-size: 12px;
 }
 
 
