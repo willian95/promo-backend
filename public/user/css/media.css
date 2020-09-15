@@ -90,6 +90,22 @@ section.uber {
 .cont-prom-comilandia-info {
   width: 100%;
 }
+.cont-prom-comilandia-info {
+  padding: 50px;
+}
+.col-md-6.prom-prin {
+  display: flex;
+  width: -webkit-fill-available;
+  height: 500px;
+}
+.footer p {
+  color: #fff;
+  font-weight: bold;
+  text-align: justify;
+  padding-right: 0;
+}
+
+
 }
 
 
