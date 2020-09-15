@@ -239,7 +239,80 @@
             <a class="btn-ver-mas-comilandia_a" href="#">Ver más</a>
         </div>
     </section>
-
+    <section class="uber">
+        <div class="uber-imagenes">
+            
+            <div class="img-uber-fondo">
+                <img class="img-ube-ola" src="{{ asset('user/images/fondorojo.png') }}">
+            </div>
+            <div class="img-ube">
+                <img class="img-ube-telefono" src="{{ asset('user/images/ej-4.png') }}">
+            </div>
+        </div>
+        <div class="uber-cont">
+            <div class="container">
+                <div class="col-md-6 uber-cont-col-6">
+                    <h3>¡Tu pedido en minutos!</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ex, distinctio sequi quaerat illum ratione earum voluptas ipsam amet reprehenderit, facilis perspiciatis officiis. Esse odit nihil exercitationem sint blanditiis ea!</p>
+                    <div class="btn-uber">
+                        <a class="btn-uber_a" href="#">Pedir por UberEast</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <footer>
+        <div class="footer">
+            <div class="container container-footer">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h5>Comilandia</h5>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos quisquam dolor eveniet dolore facilis vitae rerum quis. Sunt repellat laborum laudantium debitis recusandae ab, veniam quas, inventore minima et tenetur!</p>
+                    </div>
+                    <div class="col-md-2">
+                        <h6 style="color: #e3001b;  font-weight: bold;">Menu del dia</h6>
+                        <ul>
+                            <li>Pedido online</li>
+                            <li>Delivery</li>
+                            <li>Contáctanos</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h6>Menu del dia</h6>
+                        <ul>
+                            <li>Pedido online</li>
+                            <li>Delivery</li>
+                            <li>Contáctanos</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Siguenos</h5>
+                        <div class="rs-box">
+                            <a class="rs-box_a" href="#">
+                                <div class="rs">
+                                    <div class="img-rs"><img src="{{ asset('user/images/facebook.png') }}" alt="Comilandiafood"></div>
+                                    Comilandiafood
+                                </div>
+                            </a>
+                            <a class="rs-box_a" href="#">
+                                <div class="rs">
+                                    <div class="img-rs"><img src="{{ asset('user/images/instagram.png') }}" alt="Comilandiafood"></div>
+                                    Comilandiafood
+                                </div>
+                            </a>
+                            <a class="rs-box_a" href="#">
+                                <div class="rs">
+                                    <div class="img-rs"><img src="{{ asset('user/images/youtube.png') }}" alt="Comilandiafood"></div>
+                                    Comilandiafood
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- @foreach(App\Ad::inRandomOrder()->take(10)->get() as $ad)
 

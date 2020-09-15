@@ -1,4 +1,103 @@
+@media (max-width: 1024px) {
+  .uber-cont h3 {
+    font-size: 32px;
+}
+.uber-cont p {
+  color: #fff;
+  font-size: 16px;
+}
+.uber-cont {
+  top: -40px;}
+  .img-ube {
+    position: relative;
+    bottom: 190px;
+}
+.col-md-6.uber-cont-col-6 {
+  flex: 0 0 50%!important;
+  max-width: 50%!important;
+}
+}
+@media (max-width: 768px) {
+  /* .uber-imagenes {
+    display: none;
+  } */
+  /* section.uber {
+    background: #e3001b;
+    margin-top: 130px;
+  } */
+  .uber-cont p {
+    text-align: justify;
+  }
+  .col-md-6.uber-cont-col-6 {
+    flex: 0 0 100%!important;
+    max-width: 100%!important;
+  }
+  .uber-cont h3 {
+    text-align: center;
+  }
+  /* section.uber {
+    border-radius: 80px 80px 0 0;
+} */
+img.img-ube-ola {
+  position: relative;
+}
+img.img-ube-telefono {
+  display: none;
+}
+section.uber {
+  height: 100px;
+}
+.uber-cont {
+  top: -35px;
+}
+section.uber {
+  margin-top: 40px!important;
+}
+.footer h5 {
+  font-size: 25px;
+}
+}
+
+@media (max-width: 425px) {
+  img.img-ube-ola {
+    position: relative;
+    height: 320px;
+  }
+  .uber-cont p {
+    color: #000;
+    font-size: 15px;
+}
+.uber-cont {
+  height: 100px;
+  top: -28px;
+}
+
+.container.container-footer {
+  padding-top: 200px;
+  text-align: center;
+}
+.rs {
+  justify-content: center;
+}
+.prod-relacionado {
+  width: 100%;
+}
+}
+@media (max-width: 425px) {
+.uber-cont h3 {
+    font-size: 25px;
+}
+.cont-prom-comilandia-info {
+  width: 100%;
+}
+}
+
+
+
+
+
  @media (min-width: 768px) and (max-width: 1024px) {
+ 
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
     font-size: 12px;}
 
