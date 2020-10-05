@@ -204,9 +204,9 @@
         <script src="{{ asset('user/js/main.js') }}"></script>
         <script src="{{ asset('/user/alertify/alertify.min.js') }}"></script>
         <script src="{{ asset('owlCarousel/owl.carousel.min.js') }}"></script>
-        <!--<script src="{{ asset('/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('/js/jquery.min.js') }}"></script>
         <script src="{{ asset('/js/popper.min.js') }}"></script>
-        <script src="{{ asset('/js/bootstrap.min.js') }}"></script>-->
+        <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('/js/app.js') }}"></script>
 
         @stack("scripts")

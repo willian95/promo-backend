@@ -4,7 +4,7 @@
 
     <section class="ftco-cover" id="section-landing-hero">
         <div id="demo" class="carousel slide" data-ride="carousel">
-            <ul class="carousel-indicators indicadores-banner">
+            {{--<ul class="carousel-indicators indicadores-banner">
                 <li class="redondo" data-target="#demo" data-slide-to="0" class="active"></li>
                 <li class="redondo" data-target="#demo" data-slide-to="1"></li>
                 <li class="redondo" data-target="#demo" data-slide-to="2"></li>
@@ -12,28 +12,102 @@
 
 
             <div class="carousel-inner">
-                @foreach(\App\Carousel::all() as $carousel)
-                    <div class="carousel-item active">
-                        <div class="mask"></div>
-                        <img src="{{ $carousel->image }}">
-                        <div class="container cont-inf-banner">
-                                <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
-                                    <div class="col-md-12 content-b-comilandia">
-                                        <div  class="site-section hola" id="contact-section" >
-                                            <h1 >{{ $carousel->text }}</h1>
-                                            <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
-                                        </div>
-                                        <div class="form-group row no-gutters btn-mira-menu">
-                                            <div  class="col-md-5">
-                                                @if($carousel->link != null)
-                                                <a href="{{ $carousel->link }}" target="_blank">
-                                                    <button class="res button">¡Mira el Menú!</button>
-                                                </a>
-                                                @endif
-                                            </div>
+                <div class="carousel-item active">
+                    <div class="mask"></div>
+                    <img src="{{ asset('user/images/ej-3.jpg') }}">
+                    <div class="container cont-inf-banner">
+                            <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
+                                <div class="col-md-12 content-b-comilandia">
+                                    <div  class="site-section hola" id="contact-section" >
+                                        <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
+                                        <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
+                                    </div>
+                                    <div class="form-group row no-gutters btn-mira-menu">
+                                        <div  class="col-md-5">
+                                            <a href="{{ url('/explorer') }}">
+                                                <button class="res button">¡Mira el Menú!</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="mask"></div>
+                    <img src="{{ asset('user/images/ej-1.jpg') }}">
+                    <div class="container cont-inf-banner">
+                            <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
+                                <div class="col-md-12 content-b-comilandia">
+                                    <div  class="site-section hola" id="contact-section" >
+                                        <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
+                                        <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
+                                    </div>
+                                    <div class="form-group row no-gutters btn-mira-menu">
+                                        <div  class="col-md-5">
+                                            <a href="{{ url('/explorer') }}">
+                                                <button class="res button">¡Mira el Menú!</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="mask"></div>
+                    <img src="{{ asset('user/images/ej-2.jpg') }}">
+                    <div class="container cont-inf-banner">
+                            <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
+                                <div class="col-md-12 content-b-comilandia">
+                                    <div  class="site-section hola" id="contact-section" >
+                                        <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
+                                        <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
+                                    </div>
+                                    <div class="form-group row no-gutters btn-mira-menu">
+                                        <div  class="col-md-5">
+                                            <a href="{{ url('/explorer') }}">
+                                                <button class="res button">¡Mira el Menú!</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>--}}
+            <ul class="carousel-indicators indicadores-banner">
+                @foreach(\App\Carousel::all() as $carousel)
+
+                    <li class="redondo @if($loop->index == 0) active @endif" data-target="#demo" data-slide-to="{{ $loop->index }}"></li>
+                @endforeach
+                {{--<li class="redondo" data-target="#demo" data-slide-to="1"></li>
+                <li class="redondo" data-target="#demo" data-slide-to="2"></li>--}}
+            </ul>
+
+
+            <div class="carousel-inner">
+                @foreach(\App\Carousel::all() as $carousel)
+                    <div class="carousel-item @if($loop->index == 0)active @endif">
+                        <div class="mask"></div>
+                        <img src="{{ $carousel->image }}">
+                        <div class="container cont-inf-banner">
+                            <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
+                                <div class="col-md-12 content-b-comilandia">
+                                    <div  class="site-section hola" id="contact-section" >
+                                        <h1 >{{ $carousel->text }}</h1>
+                                        <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
+                                    </div>
+                                    <div class="form-group row no-gutters btn-mira-menu">
+                                        <div  class="col-md-5">
+                                            @if($carousel->link != null)
+                                            <a href="{{ $carousel->link }}" target="_blank">
+                                                <button class="res button">¡Mira el Menú!</button>
+                                            </a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @endforeach
