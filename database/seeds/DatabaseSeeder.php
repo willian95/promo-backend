@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(DefaultDescriptionSeeder::class);
         $this->call(HomeBannersSeeder::class);
+        $this->call(HomeNoteSeeder::class);
     }
 }
