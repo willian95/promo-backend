@@ -42,6 +42,10 @@ Route::get("/profile/{id}", "ProfileController@show");
 
 Route::get("/explorer", "ExplorerController@index");
 
+Route::get("/search", function(){
+    return view("user/search");
+});
+
 /*Route::get("/mail-test", function(){
 
     $messageUser = "Hola prueba! Haz click en el siguiente enlace para validar tu correo";
@@ -76,6 +80,7 @@ Route::get("/admin/posts/index", "PostController@adminIndex");
 Route::get("/admin/users/index", "UserController@index");
 
 Route::get("/admin/ads/index", "AdsController@index");
+Route::get("/admin/carousel/index", "CarouselController@index");
 
 //Route::post("/register", "ContactUserController@store");
 

@@ -12,14 +12,18 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        
-        $role = new Role;
-        $role->name = "Admin";
-        $role->save();
+        if(Role::where("id", 1)->count() == 0){
+            $role = new Role;
+            $role->name = "Admin";
+            $role->save();
+        }
 
-        $role = new Role;
-        $role->name = "User";
-        $role->save();
+        if(Role::where("id", 2)->count() == 0){
+            $role = new Role;
+            $role->name = "User";
+            $role->save();
+        }
+        
 
     }
 }

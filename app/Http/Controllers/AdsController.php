@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AdminAdsStoreRequest;
 use App\Http\Requests\AdminAdsUpdateRequest;
 use Intervention\Image\Facades\Image;
+use App\HomeNote;
 use Carbon\Carbon;
 use App\Ad;
 
@@ -107,6 +108,23 @@ class AdsController extends Controller
             $ad->delete();
 
             return response()->json(["success" => true, "msg" => "Publicidad eliminada"]);
+
+        }catch(\Exception $e){
+            return response()->json(["success" => false, "msg" => "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
+        } 
+
+    }
+
+    function updateHomeNote(Request $request){
+
+        try{
+
+            $homeNote = HomeNote::first();
+            $homeNote->text = $request->text;
+            $homeNote->status = $request->status;
+            $homeNote->update();
+
+            return response()->json(["success" => true, "msg" => "Nota actualizada"]);
 
         }catch(\Exception $e){
             return response()->json(["success" => false, "msg" => "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);

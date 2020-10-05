@@ -4,7 +4,7 @@
 @section("content")
 
     <section class="vista-interna" id="dev-area">
-         <div class="cat-comilandia">
+         <!--<div class="cat-comilandia">
             <div class="btn-group">
                 <button type="button" class="btn cat-comilandia-btn">Basico</button>
                 <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
@@ -32,14 +32,14 @@
                 <a class="dropdown-item" href="#">Link 2</a>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="descrip-producto-comilandia">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 img-producto-detallado">
                          <!-- <div class="descrip-producto-comilandia-descuento"><div class="descrip-producto-comilandia-descuento-des">@{{ discountPercentage }} %</div></div> -->
                          <img class="descrip-producto-comilandia_img" :src="'{{ url('/images/posts') }}'+'/'+image"  >
-                         <div class="descrip-producto-comilandia-cont-categoria"><div class="descrip-producto-comilandia-cont-categoria-div">@{{ discountPercentage }} %</div></div>
+                         <div class="descrip-producto-comilandia-cont-categoria"><div class="descrip-producto-comilandia-cont-categoria-div">- @{{ discountPercentage }} %</div></div>
                     </div>
                     <div class="col-md-7">
                         <div class="cont-inf-descrip-producto-comilandia">
@@ -124,7 +124,7 @@
 
                             <div v-if="authCheck == true && authUserId != seller.id">
                                 <p class="text-center">
-                                    <a href="#"><button class="agregar-al-carrito_a" style="margin-top: 3%;" data-toggle="modal" data-target="#shop" @click="productPushPurchase()">@{{ purchaseButtonText }}</button></a>
+                                    <button class="btn cat-comilandia-btn" style="margin-top: 3%;" data-toggle="modal" data-target="#shop" @click="productPushPurchase()">@{{ purchaseButtonText }}</button>
                                 </p>
                             </div>
                             <div v-if="authCheck == false">
@@ -142,7 +142,45 @@
 
             </div>
         </div>
-        <div class="container cont-productos">
+
+        <div class="modal fade" id="shop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tipo de pago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="text-center" v-if="total > 1">
+                        <!--<button type="button" class="btn btn-primary" @click="transferType()">Transferencia</button>
+                        <button type="button" class="btn btn-primary" @click="webpayType()">Webpay</button>-->
+                    </div>
+
+                    <div v-else>
+                        <h3 class="text-center">Cantidad debe ser mayor a 0</h3>
+                    </div>  
+
+                
+                    <div v-if="paymentMethod == 'webpay'">
+
+                        <div class="text-center" v-if="total > 1">
+
+                            <img @click="webpay()" src="{{ asset('/user/images/article.jpg') }}" alt="" style="width: 200px; cursor: pointer;">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--<div class="container cont-productos">
             <div class="prod-relacionado">
                 <div class="single-item-rtl relacionados">
                     <div class="productos-comilandia_item">
@@ -197,7 +235,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </section>
 
 @endsection

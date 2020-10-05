@@ -59,95 +59,97 @@
         align-items: center;
         top: 0;
         }
-
         </style>
 
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-            <div class="container">
-                <a class=" menu-logo" href="{{ url('/') }}"><img src="{{ asset('user/images/logo.png') }}"></a>
-                <p class="pide-ahora">¡PIDE AHORA!</p>
-                <div class="search-comilandia">
-                    <input  class="search-comilandia-input" id="search" type="text" placeholder="¿Qué quieres comer?">
-                    <a class="search-comilandia-a" href="#">Buscar</a>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-                </button>
+        <div id="ftco-navbar">
 
-                <div class="collapse navbar-collapse" id="ftco-nav">
-                    <ul class="navbar-nav ml-auto">
-                        <div class="search-comilandia d-n-c">
-                        <div class="form">
-                                <input  class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?" >
-                                <a class="search-comilandia-a" href="#">Buscar</a>
+            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" >
+                <div class="container">
+                    <a class=" menu-logo" href="{{ url('/') }}"><img src="{{ asset('user/images/logo.png') }}"></a>
+                    <p class="pide-ahora">¡PIDE AHORA!</p>
+                    <div class="search-comilandia">
+                        <input  class="search-comilandia-input" id="search" type="text" placeholder="¿Qué quieres comer?">
+                        <a class="search-comilandia-a" href="#">Buscar</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="ftco-nav">
+                        <ul class="navbar-nav ml-auto">
+                            <div class="search-comilandia d-n-c">
+                            <div class="form">
+                                    <input  class="search-comilandia-input" type="text" placeholder="¿Qué quieres comer?" >
+                                    <a class="search-comilandia-a" href="#">Buscar</a>
+                                </div>
+                            </div>
+
+                            <li class="nav-item" v-if="authCheck == false">
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#myModalogin" >Inicia Sesión</a>
+                            </li>
+                            
+                            <li class="nav-item" v-if="authCheck == false">
+                                <a class="nav-link btn-comilandia" href="{{ url('/register') }}">Crear una cuenta</a>
+                            </li>
+                            <li class="nav-item" v-if="authCheck == true">
+                                <a class="nav-link" href="{{ url('/post') }}">Publicar</a>
+                            </li>
+                            <li class="nav-item" v-if="authCheck == true">
+                                <a class="nav-link" href="{{ url('/explorer') }}">Explorar</a>
+                            </li>
+                            
+                            <!--<li class="nav-item"><a href="#menu" class="nav-link">Menú</a></li>
+                            <li class="nav-item"><a href="#footer" class="nav-link">Contacto</a></li>-->
+                        </ul>
+                    
+                        <div class="dropdown">
+                            <button @click="showListUser()" v-if="name" class="button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @{{ name }}
+                            </button>
+                            <div id="list-user" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-profile') }}">Mi Perfil</a>
+                                <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-sales') }}">Mis Ventas</a>
+                                <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-purchases') }}">Mis Compras</a>
+                                <a v-if="roleId == 1" class="dropdown-item" href="{{ url('/admin/dashboard') }}">Dashboard</a>
+                                <a class="dropdown-item" href="#" @click="logout()">Cerrar sesión</a>
                             </div>
                         </div>
-
-                        <li class="nav-item" v-if="authCheck == false">
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModalogin" >Inicia Sesión</a>
-                        </li>
-                        
-                        <li class="nav-item" v-if="authCheck == false">
-                            <a class="nav-link btn-comilandia" href="{{ url('/register') }}">Crear una cuenta</a>
-                        </li>
-                        <li class="nav-item" v-if="authCheck == true">
-                            <a class="nav-link" href="{{ url('/post') }}">Publicar</a>
-                        </li>
-                        <li class="nav-item" v-if="authCheck == true">
-                            <a class="nav-link" href="{{ url('/explorer') }}">Explorar</a>
-                        </li>
-                        
-                        <!--<li class="nav-item"><a href="#menu" class="nav-link">Menú</a></li>
-                        <li class="nav-item"><a href="#footer" class="nav-link">Contacto</a></li>-->
-                    </ul>
                 
-                    <div class="dropdown">
-                        <button @click="showListUser()" v-if="name" class="button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @{{ name }}
-                        </button>
-                        <div id="list-user" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-profile') }}">Mi Perfil</a>
-                            <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-sales') }}">Mis Ventas</a>
-                            <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-purchases') }}">Mis Compras</a>
-                            <a v-if="roleId == 1" class="dropdown-item" href="{{ url('/admin/dashboard') }}">Dashboard</a>
-                            <a class="dropdown-item" href="#" @click="logout()">Cerrar sesión</a>
-                        </div>
                     </div>
-             
-                </div>
             </div>
-
-            <!-- The Modal -->
+            </nav>
+        <!-- The Modal -->
             <div class="modal" id="myModalogin">
                 <div class="modal-dialog">
                     <div class="modal-content modal-login-cont">
-                
+                    
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Iniciar Sesión</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Iniciar Sesión</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                    
+                        
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <section class=" collapse-login-content" id="section-login">
-                                
+                        <section class=" collapse-login-content" id="section-login">
+                                        {{--<img src="{{ asset('user/images/6.png') }}">--}}
+                                    
                                 <div class="container-fluid collapse-login-content_container">
                                     <!-- <h3 class="ftco-heading ftco-animate mb-3">Inicio de Sesión</h3> -->
                                     <div class="form-group row">
-                                        <div class="col-md-12 mb-4">
+                                        <div class="col-md-12 mb-4 grupo-login">
                                             <label for="email">Email</label>
                                             <input class="input-login" id="email" type="email" class="form-control" placeholder="Email" v-model="email">
                                         </div>
-                                        <div class="col-md-12 ">
+                                        <div class="col-md-12 grupo-login">
                                             <label for="password">Password</label>
                                             <input class="input-login" id="password" type="password" class="form-control" placeholder="Contraseña" v-model="password">
                                         </div>
                                     </div>
                                     <div style="display: flex; justify-content: center; margin-top: 10px;"class="form-group row">
-                                        <div style="text-align: center;" class="col-md-6">
+                                        <div style="text-align: center;" class="col-md-6  m-top-20">
                                             <a class="res button" @click="login()">Entrar</a>
                                         </div>
                                     </div>
@@ -155,18 +157,17 @@
                                 </div>
                             </section>
                         </div>
-                    
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        </div>
+                        
                     </div>
-                    
-                </div>
                 </div>
             </div>
 
-        </nav>
-    
+        </div>
 
 
        
@@ -181,9 +182,7 @@
 
 <!-- jQuery library -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 
@@ -217,7 +216,6 @@
                 $('.elipse').fadeOut(300);
                 }, 3000)
             });
-
         </script>
         <script>
             const navbar = new Vue({
@@ -226,13 +224,14 @@
                     return{
                         name:"",
                         roleId:"",
+                        email:"",
+                        password:"",
                         authCheck:false
                     }
                 },
                 methods:{
                     
                     checkAuth(){
-
                         let user = JSON.parse(localStorage.getItem("user"))
                         if(user != null){
                             this.authCheck = true
@@ -248,26 +247,73 @@
                         window.location.href="{{ url('/') }}"
                     },
                     showListUser(){
-
                         if($("#list-user").hasClass("show")){
                             
                             $("#list-user").removeClass("show")
-
                         }else{
-
                             $("#list-user").addClass("show")
-
                         }
+                    },
+                    login(){
+
+                        axios.post("{{ url('/api/login') }}", {
+                            email: this.email,
+                            password: this.password
+                        })
+                        .then(res => {
+
+                            if (res.data.success == false) {
+                                //alertify.error(res.data.msg)
+                            
+                                swal({
+                                    title: "Hubo un problema!",
+                                    text: res.data.msg,
+                                    icon: "error"
+                                });
+                            } else {
+
+                                localStorage.setItem("token", res.data.token)
+                                localStorage.setItem("user", JSON.stringify(res.data.user))
+                                
+                                if (res.data.user.role_id == 1) {
+
+                                    swal({
+                                        title: "Perfecto!",
+                                        text: res.data.msg,
+                                        icon: "success"
+                                    }).then(function() {
+                                        window.location.replace("{{ url('admin/dashboard') }}")
+                                    });;
+
+                                    
+                                } else if (res.data.user.role_id == 2) {
+
+                                    swal({
+                                        title: "Perfecto!",
+                                        text: res.data.msg,
+                                        icon: "success"
+                                    }).then(function() {
+                                        window.location.replace("{{ url('/') }}")
+                                    });;
+
+                                }
+
+                            }
+
+                        })
+                        .catch(err => {
+                            $.each(err.response.data.errors, function(key, value) {
+                                alertify.error(value[0])
+                                //alertify.error(value);
+                                //alertify.alert('Basic: true').set('basic', true); 
+                            });
+                        })
 
                     }
-
                 },
                 created(){
-
                     this.checkAuth()
-
                 }
-
             })
         </script>
 

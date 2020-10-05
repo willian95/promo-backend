@@ -12,110 +12,83 @@
 
 
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="mask"></div>
-                    <img src="{{ asset('user/images/ej-3.jpg') }}">
-                    <div class="container cont-inf-banner">
-                            <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
-                                <div class="col-md-12 content-b-comilandia">
-                                    <div  class="site-section hola" id="contact-section" >
-                                        <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
-                                        <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
-                                    </div>
-                                    <div class="form-group row no-gutters btn-mira-menu">
-                                        <div  class="col-md-5">
-                                            <a href="{{ url('/explorer') }}">
-                                                <button class="res button">¡Mira el Menú!</button>
-                                            </a>
+                @foreach(\App\Carousel::all() as $carousel)
+                    <div class="carousel-item active">
+                        <div class="mask"></div>
+                        <img src="{{ $carousel->image }}">
+                        <div class="container cont-inf-banner">
+                                <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
+                                    <div class="col-md-12 content-b-comilandia">
+                                        <div  class="site-section hola" id="contact-section" >
+                                            <h1 >{{ $carousel->text }}</h1>
+                                            <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
+                                        </div>
+                                        <div class="form-group row no-gutters btn-mira-menu">
+                                            <div  class="col-md-5">
+                                                @if($carousel->link != null)
+                                                <a href="{{ $carousel->link }}" target="_blank">
+                                                    <button class="res button">¡Mira el Menú!</button>
+                                                </a>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="mask"></div>
-                    <img src="{{ asset('user/images/ej-1.jpg') }}">
-                    <div class="container cont-inf-banner">
-                            <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
-                                <div class="col-md-12 content-b-comilandia">
-                                    <div  class="site-section hola" id="contact-section" >
-                                        <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
-                                        <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
-                                    </div>
-                                    <div class="form-group row no-gutters btn-mira-menu">
-                                        <div  class="col-md-5">
-                                            <a href="{{ url('/explorer') }}">
-                                                <button class="res button">¡Mira el Menú!</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="mask"></div>
-                    <img src="{{ asset('user/images/ej-2.jpg') }}">
-                    <div class="container cont-inf-banner">
-                            <div class="row no-gutters align-items-center justify-content-center text-center ftco-vh-100">
-                                <div class="col-md-12 content-b-comilandia">
-                                    <div  class="site-section hola" id="contact-section" >
-                                        <h1 >¿QUIERES <BR>PROBAR, <BR>EL PARAISO?</h1>
-                                        <!-- <p  >Lorem ipsum dolor sit amet.</p> -->
-                                    </div>
-                                    <div class="form-group row no-gutters btn-mira-menu">
-                                        <div  class="col-md-5">
-                                            <a href="{{ url('/explorer') }}">
-                                                <button class="res button">¡Mira el Menú!</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
+                @endforeach
                   
 
             </div>
         </div>
 
     </section>
+    @if(App\HomeNote::first()->status == true)
     <section class="desc-not">
-        <h3><strong>¡SOLO PARA TI! </strong>  Descuento de 30% en todas las compras mayores de 15.000 CLP</h3>
+        <h3>{{ App\HomeNote::first()->text }}</h3>
     </section>
+    @endif
     <section class="prom-comilandia">
         <div class="container container-prom-comilandia">
             <div class="row ">
-            <div class="col-md-6 prom-prin">
-                <div class="cont-cuadro-desc"><div class="cuadro-desc">-50%</div></div>
-               <div class="cont-prom-comilandia-info">
-                    <h3 class="container-prom-comilandia_h3">Promo agosto</h3>
-                    <p class="container-prom-comilandia_p">Disfruta de <span>1</span> increíble</p>
-                    <p class="container-prom-comilandia_p"> Cheese Burger + Soda + Cheese Fries</p>
-                    <div class="cont-btn-prom-comilandia-pedir-ahora"><a class="btn-prom-comilandia-pedir-ahora" href="#">Pedir ahora</a></div>
-                    
-               </div>
-               <div  class="cont-prom-prom"><div class="img-prom-promo"></div></div>
-               <div class="mask-img-prom"></div>
-                <img class="img-carrusel-login" src="{{ asset('user/images/menu_3.jpg') }}" alt="promocion" >
-                <div class="cont-img-categoria-des-comilandia"></div><div class="img-categoria-des-comilandia"></div> 
+            @if(App\HomeBanner::where("id", 1)->first()->status == '1')
+                <div class="col-md-6 prom-prin">
+                    <!--<div class="cont-cuadro-desc"><div class="cuadro-desc">-50%</div></div>
+                <div class="cont-prom-comilandia-info">
+                        <h3 class="container-prom-comilandia_h3">Promo agosto</h3>
+                        <p class="container-prom-comilandia_p">Disfruta de <span>1</span> increíble</p>
+                        <p class="container-prom-comilandia_p"> Cheese Burger + Soda + Cheese Fries</p>
+                        <div class="cont-btn-prom-comilandia-pedir-ahora"><a class="btn-prom-comilandia-pedir-ahora" href="#">Pedir ahora</a></div>
+                        
+                </div>-->
+                    <div  class="cont-prom-prom"><div class="img-prom-promo"></div></div>
+                    <!--<div class="mask-img-prom"></div>-->
+                    <img class="img-carrusel-login" src="{{ App\HomeBanner::where('id', 1)->first()->image }}" alt="promocion" >
+                    <!--<div class="cont-img-categoria-des-comilandia"></div><div class="img-categoria-des-comilandia"></div>-->
 
-              </div>
+                </div>
+
+            @endif
             <div class="col-md-6">
                 <div class="row cont-prom-img-dest">
+                    @if(App\HomeBanner::where('id', 2)->first()->status == '1')
                     <div class="col-md-6 prom-sec">
-                    <img class="img-carrusel-login" src="{{ asset('user/images/menu_3.jpg') }}" alt="promocion" >
+                    <img class="img-carrusel-login" src="{{ App\HomeBanner::where('id', 2)->first()->image }}" alt="promocion" >
                     </div>
+                    @endif
+                    @if(App\HomeBanner::where('id', 3)->first()->status == '1')
                     <div class="col-md-6 prom-sec">
-                    <img class="img-carrusel-login" src="{{ asset('user/images/menu_3.jpg') }}" alt="promocion" >
+                    <img class="img-carrusel-login" src="{{ App\HomeBanner::where('id', 3)->first()->image }}" alt="promocion" >
                     </div>
+                    @endif
                 </div>
                 <div class="row cont-prom-img-dest">
+                    @if(App\HomeBanner::where('id', 4)->first()->status == '1')
                     <div class="col-md-12 prom-terc">
-                    <img class="img-carrusel-login" src="{{ asset('user/images/menu_3.jpg') }}" alt="promocion" >
+                    <img class="img-carrusel-login" src="{{ App\HomeBanner::where('id', 4)->first()->image }}" alt="promocion" >
 
                     </div>
+                    @endif
                 </div>
             </div>
             </div>

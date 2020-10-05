@@ -3,14 +3,18 @@
 @section("content")
 
     <section class="ftco-cover" id="section-register">
-        <div class="container-fluid">
+        <div class="img-banner-registro">
+            <img class="img-banner-registro_img" src="{{ asset('user/images/banner-registro.jpg') }}">
+        </div>
+        <div class="container-fluid inf-registro-form">
 
             <div class="loader-cover" v-if="loading == true">
                 <div class="loader"></div>
             </div>
-           
+          
             <div class="row information">
-                <div class="col-md-6 pt-40 cont-registrar-comilandia">
+
+                <div class="col-md-5  pt-40 cont-registrar-comilandia">
                     <h3 class="ftco-heading ftco-animate mb-3" style="padding-top: 18px !important;">¡Regístrate ahora!</h3>
                     <div  class="form-register">
                         <div class="container">
@@ -64,10 +68,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="mask">
+                <div class="col-md-7">
+                    <!-- <div class="mask">
                         <img src="{{ asset('user/images/6.png') }}">
-                    </div>
+                    </div> -->
                 </div>
             </div>
             

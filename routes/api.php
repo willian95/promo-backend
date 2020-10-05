@@ -62,6 +62,8 @@ Route::post("/checkout/store/cart", "CheckoutController@storeCart");
 
 Route::post("/purchase/products", "PurchaseController@getPurchasedProducts");
 
+Route::post("/search/query", "SearchController@search");
+
 Route::prefix('admin')->group(function (){
 
     Route::post("/category/store", "CategoryController@store")->name('admin.category.store');
@@ -90,5 +92,12 @@ Route::prefix('admin')->group(function (){
     Route::post("/ads/update", "AdsController@update");
     Route::post("/ads/delete", "AdsController@delete");
     Route::get("/ads/fetch/{page}", "AdsController@fetch");
+    Route::post("/ads/home-note/update", "AdsController@updateHomeNote");
 
+    Route::get("/carousel/fetch", "CarouselController@fetch");
+    Route::post("/carousel/store", "CarouselController@store");
+    Route::post("/carousel/update", "CarouselController@update");
+    Route::post("/carousel/delete", "CarouselController@delete");
+
+    Route::post("/banner/update", "HomeBannerController@update");
 });
