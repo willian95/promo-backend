@@ -9,30 +9,30 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="text-secondary">Titulo del Post</th>
-                            <th class="text-secondary">Total</th>
-                            <th class="text-secondary">Tipo de compra</th>
-                            <th class="text-secondary">Fecha</th>
-                            <th class="text-secondary">Status</th>
-                            <th class="text-secondary">Acciones</th>
+                            <th class="text-dark">Titulo del Post</th>
+                            <th class="text-dark">Total</th>
+                            <th class="text-dark">Tipo de compra</th>
+                            <th class="text-dark">Fecha</th>
+                            <th class="text-dark">Status</th>
+                            <th class="text-dark">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="purchase in purchases" v-if="purchase.post">
-                            <td>@{{ purchase.post.title }}</td>
-                            <td>$ @{{ parseInt(purchase.total).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
-                            <td>
+                            <td class="text-secondary">@{{ purchase.post.title }}</td>
+                            <td class="text-secondary">$ @{{ parseInt(purchase.total).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
+                            <td class="text-secondary">
                                 <span v-if="purchase.payment_type == 'reservation'">Reservación</span>
                                 <span v-else>Compra</span>
                             </td>
-                            <td>@{{ purchase.created_at.toString().substring(0, 10) }}</td>
-                            <td>
+                            <td class="text-secondary">@{{ purchase.created_at.toString().substring(0, 10) }}</td>
+                            <td class="text-secondary">
                                 <span v-if="purchase.is_payment_complete == 0 && purchase.payment_type == 'reservation'">Compra aún no finalizada</span>
                                 <span v-if="purchase.is_payment_complete == 1 && purchase.shipping_state == 'en proceso'">Compra finalizada, en espera de la entrega</span>
                                 <span v-if="purchase.is_payment_complete == 1 && purchase.shipping_state == 'entregado'">Articulo entregado, confirma el pedido</span>
                                 <span v-if="purchase.is_payment_complete == 1 && purchase.shipping_state == 'recibido'">Articulo recibido</span>
                             </td>
-                            <td>
+                            <td class="text-secondary">
                                 <a class="button" :href="'{{ url('/') }}'+'/my-purchases/purchase/'+purchase.id" v-if="purchase.is_payment_complete == 0">Pagar</a>
                                 <a class="button" :href="'{{ url('/') }}'+'/my-purchases/purchase/'+purchase.id" v-else>Ver</a>
                                 <button class="button" @click="confirmDelivery(purchase)" v-if="purchase.is_payment_complete == 1 && purchase.shipping_state == 'entregado'">Confirmar entrega</button>
