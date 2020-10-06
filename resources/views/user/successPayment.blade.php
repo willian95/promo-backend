@@ -3,7 +3,7 @@
 @section("content")
 
 
-    <div class="container" id="dev-area">
+    <div class="container" id="dev-area" style="margin-top: 150px;">
         <div class="row">
             <div class="col-12">
                 <p class="text-center">
