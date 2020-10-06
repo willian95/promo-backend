@@ -80,13 +80,15 @@ class CheckoutController extends Controller
 		Session::put('user_id',$user->id);
 		Session::put('order',$order);
 
+		dd(Session::get("user_id"));
+
 		/*session_start();
 		$_SESSION["user_id"]=$user->id;
 		$_SESSION["order"]=$order;*/
 
 		$price = 0;
-		if(session("purchase_price") != null){
-			$price = session("purchase_price");
+		if(Session::get("purchase_price") != null){
+			$price = Session::get("purchase_price");
 			
 		}else{
 			$price = $cart->price;
