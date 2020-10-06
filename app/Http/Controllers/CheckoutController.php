@@ -56,9 +56,11 @@ class CheckoutController extends Controller
 
 		}else{
 
-			session_start();
-			$_SESSION["purchase_id"]=$request->purchase_id;
-			$_SESSION["purchase_price"] = $request->amountToPay;
+			//session_start();
+			session(['purchase_id' => $request->purchase_id]);
+			session(['purchase_price' => $request->amountToPay]);
+			//$_SESSION["purchase_id"]=$request->purchase_id;
+			//$_SESSION["purchase_price"] = $request->amountToPay;
 
 			return response()->json(["success" => true]);
 
@@ -73,13 +75,16 @@ class CheckoutController extends Controller
         $cart = CartPurchase::where("user_id", $user->id)->first();
 		$order = Carbon::now()->timestamp.uniqid();
 
-		session_start();
+		session(['user_id' => $user->id]);
+		session(['order' => $order]);
+
+		/*session_start();
 		$_SESSION["user_id"]=$user->id;
-		$_SESSION["order"]=$order;
+		$_SESSION["order"]=$order;*/
 
 		$price = 0;
-		if(isset($_SESSION["purchase_price"])){
-			$price = $_SESSION["purchase_price"];
+		if(session("purchase_price") != null){
+			$price = session("purchase_price");
 			
 		}else{
 			$price = $cart->price;
@@ -97,9 +102,11 @@ class CheckoutController extends Controller
 	{  
 		
 		$result = $webpayPatPass->getTransactionResult();      
-	
-		session_start();
-		$_SESSION["response"]=$result;
+		
+		session(['response' => $result]);
+
+		/*session_start();
+		$_SESSION["response"]=$result;*/
 
 		//dd($result, session('response'), session("user"));
 
@@ -113,20 +120,20 @@ class CheckoutController extends Controller
 	public function finish()  
 	{
 		
-		session_start();
-		$response = $_SESSION["response"];
+		//session_start();
+		$response = session("response");
 	
 		if($response == null){
 
-			$cartPurchase = CartPurchase::where("user_id", $_SESSION["user_id"])->first();
+			$cartPurchase = CartPurchase::where("user_id", session("user_id"))->first();
 			
 			$payment = new Payment;
 			$payment->purchase_id = 0;
-			$payment->user_id = $_SESSION["user_id"];
-			$payment->transfer = $_SESSION["order"];
+			$payment->user_id = session("user_id");
+			$payment->transfer = session("order");
 			$payment->bank_id = 0;
-			if(isset($_SESSION["purchase_id"])){
-				$payment->amount_to_pay = $_SESSION["purchase_price"];
+			if(session("purchase_id") != null){
+				$payment->amount_to_pay = session("purchase_price");
 			}else{
 				$payment->amount_to_pay = $cartPurchase->price;
 			}
@@ -141,9 +148,9 @@ class CheckoutController extends Controller
 		if($response->detailOutput->responseCode == 0){ // si la respuesta de webpay es 0
 			//dd($response->detailOutput->responseCode);
 
-			if(isset($_SESSION["purchase_id"])){
+			if(session("purchase_id") != null){
 
-				$purchase = Purchase::where("id", $_SESSION["purchase_id"])->first();
+				$purchase = Purchase::where("id", session("purchase_id"))->first();
 				$purchase->is_payment_complete = 1;
 				$purchase->payment_completed_at = Carbon::now();
 				$purchase->shipping_state = "en proceso";
@@ -151,10 +158,10 @@ class CheckoutController extends Controller
 
 				$payment = new Payment;
 				$payment->purchase_id = $purchase->id;
-				$payment->user_id = $_SESSION["user_id"];
-				$payment->transfer = $_SESSION["order"];
+				$payment->user_id = session("user_id");
+				$payment->transfer = session("order");
 				$payment->bank_id = 0;
-				$payment->amount_to_pay = $_SESSION["purchase_price"];
+				$payment->amount_to_pay = session("purchase_price");
 				$payment->state = "aprobado";
 				$payment->save();
 				
@@ -215,10 +222,10 @@ class CheckoutController extends Controller
 
 			}else{
 
-				$cartPurchase = CartPurchase::where("user_id", $_SESSION["user_id"])->first();
+				$cartPurchase = CartPurchase::where("user_id", session("user_id"))->first();
 
 				$purchase = new Purchase;
-				$purchase->user_id = $_SESSION["user_id"];
+				$purchase->user_id = session("user_id");
 				$purchase->price = $cartPurchase->price;
 				if($cartPurchase->payment_type == "reservation"){
 					$purchase->reservated_at = Carbon::now();
@@ -234,7 +241,7 @@ class CheckoutController extends Controller
 				$purchase->post_id = $cartPurchase->post_id;
 				$purchase->save();
 
-				$productPurchases = CartProductPurchase::where("user_id", $_SESSION["user_id"])->get();
+				$productPurchases = CartProductPurchase::where("user_id", session("user_id"))->get();
 
 				foreach($productPurchases as $productPurchase){
 
@@ -249,8 +256,8 @@ class CheckoutController extends Controller
 				
 				$payment = new Payment;
 				$payment->purchase_id = $purchase->id;
-				$payment->user_id = $_SESSION["user_id"];
-				$payment->transfer = $_SESSION["order"];
+				$payment->user_id = session("user_id");
+				$payment->transfer = session("order");
 				$payment->bank_id = 0;
 				$payment->amount_to_pay = $cartPurchase->price;
 				$payment->state = "aprobado";
@@ -312,12 +319,12 @@ class CheckoutController extends Controller
 
 		}else{
 
-			$cartPurchase = CartPurchase::where("user_id", $_SESSION["user_id"])->first();
+			$cartPurchase = CartPurchase::where("user_id", session("user_id"))->first();
 
 			$payment = new Payment;
 			$payment->purchase_id = 0;
-			$payment->user_id = $_SESSION["user_id"];
-			$payment->transfer = $_SESSION["order"];
+			$payment->user_id = session("user_id");
+			$payment->transfer = session("order");
 			$payment->bank_id = 0;
 			$payment->amount_to_pay = $cartPurchase->price;
 			$payment->state = "rechazado";
