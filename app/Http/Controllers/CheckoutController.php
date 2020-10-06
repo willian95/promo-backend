@@ -18,6 +18,7 @@ use App\WebpayResponse;
 use App\User;
 use Auth;
 use JWTAuth;
+use Session;
 
 class CheckoutController extends Controller
 {
