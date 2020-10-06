@@ -9,12 +9,12 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="text-dark">Titulo del Post</th>
-                            <th class="text-dark">Total</th>
-                            <th class="text-dark">Tipo de compra</th>
-                            <th class="text-dark">Fecha</th>
-                            <th class="text-dark">Status</th>
-                            <th class="text-dark">Acciones</th>
+                            <th class="text-secondary">Titulo del Post</th>
+                            <th class="text-secondary">Total</th>
+                            <th class="text-secondary">Tipo de compra</th>
+                            <th class="text-secondary">Fecha</th>
+                            <th class="text-secondary">Status</th>
+                            <th class="text-secondary">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
