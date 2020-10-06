@@ -9,23 +9,23 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <td>Publicación</td>
-                            <td>Usuario</td>
-                            <td>Status</td>
-                            <td>Delivery</td>
-                            <td>Acciones</td>
+                            <td class="text-secondary">Publicación</td>
+                            <td class="text-secondary">Usuario</td>
+                            <td class="text-secondary">Status</td>
+                            <td class="text-secondary">Delivery</td>
+                            <td class="text-secondary">Acciones</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="sale in sales" v-if="sale.post">
-                            <td>@{{ sale.post.title }}</td>
-                            <td>@{{ sale.user.name }}</td>
-                            <td v-if="sale.is_payment_complete == 0">En espera de finalización del pago</td>
-                            <td v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'en proceso'">Pago realizado, puede proceder a la entrega</td>
-                            <td v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'entregado'">Articulo entregado</td>
-                            <td v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'recibido'">Articulo recibido</td>
-                            <td v-if="sale.has_delivery == 1">Sí</td>
-                            <td v-else>No</td>
+                            <td class="text-secondary">@{{ sale.post.title }}</td>
+                            <td class="text-secondary">@{{ sale.user.name }}</td>
+                            <td class="text-secondary" v-if="sale.is_payment_complete == 0">En espera de finalización del pago</td>
+                            <td class="text-secondary" v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'en proceso'">Pago realizado, puede proceder a la entrega</td>
+                            <td class="text-secondary" v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'entregado'">Articulo entregado</td>
+                            <td class="text-secondary" v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'recibido'">Articulo recibido</td>
+                            <td class="text-secondary" v-if="sale.has_delivery == 1">Sí</td>
+                            <td class="text-secondary" v-else>No</td>
                             <td>
                                 <button class="button" v-if="sale.is_payment_complete == 1 && sale.shipping_state == 'en proceso'" data-toggle="modal" data-target="#saleModal" @click="showModal(sale)">Entregar</button>
                             </td>
