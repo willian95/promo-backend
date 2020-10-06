@@ -85,7 +85,7 @@ class CheckoutController extends Controller
 			$price = $cart->price;
 		}
 
-		dd($price);
+	
 		$webpayNormal->addTransactionDetail(intval($price), $order);  
 		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish')); 
 		// Probablemente también quieras crear una orden o transacción en tu base de datos y guardar el token ahí.
@@ -98,10 +98,9 @@ class CheckoutController extends Controller
 		
 		$result = $webpayPatPass->getTransactionResult();      
 	
-		//session_start();
+		session_start();
 		$_SESSION["response"]=$result;
 
-		dd($_SESSION["user_id"]);
 		//dd($result, session('response'), session("user"));
 
 		$webpayPatPass->acknowledgeTransaction();
@@ -114,9 +113,8 @@ class CheckoutController extends Controller
 	public function finish()  
 	{
 		
-		//session_start();
+		session_start();
 		$response = $_SESSION["response"];
-		dd($response);
 	
 		if($response == null){
 
