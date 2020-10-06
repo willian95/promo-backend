@@ -8,8 +8,8 @@
         </div>
         <div class="container-fluid inf-registro-form">
 
-            <div class="loader-cover" v-if="loading == true">
-                <div class="loader"></div>
+            <div class="elipse" v-if="loading == true">
+                <img src="{{ asset('user/images/logo.png') }}">
             </div>
           
             <div class="row information">

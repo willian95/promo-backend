@@ -3,8 +3,8 @@
 @section("content")
 <div class="area-explorar-comilandia" id="dev-area">
 
-    <div class="loader-cover" v-if="loading == true">
-        <div class="loader"></div>
+    <div class="elipse" v-if="loading == true">
+        <img src="{{ asset('user/images/logo.png') }}">
     </div>
     <div class="area-explorar-comilandia-img-banner">
         <img class="area-explorar-comilandia-img-banner_img" src="{{ asset('user/images/explorer.jpg') }}" alt="">

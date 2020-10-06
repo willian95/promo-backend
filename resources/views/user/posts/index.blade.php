@@ -5,8 +5,8 @@
     <div class="cont-publicacion-img"></div>
     <div class="container pt-150 " id="dev-area">
 
-        <div class="cover" v-if="loading == true">
-            <div class="loader"></div>
+        <div class="elipse" v-if="loading == true">
+            <img src="{{ asset('user/images/logo.png') }}">
         </div>
 
         <div class="row cont-publicacion-form-info">
@@ -57,7 +57,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="cont-publicacion_label" for="saleDate">Fecha de venta</label>
-                    <input type="date" id="saleDate" class="form-control input-publicacion" v-model="saleDate">
+                    <!--<input type="date" id="saleDate" class="form-control input-publicacion" v-model="saleDate">-->
+                    <select class="form-control" id="saleDate" v-model="saleDate">
+                        <option :value="monday" v-for="monday in mondays">@{{ monday }}</option>
+                    </select>
                     <small>Debe existir un mínimo de 7 días para la fecha de venta</small>
                 </div>
             </div>
@@ -254,6 +257,7 @@
                     categories:[],
                     promos:[],
                     category:"",
+                    mondays:[],
                     saleDate:"",
                     description:"",
                     imagePreview:"",
@@ -518,6 +522,33 @@
                         this.amount = 8
                     }
 
+                },
+                getAllMondays(){
+                    var d = new Date(),
+                    e = new Date(),
+                    year = d.getYear()
+
+                    d.setDate(d.getDate() + 14);
+
+                    while (d.getYear() === year) {
+                        var pushDate = new Date(d.getTime());
+
+                        if(pushDate.getDay() == 1 && d.getTime() != e.getTime()){
+                            
+                            let month = '' + (d.getMonth() + 1)
+                            let day = '' + d.getDate()
+                            let year = d.getFullYear();
+
+                            if (month.length < 2) 
+                                month = '0' + month;
+                            if (day.length < 2) 
+                                day = '0' + day;
+
+                            this.mondays.push([year, month, day].join('-'))
+                        }
+                        d.setDate(d.getDate() + 1);
+                    }
+                    
                 }
 
             },
@@ -525,6 +556,7 @@
 
                 this.fetchCategories()
                 this.myData()
+                this.getAllMondays()
 
             }
 
