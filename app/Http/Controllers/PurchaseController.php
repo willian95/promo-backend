@@ -42,7 +42,7 @@ class PurchaseController extends Controller
 
         try{
 
-            $purchase = Purchase::where("id", $id)->with("post", "payments", "post.category", "user", "productsPurchase", "productsPurchase.postProduct")->first();
+            $purchase = Purchase::where("id", $id)->with("post", "payments", "post.category", "post.user", "user", "productsPurchase", "productsPurchase.postProduct")->first();
             $paymentsAmount = Payment::where("purchase_id", $id)->count();
             $paymentsAproved = Payment::where("purchase_id", $id)->where("state", "aprobado")->count();
             $paymentsWaiting = Payment::where("purchase_id", $id)->where("state", "en proceso")->count();

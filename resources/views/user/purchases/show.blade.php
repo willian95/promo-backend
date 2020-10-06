@@ -234,7 +234,7 @@
                     category:"{{ $purchase->post->category->name }}",
                     image:"{{ $purchase->post->image }}",
                     price:"{{ $purchase->price }}",
-                    seller:JSON.parse('{!! $purchase->user !!}'),
+                    seller:JSON.parse('{!! $purchase->post->user !!}'),
                     isPaymentComplete:"{{ $purchase->is_payment_complete }}",
                     saleDate:"{{ $purchase->post->sale_date }}",
                     dueDate:"{{ $purchase->post->due_date }}",
