@@ -9,11 +9,11 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <td class="text-secondary">Publicación</td>
-                            <td class="text-secondary">Usuario</td>
-                            <td class="text-secondary">Status</td>
-                            <td class="text-secondary">Delivery</td>
-                            <td class="text-secondary">Acciones</td>
+                            <th class="text-secondary">Publicación</th>
+                            <th class="text-secondary">Usuario</th>
+                            <th class="text-secondary">Status</th>
+                            <th class="text-secondary">Delivery</th>
+                            <th class="text-secondary">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
