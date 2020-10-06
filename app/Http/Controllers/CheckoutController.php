@@ -123,7 +123,7 @@ class CheckoutController extends Controller
 	{
 		
 		//session_start();
-		dd(session::get("response"));
+		dd(Session::get("response"));
 		$response = session("response");
 	
 		if($response == null){
