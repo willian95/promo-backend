@@ -510,7 +510,7 @@
                     this.purchaseType = "purchase"
                     this.purchaseButtonText = "Comprar"
                 }else{
-
+                    
                     this.discountDays.forEach((data) => {
                         
                         if(data.date == this.todaysDate.substring(0, 10)){
