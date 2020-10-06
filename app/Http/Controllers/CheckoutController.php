@@ -77,8 +77,6 @@ class CheckoutController extends Controller
 		$_SESSION["user_id"]=$user->id;
 		$_SESSION["order"]=$order;
 
-		dd($_SESSION["user_id"]);
-
 		$price = 0;
 		if(isset($_SESSION["purchase_price"])){
 			$price = $_SESSION["purchase_price"];
