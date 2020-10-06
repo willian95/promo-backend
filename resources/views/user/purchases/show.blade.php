@@ -123,18 +123,18 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Transacción</th>
-                                <th>Fecha</th>
-                                <th>Monto</th>
-                                <th>Estado</th>
+                                <th class="text-secondary">Transacción</th>
+                                <th class="text-secondary">Fecha</th>
+                                <th class="text-secondary">Monto</th>
+                                <th class="text-secondary">Estado</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="payment in payments">
-                                <td>@{{ payment.transfer }}</td>
-                                <td>@{{ payment.created_at.toString().substring(0, 10) }}</td>
-                                <td> $ @{{ parseInt(payment.amount_to_pay).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
-                                <td>@{{ payment.state }}</td>
+                                <td class="text-secondary">@{{ payment.transfer }}</td>
+                                <td class="text-secondary">@{{ payment.created_at.toString().substring(0, 10) }}</td>
+                                <td class="text-secondary"> $ @{{ parseInt(payment.amount_to_pay).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</td>
+                                <td class="text-secondary">@{{ payment.state }}</td>
                             </tr>
                         </tbody>
                     </table>
