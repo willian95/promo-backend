@@ -5,7 +5,7 @@
     <div class="container pt-150" id="dev-area">
         <div class="row">
             <div class="col-12">
-
+                <h3 class="text-center">Mis compras</h3>
                 <table class="table">
                     <thead>
                         <tr>
