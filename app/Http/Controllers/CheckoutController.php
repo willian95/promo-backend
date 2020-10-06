@@ -80,8 +80,6 @@ class CheckoutController extends Controller
 		Session::put('user_id',$user->id);
 		Session::put('order',$order);
 
-		dd(Session::get("user_id"));
-
 		/*session_start();
 		$_SESSION["user_id"]=$user->id;
 		$_SESSION["order"]=$order;*/
@@ -107,6 +105,8 @@ class CheckoutController extends Controller
 		
 		$result = $webpayPatPass->getTransactionResult();      
 		
+		dd(Session::get("user_id"));
+
 		Session::put('response',$result);
 
 		/*session_start();
