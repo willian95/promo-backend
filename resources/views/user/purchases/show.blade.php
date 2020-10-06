@@ -46,23 +46,23 @@
                 <img :src="'{{ url('/images/posts') }}'+'/'+image" style="width: 100%">
             </div>
             <div class="col-md-7 col-lg-7">
-                <p class="text-dark">
+                <p class="text-secondary">
                     <strong>Vendedor: </strong><a :href="'{{ url('/') }}'+'/profile'+'/'+seller.id">@{{ seller.name }}</a>
                 </p>
-                <p class="text-dark">
+                <p class="text-secondary">
                     <span style="font-weight: bold;">Categoria</span>: @{{ category }}
                 </p>
                 <p>@{{ description }}</p>
-                <p class="text-dark">
+                <p class="text-secondary">
                     <strong>Fecha de venta: </strong> @{{ saleDate.toString().substring(0, 10) }}
                 </p>
-                <p class="text-dark">
+                <p class="text-secondary">
                     <strong>Fecha de finalización: </strong> @{{ dueDate.toString().substring(0, 10) }}
                 </p>
-                <p v-if="seller.open_days != null" class="text-dark">
+                <p v-if="seller.open_days != null" class="text-secondary">
                     <strong>Establecimiento abierto: </strong> @{{ seller.open_days.replace(/,/g, ", ") }}
                 </p>
-                <p v-if="seller.deliver_days != null" class="text-dark">
+                <p v-if="seller.deliver_days != null" class="text-secondary">
                     <strong>Delivery: </strong> @{{ seller.deliver_days.replace(/,/g, ", ") }}
                 </p>
             </div>
@@ -82,8 +82,8 @@
                             
                         </div>
                         <div class="col-md-4">
-                            <p class="text-dark"><strong>Precio: </strong>$ @{{ parseInt(product.price).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
-                            <p class="text-dark"><strong>Cantidad:</strong> @{{ product.amount }}</p>
+                            <p class="text-secondary"><strong>Precio: </strong>$ @{{ parseInt(product.price).toString().replace(/\B(?=(\d{3})+\b)/g, ".") }}</p>
+                            <p class="text-secondary"><strong>Cantidad:</strong> @{{ product.amount }}</p>
                             <!--<input readonly :id="'amount-'+index" type="text" class="form-control amount-input" style="width: 60px" :value="product.amount">-->
                         </div>
                     </div>
