@@ -58,8 +58,9 @@ class CheckoutController extends Controller
 		}else{
 
 			//session_start();
-			session(['purchase_id' => $request->purchase_id]);
-			session(['purchase_price' => $request->amountToPay]);
+			Session::put('purchase_id',$request->purchase_id);
+			Session::put('purchase_price',$request->amountToPay);
+			
 			//$_SESSION["purchase_id"]=$request->purchase_id;
 			//$_SESSION["purchase_price"] = $request->amountToPay;
 
@@ -76,8 +77,8 @@ class CheckoutController extends Controller
         $cart = CartPurchase::where("user_id", $user->id)->first();
 		$order = Carbon::now()->timestamp.uniqid();
 
-		session(['user_id' => $user->id]);
-		session(['order' => $order]);
+		Session::put('user_id',$user->id);
+		Session::put('order',$order);
 
 		/*session_start();
 		$_SESSION["user_id"]=$user->id;
@@ -104,7 +105,7 @@ class CheckoutController extends Controller
 		
 		$result = $webpayPatPass->getTransactionResult();      
 		
-		session(['response' => $result]);
+		Session::put('response',$result);
 
 		/*session_start();
 		$_SESSION["response"]=$result;*/
@@ -122,7 +123,7 @@ class CheckoutController extends Controller
 	{
 		
 		//session_start();
-		dd(session("response"));
+		dd(session::get("response"));
 		$response = session("response");
 	
 		if($response == null){
