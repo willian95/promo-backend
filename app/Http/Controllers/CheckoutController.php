@@ -12,7 +12,6 @@ use App\CartProductPurchase;
 use Auth;
 use JWTAuth;
 
-
 class CheckoutController extends Controller
 {
     
@@ -46,18 +45,19 @@ class CheckoutController extends Controller
 				
 			}
 
-			Session::put("test", "test");
-
 			return response()->json(["success" => true]);
 
 		}else{
 
 			//session_start();
-			Session::put('purchase_id',$request->purchase_id);
-			Session::put('purchase_price',$request->amountToPay);
+			//Session::put('purchase_id',$request->purchase_id);
+			//Session::put('purchase_price',$request->amountToPay);
 			
 			//$_SESSION["purchase_id"]=$request->purchase_id;
 			//$_SESSION["purchase_price"] = $request->amountToPay;
+
+			session(["purchase_id", $request->purchase_id]);
+			session(["purchase_price", $request->amountToPay]);
 
 			return response()->json(["success" => true]);
 
@@ -73,8 +73,8 @@ class CheckoutController extends Controller
 		$order = Carbon::now()->timestamp.uniqid();
 
 		$price = 0;
-		if(Session::get("purchase_price") != null){
-			$price = Session::get("purchase_price");
+		if(session("purchase_price") != null){
+			$price = session("purchase_price");
 			
 		}else{
 			$price = $cart->price;
