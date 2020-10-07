@@ -70,8 +70,23 @@ class CheckoutController extends Controller
     
     public function initTransaction(WebpayNormal $webpayNormal)
 	{
+
+		$user = JWTAuth::parseToken()->toUser();
+        $cart = CartPurchase::where("user_id", $user->id)->first();
+		$order = Carbon::now()->timestamp.uniqid();
+
+		$_SESSION["user_id"] = $user->id;
+		$_SESSION["order"] = $order;
+
+		$price = 0;
+		if($_SESSION["purchase_price"] != null){
+			$price = $_SESSION["purchase_price"];
+			
+		}else{
+			$price = $cart->price;
+		}
 		
-		$webpayNormal->addTransactionDetail(1500, 'order-' . rand(1000, 9999));  
+		$webpayNormal->addTransactionDetail($price, $order);  
 		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish'), null, 'TR_NORMAL_WS', null, null); 
 		// Probablemente también quieras crear una orden o transacción en tu base de datos y guardar el token ahí.
 
