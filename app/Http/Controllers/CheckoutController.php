@@ -70,9 +70,40 @@ class CheckoutController extends Controller
 
 		}
 
-    }
+	}
+	
+	public function initTransaction(WebpayNormal $webpayNormal)
+	{
+		
+		$webpayNormal->addTransactionDetail(1500, 'order-' . rand(1000, 9999));  
+		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish'), null, 'TR_NORMAL_WS', null, null); 
+		// Probablemente también quieras crear una orden o transacción en tu base de datos y guardar el token ahí.
 
-    public function initTransaction(WebpayNormal $webpayNormal, Request $request)
+		return RedirectorHelper::redirectHTML($response->url, $response->token);
+    }
+    
+    public function response(WebpayPatPass $webpayPatPass)  
+	{  
+		$result = $webpayPatPass->getTransactionResult();  
+		session(['response' => $result]);  
+
+			$webpayPatPass->acknowledgeTransaction();
+
+		// Revisar si la transacción fue exitosa ($result->detailOutput->responseCode === 0) o fallida para guardar ese resultado en tu base de datos. 
+		//return RedirectorHelper::redirectBackNormal($result->urlRedirection);
+		return RedirectorHelper::redirectBackNormal($result->urlRedirection);  
+	}
+
+	public function finish()  
+	{
+
+		
+
+		dd($_POST, session('response'));  
+		// Acá buscar la transacción en tu base de datos y ver si fue exitosa o fallida, para mostrar el mensaje de gracias o de error según corresponda
+	}
+
+    /*public function initTransaction(WebpayNormal $webpayNormal, Request $request)
 	{
 		
 		$user = JWTAuth::parseToken()->toUser();
@@ -81,10 +112,6 @@ class CheckoutController extends Controller
 
 		Session::put('user_id',$user->id);
 		Session::put('order',$order);
-
-		/*session_start();
-		$_SESSION["user_id"]=$user->id;
-		$_SESSION["order"]=$order;*/
 
 		$price = 0;
 		if(Session::get("purchase_price") != null){
@@ -100,34 +127,27 @@ class CheckoutController extends Controller
 		// Probablemente también quieras crear una orden o transacción en tu base de datos y guardar el token ahí.
 
 		return RedirectorHelper::redirectHTML($response->url, $response->token);
-    }
+    }*/
     
-    public function response(WebpayPatPass $webpayPatPass)  
+    /*public function response(WebpayPatPass $webpayPatPass)  
 	{  
 		
 		$result = $webpayPatPass->getTransactionResult();      
-		
-		//dd(Session::get("user_id"), Session::get("test"), $result);
+	
 
 		Session::put('response',$result);
 
-		/*session_start();
-		$_SESSION["response"]=$result;*/
-
-		//dd($result, session('response'), session("user"));
 
 		$webpayPatPass->acknowledgeTransaction();
 
-	  	// Revisar si la transacción fue exitosa ($result->detailOutput->responseCode === 0) o fallida para guardar ese resultado en tu base de datos. 
-	  	//return RedirectorHelper::redirectBackNormal($result->urlRedirection);
 	  	return RedirectorHelper::redirectBackNormal($result->urlRedirection);  
-	}
+	}*/
 
-	public function finish()  
+	/*public function finish()  
 	{
 		
 		//session_start();
-		dd(Session::get("response"));
+		
 		$response = session("response");
 	
 		if($response == null){
@@ -342,6 +362,6 @@ class CheckoutController extends Controller
 		}
 
 
-	}
+	}*/
 
 }
