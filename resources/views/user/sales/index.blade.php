@@ -68,14 +68,14 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Producto</th>
-                                    <th>Cantidad</th>
+                                    <th class="text-secondary">Producto</th>
+                                    <th class="text-secondary">Cantidad</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="productPurchase in sale.products_purchase">
-                                    <td>@{{ productPurchase.post_product.title }}</td>
-                                    <td>@{{ productPurchase.amount }}</td>
+                                    <td class="text-secondary">@{{ productPurchase.post_product.title }}</td>
+                                    <td class="text-secondary">@{{ productPurchase.amount }}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -16,22 +16,22 @@
                 <table class="table" style="margin-top: 20px;">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Articulo</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
-                            <th>Precio total</th>
+                            <th class="text-secondary">#</th>
+                            <th class="text-secondary">Articulo</th>
+                            <th class="text-secondary">Cantidad</th>
+                            <th class="text-secondary">Precio</th>
+                            <th class="text-secondary">Precio total</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($purchaseProducts as $purchase)
                     
                             <tr>
-                                <td class="text-center">{{ $loop->index + 1 }}</td>
-                                <td class="text-center">{{ $purchase->postProduct->title }}</td>
-                                <td class="text-center">{{ $purchase->amount }}</td>
-                                <td class="text-center">$ {{ number_format($purchase->price, 0, ",", ".") }}</td>
-                                <td class="text-center">$ {{ number_format($purchase->price * $purchase->amount, 0, ",", ".") }}</td>
+                                <td class="text-center text-secondary">{{ $loop->index + 1 }}</td>
+                                <td class="text-center text-secondary">{{ $purchase->postProduct->title }}</td>
+                                <td class="text-center text-secondary">{{ $purchase->amount }}</td>
+                                <td class="text-center text-secondary">$ {{ number_format($purchase->price, 0, ",", ".") }}</td>
+                                <td class="text-center text-secondary">$ {{ number_format($purchase->price * $purchase->amount, 0, ",", ".") }}</td>
                                 
                             </tr>
                         @endforeach
