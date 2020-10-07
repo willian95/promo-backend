@@ -87,6 +87,17 @@ class CheckoutController extends Controller
 		}
 
 		$order = $_SESSION["order"];
+
+		$payment = new Payment;
+		$payment->purchase_id = 0;
+		$payment->user_id = $user->id;
+		$payment->transfer = $order;
+		$payment->bank_id = 0;
+		$payment->amount_to_pay = $price;
+		
+		
+		$payment->state = "en proceso";
+		$payment->save();
 		
 		$webpayNormal->addTransactionDetail(intval($price), $order);  
 		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish'), null, 'TR_NORMAL_WS', null, null); 
@@ -115,26 +126,11 @@ class CheckoutController extends Controller
 		
 		$response = $_SESSION["response"];
 		dd($response);
-		$user = JWTAuth::parseToken()->toUser();
-		dd($user);
 
 		if($response == null){
 
-			$cartPurchase = CartPurchase::where("user_id", $_SESSION["user_id"])->first();
-			
-			$payment = new Payment;
-			$payment->purchase_id = 0;
-			$payment->user_id = $_SESSION["user_id"];
-			$payment->transfer = $_SESSION["order"];
-			$payment->bank_id = 0;
-			if($_SESSION["purchase_id"] != null){
-				$payment->amount_to_pay = $_SESSION["purchase_price"];
-			}else{
-				$payment->amount_to_pay = $cartPurchase->price;
-			}
-			
-			$payment->state = "rechazado";
-			$payment->save();
+			$payment = Payment::where("transfer", $response["buyOrder"])->first();
+			$payment->update();
 
 			return view("user.failedPayment");
         
@@ -142,7 +138,7 @@ class CheckoutController extends Controller
 
 		if($response->detailOutput->responseCode == 0){ // si la respuesta de webpay es 0
 			//dd($response->detailOutput->responseCode);
-
+			dd(isset($_SESSION["purchase_id"]));
 			if(isset($_SESSION["purchase_id"])){
 
 				$purchase = Purchase::where("id", $_SESSION["purchase_id"])->first();
