@@ -23,9 +23,8 @@ class CheckoutController extends Controller
     public function response(WebpayPatPass $webpayPatPass)  
 	{  
 		$result = $webpayPatPass->getTransactionResult(); 
-		dd($result); 
-		session(['response' => $result]);  
-
+		session(['response' => $result]);
+		dump($result, session("response"));
 		$webpayPatPass->acknowledgeTransaction();
 
 		// Revisar si la transacción fue exitosa ($result->detailOutput->responseCode === 0) o fallida para guardar ese resultado en tu base de datos. 
