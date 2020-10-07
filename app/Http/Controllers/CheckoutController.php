@@ -138,7 +138,7 @@ class CheckoutController extends Controller
 		if($response->detailOutput->responseCode == 0){ // si la respuesta de webpay es 0
 			//dd($response->detailOutput->responseCode);
 
-			if($_SESSION["purchase_id"] != null){
+			if(isset($_SESSION["purchase_id"])){
 
 				$purchase = Purchase::where("id", $_SESSION["purchase_id"])->first();
 				$purchase->is_payment_complete = 1;
