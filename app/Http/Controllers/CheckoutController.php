@@ -114,7 +114,7 @@ class CheckoutController extends Controller
 		session_start();
 		
 		$response = $_SESSION["response"];
-		dump($response);
+		dd($response);
 		$user = JWTAuth::parseToken()->toUser();
 		dd($user);
 
