@@ -43,6 +43,9 @@
                     </div>
                     <div class="col-md-7">
                         <div class="cont-inf-descrip-producto-comilandia">
+                            <img :src="'{{ url('/assets/images/etiqueta-basica.png') }}'" alt="" v-if="type == 1">
+                            <img :src="'{{ url('/assets/images/etiqueta-superior.png') }}'" alt="" v-if="type == 2">
+                            <img :src="'{{ url('/assets/images/etiqueta-premium.png') }}'" alt="" v-if="type == 3">
                             <h2>@{{ category }}</h2>
                             <p>@{{ description }}</p>
                             <div class="cont-inf-descrip-producto-comilandia-desc-det">
