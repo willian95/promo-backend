@@ -142,6 +142,8 @@ class CheckoutController extends Controller
 			//dd(isset($_SESSION["purchase_id"]));
 			$payment = Payment::where("transfer", $response->buyOrder."")->first();
 
+			dd($payment);
+
 			if($payment->purchase_id){
 
 				$purchase = Purchase::where("id", $payment->purchase_id)->first();
