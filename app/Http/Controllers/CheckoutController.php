@@ -27,7 +27,11 @@ class CheckoutController extends Controller
 		$user = JWTAuth::parseToken()->toUser();
 		CartPurchase::where("user_id", $user->id)->delete();
 		CartProductPurchase::where("user_id", $user->id)->delete();
+		$order = Carbon::now()->timestamp.uniqid();
+		
 		session_start();
+		$_SESSION["user_id"] = $user->id;
+		$_SESSION["order"] = $order;
 			
 		if($request->action == "make-purchase"){
 			
@@ -70,13 +74,10 @@ class CheckoutController extends Controller
     
     public function initTransaction(WebpayNormal $webpayNormal)
 	{
-		session_start();
+		
 		$user = JWTAuth::parseToken()->toUser();
         $cart = CartPurchase::where("user_id", $user->id)->first();
-		$order = Carbon::now()->timestamp.uniqid();
-
-		$_SESSION["user_id"] = $user->id;
-		$_SESSION["order"] = $order;
+		
 
 		$price = 0;
 		if(isset($_SESSION["purchase_price"])){
