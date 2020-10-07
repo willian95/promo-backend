@@ -79,7 +79,7 @@ class CheckoutController extends Controller
 		$_SESSION["order"] = $order;
 
 		$price = 0;
-		if($_SESSION["purchase_price"] != null){
+		if(isset($_SESSION["purchase_price"])){
 			$price = $_SESSION["purchase_price"];
 			
 		}else{
