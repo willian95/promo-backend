@@ -79,7 +79,7 @@
                         
                         <div class="form-group">
                             <label>Comentario</label>
-                            <textarea class="form-control" rows="3" v-model="comment" style="margin-top: 10px;"></textarea>
+                            <textarea class="form-control" rows="3" v-model="comment" style="margin-top: 10px; color: #646464 !important;"></textarea>
                         </div>
 
                     </div>
