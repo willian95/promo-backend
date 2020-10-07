@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Freshwork\Transbank\WebpayNormal;
 use Freshwork\Transbank\WebpayPatPass;
 use Freshwork\Transbank\RedirectorHelper;
+use Auth;
+use JWTAuth;
+
 
 class CheckoutController extends Controller
 {
@@ -65,9 +68,6 @@ class CheckoutController extends Controller
 		$user = JWTAuth::parseToken()->toUser();
         $cart = CartPurchase::where("user_id", $user->id)->first();
 		$order = Carbon::now()->timestamp.uniqid();
-
-		Session::put('user_id',$user->id);
-		Session::put('order',$order);
 
 		$price = 0;
 		if(Session::get("purchase_price") != null){
