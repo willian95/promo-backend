@@ -125,7 +125,7 @@ class CheckoutController extends Controller
 		session_start();
 		
 		$response = $_SESSION["response"];
-		dd($response);
+		//dd($response);
 
 		if($response == null){
 
