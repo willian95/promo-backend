@@ -69,7 +69,7 @@
                         <p>Vendedor: </p>
                         <h3 class="text-center">@{{ seller.name }}</h3>
                         
-                        <select class="form-control text-secondary" style="background-color: white !important;" v-model="rate">
+                        <select class="form-control text-secondary" style="background: white !important;" v-model="rate">
                             <option value="5">Muy bueno</option>
                             <option value="4">Bueno</option>
                             <option value="3">Regular</option>
