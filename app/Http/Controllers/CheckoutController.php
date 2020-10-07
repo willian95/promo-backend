@@ -131,7 +131,7 @@ class CheckoutController extends Controller
 
 		if($response == null){
 
-			$payment = Payment::where("transfer", $response["buyOrder"])->first();
+			$payment = Payment::where("transfer", $response->buyOrder)->first();
 			$payment->update();
 
 			return view("user.failedPayment");
@@ -141,7 +141,7 @@ class CheckoutController extends Controller
 		if($response->detailOutput->responseCode == 0){ // si la respuesta de webpay es 0
 			//dd($response->detailOutput->responseCode);
 			//dd(isset($_SESSION["purchase_id"]));
-			$payment = Payment::where("transfer", $response["buyOrder"])->first();
+			$payment = Payment::where("transfer", $response->buyOrder)->first();
 
 			if($payment->purchase_id){
 
