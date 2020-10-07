@@ -87,7 +87,6 @@ class CheckoutController extends Controller
 		}
 
 		$order = $_SESSION["order"];
-		dd($_SESSION["client_id"]);
 		
 		$webpayNormal->addTransactionDetail(intval($price), $order);  
 		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish'), null, 'TR_NORMAL_WS', null, null); 
@@ -103,7 +102,7 @@ class CheckoutController extends Controller
 		
 		$_SESSION["response"] = $result;//session()->put('response',$result);
 		$webpayPatPass->acknowledgeTransaction();
-
+		
 		// Revisar si la transacción fue exitosa ($result->detailOutput->responseCode === 0) o fallida para guardar ese resultado en tu base de datos. 
 		//return RedirectorHelper::redirectBackNormal($result->urlRedirection);
 		return RedirectorHelper::redirectBackNormal($result->urlRedirection);  
@@ -113,6 +112,7 @@ class CheckoutController extends Controller
 	{
 
 		session_start();
+		dd($_SESSION["client_id"]);
 		$response = $_SESSION["response"];
 
 		if($response == null){
