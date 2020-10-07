@@ -70,7 +70,7 @@ class CheckoutController extends Controller
     
     public function initTransaction(WebpayNormal $webpayNormal)
 	{
-
+		session_start();
 		$user = JWTAuth::parseToken()->toUser();
         $cart = CartPurchase::where("user_id", $user->id)->first();
 		$order = Carbon::now()->timestamp.uniqid();
