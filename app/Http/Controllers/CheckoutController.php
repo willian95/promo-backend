@@ -30,7 +30,7 @@ class CheckoutController extends Controller
 		$order = Carbon::now()->timestamp.uniqid();
 		
 		session_start();
-		$_SESSION["user_id"] = $user->id;
+		$_SESSION["client_id"] = $user->id;
 		$_SESSION["order"] = $order;
 			
 		if($request->action == "make-purchase"){
@@ -77,7 +77,6 @@ class CheckoutController extends Controller
 		session_start();
 		$user = JWTAuth::parseToken()->toUser();
         $cart = CartPurchase::where("user_id", $user->id)->first();
-		
 
 		$price = 0;
 		if(isset($_SESSION["purchase_price"])){
@@ -102,7 +101,7 @@ class CheckoutController extends Controller
 		session_start();
 		
 		$_SESSION["response"] = $result;//session()->put('response',$result);
-		dump($result, $_SESSION["user_id"]);
+		dump($result, $_SESSION["client_id"]);
 		$webpayPatPass->acknowledgeTransaction();
 
 		// Revisar si la transacción fue exitosa ($result->detailOutput->responseCode === 0) o fallida para guardar ese resultado en tu base de datos. 
