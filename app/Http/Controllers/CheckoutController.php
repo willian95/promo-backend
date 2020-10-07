@@ -86,6 +86,8 @@ class CheckoutController extends Controller
 		}else{
 			$price = $cart->price;
 		}
+
+		$order = $_SESSION["order"];
 		
 		$webpayNormal->addTransactionDetail(intval($price), $order);  
 		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish'), null, 'TR_NORMAL_WS', null, null); 
