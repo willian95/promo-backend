@@ -231,6 +231,10 @@ class CheckoutController extends Controller
 				$purchase->post_id = $cartPurchase->post_id;
 				$purchase->save();
 
+				$payment->purchase_id = $purchase->id;
+				$payment->state = "aprobado";
+				$payment->update();
+
 				$productPurchases = CartProductPurchase::where("user_id", $payment->user_id)->get();
 
 				foreach($productPurchases as $productPurchase){
@@ -243,10 +247,6 @@ class CheckoutController extends Controller
 					$purchaseProduct->save();
 
 				}
-				
-				
-				$payment->state = "aprobado";
-				$payment->update();
 
 				$mailPurchaseType = "";
 				if($cartPurchase->payment_type == "reservation"){
