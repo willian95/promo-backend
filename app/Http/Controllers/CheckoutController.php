@@ -79,8 +79,7 @@ class CheckoutController extends Controller
         $cart = CartPurchase::where("user_id", $user->id)->first();
 		$order = Carbon::now()->timestamp.uniqid();
 
-		dd(Session::get("test"));
-
+		dd($user, $order);
 		Session::put('user_id',$user->id);
 		Session::put('order',$order);
 
