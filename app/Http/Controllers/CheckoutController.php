@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Freshwork\Transbank\WebpayNormal;
 use Freshwork\Transbank\WebpayPatPass;
 use Freshwork\Transbank\RedirectorHelper;
+use Carbon\Carbon;
+use App\CartPurchase;
 use Auth;
 use JWTAuth;
 
