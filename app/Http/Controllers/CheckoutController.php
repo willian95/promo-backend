@@ -107,7 +107,7 @@ class CheckoutController extends Controller
 		
 		$result = $webpayPatPass->getTransactionResult();      
 		
-		dd(Session::get("user_id"), Session::get("test"), $result);
+		//dd(Session::get("user_id"), Session::get("test"), $result);
 
 		Session::put('response',$result);
 
