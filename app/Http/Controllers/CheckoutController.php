@@ -79,7 +79,6 @@ class CheckoutController extends Controller
         $cart = CartPurchase::where("user_id", $user->id)->first();
 		$order = Carbon::now()->timestamp.uniqid();
 
-		dd($user, $order);
 		Session::put('user_id',$user->id);
 		Session::put('order',$order);
 
@@ -108,7 +107,7 @@ class CheckoutController extends Controller
 		
 		$result = $webpayPatPass->getTransactionResult();      
 		
-		dd(Session::get("user_id"));
+		dd(Session::get("user_id"), Session::get("test"), $result);
 
 		Session::put('response',$result);
 
