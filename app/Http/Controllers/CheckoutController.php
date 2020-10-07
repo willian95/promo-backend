@@ -8,6 +8,7 @@ use Freshwork\Transbank\WebpayPatPass;
 use Freshwork\Transbank\RedirectorHelper;
 use Carbon\Carbon;
 use App\CartPurchase;
+use App\CartProductPurchase;
 use Auth;
 use JWTAuth;
 
