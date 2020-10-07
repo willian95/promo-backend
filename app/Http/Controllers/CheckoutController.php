@@ -115,7 +115,7 @@ class CheckoutController extends Controller
 		
 		$response = $_SESSION["response"];
 		dump($response);
-		dd($_SESSION["purchase_id"]);
+		
 
 		if($response == null){
 
