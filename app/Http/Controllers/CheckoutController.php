@@ -87,6 +87,7 @@ class CheckoutController extends Controller
 		}
 
 		$order = $_SESSION["order"];
+		dd($_SESSION["purchase_id"]);
 
 		$payment = new Payment;
 		$payment->purchase_id = 0;
@@ -94,7 +95,8 @@ class CheckoutController extends Controller
 		$payment->transfer = $order;
 		$payment->bank_id = 0;
 		$payment->amount_to_pay = $price;
-		
+
+		//$payment->purchase_id = 
 		
 		$payment->state = "en proceso";
 		$payment->save();
@@ -138,7 +140,7 @@ class CheckoutController extends Controller
 
 		if($response->detailOutput->responseCode == 0){ // si la respuesta de webpay es 0
 			//dd($response->detailOutput->responseCode);
-			dd(isset($_SESSION["purchase_id"]));
+			//dd(isset($_SESSION["purchase_id"]));
 			if(isset($_SESSION["purchase_id"])){
 
 				$purchase = Purchase::where("id", $_SESSION["purchase_id"])->first();
