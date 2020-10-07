@@ -53,6 +53,8 @@ class CheckoutController extends Controller
 				
 			}
 
+			Session::put("test", "test");
+
 			return response()->json(["success" => true]);
 
 		}else{
@@ -76,6 +78,8 @@ class CheckoutController extends Controller
 		$user = JWTAuth::parseToken()->toUser();
         $cart = CartPurchase::where("user_id", $user->id)->first();
 		$order = Carbon::now()->timestamp.uniqid();
+
+		dd(Session::get("test"));
 
 		Session::put('user_id',$user->id);
 		Session::put('order',$order);
