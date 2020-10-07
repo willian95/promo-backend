@@ -100,6 +100,7 @@ class CheckoutController extends Controller
 		$result = $webpayPatPass->getTransactionResult(); 
 		session_start();
 		
+		$_SESSION["client_id"] = $_SESSION["client_id"];
 		$_SESSION["response"] = $result;//session()->put('response',$result);
 		$webpayPatPass->acknowledgeTransaction();
 		
@@ -112,8 +113,10 @@ class CheckoutController extends Controller
 	{
 
 		session_start();
-		dd($_SESSION["client_id"]);
+		
 		$response = $_SESSION["response"];
+		dump($response);
+		dd($_SESSION["client_id"]);
 
 		if($response == null){
 
