@@ -142,9 +142,7 @@ class CheckoutController extends Controller
 			//dd(isset($_SESSION["purchase_id"]));
 			$payment = Payment::where("transfer", $response->buyOrder."")->first();
 
-			dd($payment);
-
-			if($payment->purchase_id){
+			if($payment->purchase_id != 0){
 
 				$purchase = Purchase::where("id", $payment->purchase_id)->first();
 				$purchase->is_payment_complete = 1;
