@@ -91,7 +91,8 @@ class CheckoutController extends Controller
 		}
 
 		$webpayNormal->addTransactionDetail($price, $order);  
-		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish'), null, 'TR_NORMAL_WS', null, null); 
+		//$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish'), null, 'TR_NORMAL_WS', null, null);
+		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish')); 
 		// Probablemente también quieras crear una orden o transacción en tu base de datos y guardar el token ahí.
 
 		return RedirectorHelper::redirectHTML($response->url, $response->token);
