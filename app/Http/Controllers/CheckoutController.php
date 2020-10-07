@@ -99,7 +99,7 @@ class CheckoutController extends Controller
 		session_start();
 		
 		$_SESSION["response"] = $result;//session()->put('response',$result);
-		dump($result, $_SESSION["response"]);
+		dump($result, $_SESSION["user_id"]);
 		$webpayPatPass->acknowledgeTransaction();
 
 		// Revisar si la transacción fue exitosa ($result->detailOutput->responseCode === 0) o fallida para guardar ese resultado en tu base de datos. 
