@@ -213,7 +213,7 @@
 
         <br>
         <div class="btn-ver-mas-comilandia">
-            <a class="btn-ver-mas-comilandia_a" href="#">Ver más</a>
+            <a class="btn-ver-mas-comilandia_a" href="{{ url('explorer') }}">Ver más</a>
         </div>
     </section>
     <section class="uber">
