@@ -530,7 +530,7 @@
 
                     d.setDate(d.getDate() + 8);
 
-                    while (d.getYear() === year + 1) {
+                    while (d.getYear() === year) {
                         var pushDate = new Date(d.getTime());
 
                         if(pushDate.getDay() == 1 && d.getTime() != e.getTime()){
