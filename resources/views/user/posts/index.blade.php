@@ -528,9 +528,9 @@
                     e = new Date(),
                     year = d.getYear()
 
-                    d.setDate(d.getDate() + 14);
+                    d.setDate(d.getDate() + 8);
 
-                    while (d.getYear() === year) {
+                    while (d.getYear() === year + 1) {
                         var pushDate = new Date(d.getTime());
 
                         if(pushDate.getDay() == 1 && d.getTime() != e.getTime()){
