@@ -46,10 +46,25 @@ class PostController extends Controller
             $user = JWTAuth::parseToken()->toUser();
 
             if($startDate->greaterThanOrEqualTo($now)){
- 
-                if(Post::where("start_date",$startDate)->where("commune_id", $user->location_id)->count() >= 40){
-                    return response()->json(["success" => false, "msg" => "Se ha superado la cantidad de publicaciones para este día, por favor seleccione otra fecha de venta"]);
+                
+                if($request->type == 1){
+                    if(Post::where("start_date",$startDate)->where("commune_id", $user->location_id)->where("type",$request->type)->count() >= 30){
+                        return response()->json(["success" => false, "msg" => "Se ha superado la cantidad de publicaciones para este día, por favor seleccione otra fecha de venta"]);
+                    }
                 }
+
+                else if($request->type == 2){
+                    if(Post::where("start_date",$startDate)->where("commune_id", $user->location_id)->where("type",$request->type)->count() >= 15){
+                        return response()->json(["success" => false, "msg" => "Se ha superado la cantidad de publicaciones para este día, por favor seleccione otra fecha de venta"]);
+                    }
+                }
+
+                if($request->type == 3){
+                    if(Post::where("start_date",$startDate)->where("commune_id", $user->location_id)->where("type",$request->type)->count() >= 5){
+                        return response()->json(["success" => false, "msg" => "Se ha superado la cantidad de publicaciones para este día, por favor seleccione otra fecha de venta"]);
+                    }
+                }
+                
 
             }else{
 
