@@ -124,7 +124,7 @@ class CheckoutController extends Controller
 	public function finish()  
 	{
 
-		dd(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+		
 		session_start();
 		
 		$response = $_SESSION["response"];
