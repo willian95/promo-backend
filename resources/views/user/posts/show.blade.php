@@ -527,15 +527,15 @@
 
                 if(this.type == "1"){
                     
-                    this.typePrice = 0.0005
+                    this.typePrice = 0.005
 
                 }else if(this.type == "2"){
 
-                    this.typePrice = 0.0006
+                    this.typePrice = 0.006
 
                 }else if(this.type == "3"){
 
-                    this.typePrice = 0.0007
+                    this.typePrice = 0.007
 
                 }
 
