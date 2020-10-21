@@ -93,7 +93,7 @@ class CheckoutController extends Controller
 		$payment->user_id = $user->id;
 		$payment->transfer = $order;
 		$payment->bank_id = 0;
-		$payment->amount_to_pay = $price;
+		$payment->amount_to_pay = intval($price);
 		if(isset($_SESSION["purchase_id"])){
 			$payment->purchase_id = $_SESSION["purchase_id"];
 		}
@@ -101,7 +101,7 @@ class CheckoutController extends Controller
 		$payment->state = "en proceso";
 		$payment->save();
 		
-		$webpayNormal->addTransactionDetail(intval($price), $order);  
+		$webpayNormal->addTransactionDetail(intval(intval($price)), $order);  
 		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish'), null, 'TR_NORMAL_WS', null, null); 
 		// Probablemente también quieras crear una orden o transacción en tu base de datos y guardar el token ahí.
 
