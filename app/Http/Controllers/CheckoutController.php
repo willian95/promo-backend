@@ -128,6 +128,7 @@ class CheckoutController extends Controller
 		session_start();
 		
 		$response = $_SESSION["response"];
+		dump(env("MAIL_FROM_ADDRESS"));
 
 		if($response == null){
 
@@ -263,7 +264,7 @@ class CheckoutController extends Controller
 				$to_name = $buyer->name;
 				
 				$data = ["messageMail" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "buyer", "purchaseId" => $purchase->id];
-				
+				dump(env("MAIL_FROM_ADDRESS"));
 				\Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $mailPurchaseType) {
 
 					$message->to($to_email, $to_name)->subject("¡Tu ".$mailPurchaseType." se ha realizado con éxito!");
