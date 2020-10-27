@@ -590,6 +590,10 @@
                                     text:res.data.msg,
                                     icon:"success"
 
+                                }).then(res => {
+
+                                    window.location.href= "{{ url('/') }}"
+
                                 })
                             }else{
                                 swal({
