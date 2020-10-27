@@ -79,7 +79,7 @@ class PaymentController extends Controller
 
             if($request->paymentType == "reservation"){
                 
-                $messageBuyer = "El usuario ".$user->name." ha realizado una transferencia. Verifica esta transacción";
+                $messageBuyer = "El usuario ".$user->name." ha realizado una transferencia. Verifica esta transacción. <p>Nombre: ".$user->name."<p>"."<p>Email: ".$user->email."<p>"."<p>RUT: ".$request->rut."<p>";
             }else{
                 $messageBuyer = "El usuario ".$user->name." ha realizado una compra. Verifica esta transacción";
             }

@@ -161,7 +161,7 @@ class PostController extends Controller
                     $discount->save();
                 }*/
 
-                return response()->json(["success" => true, "msg" => "Tu publicación será visible a partir del ".$post->start_date]);
+                return response()->json(["success" => true, "msg" => "Tu publicación será visible a partir del ".$startDate->format('y-m-d')]);
 
             }else{
 

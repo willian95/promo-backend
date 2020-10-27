@@ -101,7 +101,7 @@ class AuthController extends Controller
             $user->email_verified_at = Carbon::now();
             $user->update();
 
-            return redirect()->to("/login");
+            return redirect()->to("/");
 
         }catch(\Exception $e){
             return response()->json(["success" => false, "msg" => "Error en el servidor", "err" => $e->getMessage(), "ln" => $e->getLine()]);
