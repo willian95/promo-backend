@@ -4,6 +4,11 @@
 @section("content")
 
     <section class="vista-interna" id="dev-area">
+
+        <div class="elipse" v-if="loading == true">
+            <img src="{{ asset('user/images/logo.png') }}">
+        </div>
+
          <!--<div class="cat-comilandia">
             <div class="btn-group">
                 <button type="button" class="btn cat-comilandia-btn">Basico</button>
@@ -349,7 +354,8 @@
                     deliveryPrice:"{{ $post->user->delivery_tax }}",
                     accounts:[],
                     clientRut:"",
-                    selectedAccount:""
+                    selectedAccount:"",
+                    loading:false
                 }
             },
             methods:{
@@ -568,11 +574,15 @@
                             amountToPay = this.total
                         }
 
+                        this.loading = true
+
                         axios.post("{{ url('api/transfer/notify') }}", {accountId: this.selectedAccount.id, price: parseInt(amountToPay), paymentType: "reservation", total: this.total, postId: this.postId, bankId: this.selectedAccount.bank_id, amountToPay: parseInt(amountToPay), productsPurchase: this.productsPurchase, action: "make-purchase", rut: this.clientRut},{
                             headers: {
                                 Authorization: "Bearer "+window.localStorage.getItem('token')
                             }
                         }).then(res => {
+
+                            this.loading = false
 
                             if(res.data.success == true){
                                 swal({
