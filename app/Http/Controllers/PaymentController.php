@@ -88,8 +88,9 @@ class PaymentController extends Controller
             $seller = User::where("id", $post->user_id)->first();
             $to_email = $seller->email;
             $to_name = $seller->name;
+            $purchaseProduct = ProductPurchase::with("postProduct")->where("purchase_id", $purchase->id)->get();
 
-            $data = ["messageMail" => $messageBuyer, "purchaseProducts" => $request->productsPurchase, "messageTo" => "seller", "purchaseId" => $purchase->id];
+            $data = ["messageMail" => $messageBuyer, "purchaseProducts" => $purchaseProduct, "messageTo" => "seller", "purchaseId" => $purchase->id];
             \Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $title) {
 
                 $message->to($to_email, $to_name)->subject($title);
