@@ -273,46 +273,46 @@
                     amount:0,
                     hasDelivery:"",
                     deliveryPrice:"",
-                    discount1:5,
-                    discount2:5,
-                    discount3:5,
-                    discount4:5,
-                    discount5:5,
-                    discount6:5,
-                    discount7:5
+                    discount1:3,
+                    discount2:3,
+                    discount3:3,
+                    discount4:3,
+                    discount5:3,
+                    discount6:3,
+                    discount7:3
                 }
             },
             methods:{
                 
                 checkDiscounts(){
 
-                    if(this.discount1 < 5){
-                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
-                        this.discount1 = 5
+                    if(this.discount1 < 3){
+                        alertify.error("porcentaje de descuento no puede ser menor a 3%")
+                        this.discount1 = 3
                     }
-                    else if(this.discount2 < 5){
-                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
-                        this.discount2 = 5
+                    else if(this.discount2 < 3){
+                        alertify.error("porcentaje de descuento no puede ser menor a 3%")
+                        this.discount2 = 3
                     }
-                    else if(this.discount3 < 5){
-                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
-                        this.discount3 = 5
+                    else if(this.discount3 < 3){
+                        alertify.error("porcentaje de descuento no puede ser menor a 3%")
+                        this.discount3 = 3
                     }
-                    else if(this.discount4 < 5){
-                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
-                        this.discount4 = 5
+                    else if(this.discount4 < 3){
+                        alertify.error("porcentaje de descuento no puede ser menor a 3%")
+                        this.discount4 = 3
                     }
-                    else if(this.discount5 < 5){
-                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
-                        this.discount5 = 5
+                    else if(this.discount5 < 3){
+                        alertify.error("porcentaje de descuento no puede ser menor a 3%")
+                        this.discount5 = 3
                     }
-                    else if(this.discount6 < 5){
-                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
-                        this.discount6 = 5
+                    else if(this.discount6 < 3){
+                        alertify.error("porcentaje de descuento no puede ser menor a 3%")
+                        this.discount6 = 3
                     }
-                    else if(this.discount7 < 5){
-                        alertify.error("porcentaje de descuento no puede ser menor a 5%")
-                        this.discount7 = 5
+                    else if(this.discount7 < 3){
+                        alertify.error("porcentaje de descuento no puede ser menor a 3%")
+                        this.discount7 = 3
                     }
 
                 },

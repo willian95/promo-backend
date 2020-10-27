@@ -27,7 +27,8 @@ class RegisterRequest extends FormRequest
             "name" => "required",
             "email" => "required|email|unique:users,email",
             "password" => "required|confirmed",
-            "locationId" => "required|integer",
+            "regionId" => "required|integer",
+            "communeId" => "required|integer",
             "telephone" => "required",
             "address" => "required"
         ];
@@ -41,8 +42,10 @@ class RegisterRequest extends FormRequest
             "email.email" => "Email debe ser un correo válido",
             "email.unique" => "Este email ya se encuentra registrado",
             "password.required" => "Clave es requerida",
+            "regionId.required" => "Región es requerida",
+            "regionId.integer" => "Debe seleccionar una región válida",
             "locationId.required" => "Comuna es requerida",
-            "locationId.integer" => "Debe seleccionar una comuna valida",
+            "locationId.integer" => "Debe seleccionar una comuna válida",
             "telephone.required" => "Teléfono es requerido",
             "address.required" => "Dirección de entrega es requerida"
         ];

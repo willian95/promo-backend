@@ -111,7 +111,8 @@
                         password_confirmation: this.password_confirmation,
                         email: this.email,
                         password: this.password,
-                        locationId: this.commune,
+                        communeId: this.commune,
+                        regionId: this.region,
                         address:this.address,
                         telephone: this.phone
                     })

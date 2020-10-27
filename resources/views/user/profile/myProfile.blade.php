@@ -216,7 +216,7 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row" v-if="ratings.length > 0">
             <div class="col-12">
                 <h3 class="text-center" style="color:#fff;">Comentarios</h3>
             </div>
@@ -352,7 +352,7 @@
                         this.email = res.data.user.email
                         this.address = res.data.user.address
                         this.region = res.data.commune.region_id
-                        this.commune = res.data.user.location_id
+                        this.commune = res.data.user.commune_id
                         this.webSite = res.data.user.web_site
                         this.telephone = res.data.user.telephone
                         this.facebook = res.data.user.facebook

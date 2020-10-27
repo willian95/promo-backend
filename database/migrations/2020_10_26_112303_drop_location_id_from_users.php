@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPurchaseIdToPayment extends Migration
+class DropLocationIdFromUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddPurchaseIdToPayment extends Migration
      */
     public function up()
     {
-        Schema::table('payments', function (Blueprint $table) {
-            $table->integer("purchase_id")->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn("location_id");
         });
     }
 
@@ -25,7 +25,7 @@ class AddPurchaseIdToPayment extends Migration
      */
     public function down()
     {
-        Schema::table('payment', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

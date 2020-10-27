@@ -38,7 +38,12 @@ Route::get("/my-purchases/purchase/{id}", "PurchaseController@showMyPurchaseInfo
 Route::get("/my-sales", "SaleController@index");
 
 Route::get("/my-profile", "ProfileController@index");
+Route::get("/my-profile/bank", "ProfileController@bankAccounts");
+Route::post("/my-profile/bank/store", "ProfileController@storeBankAccount");
+Route::post("/my-profile/bank/update", "ProfileController@updateBankAccount");
+Route::post("/my-profile/bank/delete", "ProfileController@deleteBankAccount");
 Route::get("/profile/{id}", "ProfileController@show");
+Route::get("/bank-account/profile/{id}", "ProfileController@getUserAccount");
 
 Route::get("/explorer", "ExplorerController@index");
 

@@ -42,8 +42,11 @@ Route::get("rate/fetch/{user_id}", "RateController@fetch");
 
 Route::get("my-profile/data", "ProfileController@myData");
 Route::post("my-profile/update", "ProfileController@update");
+Route::get('/my-account/fetch', "ProfileController@fetchMyAccount");
 /*Route::get('/purchase/userFetch/{page}', "PurchaseController@userFetch");
 Route::get("/my-transfers", "PaymentController@fetchMyPayments");*/
+
+Route::post("/transfer/notify", "PaymentController@store");
 
 Route::get('/reservations/uncomplete', "PurchaseController@fetchUncompleteReservations");
 

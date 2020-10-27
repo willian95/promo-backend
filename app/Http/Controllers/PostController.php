@@ -48,19 +48,19 @@ class PostController extends Controller
             if($startDate->greaterThanOrEqualTo($now)){
                 
                 if($request->type == 1){
-                    if(Post::where("start_date",$startDate)->where("commune_id", $user->location_id)->where("type",$request->type)->count() >= 30){
+                    if(Post::where("start_date",$startDate)->where("commune_id", $user->commune_id)->where("type",$request->type)->count() >= 30){
                         return response()->json(["success" => false, "msg" => "Se ha superado la cantidad de publicaciones para este día, por favor seleccione otra fecha de venta"]);
                     }
                 }
 
                 else if($request->type == 2){
-                    if(Post::where("start_date",$startDate)->where("commune_id", $user->location_id)->where("type",$request->type)->count() >= 15){
+                    if(Post::where("start_date",$startDate)->where("commune_id", $user->commune_id)->where("type",$request->type)->count() >= 15){
                         return response()->json(["success" => false, "msg" => "Se ha superado la cantidad de publicaciones para este día, por favor seleccione otra fecha de venta"]);
                     }
                 }
 
                 if($request->type == 3){
-                    if(Post::where("start_date",$startDate)->where("commune_id", $user->location_id)->where("type",$request->type)->count() >= 5){
+                    if(Post::where("start_date",$startDate)->where("commune_id", $user->commune_id)->where("type",$request->type)->count() >= 5){
                         return response()->json(["success" => false, "msg" => "Se ha superado la cantidad de publicaciones para este día, por favor seleccione otra fecha de venta"]);
                     }
                 }
@@ -81,7 +81,7 @@ class PostController extends Controller
                 $post->description = $request->description;
                 $post->image = $fileName;
                 $post->category_id = $request->categoryId;
-                $post->commune_id = $user->location_id;
+                $post->commune_id = $user->commune_id;
                 $post->sale_date = $saleDate->format('y-m-d');
                 $post->start_date = $startDate->format('y-m-d');
                 $post->due_date = $dueDate->format('y-m-d');
@@ -161,7 +161,7 @@ class PostController extends Controller
                     $discount->save();
                 }*/
 
-                return response()->json(["success" => true, "msg" => "Publicación realizada. Su publicación será visible a partir del ".$post->start_date]);
+                return response()->json(["success" => true, "msg" => "Tu publicación será visible a partir del ".$post->start_date]);
 
             }else{
 

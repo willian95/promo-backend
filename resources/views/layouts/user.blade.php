@@ -111,6 +111,7 @@
                             </button>
                             <div id="list-user" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-profile') }}">Mi Perfil</a>
+                                <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-profile/bank') }}">Mis cuentas</a>
                                 <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-sales') }}">Mis Ventas</a>
                                 <a v-if="roleId == 2" class="dropdown-item" href="{{ url('/my-purchases') }}">Mis Compras</a>
                                 <a v-if="roleId == 1" class="dropdown-item" href="{{ url('/admin/dashboard') }}">Dashboard</a>

@@ -18,7 +18,7 @@ class HomeController extends Controller
             $user = JWTAuth::parseToken()->toUser();
             $todaysDate = Carbon::now();
 
-            $posts = Post::with('user', 'discountDays', 'category', 'commune', "products", "user.ratings")->where("commune_id", $user->location_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->orderBy("id", "desc")->get();
+            $posts = Post::with('user', 'discountDays', 'category', 'commune', "products", "user.ratings")->where("commune_id", $user->commune_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->orderBy("id", "desc")->get();
             $postArray = [];
 
             foreach($posts as $post){

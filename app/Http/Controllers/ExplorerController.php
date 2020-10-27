@@ -20,8 +20,8 @@ class ExplorerController extends Controller
             $skip = ($request->page-1) * 20;
             $todaysDate = Carbon::now();
 
-            $posts = Post::with('user', 'discountDays', 'category', 'commune')->where("commune_id", $request->location_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->orderBy("id", "desc")->get();
-            $postsCount = Post::with('user', 'discountDays', 'category', 'commune')->where("commune_id", $request->location_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->count();
+            $posts = Post::with('user', 'discountDays', 'category', 'commune')->where("commune_id", $request->commune_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->orderBy("id", "desc")->get();
+            $postsCount = Post::with('user', 'discountDays', 'category', 'commune')->where("commune_id", $request->commune_id)->whereDate("start_date", "<=", $todaysDate->format('Y-m-d'))->whereDate("due_date", ">=", $todaysDate->format('Y-m-d'))->count();
 
             $postArray = [];
 

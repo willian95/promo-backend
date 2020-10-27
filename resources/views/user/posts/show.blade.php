@@ -160,6 +160,44 @@
                     <div class="text-center" v-if="total > 1">
                         <!--<button type="button" class="btn btn-primary" @click="transferType()">Transferencia</button>
                         <button type="button" class="btn btn-primary" @click="webpayType()">Webpay</button>-->
+                        <small>Debes realizar una transferencia a la cuenta seleccionada</small>
+                        <select class="form-control" v-model="selectedAccount" style="background: #fff !important; color: #999 !important;"> 
+                            <option value="">Seleccione</option>
+                            <option :value="account" v-for="account in accounts">@{{ account.bank.name }}</option>
+                        </select>
+
+                        <div v-if="selectedAccount != ''">
+                            <div class="form-group">
+                                <label for="">Nro Cuenta</label>
+                                <input type="text" readonly class="form-control" :value="selectedAccount.account_number">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">RUT</label>
+                                <input type="text" readonly class="form-control" :value="selectedAccount.rut">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Correo Electrónico</label>
+                                <input type="text" readonly class="form-control" :value="selectedAccount.email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Tipo de cuenta</label>
+                                <input type="text" readonly class="form-control" :value="selectedAccount.account_type">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Monto a enviar</label>
+                                <input type="text" readonly class="form-control" :value="parseInt((total / 2)+1).toString().replace(/\B(?=(\d{3})+\b)/g, '.')">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Ingrese su RUT</label>
+                                <input type="text" class="form-control" style="color: #000 !important;" v-model="clientRut">
+                            </div>
+                        </div>
+
                     </div>
 
                     <div v-else>
@@ -167,18 +205,19 @@
                     </div>  
 
                 
-                    <div v-if="paymentMethod == 'webpay'">
+                    {{--<div v-if="paymentMethod == 'webpay'">
 
                         <div class="text-center" v-if="total > 1">
 
                             <img @click="webpay()" src="{{ asset('/user/images/article.jpg') }}" alt="" style="width: 200px; cursor: pointer;">
                         </div>
 
-                    </div>
+                    </div>--}}
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" @click="notifyTransfer()">Notificar</button>
                 </div>
             </div>
         </div>
@@ -307,7 +346,10 @@
                     delivery:false,
                     originalPrice:"",
                     hasDelivery:"{{ $post->user->has_delivery }}",
-                    deliveryPrice:"{{ $post->user->delivery_tax }}"
+                    deliveryPrice:"{{ $post->user->delivery_tax }}",
+                    accounts:[],
+                    clientRut:"",
+                    selectedAccount:""
                 }
             },
             methods:{
@@ -481,7 +523,7 @@
                         amountToPay = this.total
                     }
 
-                    axios.post("{{ url('/api/checkout/store/cart') }}", { total: this.total, amountToPay: amountToPay, paymentType: this.purchaseType, post_id: this.postId, productPurchases: this.productsPurchase, action: this.action, delivery:this.delivery,},{
+                    axios.post("{{ url('/api/checkout/store/cart') }}", { total: this.total, amountToPay: amountToPay, paymentType: this.purchaseType, post_id: this.postId, productPurchases: this.productsPurchase, action: this.action, delivery:this.delivery},{
                         headers: {
                             Authorization: "Bearer "+window.localStorage.getItem('token')
                         }
@@ -493,12 +535,72 @@
 
                     })
 
+                },
+                getSellerAccount(){
+
+                    axios.get("{{ url('/bank-account/profile/') }}"+"/"+this.seller.id).then(res => {
+
+                        this.accounts = res.data.accounts
+
+                    })
+
+                },
+                notifyTransfer(){
+
+                    if(this.clientRut == ""){
+
+                        swal({
+
+                            text:"Debes ingresar tu RUT para continuar",
+                            icon:"error"
+
+                        })
+
+                    }else{
+                        
+                        let amountToPay = 0
+                        if(this.purchaseType == "reservation"){
+                            
+                            amountToPay = (this.total / 2) +1 
+        
+                            
+                        }else{
+                            amountToPay = this.total
+                        }
+
+                        axios.post("{{ url('api/transfer/notify') }}", {accountId: this.selectedAccount.id, price: parseInt(amountToPay), paymentType: "reservation", total: this.total, postId: this.postId, bankId: this.selectedAccount.bank_id, amountToPay: parseInt(amountToPay), productsPurchase: this.productsPurchase, action: "make-purchase", rut: this.clientRut},{
+                            headers: {
+                                Authorization: "Bearer "+window.localStorage.getItem('token')
+                            }
+                        }).then(res => {
+
+                            if(res.data.success == true){
+                                swal({
+
+                                    text:res.data.msg,
+                                    icon:"success"
+
+                                })
+                            }else{
+                                swal({
+
+                                    text:res.data.msg,
+                                    icon:"error"
+
+                                })
+                            }
+
+                        })
+                    }
+
+
                 }
 
             },
             created(){
 
                 this.fetchBanks()
+                this.getSellerAccount()
 
                 let user = JSON.parse(localStorage.getItem("user"))
                 if(user != null){
