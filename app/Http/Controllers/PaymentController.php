@@ -89,8 +89,8 @@ class PaymentController extends Controller
             $to_email = $seller->email;
             $to_name = $seller->name;
 
-            $data = ["messageMail" => $messageBuyer];
-            \Mail::send("emails.confirmDeliverMail", $data, function($message) use ($to_name, $to_email, $title) {
+            $data = ["messageMail" => $messageBuyer, "purchaseProducts" => $request->productsPurchase, "messageTo" => "seller", "purchaseId" => $purchase->id];
+            \Mail::send("emails.purchaseMail", $data, function($message) use ($to_name, $to_email, $title) {
 
                 $message->to($to_email, $to_name)->subject($title);
                 $message->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
